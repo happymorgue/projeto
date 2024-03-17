@@ -1,8 +1,8 @@
-Fatma 57037 -
-João 57573 - Umby0
-Lilia 56949 - liliacolisnyc
-Luiza 58653 - happymorgue 
-Tiago 56589 - Silvinhos
+Fatma 57037 -  |
+João 57573 - Umby0 |
+Lilia 56949 - liliacolisnyc |
+Luiza 58653 - happymorgue |
+Tiago 56589 - Silvinhos |
 
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>

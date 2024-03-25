@@ -19,6 +19,10 @@ body::before {
   font-size: 2em;
 }
 
+.logo-cogitavi {
+  height: 2em;
+}
+
 
 /*------------- FOOTER --------------------*/ 
 
@@ -28,7 +32,7 @@ body::before {
   height: 10em;
 }
 
-/* SHOWCASE DUAS IMAGENS */
+/*------------ SHOWCASE DUAS IMAGENS -----------------*/
 
 .section-showcase {
   margin-top: -1.6em;
@@ -48,20 +52,12 @@ body::before {
   margin-bottom: -1.5em;
 }
 
-#imagem {
-  height: 17em;
-}
-
 #imagemDes {
   margin-top: -6em;
   height: 35em;
   width: 30em;
   margin-left: -1.9em;
 
-}
-
-.logo-cogitavi {
-  height: 2em;
 }
 
 #section {
@@ -134,58 +130,7 @@ nav .wrapper {
   color: black;
 }
 
-.box {
-  position: absolute;
-  top: 5.3em;
-  background: #1f8ac0;
-  width: 100%;
-  left: 0;
-  opacity: 0;
-  visibility: hidden;
-}
 
-.box .content {
-  padding: 1.5em 2.8em;
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-}
-
-.content .row {
-  width: calc(25% - 1.9em);
-  line-height: 2.8em;
-}
-
-.content .row img {
-  object-fit: cover;
-}
-
-.content .row header {
-  color: rgb(255, 255, 255);
-  font-size: 1.25em;
-  font-weight: 500;
-}
-
-.content .row .mega-links {
-  margin-left: -2.5em;
-  border-left: 0.07em solid white;
-}
-
-.content .row:nth-child(1),
-.content .row:nth-child(2) {
-  border-left: 0em;
-}
-
-.row .mega-links li {
-  padding: 0 1.25em;
-}
-
-.row .mega-links li a {
-  padding: 0 1.25em;
-  color: white;
-  font-size: 1em;
-  display: block;
-}
 
 
 

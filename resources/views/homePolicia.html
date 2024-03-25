@@ -43,29 +43,18 @@
       <div class="collapse navbar-collapse" id="navmenu">
         <ul class="nav navbar-nav ms-auto">
 
+          <li class="nav-item dropdown">
+            <a href="" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-bs-toggle="dropdown">
+              Objetos Achados
+            </a>
+            <ul class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item bi bi-person-fill" href="registoObjAchado.html" > Registar novo objeto </a></li>
+              <li><a class="dropdown-item bi bi-heart-fill" href="objAchados.html"> Visualizar objetos achados </a></li>
+            </ul>
+          </li>
+
           <li class="nav-item">
-            <a href="" class="nav-link">Registo</a>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a href="" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-bs-toggle="dropdown">
-              Login
-            </a>
-            <ul class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item bi bi-person-fill" href="perfil.html" > Utilizador </a></li>
-              <li><a class="dropdown-item bi bi-heart-fill" href="meusObjsPerdidos.html"> Polícia </a></li>
-            </ul>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a href="" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-bs-toggle="dropdown">
-              Perfil
-            </a>
-            <ul class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item bi bi-person-fill" href="perfil.html" > Perfil </a></li>
-              <li><a class="dropdown-item bi bi-heart-fill" href="meusObjsPerdidos.html"> Meus objetos perdidos </a></li>
-              <li><a class="dropdown-item bi bi-bag-fill" href=""> Minhas licitações </a></li>
-            </ul>
+            <a href="perfil.html" class="nav-link">Perfil</a>
           </li>
 
           <li class="nav-item">
@@ -94,6 +83,9 @@
         <li> <a href="objAchados.html">Objetos Achados</a>
         </li>
 
+        <li> <a href="objPerdidos.html">Objetos Perdidos</a>
+        </li>
+
       </ul>
     </div>
   </nav>
@@ -104,21 +96,20 @@
   <!-- Showcase --> <!-- p-padding telas pequenas, pt-padding top, lg-tela grande-->
   <section class="section-showcase text-white p-5 pt-lg-5 text-center text-sm-start">
     <div class="container">
-      <div class="d-md-flex align-items-center justify-content-between" id="section">
+      <div class="d-sm-flex align-items-center justify-content-between" id="section">
         <div class="quadrado-showcase">
           <h1 class="title" style="--duration: 1s">
           <span style="--delay: 0.5s"> Encontre o perdido, </span>
           <span style="--delay: 0.8s"> Recupere o achado. </span>
           </h1>
           <p class="lead my-4">
-            Encontre seu objeto perdido!
+            Registe um objeto achado!
           </p>
-          <a href="objAchados.html" id="venderProd"> <button class="btn btn_vender btn-lg" href>  
-              Procurar
+          <a href="registoObjAchado.html" id="venderProd"> <button class="btn btn_vender btn-lg" href>  
+              Registar
             </button></a>
             
         </div>
-        
       </div>
       <div class="separate"></div>
     </div>

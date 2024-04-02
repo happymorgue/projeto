@@ -10,8 +10,9 @@ body::before {
 
 /*-------------- PRIMEIRA NAVBAR -----------------*/
 
-.cor{
-  background-color: #efc9af !important;
+
+.cor-nav-bar{
+  background-color: #104c91 !important;
 }
 
 .navbar-brand {
@@ -20,36 +21,35 @@ body::before {
 }
 
 .logo-cogitavi {
-  height: 2em;
+  height: 1.2em;
 }
 
+/*Cores - bege- #efc9af ; bege branco - #f5f5dc ; azul claro - #1f8ac0 ; azul escuro - #2320b5; Azul intermedio - #104c91.
 
 /*------------- FOOTER --------------------*/ 
 
 #footer {
-  background-color:#efc9af;
-  color: white;
-  height: 10em;
+  background-color:#104c91;
+  color: #f5f5dc !important;
 }
 
 /*------------ SHOWCASE DUAS IMAGENS -----------------*/
 
 .section-showcase {
-  margin-top: -1.6em;
+  margin-top: -2.95em;
   background-image: url(../../public/img3.jpg);
 }
 
 .btn_vender {
-  background-color: #2320b5;
-  color: white;
+  background-color: #104c91;
+  color: #f5f5dc;
 }
 
 .quadrado-showcase {
-  background-color: #1f8ac0;
-  padding: 2%;
-  border-radius: 0.5em;
-  margin-top: 2.5em;
-  margin-bottom: -1.5em;
+  background-color: rgba(31, 138, 192, 0.75); /* traduzido para rgb por causa da opacidade (o ultimo valor) */
+  padding: 3em;
+  border-radius: 0.25em;
+  margin-top: 1em;
 }
 
 #imagemDes {
@@ -73,11 +73,11 @@ body::before {
 }
 
 .link_footer {
-  color: white;
+  color: #f5f5dc;
 }
 
 .link_footer:hover {
-  color: black;
+  color: white;
 }
 
 /* --------------------- SEGUNDA NAV -------------------------------------- */
@@ -109,7 +109,7 @@ nav .wrapper {
 }
 
 .nav-links li a {
-  color: white;
+  color: #f5f5dc;
   text-decoration: none;
   font-size: 1em;
   font-weight: 500;

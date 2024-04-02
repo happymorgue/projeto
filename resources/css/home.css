@@ -18,13 +18,13 @@
   height: 100%;
   transform: scaleX(0);
   transform-origin: left;
-  background-color: #ffc107;
+  background-color: #2320b5;
   animation: rollIn var(--duration) var(--delay) forwards,
     rollOut var(--duration) var(--total) forwards;
 }
 
 .title span:nth-child(2)::after {
-  border-top: 0.19em solid #ffc107
+  border-top: 0.19em solid #2320b5
 }
 
 @keyframes reveal {

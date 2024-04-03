@@ -1,7 +1,6 @@
 <!-- <!DOCTYPE html> -->
 <html>
 <head>
-
 <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,7 +8,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet" />
-  <title>Cogitavi - Editar Achados</title>
+  <title>Cogitavi - Editar Perfil</title>
   <link rel="icon" type="image/x-icon" href="../../public/lupa.png">
   <!-- Bootstrap icons-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
@@ -18,7 +17,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
   <!-- Core theme CSS -->
   <link rel="stylesheet" href="../css/geral.css" />
-  <link rel="stylesheet" href="../css/editAchados.css" />
+  <link rel="stylesheet" href="../css/perfil.css" />
 </head>
 <body>
 
@@ -74,82 +73,66 @@
   </div>
 </nav>
 
-
-
-  <h1 class=" text-center pt-5"> Aqui será a página para o polícia editar e remover objetos achados.</h1>
-
   
+  <div class="container">
+		<div class="main-body">
+      <div class="row gutters-sm">
+        <div class="col-md-4 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex flex-column align-items-center text-center">
+                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                <div class="mt-3">
+                  <h4>John Doe</h4>
+                  <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+				<div class="col-lg-8">
+					<div class="card">
+						<div class="card-body">
+							<div class="row mb-3">
+								<div class="col-sm-4">
+									<h6 class="mb-0">Nome</h6>
+								</div>
+								<div class="col-sm-5 text-secondary">
+									<input type="text" class="form-control" value="John Doe">
+								</div>
+							</div>
+              <hr>
+							<div class="row mb-3">
+								<div class="col-sm-4">
+									<h6 class="mb-0">Número Interno</h6>
+								</div>
+								<div class="col-sm-5 text-secondary">
+									<input type="text" class="form-control" value="123456789">
+								</div>
+							</div>
+              <hr>
+							<div class="row mb-3">
+								<div class="col-sm-4">
+									<h6 class="mb-0">Posto de Polícia</h6>
+								</div>
+								<div class="col-sm-5 text-secondary">
+									<input type="text" class="form-control" value=" PSP - 18ª Esquadra (Campo Grande)">
+								</div>
+							</div>
+              <hr>
+							<div class="row">
+								<div class="col-sm-9 text-secondary">
+									<a class="btn btn-save px-3" href="perfilPolicia.html">Salvar Mudanças</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
 
-  <!-- Perguntas -->
-  <section id="perguntas" class="p-5">
-    <div class="container">
-      <h2 class="text-center mb-4">Perguntas Frequentes</h2>
-      <div class="accordion accordion-flush" id="questions">
-        <!-- Item 1 -->
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#question-one">
-              Como pesquisar objetos achados?
-            </button>
-          </h2>
-          <div id="question-one" class="accordion-collapse collapse" data-bs-parent="#questions">
-            <div class="accordion-body">
-              Vestuário e acessórios para mulher, homem e criança. Não é permitido vender artigos
-              que não estejam em conformidade com qualquer lei, regra ou regulamento aplicável, artigos
-              falsificados, reproduções ilícitas, artigos recebidos como oferta, animais vivos, medicamentos,
-              produtos higiênicos, comida, bedida, cosméticos e eletrônicos. 
-            </div>
-          </div>
-        </div>
-        <!-- Item 2 -->
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#question-two">
-              Como licitar em um leilão?
-            </button>
-          </h2>
-          <div id="question-two" class="accordion-collapse collapse" data-bs-parent="#questions">
-            <div class="accordion-body">
-              <ol start="1">
-                <li>Cria uma conta se ainda não é membro da nossa comunidade.</li>
-                <li>Descobre o que podes vender na 2HandClothes.</li>
-                <li>Tira de 4 a 5 boas fotografias do teu produto e adiciona ao anúncio.</li>
-                <li>Cria uma descrição breve e honesta sobre o produto, e seleciona o tamanho, a marca e a categoria do mesmo.</li>
-                <li>Para finalizar, informa o preço do artigo. Lembra-te que não pagas qualquer taxa sobre este valor.</li>
-                <li>Quando vender, é só empacotar e enviar o pedido de acordo com as opções do comprador.</li>
-                <li>Entregue! Assim que o comprador confirmar a entrega, o teu pagamento ficará disponível.</li>
-              </ol>
-            </div>
-          </div>
-        </div>
-        <!-- Item 3 -->
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#question-three">
-              Como reportar um objeto perdido?
-            </button>
-          </h2>
-          <div id="question-three" class="accordion-collapse collapse" data-bs-parent="#questions">
-            <div class="accordion-body">
-              <ol start="1">
-                <li>Cria uma conta se ainda não é membro da nossa comunidade.</li>
-                <li>Encontra um artigo que gostes.</li>
-                <li>Contacta o vendedor se deseja esclarecer alguma dúvida.</li>
-                <li>Paga o artigo, introduz a tua morada e escolhe a opção de entrega.</li>
-                <li>Recebido! Diz-nos se o artigo foi entregue e se está tudo bem.</li>
-                <li>Caso não esteja tudo bem, contacta-nos.</li>
-              </ol>
-            </div>
-          </div>
-        </div>
-        
-        </div>
-      </div>
-    </div>
-  </section>
 
 <!-- Footer -->
 <footer class="m-0 py-5 px-1 position-sticky-bottom container-fluid" id="footer">
@@ -200,7 +183,6 @@
 
 
 
-
   <!-- Bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
@@ -212,5 +194,5 @@
     crossorigin="anonymous">
   </script>
 
-</body>
+  </body>
 </html>

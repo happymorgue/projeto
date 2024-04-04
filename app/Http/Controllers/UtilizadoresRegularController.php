@@ -19,14 +19,14 @@ class UtilizadoresRegularController extends Controller
         #    session_start(); 
         #}
         $data = $request->json()->all();
-        #$utilizador_reg_DB = DB::table('regular')->where('id', $data['id'])->first();
-        #if($utilizador_reg_DB != null){
+        $utilizador_reg_DB = DB::table('regular')->where('id', $data['id'])->first();
+        if($utilizador_reg_DB != null){
             DB::table('regular')->update(['nome' => $data['nome'], 'data_nascimento' => $data['data_nascimento'], 'nif' => $data['nif'], 'telemovel' => $data['telemovel'], 'morada' => $data['morada'], 'idcivil' => $data['idcivil'], 'genero' => $data['genero']]);
         #}else{
             #$id_table_user = DB::table('utilizador')->insertGetId(['email' => $_SESSION['user_email'], 'ativo' => 'S']);
             #Inserir na tabela regular, um utilizador com esse id
             #DB::table('regular')->insert(['user_id' => $id_table_user, 'nome' => $data['nome'], 'data_nascimento' => $data['data_nascimento'], 'nif' => $data['nif'], 'telemovel' => $data['telemovel'], 'morada' => $data['morada'], 'idcivil' => $data['idcivil'], 'genero' => $data['genero']]);
-        #}
+        }
 
 
     }

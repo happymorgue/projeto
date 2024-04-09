@@ -101,6 +101,8 @@ class UtilizadoresPoliciaController extends Controller
         }
     }
 
+
+    #ADICIONAR AINDA PARA CASO ALGUM OBJETO JA ESTAR NA TABELA DE CORRESPONDENTES OU OBJETOS EM LEILAO, NAO ADICIONAR
     public function registarPossivelDono($policiaId, $foundObjectId, $regularId)
     {
         if(!isset($_SESSION)) 
@@ -129,6 +131,8 @@ class UtilizadoresPoliciaController extends Controller
     }
 
 
+
+    #ADICIONAR AINDA PARA CASO ALGUM OBJETO JA ESTAR NA TABELA DE CORRESPONDENTES
     public function registarObjetoCorrespondente($policiaId, $foundObjectId, $lostObjectId)
     {
         if(!isset($_SESSION)) 

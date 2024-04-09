@@ -11,6 +11,8 @@ class UtilizadoresDonoController extends Controller
     //
 
 
+    #DESTES METODOS TODOS, RETIRAR DEPOIS DOS OBJETOS ENCONTRADOS OS QUE VAO A LEILAO
+
     #Metodo para encontrar os objetos correspondentes ao Dono que ja foram encontrados e entregues
     public function verHistoricoObjetosPerdidosEncontrados($regularId)
     {
@@ -139,6 +141,8 @@ class UtilizadoresDonoController extends Controller
         }
     }
 
+
+    #PRECISA AINDA DE TER EM CONTA AS ALTERAÇOES DOS ATRIBUTOS/CATEGORIA
     public function atualizarObjetoPerdido($regularId, $objetoPerdidoId, Request $request)
     {
         if(!isset($_SESSION)) 

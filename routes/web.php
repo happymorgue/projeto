@@ -24,6 +24,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/homeGeral', function () {
+    return view('home');
+});
+
 #CRIACAO CONTAS
 #Rota->Buscar_Caminho->Onde->Metodo_que_executa_no_caminho
 Route::get('/login', [Auth0Controller::class, 'login']);

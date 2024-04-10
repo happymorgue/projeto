@@ -82,14 +82,14 @@ class Auth0Controller extends Controller
                     $id_table_user = DB::table('utilizador')->insertGetId(['email' => $_SESSION['user_email'], 'ativo' => 'S']);
                     DB::table('policia')->insert(['user_id' => $id_table_user]);
                 });
-                header('Location: /policia');
+                header('Location: /homePolicia');
                 exit;
             } else {
                 DB::transaction(function () {
                     $id_table_user = DB::table('utilizador')->insertGetId(['email' => $_SESSION['user_email'], 'ativo' => 'S']);
                     DB::table('regular')->insert(['user_id' => $id_table_user]);
                 });
-                header('Location: /resources/views/home.html');
+                header('Location: /homeGeral');
                 exit;
             }
         } else {
@@ -104,7 +104,7 @@ class Auth0Controller extends Controller
                 header('Location: /homeGeral');
                 exit;
             } elseif (null != $utilizador_DB_policia) {
-                header('Location: /policia');
+                header('Location: /homePolicia');
                 exit;
             }
 

@@ -20,9 +20,62 @@ use App\Http\Controllers\UtilizadoresPoliciaController;
 |
 */
 
+#WEBSITE--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/admin', function () {
+    return view('administrador');
+});
+Route::get('/ajuda', function () {
+    return view('ajuda');
+});
+Route::get('/editObjAchados', function () {
+    return view('editAchados');
+});
+Route::get('/editObjPerdidos', function () {
+    return view('editPerdidos');
+});
+Route::get('/editPerfilRegular', function () {
+    return view('editPerfil');
+});
+Route::get('/editPerfilPolicia', function () {
+    return view('editPolicia');
+});
+Route::get('/homeGeral', function () {
+    return view('home');
+});
+Route::get('/homePolicia', function () {
+    return view('homePolicia');
+});
+Route::get('/verObjPerdidos', function () {
+    return view('meusObjsPerdidos');
+});
+Route::get('/buscaObjAchados', function () {
+    return view('objAchados');
+});
+Route::get('/verPoliciaObjAchados', function () {
+    return view('objAchadosPolicia');
+});
+Route::get('/buscaObjPerdidos', function () {
+    return view('objPerdidos');
+});
+Route::get('/perfilRegular', function () {
+    return view('perfil');
+});
+Route::get('/perfilPolicia', function () {
+    return view('perfilPolicia');
+});
+Route::get('/registarObjAchado', function () {
+    return view('registoObjAchado');
+});
+Route::get('/registarObjPerdido', function () {
+    return view('registoObjPerdido');
+});
+
+
+#APIS--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Route::get('/homeGeral', function () {
     return view('home');
@@ -37,10 +90,6 @@ Route::get('/register_policia', [Auth0Controller::class, 'register_policia']);
 Route::get('/logout', [Auth0Controller::class, 'logout']);
 Route::get('/dono', function () {
     return view('dono');
-});
-
-Route::get('/policia', function () {
-    return view('policia');
 });
 
 #UTILIZADORES GERAIS

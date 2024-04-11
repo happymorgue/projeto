@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Auth0\SDK\Auth0;
 use Auth0\SDK\Configuration\SdkConfiguration;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class Auth0Controller extends Controller
 {
@@ -58,6 +59,7 @@ class Auth0Controller extends Controller
         #Obter as credenciais do utilizador
         $user = $this->auth0->getCredentials()?->user;
         $_SESSION['user_email'] = $user['name'];
+        Session::put('user_email', $user['name']);
 
         echo "ola";
         #Verificar se um utilizador com esse email ja existe
@@ -114,8 +116,12 @@ class Auth0Controller extends Controller
     #Metodo para fazer logout do utilizador
     public function logout()
     {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
         #Realizar o Logout e devolver o utilizador a pagina home da aplicacao, sem qualquer credencial
         header('Location: ' . $this->auth0->logout());
+        session_destroy();
         header('Location: /');
         exit;
     }

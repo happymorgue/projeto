@@ -10,9 +10,6 @@
             Serviços
           </li>
           <li class="link_footer">
-            Ajuda
-          </li>
-          <li class="link_footer">
             Perguntas Frequentes
           </li>
         </ul>

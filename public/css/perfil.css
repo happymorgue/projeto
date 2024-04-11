@@ -47,6 +47,10 @@ body{
     margin-bottom: 1rem!important;
 }
 
+.bgPerfil{
+    background-color: #cde3fc;
+}
+
 .bg-gray-300 {
     background-color: #e2e8f0;
 }
@@ -57,11 +61,12 @@ body{
     box-shadow: none!important;
 }
 
+/*
 .btn-edit{
     background-color: #104c91;
     color: white;
     border: none;
-}
+}*/
 
 .btn-edit:hover{
     background-color: #1f8ac0;
@@ -75,7 +80,7 @@ body{
 }
 
 .btn-save{
-    background-color: #104c91;
+    background-color: #104c91 ;
     color: white;
     border: none;
 }

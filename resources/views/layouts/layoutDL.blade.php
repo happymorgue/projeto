@@ -1,3 +1,6 @@
+@if(!isset($_SESSION))
+    @php session_start(); @endphp
+@endif
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -9,7 +12,6 @@
     <link href="{{ asset('bootstrap-5.0.2-dist/css/bootstrap.css') }}" rel="stylesheet">
     <!-- Your additional CSS -->
     <link href="{{ asset('css/geral.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/home.css') }}" rel="stylesheet">
     
 </head>
 <body>
@@ -17,8 +19,9 @@
 
     @yield('content')
 
-    @include('partials.footerDL')
+    @include('partials.faq')
 
+    @include('partials.footer')
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

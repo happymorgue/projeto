@@ -56,7 +56,7 @@
                     <hr>
                     <div class="row">
                       <div class="col-sm-12">
-                        <a class="btn btn-edit btn-primary" target="__blank" href="editPerfilPolicia.html">Editar</a>
+                        <a class="btn btn-edit btn-primary" target="__blank" href="/editPerfilPolicia">Editar</a>
                       </div>
                     </div>
                   </div>

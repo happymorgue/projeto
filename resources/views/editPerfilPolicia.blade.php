@@ -54,7 +54,7 @@
               <hr>
 							<div class="row">
 								<div class="col-sm-9 text-secondary">
-									<a class="btn btn-save btn-primary px-3" href="perfilPolicia.html">Salvar Mudanças</a>
+									<a class="btn btn-save btn-primary px-3" href="/perfilPolicia">Salvar Mudanças</a>
 								</div>
 							</div>
 						</div>

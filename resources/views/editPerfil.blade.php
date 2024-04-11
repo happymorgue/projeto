@@ -27,52 +27,75 @@
 						<div class="card-body">
 							<div class="row mb-3">
 								<div class="col-sm-3">
-									<h6 class="mb-0">Full Name</h6>
+									<h6 class="mb-0">Nome</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="John Doe">
+									<input type="text" class="form-control" placeholder="John Doe" value="">
 								</div>
 							</div>
               <hr>
 							<div class="row mb-3">
 								<div class="col-sm-3">
-									<h6 class="mb-0">Email</h6>
+									<h6 class="mb-0">Telemóvel</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="john@example.com">
+									<input type="text" class="form-control" placeholder="(351) 948 284 195" value="">
+								</div>
+							</div>
+              <hr>
+			 				 <div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Género</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<select class="form-select">
+										<option value="" selected>Selecione</option>
+										<option value="male">Masculino</option>
+										<option value="female">Feminino</option>
+										<option value="other">Outro</option>
+									</select>
 								</div>
 							</div>
               <hr>
 							<div class="row mb-3">
 								<div class="col-sm-3">
-									<h6 class="mb-0">Phone</h6>
+									<h6 class="mb-0">Morada</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="(239) 816-9029">
+									<input type="text" class="form-control" placeholder="Bay Area, San Francisco, CA" value="">
 								</div>
 							</div>
               <hr>
-							<div class="row mb-3">
+			  <div class="row mb-3">
 								<div class="col-sm-3">
-									<h6 class="mb-0">Mobile</h6>
+									<h6 class="mb-0">NIF</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="(320) 380-4539">
+									<input type="text" class="form-control"  placeholder="907655321" value="">
 								</div>
 							</div>
               <hr>
-							<div class="row mb-3">
+			  <div class="row mb-3">
 								<div class="col-sm-3">
-									<h6 class="mb-0">Address</h6>
+									<h6 class="mb-0">ID Civil</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="Bay Area, San Francisco, CA">
+									<input type="text" class="form-control"  placeholder="98765432" value="">
+								</div>
+							</div>
+              <hr>
+			  <div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Data de Nascimento</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="date" class="form-control" value="">
 								</div>
 							</div>
               <hr>
 							<div class="row">
 								<div class="col-sm-9 text-secondary">
-									<a class="btn btn-primary px-3" href=perfil.html>Salvar Mudanças</a>
+									<a class="btn btn-primary px-3" href=/perfilRegular>Salvar Mudanças</a>
 								</div>
 							</div>
 						</div>

@@ -28,7 +28,7 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="col-sm-3">
-                        <h6 class="mb-0">Full Name</h6>
+                        <h6 class="mb-0">Nome</h6>
                       </div>
                       <div class="col-sm-9 text-secondary">
                         Kenneth Valdez
@@ -46,7 +46,7 @@
                     <hr>
                     <div class="row">
                       <div class="col-sm-3">
-                        <h6 class="mb-0">Phone</h6>
+                        <h6 class="mb-0">Telemóvel</h6>
                       </div>
                       <div class="col-sm-9 text-secondary">
                         (239) 816-9029
@@ -55,7 +55,7 @@
                     <hr>
                     <div class="row">
                       <div class="col-sm-3">
-                        <h6 class="mb-0">Mobile</h6>
+                        <h6 class="mb-0">Género</h6>
                       </div>
                       <div class="col-sm-9 text-secondary">
                         (320) 380-4539
@@ -64,7 +64,7 @@
                     <hr>
                     <div class="row">
                       <div class="col-sm-3">
-                        <h6 class="mb-0">Address</h6>
+                        <h6 class="mb-0">Morada</h6>
                       </div>
                       <div class="col-sm-9 text-secondary">
                         Bay Area, San Francisco, CA
@@ -73,7 +73,7 @@
                     <hr>
                     <div class="row">
                       <div class="col-sm-3">
-                        <h6 class="mb-0">ID</h6>
+                        <h6 class="mb-0">NIF</h6>
                       </div>
                       <div class="col-sm-9 text-secondary">
                         320380453
@@ -82,10 +82,19 @@
                     <hr>
                     <div class="row">
                       <div class="col-sm-3">
-                        <h6 class="mb-0">User Since</h6>
+                        <h6 class="mb-0">ID Civil</h6>
                       </div>
                       <div class="col-sm-9 text-secondary">
-                        12/01/2024
+                        12345678
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Data de Nascimento</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                        12/01/2001
                       </div>
                     </div>
                     <hr>

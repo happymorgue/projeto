@@ -12,6 +12,7 @@
     <link href="{{ asset('bootstrap-5.0.2-dist/css/bootstrap.css') }}" rel="stylesheet">
     <!-- Your additional CSS -->
     <link href="{{ asset('css/geral.css') }}" rel="stylesheet">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     
 </head>
 <body>

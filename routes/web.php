@@ -161,4 +161,4 @@ Route::delete('/nUtilizador/{nUtilizadorId}', [NaoUtilizadoresController::class,
 
 #TRATAMENTOS AUXILIARES
 #OBTER ID REGULAR ATRAVES DO EMAIL DE UTILIZADOR
-Route::get('/convertUserEmailRegularId{userEmail}', [UtilizadoresRegularController::class,'convertUserEmailRegularId']);
+Route::get('/convertUserEmailRegularId', [UtilizadoresRegularController::class,'convertUserEmailRegularId']);

@@ -30,7 +30,7 @@
                       <div class="col-sm-3">
                         <h6 class="mb-0">Nome</h6>
                       </div>
-                      <div class="col-sm-9 text-secondary">
+                      <div class="col-sm-9 text-secondary" name="nome" id="nome">
                         Kenneth Valdez
                       </div>
                     </div>
@@ -39,7 +39,7 @@
                       <div class="col-sm-3">
                         <h6 class="mb-0">Email</h6>
                       </div>
-                      <div class="col-sm-9 text-secondary">
+                      <div class="col-sm-9 text-secondary" name="email" id="email">
                         fip@jukmuh.al
                       </div>
                     </div>
@@ -48,7 +48,7 @@
                       <div class="col-sm-3">
                         <h6 class="mb-0">Telemóvel</h6>
                       </div>
-                      <div class="col-sm-9 text-secondary">
+                      <div class="col-sm-9 text-secondary" name="telemovel" id="telemovel">
                         (239) 816-9029
                       </div>
                     </div>
@@ -57,8 +57,8 @@
                       <div class="col-sm-3">
                         <h6 class="mb-0">Género</h6>
                       </div>
-                      <div class="col-sm-9 text-secondary">
-                        (320) 380-4539
+                      <div class="col-sm-9 text-secondary" name="genero" id="genero">
+                        Masculino
                       </div>
                     </div>
                     <hr>
@@ -66,7 +66,7 @@
                       <div class="col-sm-3">
                         <h6 class="mb-0">Morada</h6>
                       </div>
-                      <div class="col-sm-9 text-secondary">
+                      <div class="col-sm-9 text-secondary" name="morada" id="morada">
                         Bay Area, San Francisco, CA
                       </div>
                     </div>
@@ -75,7 +75,7 @@
                       <div class="col-sm-3">
                         <h6 class="mb-0">NIF</h6>
                       </div>
-                      <div class="col-sm-9 text-secondary">
+                      <div class="col-sm-9 text-secondary" name="nif" id="nif">
                         320380453
                       </div>
                     </div>
@@ -84,7 +84,7 @@
                       <div class="col-sm-3">
                         <h6 class="mb-0">ID Civil</h6>
                       </div>
-                      <div class="col-sm-9 text-secondary">
+                      <div class="col-sm-9 text-secondary" name="id_civil" id="id_civil">
                         12345678
                       </div>
                     </div>
@@ -93,7 +93,7 @@
                       <div class="col-sm-3">
                         <h6 class="mb-0">Data de Nascimento</h6>
                       </div>
-                      <div class="col-sm-9 text-secondary">
+                      <div class="col-sm-9 text-secondary" name="data_nascimento">
                         12/01/2001
                       </div>
                     </div>
@@ -114,3 +114,4 @@
 @endsection
 
 <link href="{{ asset('css/perfil.css') }}" rel="stylesheet">
+<script src="{{ asset('js/perfil.js') }}" type="text/javascript"></script>

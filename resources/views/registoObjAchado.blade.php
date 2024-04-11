@@ -1,0 +1,96 @@
+<!-- <!DOCTYPE html> -->
+@extends('layouts.layoutP')
+
+@section('title', 'Cogitavi - Registo do Objeto Achado')
+
+@section('content')
+
+  
+    
+  <section class="p-3 p-md-4 p-xl-5">
+    <div class="container">
+      <div class="card border-light-subtle shadow-sm">
+        <div class="row g-0">
+          <div class="col-12 col-md-6">
+            <img class="img-fluid rounded-start w-100 h-100 object-fit-cover"  src="{{ asset('img3.jpg') }}">
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="card-body p-3 p-md-4 p-xl-5">
+              <div class="row">
+                <div class="col-12">
+                  <div class="mb-5">
+                    <h2 class="h3">Registo do Objeto Achado</h2>
+                  </div>
+                </div>
+              </div>
+              <form action="#!">
+                <div class="row gy-3 gy-md-4 overflow-hidden">
+                  <div class="col-12">
+                    <label for="nome" class="form-label">Nome <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" name="nome" id="nome" placeholder="Ex. Sapatilhas, Chapéu, ..." required>
+                  </div>
+                  <div class="col-12">
+                    <label for="descricao" class="form-label">Descrição <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Ex. Sapatilhas brancas 37" required>
+                  </div>
+                  <div class="col-12">
+                    <label for="categoria" class="form-label">Categoria  <span class="text-danger">*</span></label>
+                    <select class="form-control" name="categoria" id="categoria" required>
+                      <option value="">Selecione</option>
+                      <option value="categoria1">Categoria 1</option>
+                      <option value="categoria2">Categoria 2</option>
+                      <option value="categoria3">Categoria 3</option>
+                    </select>
+                  </div>
+                  <div class="col-12">
+                    <label for="intervaloTempo" class="form-label">Intervalo de Tempo <span class="text-danger">*</span></label>
+                    <div class="input-group">
+                      <input type="date" class="form-control" name="dataInicio" id="dataInicio" required>
+                      <div class="input-group-prepend input-group-append">
+                        <span class="input-group-text">-</span>
+                      </div>
+                      <input type="date" class="form-control" name="dataFim" id="dataFim" required>
+                    </div>
+                    <small class="form-text text-muted">Por favor introduza o intervalo de tempo aproximado em que o objeto foi achado.</small>
+                  </div>
+                  <div class="col-12">
+                    <label for="pais" class="form-label">País <span class="text-danger">*</span></label>
+                    <input type="pais" class="form-control" name="pais" id="pais" placeholder="País" required>
+                  </div>
+                  <div class="col-12">
+                    <label for="distrito" class="form-label">Distrito<span class="text-danger">*</span></label>
+                    <input type="distrito" class="form-control" name="distrito" id="distrito" value="Distrito" required>
+                  </div>
+                  <div class="col-12">
+                    <label for="cidade" class="form-label">Cidade<span class="text-danger">*</span></label>
+                    <input type="cidade" class="form-control" name="cidade" id="cidade" value="Cidade" required>
+                  </div>
+                  <div class="col-12">
+                    <label for="freguesia" class="form-label">Freguesia<span class="text-danger">*</span></label>
+                    <input type="freguesia" class="form-control" name="freguesia" id="freguesia" value="Freguesia" required>
+                  </div>
+                  <div class="col-12">
+                    <label for="rua" class="form-label">Rua<span class="text-danger">*</span></label>
+                    <input type="rua" class="form-control" name="rua" id="rua" value="Rua" required>
+                  </div>
+                  <div class="col-12">
+                    <label for="imagem" class="form-label">Imagem do Objeto</label>
+                    <div class="input-group">
+                        <input type="file" class="form-control" name="imagem" id="imagem" accept="image/*" required>
+                    </div>
+                </div>
+                  <div class="col-12">
+                    <div class="d-grid">
+                      <button class="btn bsb-btn-xl btn-primary" type="submit">Registar</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  @endsection

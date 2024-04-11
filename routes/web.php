@@ -119,6 +119,16 @@ Route::get('/regular/dono/{regularId}/encontrarObjetoPorDescricao/{objetoPerdido
 
 
 #UTILIZADORES POLICIA
+Route::put('/policia', [UtilizadoresPoliciaController::class,'UpdatePoliciaPUT']);
+Route::get('/policia/{policiaId}', [UtilizadoresPoliciaController::class,'getPolicia']);
+Route::post('/policia/{policiaId}', [UtilizadoresPoliciaController::class,'UpdatePoliciaPOST']);
+Route::delete('/policia/{policiaId}', [UtilizadoresPoliciaController::class,'DeletePolicia']);
+Route::put('/policia/{policiaId}/postoPolicia', [UtilizadoresPoliciaController::class,'UpdatePostoPoliciaPUT']);
+Route::post('/policia/{policiaId}/postoPolicia', [UtilizadoresPoliciaController::class,'CreatePostoPoliciaPOST']);
+Route::get('/policia/{policiaId}/postoPolicia/{postoId}', [UtilizadoresPoliciaController::class,'getPoliciaPosto']);
+Route::post('/policia/{policiaId}/postoPolicia/{postoId}', [UtilizadoresPoliciaController::class,'UpdatePostoPoliciaPOST']);
+Route::delete('/policia/{policiaId}/postoPolicia/{postoId}', [UtilizadoresPoliciaController::class,'DeletePostoPolicia']);
+
 Route::get('/policia/{policiaId}/verHistoricoObjetosEncontrados', [UtilizadoresPoliciaController::class,'verHistoricoObjetosEncontrados']);
 Route::get('/policia/{policiaId}/verHistoricoObjetosEntregues', [UtilizadoresPoliciaController::class,'verHistoricoObjetosEntregues']);
 Route::get('/policia/{policiaId}/verObjetosPerdidos', [UtilizadoresPoliciaController::class,'verObjetosPerdidos']);
@@ -128,8 +138,14 @@ Route::get('/policia/{policiaId}/registarObjetoCorrespondente/{foundObjectId}/{l
 Route::get('/policia/{policiaId}/registarEntrega/{foundObjectId}', [UtilizadoresPoliciaController::class,'registarEntrega']);
 
 #UTILIZADORES LICITANTE
+Route::get('/regular/licitante/{regularId}/verHistoricoLicitacao', [UtilizadoresLicitanteController::class,'verHistoricoLicitacao']);
+Route::get('/regular/licitante/{regularId}/verLeiloes', [UtilizadoresLicitanteController::class,'verLeiloes']);
+Route::get('/regular/licitante/{regularId}/verHistoricoLeilao/{leilaoId}', [UtilizadoresLicitanteController::class,'verHistoricoLeilao']);
+Route::get('/regular/licitante/{regularId}/verHistoricoLeilaoGanho', [UtilizadoresLicitanteController::class,'verHistoricoLeilaoGanho']);
+Route::post('/regular/licitante/{regularId}/licitar/{leilaoId}', [UtilizadoresLicitanteController::class,'licitar']);
+Route::get('/regular/licitante/{regularId}/pagamento/{leilaoId}', [UtilizadoresLicitanteController::class,'pagamento']);
 Route::get('/regular/licitante/{regularId}/subscreverLeilao/{leilaoId}', [UtilizadoresLicitanteController::class,'subscreverLeilao']);
-Route::get('/regular/licitante/{regularId}/anularSubscreverLeilao/{leilaoId}', [UtilizadoresLicitanteController::class,'subscreverLeilao']);
+Route::get('/regular/licitante/{regularId}/anularSubscreverLeilao/{leilaoId}', [UtilizadoresLicitanteController::class,'anularSubscreverLeilao']);
 
 
 
@@ -139,3 +155,10 @@ Route::post('/nUtilizador', [NaoUtilizadoresController::class,'adicionaNovoNaoUt
 Route::get('/nUtilizador/{nUtilizadorId}', [NaoUtilizadoresController::class,'obterNaoUtilizadorComId']);
 Route::post('/nUtilizador/{nUtilizadorId}', [NaoUtilizadoresController::class,'atualizarNaoUtilizadorComId']);
 Route::delete('/nUtilizador/{nUtilizadorId}', [NaoUtilizadoresController::class,'apagarNaoUtilizadorComId']);
+
+
+
+
+#TRATAMENTOS AUXILIARES
+#OBTER ID REGULAR ATRAVES DO EMAIL DE UTILIZADOR
+Route::get('/convertUserEmailRegularId{userEmail}', [UtilizadoresRegularController::class,'convertUserEmailRegularId']);

@@ -19,7 +19,7 @@
             Encontre seu objeto perdido!
           </p>
           <a href="objAchados.html" id="venderProd">
-            <button class="btn btn_vender btn-lg" href>  
+            <button class="btn btn_vender btn-lg" href="/buscaObjAchados">  
               Procurar
             </button>
           </a>

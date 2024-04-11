@@ -16,7 +16,8 @@ class VerifyCsrfToken extends Middleware
         '/regular/dono/2/atualizarObjetoPerdido/4',
         '/regular/dono/2/removerObjetoPerdido/6',
         '/nUtilizador',
-        '/nUtilizador/1'
+        '/nUtilizador/1',
+        '/regular/licitante/16/licitar/1',
         
         //
     ];

@@ -186,4 +186,57 @@ class UtilizadoresPoliciaController extends Controller
             }
         }
     }
+
+    public function UpdatePoliciaPUT(Request $request)
+    {
+        $data=$request->json()->all();
+        $policiaId=$data['policiaId'];
+        $idInterno=$data['idInterno'];
+        $nome=$data['name'];
+        $postoId=$data['postoId'];
+        if($policiaId != null ){
+            $utilizador_policia_DB = DB::table('policia')->where('id', $policiaId)->first();
+            if ($utilizador_policia_DB != null) {
+                DB::table('policia')->where('id', $policiaId)->update(['idInterno' => $idInterno, 'nome' => $nome, 'posto_id' => $postoId]);
+                return response()->json($data, 200);
+            }else{
+                #ALTERAR PARA ERRO 403/404
+                echo "Não existe esse utilizador";
+            }
+        }else{
+            #ALTERAR PARA ERRO 403/404
+            echo "Não existe esse utilizador com esse Id";
+        }
+        
+    }
+
+    public function getPolicia(Request $request, $policiaId)
+    {
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        }
+        if($policiaId != null ){
+            $utilizador_policia_DB = DB::table('policia')->where('id', $policiaId)->first();
+            if ($utilizador_policia_DB != null ) {
+                $utilizador_DB = DB::table('utilizador')->where('id', $policiaId->user_id)->first();
+                if ($utilizador_DB != null) {
+                    if ($utilizador_DB->email == $_SESSION['user_email']) {
+                        #ADICIONAR PARA COLOCAR OS POSTOS E NAO SO O ID
+                        return response()->json($utilizador_policia_DB, 200);
+                    } else {
+                        #ALTERAR PARA ERRO 403/404
+                        echo "Não tem permissões para aceder aos dados desse utilizador";
+                    }
+                }
+            }else{
+                #ALTERAR PARA ERRO 403/404
+                echo "Não existe esse utilizador";
+            }
+        }else{
+            #ALTERAR PARA ERRO 403/404
+            echo "Não existe esse utilizador com esse Id";
+        }
+        
+    }
 }

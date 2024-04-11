@@ -239,4 +239,177 @@ class UtilizadoresPoliciaController extends Controller
         }
         
     }
+
+    public function UpdatePoliciaPOST($policiaId,Request $request)
+    {
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        }
+        $data=$request->json()->all();
+        $idInterno=$data['idInterno'];
+        $nome=$data['nome'];
+        $postoId=$data['postoId'];
+        if($policiaId != null ){
+            $utilizador_policia_DB = DB::table('policia')->where('id', $policiaId)->first();
+            if ($utilizador_policia_DB != null) {
+                $utilizador_DB = DB::table('utilizador')->where('id', $policiaId->user_id)->first();
+                if ($utilizador_DB->email == $_SESSION['user_email']) {
+                    DB::table('policia')->where('id', $policiaId)->update(['idinterno' => $idInterno, 'nome' => $nome, 'posto_id' => $postoId]);
+                    return response()->json($data, 200);
+                } else {
+                    #ALTERAR PARA ERRO 403/404
+                    echo "Não tem permissões para atualizar esse utilizador";
+                }
+            }else{
+                #ALTERAR PARA ERRO 403/404
+                echo "Não existe esse utilizador";
+            }
+        }else{
+            #ALTERAR PARA ERRO 403/404
+            echo "Não existe esse utilizador com esse Id";
+        }
+        
+    }
+
+    public function DeletePolicia($policiaId,Request $request)
+    {
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        }
+        if($policiaId != null ){
+            $utilizador_policia_DB = DB::table('policia')->where('id', $policiaId)->first();
+            if ($utilizador_policia_DB != null) {
+                $utilizador_DB = DB::table('utilizador')->where('id', $policiaId->user_id)->first();
+                if ($utilizador_DB->email == $_SESSION['user_email']) {
+                    DB::table('policia')->where('id', $policiaId)->delete();
+                } else {
+                    #ALTERAR PARA ERRO 403/404
+                    echo "Não tem permissões para apagar esse utilizador";
+                }
+            }else{
+                #ALTERAR PARA ERRO 403/404
+                echo "Não existe esse utilizador";
+            }
+        }else{
+            #ALTERAR PARA ERRO 403/404
+            echo "Não existe esse utilizador com esse Id";
+        }
+        
+    }
+
+    public function UpdatePostoPoliciaPUT(Request $request)
+    {
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        }
+        $data=$request->json()->all();
+        $postoId=$data['postoId'];
+        $morada=$data['morada'];
+        $telefone=$data['telefone'];
+        $utilizador_DB = DB::table('utilizador')->where('email', $_SESSION['user_email'])->first();
+        if ($utilizador_DB != null) {
+            $utilizador_talvez_policia_DB = DB::table('policia')->where('user_id', $utilizador_DB->id)->first();
+            if ($utilizador_talvez_policia_DB != null) {
+                DB::table('posto')->where('id', $postoId)->update(['morada' => $morada, 'telefone' => $telefone]);
+                return response()->json($data, 200);
+            }
+        }else{
+            #ALTERAR PARA ERRO 403/404
+            echo "Não existe esse utilizador";
+            
+        }
+        
+    }
+
+    public function CreatePostoPoliciaPOST(Request $request)
+    {
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        }
+        $data=$request->json()->all();
+        $morada=$data['morada'];
+        $telefone=$data['telefone'];
+        $utilizador_DB = DB::table('utilizador')->where('email', $_SESSION['user_email'])->first();
+        if ($utilizador_DB != null) {
+            $utilizador_talvez_policia_DB = DB::table('policia')->where('user_id', $utilizador_DB->id)->first();
+            if ($utilizador_talvez_policia_DB != null) {
+                DB::table('posto')->insert(['morada' => $morada, 'telefone' => $telefone]);
+                return response()->json($data, 200);
+            }
+        }else{
+            #ALTERAR PARA ERRO 403/404
+            echo "Não existe esse utilizador";
+            
+        }
+        
+    }
+
+    public function getPoliciaPosto($policiaId,$postoId,Request $request)
+    {
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        }
+        $utilizador_DB = DB::table('utilizador')->where('email', $_SESSION['user_email'])->first();
+        if ($utilizador_DB != null) {
+            $utilizador_talvez_policia_DB = DB::table('policia')->where('user_id', $utilizador_DB->id)->first();
+            if ($utilizador_talvez_policia_DB != null && $utilizador_talvez_policia_DB->id == $policiaId) {
+                $postoPolicia = DB::table('posto')->where('id', $postoId)->first();
+                return response()->json($postoPolicia, 200);
+            }
+        }else{
+            #ALTERAR PARA ERRO 403/404
+            echo "Não existe esse utilizador";
+            
+        }
+        
+    }
+
+    public function UpdatePostoPoliciaPOST($policiaId,$postoId,Request $request)
+    {
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        }
+        $data=$request->json()->all();
+        $morada=$data['morada'];
+        $telefone=$data['telefone'];
+        $utilizador_DB = DB::table('utilizador')->where('email', $_SESSION['user_email'])->first();
+        if ($utilizador_DB != null) {
+            $utilizador_talvez_policia_DB = DB::table('policia')->where('user_id', $utilizador_DB->id)->first();
+            if ($utilizador_talvez_policia_DB != null) {
+                DB::table('posto')->where('id', $postoId)->update(['morada' => $morada, 'telefone' => $telefone]);
+                return response()->json($data, 200);
+            }
+        }else{
+            #ALTERAR PARA ERRO 403/404
+            echo "Não existe esse utilizador";
+            
+        }
+        
+    }
+
+    public function DeletePostoPolicia($policiaId,$postoId,Request $request)
+    {
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        }
+        $utilizador_DB = DB::table('utilizador')->where('email', $_SESSION['user_email'])->first();
+        if ($utilizador_DB != null) {
+            $utilizador_talvez_policia_DB = DB::table('policia')->where('user_id', $utilizador_DB->id)->first();
+            if ($utilizador_talvez_policia_DB != null) {
+                DB::table('posto')->where('id', $postoId)->delete();
+            }
+        }else{
+            #ALTERAR PARA ERRO 403/404
+            echo "Não existe esse utilizador";
+            
+        }
+        
+    }
 }

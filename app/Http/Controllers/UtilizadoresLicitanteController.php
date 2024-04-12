@@ -83,7 +83,7 @@ class UtilizadoresLicitanteController extends Controller
             $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_dono_DB->user_id)->first();
             if($_SESSION["user_email"] == $utilizador_DB->email){
                 $leilao = DB::table('leilao')->where('id', $leilaoId)->first();
-                if($leilao != null){
+                if($leilao != null && $leilao->estado == 'A'){
                     $data = $request->json()->all();
                     $valor = $data['valor'];
                     $maxLicitacao = DB::table('licitacao')->where('leilao_id', $leilaoId)->max('valor');
@@ -92,15 +92,16 @@ class UtilizadoresLicitanteController extends Controller
                         echo "O valor da licitação tem de ser superior ao valor atual do leilão, ou leilão já terminou";
                     }else{
                         DB::table('licitacao')->insert([
-                        'leilao_id' => $leilaoId,
-                        'licitante_id' => $regularId,
-                        'data_licitacao' => date('Y-m-d'),
-                        'valor' => $valor
-                    ]);
+                            'leilao_id' => $leilaoId,
+                            'licitante_id' => $regularId,
+                            'data_licitacao' => date('Y-m-d'),
+                            'valor' => $valor
+                        ]);
+                        DB::table('leilao')->where('id', $leilaoId)->update(['valor' => $valor]);
                     }
                 }else{
                     #ALTERAR PARA ERRO 403/404
-                    echo "Não existe esse leilão";
+                    echo "Não existe esse leilão ou não está ativo";
                 }
             }else{
                 #ALTERAR PARA ERRO 403/404

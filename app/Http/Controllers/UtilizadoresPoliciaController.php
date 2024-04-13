@@ -219,11 +219,11 @@ class UtilizadoresPoliciaController extends Controller
         if($policiaId != null ){
             $utilizador_policia_DB = DB::table('policia')->where('id', $policiaId)->first();
             if ($utilizador_policia_DB != null ) {
-                $utilizador_DB = DB::table('utilizador')->where('id', $policiaId->user_id)->first();
+                $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_policia_DB->user_id)->first();
                 if ($utilizador_DB != null) {
                     if ($utilizador_DB->email == $_SESSION['user_email']) {
                         #ADICIONAR PARA COLOCAR OS POSTOS E NAO SO O ID
-                        return response()->json($utilizador_policia_DB, 200);
+                        return response()->json(array('id' => $utilizador_policia_DB->id, 'idInterno' => $utilizador_policia_DB->idinterno, 'nome' => $utilizador_policia_DB->nome, 'posto_id' => DB::table('posto')->where('id', $utilizador_policia_DB->posto_id)->first()));
                     } else {
                         #ALTERAR PARA ERRO 403/404
                         echo "Não tem permissões para aceder aos dados desse utilizador";
@@ -253,7 +253,7 @@ class UtilizadoresPoliciaController extends Controller
         if($policiaId != null ){
             $utilizador_policia_DB = DB::table('policia')->where('id', $policiaId)->first();
             if ($utilizador_policia_DB != null) {
-                $utilizador_DB = DB::table('utilizador')->where('id', $policiaId->user_id)->first();
+                $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_policia_DB->user_id)->first();
                 if ($utilizador_DB->email == $_SESSION['user_email']) {
                     DB::table('policia')->where('id', $policiaId)->update(['idinterno' => $idInterno, 'nome' => $nome, 'posto_id' => $postoId]);
                     return response()->json($data, 200);
@@ -281,7 +281,7 @@ class UtilizadoresPoliciaController extends Controller
         if($policiaId != null ){
             $utilizador_policia_DB = DB::table('policia')->where('id', $policiaId)->first();
             if ($utilizador_policia_DB != null) {
-                $utilizador_DB = DB::table('utilizador')->where('id', $policiaId->user_id)->first();
+                $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_policia_DB->user_id)->first();
                 if ($utilizador_DB->email == $_SESSION['user_email']) {
                     DB::table('policia')->where('id', $policiaId)->delete();
                 } else {

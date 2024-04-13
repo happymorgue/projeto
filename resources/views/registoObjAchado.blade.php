@@ -27,11 +27,11 @@
                 <div class="row gy-3 gy-md-4 overflow-hidden">
                   <div class="col-12">
                     <label for="nome" class="form-label">Nome <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="nome" id="nome" placeholder="Ex. Sapatilhas, Chapéu, ..." required>
+                    <input type="text" class="form-control" name="nome" id="nome" required>
                   </div>
                   <div class="col-12">
                     <label for="descricao" class="form-label">Descrição <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Ex. Sapatilhas brancas 37" required>
+                    <input type="text" class="form-control" name="descricao" id="descricao" required>
                   </div>
                   <div class="col-12">
                     <label for="categoria" class="form-label">Categoria  <span class="text-danger">*</span></label>
@@ -55,23 +55,23 @@
                   </div>
                   <div class="col-12">
                     <label for="pais" class="form-label">País <span class="text-danger">*</span></label>
-                    <input type="pais" class="form-control" name="pais" id="pais" placeholder="País" required>
+                    <input type="pais" class="form-control" name="pais" id="pais" value="" required>
                   </div>
                   <div class="col-12">
                     <label for="distrito" class="form-label">Distrito<span class="text-danger">*</span></label>
-                    <input type="distrito" class="form-control" name="distrito" id="distrito" value="Distrito" required>
+                    <input type="distrito" class="form-control" name="distrito" id="distrito" value="" required>
                   </div>
                   <div class="col-12">
                     <label for="cidade" class="form-label">Cidade<span class="text-danger">*</span></label>
-                    <input type="cidade" class="form-control" name="cidade" id="cidade" value="Cidade" required>
+                    <input type="cidade" class="form-control" name="cidade" id="cidade" value="" required>
                   </div>
                   <div class="col-12">
                     <label for="freguesia" class="form-label">Freguesia<span class="text-danger">*</span></label>
-                    <input type="freguesia" class="form-control" name="freguesia" id="freguesia" value="Freguesia" required>
+                    <input type="freguesia" class="form-control" name="freguesia" id="freguesia" value="" required>
                   </div>
                   <div class="col-12">
                     <label for="rua" class="form-label">Rua<span class="text-danger">*</span></label>
-                    <input type="rua" class="form-control" name="rua" id="rua" value="Rua" required>
+                    <input type="rua" class="form-control" name="rua" id="rua" value="" required>
                   </div>
                   <div class="col-12">
                     <label for="imagem" class="form-label">Imagem do Objeto</label>
@@ -94,3 +94,5 @@
   </section>
 
   @endsection
+
+  <link href="{{ asset('css/registoObjs.css') }}" rel="stylesheet">

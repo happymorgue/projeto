@@ -41,7 +41,7 @@ Route::get('/editPerfilRegular', function () {
     return view('editPerfil');
 });
 Route::get('/editPerfilPolicia', function () {
-    return view('editPolicia');
+    return view('editPerfilPolicia');
 });
 Route::get('/homeGeral', function () {
     return view('home');

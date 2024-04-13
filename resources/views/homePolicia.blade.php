@@ -18,7 +18,7 @@
             Registe um objeto achado!
           </p>
           <a href="registoObjAchado.html" id="venderProd">
-            <button class="btn btn_vender btn-lg" href>  
+            <button class="btn btn_vender btn-lg" href="/registarObjAchado">  
               Registar
             </button>
           </a>

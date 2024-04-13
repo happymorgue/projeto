@@ -31,7 +31,7 @@
                       <div class="col-sm-4">
                         <h6 class="mb-0">Nome</h6>
                       </div>
-                      <div class="col-sm-6 text-secondary">
+                      <div class="col-sm-6 text-secondary" name="nome" id="nome">
                         John Doe
                       </div>
                     </div>
@@ -40,7 +40,7 @@
                       <div class="col-sm-4">
                         <h6 class="mb-0">Identificador Interno</h6>
                       </div>
-                      <div class="col-sm-6 text-secondary">
+                      <div class="col-sm-6 text-secondary" name="identificador_interno" id="identificador_interno">
                         123456789
                       </div>
                     </div>
@@ -49,7 +49,7 @@
                       <div class="col-sm-4">
                         <h6 class="mb-0">Posto de Polícia</h6>
                       </div>
-                      <div class="col-sm-6 text-secondary">
+                      <div class="col-sm-6 text-secondary" name="posto_policia" id="posto_policia">
                         PSP - 18ª Esquadra (Campo Grande)
                       </div>
                     </div>
@@ -70,3 +70,4 @@
 @endsection
 
 <link href="{{ asset('css/perfil.css') }}" rel="stylesheet">
+<script src="{{ asset('js/editPerfilPolicia.js') }}" type="text/javascript"></script>

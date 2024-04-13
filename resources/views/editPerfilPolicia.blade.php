@@ -30,7 +30,7 @@
 									<h6 class="mb-0">Nome</h6>
 								</div>
 								<div class="col-sm-5 text-secondary">
-									<input type="text" class="form-control" value="John Doe">
+									<input type="text" class="form-control" name="nome" id="nome" value="">
 								</div>
 							</div>
               <hr>
@@ -39,7 +39,7 @@
 									<h6 class="mb-0">Número Interno</h6>
 								</div>
 								<div class="col-sm-5 text-secondary">
-									<input type="text" class="form-control" value="123456789">
+									<input type="text" class="form-control" name="numero_interno" id="numero_interno" value="">
 								</div>
 							</div>
               <hr>
@@ -48,13 +48,17 @@
 									<h6 class="mb-0">Posto de Polícia</h6>
 								</div>
 								<div class="col-sm-5 text-secondary">
-									<input type="text" class="form-control" value=" PSP - 18ª Esquadra (Campo Grande)">
+									<select class="form-select" name="posto_policia" id="posto_policia">
+										<option value="selecionar"selected>Selecione</option>
+										<option value="18E">PSP - 18ª Esquadra</option>
+										<option value="19E">PSP - 19ª Esquadra</option>
+									</select>
 								</div>
 							</div>
               <hr>
 							<div class="row">
 								<div class="col-sm-9 text-secondary">
-									<a class="btn btn-save btn-primary px-3" href="/perfilPolicia">Salvar Mudanças</a>
+									<a class="btn btn-save btn-primary px-3" onclick=guardarMudancas()>Salvar Mudanças</a>
 								</div>
 							</div>
 						</div>
@@ -68,3 +72,4 @@
 @endsection
 
 <link href="{{ asset('css/perfil.css') }}" rel="stylesheet">
+<script src="{{ asset('js/editPerfilPolicia.js') }}" type="text/javascript"></script>

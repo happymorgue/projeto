@@ -1,5 +1,5 @@
 <!-- <!DOCTYPE html> -->
-@extends('layouts.layoutDL')
+@extends('layouts.layoutP')
 
 @section('title', 'Cogitavi - Objetos Perdidos')
 

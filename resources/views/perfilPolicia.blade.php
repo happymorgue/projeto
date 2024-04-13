@@ -70,3 +70,4 @@
 @endsection
 
 <link href="{{ asset('css/perfil.css') }}" rel="stylesheet">
+<script src="{{ asset('js/editPerfilPolicia.js') }}" type="text/javascript"></script>

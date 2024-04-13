@@ -14,6 +14,7 @@ class FuncionalidadesExtraController extends Controller
         { 
             session_start(); 
         }
+        #BUSCAR O UTILIZADOR COM O EMAIL NA SESSION, E CONVERTER PARA O ID DO UTILIZADOR REGULAR
         $utilizador_DB = DB::table('utilizador')->where('email', $_SESSION['user_email'])->first();
         $utilizador_reg_DB = DB::table('regular')->where('user_id', $utilizador_DB->id)->first();
         if ($utilizador_reg_DB != null) {
@@ -30,6 +31,7 @@ class FuncionalidadesExtraController extends Controller
         { 
             session_start(); 
         }
+        #BUSCAR O UTILIZADOR COM O EMAIL NA SESSION, E CONVERTER PARA O ID DO UTILIZADOR POLICIA
         $utilizador_DB = DB::table('utilizador')->where('email', $_SESSION['user_email'])->first();
         $utilizador_reg_DB = DB::table('policia')->where('user_id', $utilizador_DB->id)->first();
         if ($utilizador_reg_DB != null) {
@@ -42,12 +44,14 @@ class FuncionalidadesExtraController extends Controller
 
     public function obterPostosPolicia()
     {
+        #OBTER TODOS OS POSTOS DE POLICIA NA BASE DE DADOS
         $postos = DB::table('posto')->get();
         return response()->json($postos);
     }
 
     public function obterCategorias()
     {
+        #OBTER TODAS AS CATEGORIAS NA BASE DE DADOS
         $categorias = DB::table('categoria')->get();
         return response()->json($categorias);
     }
@@ -55,6 +59,7 @@ class FuncionalidadesExtraController extends Controller
 
     public function obterAtributos($categoriaId)
     {
+        #OBTER TODAS OS ATRIBUTOS NA BASE DE DADOS
         $atributos = DB::table('atributo')->where('categoria_id', $categoriaId)->get();
         return response()->json($atributos);
     }

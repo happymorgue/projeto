@@ -21,8 +21,10 @@ class UtilizadoresLicitanteController extends Controller
         } else {
             $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_dono_DB->user_id)->first();
             if($_SESSION["user_email"] == $utilizador_DB->email){
+                #OBTER O LEILAO E VER SE EXISTE
                 $leilao = DB::table('leilao')->where('id', $leilaoId)->first();
                 if($leilao != null){
+                    #INSERIR NA TABELA DE SUBSCRICAO
                     DB::table('subscricao')->insert([
                         'leilao_id' => $leilaoId,
                         'licitante_id' => $regularId
@@ -51,8 +53,10 @@ class UtilizadoresLicitanteController extends Controller
         } else {
             $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_dono_DB->user_id)->first();
             if($_SESSION["user_email"] == $utilizador_DB->email){
+                #OBTER O LEILAO E VER SE EXISTE
                 $leilao = DB::table('leilao')->where('id', $leilaoId)->first();
                 if($leilao != null){
+                    #REMOVER A TABELA DE SUBSCRICAO
                     DB::table('subscricao')->where('leilao_id', $leilaoId)->where('licitante_id', $regularId)->delete();
                 }else{
                     #ALTERAR PARA ERRO 403/404
@@ -69,6 +73,8 @@ class UtilizadoresLicitanteController extends Controller
         #VER DEPOIS COMO FAZER COM A API DO STRIPE OS PAGAMENTOS
     }
 
+
+    #FUNCAO DE LICITAR
     public function licitar($regularId, $leilaoId, Request $request){
         if(!isset($_SESSION)) 
         {   
@@ -82,22 +88,27 @@ class UtilizadoresLicitanteController extends Controller
         } else {
             $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_dono_DB->user_id)->first();
             if($_SESSION["user_email"] == $utilizador_DB->email){
+                #OBTER O LEILAO E VER SE EXISTE E SE AINDA ESTA ATIVO
                 $leilao = DB::table('leilao')->where('id', $leilaoId)->first();
                 if($leilao != null && $leilao->estado == 'A'){
                     $data = $request->json()->all();
                     $valor = $data['valor'];
+                    #VERIFICAR O VALOR MAIS ALTO DA LICITACAO ATUAL
                     $maxLicitacao = DB::table('licitacao')->where('leilao_id', $leilaoId)->max('valor');
-                    if (($maxLicitacao != null and $valor <= $maxLicitacao) or $leilao->vencedor != null){
+                    if (($maxLicitacao != null and $valor <= $maxLicitacao and $valor <= $leilao->valor) or $leilao->vencedor != null){
                         #ALTERAR PARA ERRO 403/404
                         echo "O valor da licitação tem de ser superior ao valor atual do leilão, ou leilão já terminou";
                     }else{
+                        #INSERIR NA TABELA DE LICITACAO
                         DB::table('licitacao')->insert([
                             'leilao_id' => $leilaoId,
                             'licitante_id' => $regularId,
                             'data_licitacao' => date('Y-m-d'),
                             'valor' => $valor
                         ]);
+                        #ATUALIZAR O VALOR DO LEILAO
                         DB::table('leilao')->where('id', $leilaoId)->update(['valor' => $valor]);
+                        #FALTA ADICIONAR A PARTE DE ENVIAR AS NOTIFICACOES ( EXTRA )
                     }
                 }else{
                     #ALTERAR PARA ERRO 403/404
@@ -127,6 +138,7 @@ class UtilizadoresLicitanteController extends Controller
             if($_SESSION["user_email"] == $utilizador_DB->email){
                 $leiloes = DB::table('leilao')->where('vencedor', $regularId)->get();
                 $leiloesJson = array();
+                #CRIAR OS LEILOES COM TODAS AS SUAS LICITACOES E O VENCEDOR
                 foreach($leiloes as $leilao){
                     array_push($leiloesJson, array('data_inicio' => $leilao->data_inicio, 'data_fim' => $leilao->data_fim, 'estado' => $leilao->estado, 'vencedor' => DB::table('utilizador')->where('id', DB::table('regular')->where('id', $regularId)->pluck('user_id'))->get(), 'licitacoes' => DB::table('licitacao')->where('leilao_id', $leilao->id)->get()));
                 }
@@ -140,6 +152,8 @@ class UtilizadoresLicitanteController extends Controller
         }
     }
 
+
+    #VER INFORMACAO RELATIVA A UM LEILAO ESPECIFICO
     public function verHistoricoLeilao($regularId, $leilaoId){
         if(!isset($_SESSION)) 
         {   
@@ -170,6 +184,7 @@ class UtilizadoresLicitanteController extends Controller
         }
     }
 
+    #VER LEILOES PASSADOS, FUTUROS E ATIVOS
     public function verLeiloes($regularId){
         if(!isset($_SESSION)) 
         {   
@@ -195,6 +210,8 @@ class UtilizadoresLicitanteController extends Controller
         }
     }
 
+
+    #MOSTRAR O HISTORICO DE LICITACOES REFERENTES AO UTILIZADOR
     public function verHistoricoLicitacao($regularId){
         if(!isset($_SESSION)) 
         {   

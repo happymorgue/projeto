@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class UtilizadoresPoliciaController extends Controller
 {
+    #VER TODOS OS OBJETOS ENCONTRADOS PELO POLICIA
     public function verHistoricoObjetosEncontrados($policiaId){
         if(!isset($_SESSION)) 
         { 
@@ -22,6 +23,7 @@ class UtilizadoresPoliciaController extends Controller
             $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_policia_DB->user_id)->first();
             if ($utilizador_DB->email == $_SESSION['user_email']) {
                 $objetos_perdidos = DB::table('objetoe')->where('policia_id', $policiaId)->get();
+                #OBTER O ID DOS OBJETOS NA TABELA DOS OBJETOS ENCONTRADOS PARA A BUSCA
                 foreach ($objetos_perdidos as $objeto_perdido) {
                     array_push($Id_objetos_perdidos, $objeto_perdido->objeto_id);
                 }
@@ -35,6 +37,8 @@ class UtilizadoresPoliciaController extends Controller
         }
     }
 
+
+    #VER O HISTORICO DE TODOS OS OBJETOS QUE O POLICIA JA ENTREGOU
     public function verHistoricoObjetosEntregues($policiaId)
     {
         if(!isset($_SESSION)) 
@@ -49,6 +53,7 @@ class UtilizadoresPoliciaController extends Controller
         }else{
             $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_dono_DB->user_id)->first();
         if ($utilizador_DB->email == $_SESSION['user_email']) {
+            #BUSCAR OS OBJETOS ENCONTRADOS PELO POLICIA, E VERIFICAR SE JA FORAM ENTREGUES
             $objetos_encontrados_possiveis = DB::table('objetoe')->where('policia_id', $policiaId)->get();
             foreach($objetos_encontrados_possiveis as $objeto_encontrado){
                 $objetos_encontrado_entregue = DB::table('objetor')->where('objeto_e_id', $objeto_encontrado->id)->first();
@@ -56,6 +61,7 @@ class UtilizadoresPoliciaController extends Controller
                     array_push($Id_objetos_encontrados, $objeto_encontrado->objeto_id);
                 }
             }
+            #SE FORAM ENTREGUES, BUSCAR OS DADOS DOS OBJETOS E RETORNA LOS
             $objetos_perdidos_final = DB::table('objeto')->whereIn('id', $Id_objetos_encontrados)->orderBy('id', 'asc')->get();
             $json = array('objetos_perdidos_encontrados' => $objetos_perdidos_final );
             return response()->json($json);
@@ -68,6 +74,7 @@ class UtilizadoresPoliciaController extends Controller
 
 
 
+    #VER TODOS OS OBJETOS PERDIDOS PELOS DONOS, EXCETO OS QUE JA FORAM ENTREGUES 
     public function verObjetosPerdidos($policiaId)
     {
         if(!isset($_SESSION)) 
@@ -94,6 +101,95 @@ class UtilizadoresPoliciaController extends Controller
                 $objetos_encontrados_final = DB::table('objeto')->whereIn('id', $Id_objetos_perdidos)->orderBy('id', 'asc')->get();
                 $json = array('objetos_encontrados' => $objetos_encontrados_final);
                 return response()->json($json);
+            } else {
+                #ALTERAR PARA ERRO 403/404
+                echo "Não tem permissões para aceder aos dados desse utilizador";
+            }
+        }
+    }
+
+
+    #REGISTAR UM OBJETO ACHADO, COM TODOS OS SEUS ATRIBUTOS
+    public function registarObjetoAchado($policiaId, Request $request)
+    {
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        }
+        $utilizador_dono_DB = DB::table('policia')->where('id', $policiaId)->first();
+        if ($utilizador_dono_DB== null){
+            #ALTERAR PARA ERRO 403/404
+            echo "Não existe esse utilizador";
+        } else {
+            $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_dono_DB->user_id)->first();
+            if ($utilizador_DB->email == $_SESSION['user_email']) {
+                $data = $request->json()->all();
+                if(!isset($data['distrito'])){
+                    $data['distrito'] = null;
+                }
+                if(!isset($data['cidade'])){
+                    $data['cidade'] = null;
+                }
+                if(!isset($data['freguesia'])){
+                    $data['freguesia'] = null;
+                }
+                if(!isset($data['rua'])){
+                    $data['rua'] = null;
+                }
+                $id_table_objeto = DB::table('objeto')->insertGetId(['descricao' => $data['descricao'], 'categoria_id' => $data['categoria_id'], 'data_inicio' => $data['data_inicio'], 'data_fim' => $data['data_fim'], "pais" => $data['pais'], "distrito" => $data['distrito'], "cidade" => $data['cidade'], "freguesia" => $data['freguesia'], "rua" => $data['rua'], "localizacao" => $data['localizacao'], "imagem" => $data['imagem']]);
+                DB::table('objetoe')->insert(['objeto_id' => $id_table_objeto, 'policia_id' => $policiaId]);
+                $atributos = $data['atributos'];
+                foreach ($atributos as $atributo) {
+                    DB::table('valoratributos')->insert(['objeto_id' => $id_table_objeto, 'atributo_id' => $atributo['atributo_id'], 'valor' => $atributo['valor']]);
+                }
+                if(isset($data['nutilizador'])){
+                    #TRATAMENTO DE ADICIONAR O NAO UTILIZADOR
+                }
+            } else {
+                #ALTERAR PARA ERRO 403/404
+                echo "Não tem permissões para aceder aos dados desse utilizador";
+            }
+        }
+    }
+
+
+     #ATUALIZAR UM OBJETO ACHADO, COM TODOS OS SEUS ATRIBUTOS
+    public function atualizarObjetoAchado($policiaId, $objetoId, Request $request)
+    {
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        }
+        $utilizador_dono_DB = DB::table('policia')->where('id', $policiaId)->first();
+        if ($utilizador_dono_DB== null){
+            #ALTERAR PARA ERRO 403/404
+            echo "Não existe esse utilizador";
+        } else {
+            $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_dono_DB->user_id)->first();
+            if ($utilizador_DB->email == $_SESSION['user_email']) {
+                $data = $request->json()->all();
+                if(!isset($data['distrito'])){
+                    $data['distrito'] = null;
+                }
+                if(!isset($data['cidade'])){
+                    $data['cidade'] = null;
+                }
+                if(!isset($data['freguesia'])){
+                    $data['freguesia'] = null;
+                }
+                if(!isset($data['rua'])){
+                    $data['rua'] = null;
+                }
+                DB::table('objeto')->where('id', $objetoId)->update(['descricao' => $data['descricao'], 'categoria_id' => $data['categoria_id'], 'data_inicio' => $data['data_inicio'], 'data_fim' => $data['data_fim'], "pais" => $data['pais'], "distrito" => $data['distrito'], "cidade" => $data['cidade'], "freguesia" => $data['freguesia'], "rua" => $data['rua'], "localizacao" => $data['localizacao'], "imagem" => $data['imagem']]);
+                $atributos = $data['atributos'];
+                #APAGAR OS ATRIBUTOS PARA NAO HAVER CONFLITO NOS NOVOS ATRIBUTOS COM OS ANTERIORES, SE POR EXEMPLO, TIVESSE SIDO ALTERADA A CATEGORIA
+                DB::table('valoratributos')->where('objeto_id', $objetoId)->delete();
+                foreach ($atributos as $atributo) {
+                    DB::table('valoratributos')->insert(['objeto_id' => $objetoId, 'atributo_id' => $atributo['atributo_id'], 'valor' => $atributo['valor']]);
+                }
+                if(isset($data['nutilizador'])){
+                    #TRATAMENTO DE ADICIONAR O NAO UTILIZADOR
+                }
             } else {
                 #ALTERAR PARA ERRO 403/404
                 echo "Não tem permissões para aceder aos dados desse utilizador";
@@ -132,7 +228,7 @@ class UtilizadoresPoliciaController extends Controller
 
 
 
-    #ADICIONAR AINDA PARA CASO ALGUM OBJETO JA ESTAR NA TABELA DE CORRESPONDENTES
+    #ADICIONAR AINDA PARA CASO ALGUM OBJETO JA ESTAR NA TABELA DE CORRESPONDENTES OU OBJETOS EM LEILAO, NAO REGISTAR
     public function registarObjetoCorrespondente($policiaId, $foundObjectId, $lostObjectId)
     {
         if(!isset($_SESSION)) 
@@ -187,6 +283,9 @@ class UtilizadoresPoliciaController extends Controller
         }
     }
 
+
+
+    #METODOS DE CONTA DE POLICIA, E DE POSTOS DE POLICIA
     public function UpdatePoliciaPUT(Request $request)
     {
         $data=$request->json()->all();

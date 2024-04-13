@@ -10,14 +10,13 @@ use HTTP_Request2;
 class UtilizadoresRegularController extends Controller
 {
 
-    ##PENSAR SE SEQUER NECESSARIO, NAO FAZ SENTIDO
     public function atualizarUtilizadorRegular(Request $request)
     {
 
-        #if(!isset($_SESSION)) 
-        #{ 
-        #    session_start(); 
-        #}
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        }
         $data = $request->json()->all();
         $utilizador_reg_DB = DB::table('regular')->where('id', $data['id'])->first();
         if ($utilizador_reg_DB != null) {
@@ -69,6 +68,7 @@ class UtilizadoresRegularController extends Controller
         { 
             session_start(); 
         }
+        ##DEPOIS ADICIONAR PARA SO O UTILIZADOR COM A $_SESSION CERTA POSTA E QUE CONSEGUE FAZER ISSO
         $utilizador_reg_DB = DB::table('regular')->where('id', $regularId)->first();
         $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_reg_DB->user_id)->first();
         if ($utilizador_DB->email == $_SESSION['user_email']) {

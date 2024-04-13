@@ -67,6 +67,8 @@ Route::delete('/policia/{policiaId}/postoPolicia/{postoId}', [UtilizadoresPolici
 Route::get('/policia/{policiaId}/verHistoricoObjetosEncontrados', [UtilizadoresPoliciaController::class,'verHistoricoObjetosEncontrados']);
 Route::get('/policia/{policiaId}/verHistoricoObjetosEntregues', [UtilizadoresPoliciaController::class,'verHistoricoObjetosEntregues']);
 Route::get('/policia/{policiaId}/verObjetosPerdidos', [UtilizadoresPoliciaController::class,'verObjetosPerdidos']);
+Route::post('/policia/{policiaId}/registarObjetoAchado', [UtilizadoresPoliciaController::class,'registarObjetoAchado']);
+Route::post('/policia/{policiaId}/atualizarObjetoAchado/{objetoId}', [UtilizadoresPoliciaController::class,'atualizarObjetoAchado']);
 
 Route::get('/policia/{policiaId}/registarPossivelDono/{foundObjectId}/{regularId}', [UtilizadoresPoliciaController::class,'registarPossivelDono']);
 Route::get('/policia/{policiaId}/registarObjetoCorrespondente/{foundObjectId}/{lostObjectId}', [UtilizadoresPoliciaController::class,'registarObjetoCorrespondente']);

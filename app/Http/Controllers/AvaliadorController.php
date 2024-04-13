@@ -78,13 +78,19 @@ class AvaliadorController extends Controller
     public function avaliarObjeto($avaliadorId, $objetoId,Request $request){
         $data = $request->json()->all();
         #DEPOIS ADICIONAR AQUI A PARTE DE AUTENTICACAO DO AVALIADOR, PARA VER SE ELE CONSEGUE AVALIAR UM OBJETO
+
+        #ATUALIZAR O VALOR DO OBJETO QUE VAI A LEILAO
         DB::table('objetoleilao')->where('id', $objetoId)->update(['valor' => $data['valor']]);
     }
 
     public function criarLeilao($avaliadorId, $objetoId,Request $request){
         $data = $request->json()->all();
         #DEPOIS ADICIONAR AQUI A PARTE DE AUTENTICACAO DO AVALIADOR, PARA VER SE ELE CONSEGUE CRIAR UM LEILAO
+
+        #OBTER O OBJETO QUE VAI SER LEILOADO
         $objetoLeiloado=DB::table('objetoleilao')->where('id', $objetoId)->first();
+
+        #SE O OBJETO EXISTIR, CRIA-SE O LEILAO COM O VALOR BASE DO OBJETO
         if ($objetoLeiloado != null) {
             DB::table('leilao')->insert(['data_inicio' => $data['data_inicio'], 'data_fim' => $data['data_fim'], 'valor' => $objetoLeiloado->valor, 'estado' => $data['estado'], 'objeto_leilao_id' => $objetoId]);
         }else{
@@ -95,7 +101,10 @@ class AvaliadorController extends Controller
 
     public function iniciarLeilao($avaliadorId, $leilaoId,Request $request){
         #DEPOIS ADICIONAR AQUI A PARTE DE AUTENTICACAO DO AVALIADOR, PARA VER SE ELE CONSEGUE INICIAR UM LEILAO
+        #OBTER O LEILAO
         $leilao=DB::table('leilao')->where('id', $leilaoId)->first();
+
+        #SE O LEILAO JA TIVER TERMINADO, NAO SE PODE INICIAR
         if ($leilao != null && $leilao->estado != 'T') {
             DB::table('leilao')->where('id', $leilaoId)->update(['estado' => 'A']);
         }else{
@@ -106,6 +115,7 @@ class AvaliadorController extends Controller
 
     public function terminarLeilao($avaliadorId, $leilaoId,Request $request){
         #DEPOIS ADICIONAR AQUI A PARTE DE AUTENTICACAO DO AVALIADOR, PARA VER SE ELE CONSEGUE TERMINAR UM LEILAO
+        #OBTER O LEILAO
         $leilao=DB::table('leilao')->where('id', $leilaoId)->first();
         if ($leilao != null) {
             DB::table('leilao')->where('id', $leilaoId)->update(['estado' => 'T']);
@@ -120,7 +130,10 @@ class AvaliadorController extends Controller
 
     public function desativarUtilizador($avaliadorId, $utilizadorId){
         #DEPOIS ADICIONAR AQUI A PARTE DE AUTENTICACAO DO AVALIADOR, PARA VER SE ELE CONSEGUE DESATIVAR UM UTILIZADOR
+        #OBTER O UTILIZADOR COM O ID
         $utilizador = DB::table("utilizador")->where("id", $utilizadorId)->first();
+
+        #SE O UTILIZADOR EXISTIR, DESATIVA-SE
         if ($utilizador != null) {
             DB::table('utilizador')->where('id', $utilizadorId)->update(['ativo' => 'N']);
         }else{
@@ -131,7 +144,10 @@ class AvaliadorController extends Controller
 
     public function ativarUtilizador($avaliadorId, $utilizadorId){
         #DEPOIS ADICIONAR AQUI A PARTE DE AUTENTICACAO DO AVALIADOR, PARA VER SE ELE CONSEGUE DESATIVAR UM UTILIZADOR
+        #OBTER O UTILIZADOR COM O ID
         $utilizador = DB::table("utilizador")->where("id", $utilizadorId)->first();
+
+        #SE O UTILIZADOR EXISTIR, ATIVA-SE
         if ($utilizador != null) {
             DB::table('utilizador')->where('id', $utilizadorId)->update(['ativo' => 'S']);
         }else{

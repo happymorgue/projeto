@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth0Controller;
 use App\Http\Controllers\AvaliadorController;
+use App\Http\Controllers\FuncionalidadesExtraController;
 use App\Http\Controllers\NaoUtilizadoresController;
 use App\Http\Controllers\UtilizadoresController;
 use App\Http\Controllers\UtilizadoresRegularController;
@@ -116,4 +117,7 @@ Route::delete('/nUtilizador/{nUtilizadorId}', [NaoUtilizadoresController::class,
 
 #TRATAMENTOS AUXILIARES
 #OBTER ID REGULAR ATRAVES DO EMAIL DE UTILIZADOR
-Route::get('/convertUserEmailRegularId', [UtilizadoresRegularController::class,'convertUserEmailRegularId']);
+Route::get('/convertUserEmailRegularId', [FuncionalidadesExtraController::class,'convertUserEmailRegularId']);
+Route::get('/obterPostosPolicia', [FuncionalidadesExtraController::class,'obterPostosPolicia']);
+Route::get('/obterCategorias', [FuncionalidadesExtraController::class,'obterCategorias']);
+Route::get('/obterAtributos', [FuncionalidadesExtraController::class,'obterAtributos']);

@@ -78,20 +78,4 @@ class UtilizadoresRegularController extends Controller
             echo "Não tem permissões para apagar esse utilizador";
         }
     }
-
-    public function convertUserEmailRegularId()
-    {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        }
-        $utilizador_DB = DB::table('utilizador')->where('email', $_SESSION['user_email'])->first();
-        $utilizador_reg_DB = DB::table('regular')->where('user_id', $utilizador_DB->id)->first();
-        if ($utilizador_reg_DB != null) {
-            return $utilizador_reg_DB->id;
-        } else {
-            #ALTERAR PARA ERRO 403/404
-            echo "Não tem permissões para apagar esse utilizador";
-        }
-    }
 }

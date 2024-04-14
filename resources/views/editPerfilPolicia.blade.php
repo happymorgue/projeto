@@ -15,8 +15,8 @@
               <div class="d-flex flex-column align-items-center text-center">
                 <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
                 <div class="mt-3">
-                  <h4>John Doe</h4>
-                  <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+				<h4  name="nome2" id="nome2"> </h4>
+                  <p class="text-muted font-size-sm">Policia</p>
                 </div>
               </div>
             </div>
@@ -53,9 +53,12 @@
 								</div>
 							</div>
               <hr>
-							<div class="row">
-								<div class="col-sm-9 text-secondary">
-									<a class="btn btn-save px-3" onclick=guardarMudancas()>Salvar Mudanças</a>
+			  				<div class="row justify-content-center botoes">
+								<div class="col-md-2 m-2">
+									<a class="btn btn-save" onclick=guardarMudancas()>Salvar</a>
+								</div>
+								<div class="col-md-2 m-2">
+									<a class="btn btn-cancelar" href="/perfilPolicia">Cancelar</a>
 								</div>
 							</div>
 						</div>

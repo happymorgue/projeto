@@ -8,8 +8,8 @@ function getProfile() {
             pedido2.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     var responseJson = JSON.parse(pedido2.responseText);
-                    document.getElementsByName('nome1')[0].innerHTML = responseJson['nome'];
                     document.getElementsByName('nome')[0].innerHTML = responseJson['nome'];
+                    document.getElementsByName('nome2')[0].innerHTML = responseJson['nome'];
                     document.getElementsByName('email')[0].innerHTML = responseJson['email'];
                     document.getElementsByName('identificador_interno')[0].innerHTML = responseJson['idInterno'];
                     if (responseJson['posto_id'] != null) {

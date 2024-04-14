@@ -114,10 +114,24 @@ body{
 .btn-save{
     background-color: #104c91 !important;
     color: white !important;
+    height: 2.3em;
+    width: 8.9em;
 }
 
 .btn-save:hover{
     background-color: #1f8ac0 !important;
+    color: white !important;
+}
+
+.btn-cancelar{
+    background-color: #e00a0a !important;
+    color: white !important;
+    height: 2.3em;
+    width: 8.9em;
+}
+
+.btn-save:hover{
+    background-color: #f04747 !important;
     color: white !important;
 }
 

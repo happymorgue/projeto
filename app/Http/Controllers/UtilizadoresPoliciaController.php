@@ -116,12 +116,12 @@ class UtilizadoresPoliciaController extends Controller
         { 
             session_start(); 
         }
-        $utilizador_dono_DB = DB::table('policia')->where('id', $policiaId)->first();
-        if ($utilizador_dono_DB== null){
+        $utilizador_policia_DB = DB::table('policia')->where('id', $policiaId)->first();
+        if ($utilizador_policia_DB== null){
             #ALTERAR PARA ERRO 403/404
             echo "Não existe esse utilizador";
         } else {
-            $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_dono_DB->user_id)->first();
+            $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_policia_DB->user_id)->first();
             if ($utilizador_DB->email == $_SESSION['user_email']) {
                 $data = $request->json()->all();
                 if(!isset($data['distrito'])){
@@ -160,12 +160,12 @@ class UtilizadoresPoliciaController extends Controller
         { 
             session_start(); 
         }
-        $utilizador_dono_DB = DB::table('policia')->where('id', $policiaId)->first();
-        if ($utilizador_dono_DB== null){
+        $utilizador_policia_DB = DB::table('policia')->where('id', $policiaId)->first();
+        if ($utilizador_policia_DB== null){
             #ALTERAR PARA ERRO 403/404
             echo "Não existe esse utilizador";
         } else {
-            $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_dono_DB->user_id)->first();
+            $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_policia_DB->user_id)->first();
             if ($utilizador_DB->email == $_SESSION['user_email']) {
                 $data = $request->json()->all();
                 if(!isset($data['distrito'])){
@@ -197,6 +197,27 @@ class UtilizadoresPoliciaController extends Controller
         }
     }
 
+    public function removerObjetoAchado($policiaId, $objetoId, Request $request)
+    {
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        }
+        $utilizador_policia_DB = DB::table('policia')->where('id', $policiaId)->first();
+        if ($utilizador_policia_DB== null){
+            #ALTERAR PARA ERRO 403/404
+            echo "Não existe esse utilizador";
+        } else {
+            $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_policia_DB->user_id)->first();
+            if ($utilizador_DB->email == $_SESSION['user_email']) {
+                DB::table('objeto')->where('id', $objetoId)->delete();
+            } else {
+                #ALTERAR PARA ERRO 403/404
+                echo "Não tem permissões para aceder aos dados desse utilizador";
+          }
+        }
+    }
+
 
     #ADICIONAR AINDA PARA CASO ALGUM OBJETO JA ESTAR NA TABELA DE CORRESPONDENTES OU OBJETOS EM LEILAO, NAO ADICIONAR
     public function registarPossivelDono($policiaId, $foundObjectId, $regularId)
@@ -216,7 +237,7 @@ class UtilizadoresPoliciaController extends Controller
                 if($objeto_encontrado != null){
                     $utilizador_regular_DB = DB::table('regular')->where('id', $regularId)->first();
                     if ($utilizador_regular_DB != null){
-                        DB::table('PossivelDono')->insert(['objeto_e_id' => $foundObjectId,'regular_id' => $regularId]);
+                        DB::table('possiveldono')->insert(['objeto_id' => $objeto_encontrado->objeto_id,'regular_id' => $regularId]);
                     }
                 }
             } else {
@@ -246,7 +267,7 @@ class UtilizadoresPoliciaController extends Controller
                 if($objeto_encontrado != null){
                     $objeto_perdido = DB::table('objetop')->where('id', $lostObjectId)->first();
                     if ($objeto_perdido != null){
-                        DB::table('objetor')->insert(['entrege' => 'N', 'objeto_e_id' => $foundObjectId,'objeto_p_id' => $lostObjectId]);
+                        DB::table('objetor')->insert(['entregue' => 'N', 'objeto_e_id' => $foundObjectId,'objeto_p_id' => $lostObjectId]);
                     }
                 }
             } else {
@@ -273,7 +294,7 @@ class UtilizadoresPoliciaController extends Controller
                 if ($objeto_encontrado != null) {
                     $objeto_correspondente = DB::table('objetor')->where('objeto_e_id', $foundObjectId)->first();
                     if ($objeto_correspondente != null) {
-                        DB::table('objetor')->where('objeto_e_id', $foundObjectId)->update(['entrege' => 'S']);
+                        DB::table('objetor')->where('objeto_e_id', $foundObjectId)->update(['entregue' => 'S']);
                     }
                 }
             } else {

@@ -313,4 +313,60 @@ class UtilizadoresDonoController extends Controller
           }
         }
     }
+
+    public function registarPossivelDono($regularId, $foundObjectId)
+    {
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        }
+        $utilizador_policia_DB = DB::table('regular')->where('id', $regularId)->first();
+        if ($utilizador_policia_DB== null){
+            #ALTERAR PARA ERRO 403/404
+            echo "Não existe esse utilizador";
+        } else {
+            $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_policia_DB->user_id)->first();
+            if ($utilizador_DB->email == $_SESSION['user_email']) {
+                #AQUI É UTILIZADO O ID DO OBJETO PERDIDO LOGO DE INICIO, PENSAR EM TROCAR SO PARA O ID DE OBJETO NORMAL
+                $objeto_encontrado = DB::table('objetoe')->where('id', $foundObjectId)->first();
+                if($objeto_encontrado != null){
+                    DB::table('possiveldono')->insert(['objeto_id' => $objeto_encontrado->objeto_id,'regular_id' => $regularId]);
+                }  else {
+                    #ALTERAR PARA ERRO 403/404
+                    echo "Esse objeto não existe ou não é seu";
+                }
+            } else {
+                #ALTERAR PARA ERRO 403/404
+                echo "Não tem permissões para aceder aos dados desse utilizador";
+            }
+        }
+    }
+
+    public function confirmarDono($regularId, $foundObjectId, $lostObjectId)
+    {
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        }
+        $utilizador_policia_DB = DB::table('regular')->where('id', $regularId)->first();
+        if ($utilizador_policia_DB== null){
+            #ALTERAR PARA ERRO 403/404
+            echo "Não existe esse utilizador";
+        } else {
+            $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_policia_DB->user_id)->first();
+            if ($utilizador_DB->email == $_SESSION['user_email']) {
+                #AQUI É UTILIZADO O ID DO OBJETO PERDIDO LOGO DE INICIO, PENSAR EM TROCAR SO PARA O ID DE OBJETO NORMAL
+                $objeto_encontrado = DB::table('objetoe')->where('id', $foundObjectId)->first();
+                if($objeto_encontrado != null){
+                    $objeto_perdido = DB::table('objetop')->where('id', $lostObjectId)->where('dono_id', $regularId)->first();
+                    if ($objeto_perdido != null){
+                        DB::table('objetor')->insert(['entregue' => 'N', 'objeto_e_id' => $foundObjectId,'objeto_p_id' => $lostObjectId]);
+                    }
+                }
+            } else {
+                #ALTERAR PARA ERRO 403/404
+                echo "Não tem permissões para aceder aos dados desse utilizador";
+            }
+        }
+    }
 }

@@ -156,4 +156,88 @@ class AvaliadorController extends Controller
         }
     }
 
+    public function login($email, $password){
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        }
+        $email = trim($email);
+        $password = trim($password);
+        $avaliador = DB::table("avaliador")->where("email", $email)->first();
+        if($avaliador != null){
+            if($avaliador->password == $password){
+                $_SESSION["avaliador_id"] = $avaliador->id;
+                echo "login feito";
+            }else{
+                echo "password errada";
+            }
+        }else{
+            echo "email errado";
+        }
+    }
+
+    public function logout(){
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        }
+        if(isset($_SESSION["avaliador_id"])){
+            session_destroy();
+        }
+        
+    }
+
+    public function apagarAvaliador($avaliadorId){
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        }
+        if ($_SESSION["avaliador_id"] != null && $avaliadorId == $_SESSION["avaliador_id"]) {
+            DB::table('avaliador')->where('id', $avaliadorId)->delete();
+        }else{
+            echo "Não tem permissões para apagar esse avaliador";
+        }
+    }
+
+    public function obterAvaliador($avaliadorId){
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        }
+        if ($_SESSION["avaliador_id"] != null) {
+            $avaliador = DB::table('avaliador')->where('id', $avaliadorId)->first();
+            return response()->json($avaliador);
+        }else{
+            echo "Não tem permissões para apagar esse avaliador";
+        }
+    }
+
+    public function atualizarAvaliadorPUT(Request $request){
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        }
+        if ($_SESSION["avaliador_id"] != null) {
+            $data = $request->json()->all();
+            $avaliador = DB::table('avaliador')->where('id', $data['id'])->update(['nome' => $data['nome'], 'email' => $data['email'], 'password' => $data['password'], 'telemovel' => $data['telemovel']]);
+            return response()->json($avaliador);
+        }else{
+            echo "Não tem permissões para apagar esse avaliador";
+        }
+    }
+
+    public function atualizarAvaliadorPOST($avaliadorID,Request $request){
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        }
+        if ($_SESSION["avaliador_id"] != null) {
+            $data = $request->json()->all();
+            $avaliador = DB::table('avaliador')->where('id', $avaliadorID)->update(['nome' => $data['nome'], 'email' => $data['email'], 'password' => $data['password'], 'telemovel' => $data['telemovel']]);
+            return response()->json($avaliador);
+        }else{
+            echo "Não tem permissões para apagar esse avaliador";
+        }
+    }
+
 }

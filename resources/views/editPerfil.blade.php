@@ -49,7 +49,7 @@
 								</div>
 								<div class="col-sm-9 text-secondary">
 									<select class="form-select" name="genero" id="genero">
-										<option value="selecionar"selected>Selecione</option>
+										<option value=""selected>Selecione</option>
 										<option value="M">Masculino</option>
 										<option value="F">Feminino</option>
 										<option value="O">Outro</option>

@@ -10,16 +10,45 @@ function getProfile() {
                     var responseJson = JSON.parse(pedido2.responseText);
                     console.log(responseJson['nome']);
                     console.log(document.getElementsByName('nome'));
-                    document.getElementsByName('nome')[0].value = responseJson['nome'].trim();
-                    document.getElementsByName('nif')[0].value = responseJson['nif'].trim();
-                    document.getElementsByName('telemovel')[0].value = responseJson['telemovel'].trim();
+                    if (responseJson['nome'] != null) {
+                        document.getElementsByName('nome')[0].value = responseJson['nome'].trim();
+                    } else {
+                        document.getElementsByName('nome')[0].value = responseJson['nome'];
+                    }
+
+                    if (responseJson['nif'] != null) {
+                        document.getElementsByName('nif')[0].value = responseJson['nif'].trim();
+                    } else {
+                        document.getElementsByName('nif')[0].value = responseJson['nif'];
+                    }
+
+                    if (responseJson['telemovel'] != null) {
+                        document.getElementsByName('telemovel')[0].value = responseJson['telemovel'].trim();
+                    } else {
+                        document.getElementsByName('telemovel')[0].value = responseJson['telemovel'];
+                    }
+
                     if (responseJson['genero'] != null) {
                         document.getElementsByName('genero')[0].value = responseJson['genero'];
                     }
-                    document.getElementsByName('morada')[0].value = responseJson['morada'].trim();
-                    document.getElementsByName('data_nascimento')[0].value = responseJson['data_nascimento'].trim();
-                    document.getElementsByName('identificador civil')[0].value = responseJson['identificador civil'].trim();
 
+                    if (responseJson['morada'] != null) {
+                        document.getElementsByName('morada')[0].value = responseJson['morada'].trim();
+                    } else {
+                        document.getElementsByName('morada')[0].value = responseJson['morada'];
+                    }
+
+                    if (responseJson['data_nascimento'] != null) {
+                        document.getElementsByName('data_nascimento')[0].value = responseJson['data_nascimento'].trim();
+                    } else {
+                        document.getElementsByName('data_nascimento')[0].value = responseJson['data_nascimento'];
+                    }
+
+                    if (responseJson['identificador civil'] != null) {
+                        document.getElementsByName('identificador civil')[0].value = responseJson['identificador civil'].trim();
+                    } else {
+                        document.getElementsByName('identificador civil')[0].value = responseJson['identificador civil'];
+                    }
                 }
             }
             pedido2.open("GET", "/api/regular/" + idRegular, true)
@@ -31,21 +60,21 @@ function getProfile() {
 }
 
 function guardarMudancas() {
-    let csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
     let pedido = new XMLHttpRequest();
     pedido.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var idRegular = JSON.parse(pedido.responseText);
-            let json = '{"nome":"' + document.getElementsByName("nome")[0].value.trim() + '", "nif":' + document.getElementsByName("nif")[0].value.trim() + ', "telemovel":' + document.getElementsByName("telemovel")[0].value.trim() + ', "genero":"' + document.getElementsByName("genero")[0].value.trim() + '", "morada":"' + document.getElementsByName("morada")[0].value.trim() + '", "data_nascimento":"' + document.getElementsByName("data_nascimento")[0].value.trim() + '", "idcivil":"' + document.getElementsByName("identificador civil")[0].value.trim() + '"}';
+            let json = '{"nome":"' + document.getElementsByName("nome")[0].value.trim() + '", "nif":"' + document.getElementsByName("nif")[0].value.trim() + '", "telemovel":"' + document.getElementsByName("telemovel")[0].value.trim() + '", "genero":"' + document.getElementsByName("genero")[0].value.trim() + '", "morada":"' + document.getElementsByName("morada")[0].value.trim() + '", "data_nascimento":"' + document.getElementsByName("data_nascimento")[0].value.trim() + '", "idcivil":"' + document.getElementsByName("identificador civil")[0].value.trim() + '"}';
             let JsonParse = JSON.parse(json);
             let enviarDados = new XMLHttpRequest();
             enviarDados.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                 }
             }
+            console.log("ola");
+            console.log(json);
             enviarDados.open("POST", "/api/regular/" + idRegular, true);
             enviarDados.setRequestHeader("Content-Type", "application/json");
-            enviarDados.setRequestHeader("X-CSRF-TOKEN", csrfToken);
             enviarDados.send(JSON.stringify(JsonParse));
             window.location.replace("/perfilRegular");
         }

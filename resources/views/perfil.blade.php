@@ -31,7 +31,7 @@
                         <h6 class="mb-0">Nome</h6>
                       </div>
                       <div class="col-sm-9 text-secondary" name="nome" id="nome">
-                        Kenneth Valdez
+                        
                       </div>
                     </div>
                     <hr>
@@ -40,7 +40,7 @@
                         <h6 class="mb-0">Email</h6>
                       </div>
                       <div class="col-sm-9 text-secondary" name="email" id="email">
-                        fip@jukmuh.al
+                        
                       </div>
                     </div>
                     <hr>
@@ -49,7 +49,7 @@
                         <h6 class="mb-0">Telemóvel</h6>
                       </div>
                       <div class="col-sm-9 text-secondary" name="telemovel" id="telemovel">
-                        (239) 816-9029
+                        
                       </div>
                     </div>
                     <hr>
@@ -58,7 +58,7 @@
                         <h6 class="mb-0">Género</h6>
                       </div>
                       <div class="col-sm-9 text-secondary" name="genero" id="genero">
-                        Masculino
+                        
                       </div>
                     </div>
                     <hr>
@@ -67,7 +67,7 @@
                         <h6 class="mb-0">Morada</h6>
                       </div>
                       <div class="col-sm-9 text-secondary" name="morada" id="morada">
-                        Bay Area, San Francisco, CA
+                        
                       </div>
                     </div>
                     <hr>
@@ -76,7 +76,7 @@
                         <h6 class="mb-0">NIF</h6>
                       </div>
                       <div class="col-sm-9 text-secondary" name="nif" id="nif">
-                        320380453
+                        
                       </div>
                     </div>
                     <hr>
@@ -85,7 +85,7 @@
                         <h6 class="mb-0">ID Civil</h6>
                       </div>
                       <div class="col-sm-9 text-secondary" name="id_civil" id="id_civil">
-                        12345678
+                        
                       </div>
                     </div>
                     <hr>
@@ -94,14 +94,24 @@
                         <h6 class="mb-0">Data de Nascimento</h6>
                       </div>
                       <div class="col-sm-9 text-secondary" name="data_nascimento">
-                        12/01/2001
+                        
                       </div>
                     </div>
                     <hr>
                     <div class="row">
-                      <div class="col-sm-12">
-                        <a class="btn btn-edit btn-primary" href="/editPerfilRegular">Editar</a>
+                      <div class="col-md-2 p-1">
+                        <a class="btn btn-edit" href="/editPerfilPolicia">Editar Dados</a>
                       </div>
+                      <div class="col-md-2 p-1">
+                        <a class="btn btn-desativar" href="">Desativar Conta</a>
+                      </div>
+                      <div class="col-md-2 p-1">
+                        <a class="btn btn-ativar" href="">Ativar Conta</a>
+                      </div>
+                      <div class="col-md-2 p-1">
+                        <a class="btn btn-apagar" href="">Apagar Conta</a>
+                      </div>
+                    </div>
                     </div>
                   </div>
                 </div>

@@ -61,17 +61,48 @@ body{
     box-shadow: none!important;
 }
 
-/*
+/* --------------- BOTÕES -------------------*/
+
 .btn-edit{
-    background-color: #104c91;
-    color: white;
-    border: none;
-}*/
+    background-color: #104c91 !important;
+    color: white !important;
+    height: 2.3em;
+    width: 8.9em;
+}
 
 .btn-edit:hover{
-    background-color: #1f8ac0;
-    color: white;
-    border: none;
+    background-color: #1f8ac0 !important;
+    color: white !important;
+}
+
+
+.btn-desativar{
+    background-color: #e0b000 !important;
+    color: white !important;
+    height: 2.3em;
+    width: 8.9em;
+}
+
+.btn-desativar:hover{
+    background-color: #edda30 !important;
+    color: white !important;
+}
+
+
+.btn-apagar{
+    background-color: #e00a0a !important;
+    color: white !important;
+    height: 2.3em;
+    width: 8.9em;
+}
+
+.btn-apagar:hover{
+    background-color: #f04747 !important;
+    color: white !important;
+}
+
+.botoes{
+    padding: 0.5em 0 0.5em 0;
 }
 
 /*-------------------EDIT PERFIL----------------------*/
@@ -80,19 +111,39 @@ body{
 }
 
 .btn-save{
-    background-color: #104c91 ;
-    color: white;
-    border: none;
+    background-color: #104c91 !important;
+    color: white !important;
+    height: 2.3em;
+    width: 7.5em;
 }
 
 .btn-save:hover{
-    background-color: #1f8ac0;
-    color: white;
-    border: none;
+    background-color: #1f8ac0 !important;
+    color: white !important;
+}
+
+.btn-cancelar{
+    background-color: #e00a0a !important;
+    color: white !important;
+    height: 2.3em;
+    width: 7.5em;
+}
+
+.btn-save:hover{
+    background-color: #f04747 !important;
+    color: white !important;
 }
 
 /*--------------- PERFIL POLICIA ---------------*/
 
 .divInfo{
-    padding: 1.13em 0 1.11em 0;
+    padding-top: 1.13em;
 }
+
+@media (max-width: 850px) { /* Adjust the maximum width as needed */
+    .btns {
+      display: block;
+      width: 100%;
+      margin-bottom: 5px; /* Adjust spacing between buttons if needed */
+    }
+  }

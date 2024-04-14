@@ -30,8 +30,14 @@
           </ul>
         </li>
 
-        <li class="nav-item">
-          <a href="/perfilPolicia" class="nav-link"> Perfil</a>
+        <li class="nav-item dropdown">
+          <a href="" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-bs-toggle="dropdown">
+            Perfil
+          </a>
+          <ul class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item bi bi-person-fill" href="/perfilPolicia" > Perfil </a></li>
+            <li><a class="dropdown-item bi bi-person-fill" href="/postosPolicia" > Postos de Polícia </a></li>
+          </ul>
         </li>
 
         <li class="nav-item">

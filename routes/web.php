@@ -77,6 +77,9 @@ Route::get('/registarObjPerdido', function () {
 Route::get('/teste', function () {
     return view('teste');
 });
+Route::get('/postosPolicia', function () {
+    return view('postosPolicia');
+});
 
 
 #APIS--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -37,7 +37,7 @@ function guardarMudancas() {
     pedido.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var idPolicia = JSON.parse(pedido.responseText);
-            let json = '{"nome":"' + document.getElementsByName("nome")[0].value.trim() + '", "idInterno":' + document.getElementsByName("numero_interno")[0].value.trim() + ', "postoId":' + document.getElementsByName("posto_policia")[0].value.trim() + '}';
+            let json = '{"nome":"' + document.getElementsByName("nome")[0].value.trim() + '", "idInterno":"' + document.getElementsByName("numero_interno")[0].value.trim() + '", "postoId":' + document.getElementsByName("posto_policia")[0].value.trim() + '}';
             console.log(json);
             let JsonParse = JSON.parse(json);
             let enviarDados = new XMLHttpRequest();

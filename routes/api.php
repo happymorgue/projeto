@@ -53,6 +53,9 @@ Route::delete('/regular/dono/{regularId}/removerObjetoPerdido/{objetoPerdidoId}'
 Route::get('/regular/dono/{regularId}/encontrarObjetoPorCategoria/{objetoPerdidoId}', [UtilizadoresDonoController::class,'encontrarObjetoPorCategoria']);
 Route::get('/regular/dono/{regularId}/encontrarObjetoPorDescricao/{objetoPerdidoId}', [UtilizadoresDonoController::class,'encontrarObjetoPorDescricao']);
 
+Route::get('/regular/dono/{regularId}/registarPossivelDono/{ObjetoAchadoId}', [UtilizadoresDonoController::class,'registarPossivelDono']);
+Route::get('/regular/dono/{regularId}/confirmarDono/{ObjetoAchadoId}/{ObjetoPerdidoId}', [UtilizadoresDonoController::class,'confirmarDono']);
+
 
 #UTILIZADORES POLICIA
 Route::put('/policia', [UtilizadoresPoliciaController::class,'UpdatePoliciaPUT']);
@@ -69,9 +72,10 @@ Route::get('/policia/{policiaId}/verHistoricoObjetosEntregues', [UtilizadoresPol
 Route::get('/policia/{policiaId}/verObjetosPerdidos', [UtilizadoresPoliciaController::class,'verObjetosPerdidos']);
 Route::post('/policia/{policiaId}/registarObjetoAchado', [UtilizadoresPoliciaController::class,'registarObjetoAchado']);
 Route::post('/policia/{policiaId}/atualizarObjetoAchado/{objetoId}', [UtilizadoresPoliciaController::class,'atualizarObjetoAchado']);
+Route::delete('/policia/{policiaId}/removerObjetoAchado/{objetoId}', [UtilizadoresPoliciaController::class,'removerObjetoAchado']);
 
 Route::get('/policia/{policiaId}/registarPossivelDono/{foundObjectId}/{regularId}', [UtilizadoresPoliciaController::class,'registarPossivelDono']);
-Route::get('/policia/{policiaId}/registarObjetoCorrespondente/{foundObjectId}/{lostObjectId}', [UtilizadoresPoliciaController::class,'registarObjetoCorrespondente']);
+Route::get('/policia/{policiaId}/registaDono/{foundObjectId}/{lostObjectId}', [UtilizadoresPoliciaController::class,'registarObjetoCorrespondente']);
 Route::get('/policia/{policiaId}/registarEntrega/{foundObjectId}', [UtilizadoresPoliciaController::class,'registarEntrega']);
 
 #UTILIZADORES LICITANTE
@@ -85,6 +89,16 @@ Route::get('/regular/licitante/{regularId}/subscreverLeilao/{leilaoId}', [Utiliz
 Route::get('/regular/licitante/{regularId}/anularSubscreverLeilao/{leilaoId}', [UtilizadoresLicitanteController::class,'anularSubscreverLeilao']);
 
 #AVALIADOR
+
+#SO UMA VERSAO DEMO, DEPOIS ALTERAR
+Route::put('avaliador/', [AvaliadorController::class, 'atualizarAvaliadorPUT']);
+Route::get('avaliador/{avaliadorId}', [AvaliadorController::class, 'obterAvaliador']);
+Route::post('avaliador/{avaliadorId}', [AvaliadorController::class, 'atualizarAvaliadorPOST']);
+Route::delete('avaliador/{avaliadorId}', [AvaliadorController::class, 'apagarAvaliador']);
+
+Route::get('avaliador/login/{email}/{password}', [AvaliadorController::class, 'login']);
+Route::get('avaliador/logout', [AvaliadorController::class, 'logout']);
+
 Route::put('avaliador/{avaliadorId}/categoria', [AvaliadorController::class, 'updateCategoriaPUT']);
 Route::post('avaliador/{avaliadorId}/categoria', [AvaliadorController::class, 'createCategoria']);
 Route::get('avaliador/{avaliadorId}/categoria/{categoriaId}', [AvaliadorController::class, 'getCategoria']);
@@ -123,4 +137,5 @@ Route::get('/convertUserEmailRegularId', [FuncionalidadesExtraController::class,
 Route::get('/convertUserEmailPoliciaId', [FuncionalidadesExtraController::class,'convertUserEmailPoliciaId']);
 Route::get('/obterPostosPolicia', [FuncionalidadesExtraController::class,'obterPostosPolicia']);
 Route::get('/obterCategorias', [FuncionalidadesExtraController::class,'obterCategorias']);
-Route::get('/obterAtributos', [FuncionalidadesExtraController::class,'obterAtributos']);
+Route::get('/obterAtributos/{categoriaId}', [FuncionalidadesExtraController::class,'obterAtributos']);
+Route::post('/uploadImage', [FuncionalidadesExtraController::class,'uploadImage']);

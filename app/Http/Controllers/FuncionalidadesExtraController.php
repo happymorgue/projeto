@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -63,4 +63,33 @@ class FuncionalidadesExtraController extends Controller
         $atributos = DB::table('atributo')->where('categoria_id', $categoriaId)->get();
         return response()->json($atributos);
     }
+
+    public function uploadImage()
+{
+    // Check if the file was uploaded without error
+    if(isset($_FILES['imagem']) && $_FILES['imagem']['error'] == 0) {
+        // Get the file details
+        $file_tmp_name = $_FILES['imagem']['tmp_name'];
+        $file_type = $_FILES['imagem']['type'];
+
+        // Generate a unique name for the file
+        $file_name = time() . '_' . rand(1000, 9999);
+
+        // Append the original extension to the new file name
+        $file_extension = pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION);
+        $file_name .= '.' . $file_extension;
+
+        // Define the directory where you want to save the image
+        $upload_dir = 'public/imagens_objetos/';
+
+        // Use the Storage facade to move the uploaded file to the specified directory
+        if(Storage::putFileAs($upload_dir, new \Illuminate\Http\File($file_tmp_name), $file_name)) {
+            return $file_name;
+        } else {
+            echo 'Error uploading image';
+        }
+    } else {
+        echo 'No image uploaded or error in upload';
+    }
+}
 }

@@ -34,22 +34,28 @@ function getProfile() {
 
 function guardarMudancas() {
     let pedido = new XMLHttpRequest();
+    console.log("ola");
     pedido.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
+            console.log("ola");
             var idPolicia = JSON.parse(pedido.responseText);
-            let json = '{"nome":"' + document.getElementsByName("nome")[0].value.trim() + '", "idInterno":' + document.getElementsByName("numero_interno")[0].value.trim() + ', "postoId":' + document.getElementsByName("posto_policia")[0].value.trim() + '}';
+            let json = '{"nome":"' + document.getElementsByName("nome")[0].value.trim() + '", "idInterno":"' + document.getElementsByName("numero_interno")[0].value.trim() + '", "postoId":' + document.getElementsByName("posto_policia")[0].value.trim() + '}';
             console.log(json);
             let JsonParse = JSON.parse(json);
             let enviarDados = new XMLHttpRequest();
+            enviarDados.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    window.location.replace("/perfilPolicia");
+                }
+            }
             enviarDados.open("POST", "/api/policia/" + idPolicia, true);
             enviarDados.setRequestHeader("Content-Type", "application/json");
             enviarDados.send(JSON.stringify(JsonParse));
-            window.location.replace("/perfilPolicia");
+
         }
     }
     pedido.open("GET", "/api/convertUserEmailPoliciaId", true)
     pedido.send();
-
 }
 
 function carregarPostos(posto) {

@@ -15,8 +15,8 @@
               <div class="d-flex flex-column align-items-center text-center">
                 <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
                 <div class="mt-3">
-                  <h4 name="nome_1" id="nome_1">John Doe</h4>
-                  <p class="text-muted font-size-sm">Policia</p>
+                  <h4>John Doe</h4>
+                  <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
                 </div>
               </div>
             </div>

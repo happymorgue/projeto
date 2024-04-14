@@ -16,8 +16,8 @@
                     <div class="d-flex flex-column align-items-center text-center">
                       <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="profile picture" class="rounded-circle" width="150">
                       <div class="mt-3">
-                        <h4>John Doe</h4>
-                        <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                      <h4  name="nome1" id="nome1"> </h4>
+                        <p class="text-muted font-size-sm">Dono e Licitante</p>
                       </div>
                     </div>
                   </div>

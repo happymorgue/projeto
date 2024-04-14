@@ -16,8 +16,8 @@
                     <div class="d-flex flex-column align-items-center text-center">
                       <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
                       <div class="mt-3">
-                        <h4>John Doe</h4>
-                        <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                        <h4  name="nome1" id="nome1"> </h4>
+                        <p class="text-muted font-size-sm">Policia</p>
                       </div>
                     </div>
                   </div>
@@ -25,7 +25,6 @@
               </div>
               <div class="col-md-8">
                 <div class="card mb-3 divInfo">
-                  <!--<h3 class="text-center pt-3">Informações Pessoais</h3>-->
                       <div class="card-body">
                         <div class="row">
                           <div class="col-sm-4">
@@ -36,11 +35,11 @@
                           </div>
                         </div>
                     <hr>
-                        <div class="row">
-                          <div class="col-sm-3">
+                    <div class="row">
+                          <div class="col-sm-4">
                             <h6 class="mb-0">Email</h6>
                           </div>
-                          <div class="col-sm-9 text-secondary" name="email" id="email">
+                          <div class="col-sm-6 text-secondary" name="email" id="email">
 
                           </div>
                         </div>

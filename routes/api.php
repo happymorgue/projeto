@@ -123,4 +123,5 @@ Route::get('/convertUserEmailRegularId', [FuncionalidadesExtraController::class,
 Route::get('/convertUserEmailPoliciaId', [FuncionalidadesExtraController::class,'convertUserEmailPoliciaId']);
 Route::get('/obterPostosPolicia', [FuncionalidadesExtraController::class,'obterPostosPolicia']);
 Route::get('/obterCategorias', [FuncionalidadesExtraController::class,'obterCategorias']);
-Route::get('/obterAtributos', [FuncionalidadesExtraController::class,'obterAtributos']);
+Route::get('/obterAtributos/{categoriaId}', [FuncionalidadesExtraController::class,'obterAtributos']);
+Route::post('/uploadImage', [FuncionalidadesExtraController::class,'uploadImage']);

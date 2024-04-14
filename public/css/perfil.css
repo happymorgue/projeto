@@ -90,19 +90,6 @@ body{
 }
 
 
-.btn-ativar{
-    background-color: #109121 !important;
-    color: white !important;
-    height: 2.3em;
-    width: 8.9em;
-}
-
-.btn-ativar:hover{
-    background-color: #2ba93c !important;
-    color: white !important;
-}
-
-
 .btn-apagar{
     background-color: #e00a0a !important;
     color: white !important;

@@ -72,9 +72,6 @@
                             <a class="btn btn-desativar" href="/editPerfilPolicia">Desativar Conta</a>
                           </div>
                           <div class="col-md-2 m-2">
-                            <a class="btn btn-ativar" href="/editPerfilPolicia">Ativar Conta</a>
-                          </div>
-                          <div class="col-md-2 m-2">
                             <a class="btn btn-apagar" href="/editPerfilPolicia">Apagar Conta</a>
                           </div>
                         </div>

@@ -106,9 +106,6 @@
                         <a class="btn btn-desativar" href="">Desativar Conta</a>
                       </div>
                       <div class="col-md-2 p-1">
-                        <a class="btn btn-ativar" href="">Ativar Conta</a>
-                      </div>
-                      <div class="col-md-2 p-1">
                         <a class="btn btn-apagar" href="">Apagar Conta</a>
                       </div>
                     </div>

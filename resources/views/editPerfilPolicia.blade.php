@@ -54,10 +54,10 @@
 							</div>
               <hr>
 			  				<div class="row justify-content-center botoes">
-								<div class="col-md-2 m-2">
+								<div class="col-md-6 col-lg-2 mx-2 my-1">
 									<a class="btn btn-save" onclick=guardarMudancas()>Salvar</a>
 								</div>
-								<div class="col-md-2 m-2">
+								<div class="col-md-6 col-lg-2 mx-2 my-1">
 									<a class="btn btn-cancelar" href="/perfilPolicia">Cancelar</a>
 								</div>
 							</div>

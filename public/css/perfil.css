@@ -68,7 +68,6 @@ body{
     color: white !important;
     height: 2.3em;
     width: 8.9em;
-    padding: 3em;
 }
 
 .btn-edit:hover{
@@ -115,7 +114,7 @@ body{
     background-color: #104c91 !important;
     color: white !important;
     height: 2.3em;
-    width: 8.9em;
+    width: 7.5em;
 }
 
 .btn-save:hover{
@@ -127,7 +126,7 @@ body{
     background-color: #e00a0a !important;
     color: white !important;
     height: 2.3em;
-    width: 8.9em;
+    width: 7.5em;
 }
 
 .btn-save:hover{
@@ -141,3 +140,10 @@ body{
     padding-top: 1.13em;
 }
 
+@media (max-width: 850px) { /* Adjust the maximum width as needed */
+    .btns {
+      display: block;
+      width: 100%;
+      margin-bottom: 5px; /* Adjust spacing between buttons if needed */
+    }
+  }

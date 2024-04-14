@@ -98,17 +98,19 @@
                       </div>
                     </div>
                     <hr>
-                    <div class="row">
-                      <div class="col-md-2 m-2">
-                        <a class="btn btn-edit" href="/editPerfilPolicia">Editar Dados</a>
+
+                    <div class="row justify-content-center">
+                        <div class="col-md-4 col-lg-2 col-sm-8 m-1 "> 
+                          <a class="btn btns btn-edit" href="/editPerfil">Editar Dados</a>
+                        </div>
+                        <div class="col-md-4 col-lg-2 col-sm-8  m-1"> 
+                          <a class="btn btns btn-desativar" href="">Desativar Conta</a>
+                        </div>
+                        <div class="col-md-4 col-lg-2 col-sm-8 m-1"> 
+                          <a class="btn btns btn-apagar" href="">Apagar Conta</a>
+                        </div>
                       </div>
-                      <div class="col-md-2 m-2">
-                        <a class="btn btn-desativar" href="">Desativar Conta</a>
-                      </div>
-                      <div class="col-md-2 m-2">
-                        <a class="btn btn-apagar" href="">Apagar Conta</a>
-                      </div>
-                    </div>
+
                     </div>
                   </div>
                 </div>

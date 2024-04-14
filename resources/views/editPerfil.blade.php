@@ -95,10 +95,10 @@
               <hr>
 							<div class="row">
 								<div class="col-md-2 m-2">
-									<a class="btn btn-save" onclick=guardarMudancas()>Salvar</a>
+									<a class="btn btns btn-save" onclick=guardarMudancas()>Salvar</a>
 								</div>
 								<div class="col-md-2 m-2">
-									<a class="btn btn-cancelar" href="/perfilRegular">Cancelar</a>
+									<a class="btn btns btn-cancelar" href="/perfilRegular">Cancelar</a>
 								</div>
 							</div>
 						</div>

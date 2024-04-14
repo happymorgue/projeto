@@ -49,9 +49,6 @@
 								</div>
 								<div class="col-sm-5 text-secondary">
 									<select class="form-select" name="posto_policia" id="posto_policia">
-										<option value="selecionar"selected>Selecione</option>
-										<option value="18E">PSP - 18ª Esquadra</option>
-										<option value="19E">PSP - 19ª Esquadra</option>
 									</select>
 								</div>
 							</div>

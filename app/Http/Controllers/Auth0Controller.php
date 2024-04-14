@@ -50,23 +50,18 @@ class Auth0Controller extends Controller
     public function callback()
     {
         session_start();
-        echo "ola";
         #Obter os parametros de troca de credenciais
         if (null != $this->auth0->getExchangeParameters()) {
             $this->auth0->exchange();
         }
-        echo "ola";
         #Obter as credenciais do utilizador
         $user = $this->auth0->getCredentials()?->user;
         $_SESSION['user_email'] = $user['name'];
         Session::put('user_email', $user['name']);
 
-        echo "ola";
         #Verificar se um utilizador com esse email ja existe
         $utilizador_DB = DB::table('utilizador')->where('email', $_SESSION['user_email'])->first();
         if (null == $utilizador_DB) {
-
-            echo "ola";
             #Se nao existir, verifica se no registo qual o user tipo que escolheu, ou em caso de nao haver, fica o Regular como default
             if ($_SESSION["user_tipo"] == 'Regular') {
                 #Iniciar a transacao para que nao haja qualquer engano na logica das insercoes nas tabelas
@@ -95,12 +90,10 @@ class Auth0Controller extends Controller
                 exit;
             }
         } else {
-            echo "ola";
             #Se o utilizador ja exisir, buscar em cada uma das tabelas possiveis para averiguar qual o seu tipo
             $utilizador_DB_regular = DB::table('regular')->where('user_id', $utilizador_DB->id)->first();
             $utilizador_DB_policia = DB::table('policia')->where('user_id', $utilizador_DB->id)->first();
 
-            echo "ola";
             #Redirecionar o utilizador consoante o seu tipo na base de dados
             if (null != $utilizador_DB_regular) {
                 header('Location: /homeGeral');

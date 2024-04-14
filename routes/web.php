@@ -74,6 +74,10 @@ Route::get('/registarObjPerdido', function () {
     return view('registoObjPerdido');
 });
 
+Route::get('/teste', function () {
+    return view('teste');
+});
+
 
 #APIS--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

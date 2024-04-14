@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth0Controller;
+use App\Http\Controllers\AvaliadorController;
+use App\Http\Controllers\FuncionalidadesExtraController;
 use App\Http\Controllers\NaoUtilizadoresController;
 use App\Http\Controllers\UtilizadoresController;
 use App\Http\Controllers\UtilizadoresRegularController;
@@ -62,10 +64,11 @@ Route::post('/policia/{policiaId}/postoPolicia', [UtilizadoresPoliciaController:
 Route::get('/policia/{policiaId}/postoPolicia/{postoId}', [UtilizadoresPoliciaController::class,'getPoliciaPosto']);
 Route::post('/policia/{policiaId}/postoPolicia/{postoId}', [UtilizadoresPoliciaController::class,'UpdatePostoPoliciaPOST']);
 Route::delete('/policia/{policiaId}/postoPolicia/{postoId}', [UtilizadoresPoliciaController::class,'DeletePostoPolicia']);
-
 Route::get('/policia/{policiaId}/verHistoricoObjetosEncontrados', [UtilizadoresPoliciaController::class,'verHistoricoObjetosEncontrados']);
 Route::get('/policia/{policiaId}/verHistoricoObjetosEntregues', [UtilizadoresPoliciaController::class,'verHistoricoObjetosEntregues']);
 Route::get('/policia/{policiaId}/verObjetosPerdidos', [UtilizadoresPoliciaController::class,'verObjetosPerdidos']);
+Route::post('/policia/{policiaId}/registarObjetoAchado', [UtilizadoresPoliciaController::class,'registarObjetoAchado']);
+Route::post('/policia/{policiaId}/atualizarObjetoAchado/{objetoId}', [UtilizadoresPoliciaController::class,'atualizarObjetoAchado']);
 
 Route::get('/policia/{policiaId}/registarPossivelDono/{foundObjectId}/{regularId}', [UtilizadoresPoliciaController::class,'registarPossivelDono']);
 Route::get('/policia/{policiaId}/registarObjetoCorrespondente/{foundObjectId}/{lostObjectId}', [UtilizadoresPoliciaController::class,'registarObjetoCorrespondente']);
@@ -81,6 +84,27 @@ Route::get('/regular/licitante/{regularId}/pagamento/{leilaoId}', [UtilizadoresL
 Route::get('/regular/licitante/{regularId}/subscreverLeilao/{leilaoId}', [UtilizadoresLicitanteController::class,'subscreverLeilao']);
 Route::get('/regular/licitante/{regularId}/anularSubscreverLeilao/{leilaoId}', [UtilizadoresLicitanteController::class,'anularSubscreverLeilao']);
 
+#AVALIADOR
+Route::put('avaliador/{avaliadorId}/categoria', [AvaliadorController::class, 'updateCategoriaPUT']);
+Route::post('avaliador/{avaliadorId}/categoria', [AvaliadorController::class, 'createCategoria']);
+Route::get('avaliador/{avaliadorId}/categoria/{categoriaId}', [AvaliadorController::class, 'getCategoria']);
+Route::post('avaliador/{avaliadorId}/categoria/{categoriaId}', [AvaliadorController::class, 'updateCategoriaPOST']);
+Route::delete('avaliador/{avaliadorId}/categoria/{categoriaId}', [AvaliadorController::class, 'deleteCategoria']);
+
+Route::put('avaliador/{avaliadorId}/categoria/{categoriaId}/atributo', [AvaliadorController::class, 'updateAtributoPUT']);
+Route::post('avaliador/{avaliadorId}/categoria/{categoriaId}/atributo', [AvaliadorController::class, 'createAtributo']);
+Route::get('avaliador/{avaliadorId}/categoria/{categoriaId}/atributo/{atributoId}', [AvaliadorController::class, 'getAtributo']);
+Route::post('avaliador/{avaliadorId}/categoria/{categoriaId}/atributo/{atributoId}', [AvaliadorController::class, 'updateAtributoPOST']);
+Route::delete('avaliador/{avaliadorId}/categoria/{categoriaId}/atributo/{atributoId}', [AvaliadorController::class, 'deleteAtributo']);
+
+Route::post('avaliador/{avaliadorId}/avaliarObjeto/{objectId}', [AvaliadorController::class, 'avaliarObjeto']);
+Route::post('avaliador/{avaliadorId}/criarLeilao/{objectId}', [AvaliadorController::class, 'criarLeilao']);
+Route::get('avaliador/{avaliadorId}/iniciarLeilao/{leilaoId}', [AvaliadorController::class, 'iniciarLeilao']);
+Route::get('avaliador/{avaliadorId}/terminarLeilao/{objectId}', [AvaliadorController::class, 'terminarLeilao']);
+
+Route::get('avaliador/{avaliadorId}/utilizador/conta/{utilizadorId}/desativar', [AvaliadorController::class, 'desativarUtilizador']);
+Route::get('avaliador/{avaliadorId}/utilizador/conta/{utilizadorId}/ativar', [AvaliadorController::class, 'ativarUtilizador']);
+
 
 
 #NAO UTILIZADORES
@@ -95,4 +119,8 @@ Route::delete('/nUtilizador/{nUtilizadorId}', [NaoUtilizadoresController::class,
 
 #TRATAMENTOS AUXILIARES
 #OBTER ID REGULAR ATRAVES DO EMAIL DE UTILIZADOR
-Route::get('/convertUserEmailRegularId', [UtilizadoresRegularController::class,'convertUserEmailRegularId']);
+Route::get('/convertUserEmailRegularId', [FuncionalidadesExtraController::class,'convertUserEmailRegularId']);
+Route::get('/convertUserEmailPoliciaId', [FuncionalidadesExtraController::class,'convertUserEmailPoliciaId']);
+Route::get('/obterPostosPolicia', [FuncionalidadesExtraController::class,'obterPostosPolicia']);
+Route::get('/obterCategorias', [FuncionalidadesExtraController::class,'obterCategorias']);
+Route::get('/obterAtributos', [FuncionalidadesExtraController::class,'obterAtributos']);

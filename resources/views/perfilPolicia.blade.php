@@ -56,7 +56,7 @@
                     <hr>
                     <div class="row">
                       <div class="col-sm-12">
-                        <a class="btn btn-edit btn-primary" target="__blank" href="/editPerfilPolicia">Editar</a>
+                        <a class="btn btn-edit btn-primary" href="/editPerfilPolicia">Editar</a>
                       </div>
                     </div>
                   </div>
@@ -70,4 +70,4 @@
 @endsection
 
 <link href="{{ asset('css/perfil.css') }}" rel="stylesheet">
-<script src="{{ asset('js/editPerfilPolicia.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/perfilPolicia.js') }}" type="text/javascript"></script>

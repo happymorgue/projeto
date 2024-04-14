@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Auth0\SDK\Auth0;
 use Auth0\SDK\Configuration\SdkConfiguration;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class Auth0Controller extends Controller
 {
@@ -58,6 +59,7 @@ class Auth0Controller extends Controller
         #Obter as credenciais do utilizador
         $user = $this->auth0->getCredentials()?->user;
         $_SESSION['user_email'] = $user['name'];
+        Session::put('user_email', $user['name']);
 
         echo "ola";
         #Verificar se um utilizador com esse email ja existe
@@ -75,21 +77,21 @@ class Auth0Controller extends Controller
                     DB::table('regular')->insert(['user_id' => $id_table_user]);
                 });
                 #Redirecionar o utilizador para a sua home (Por agora esta /dono por estar na fase teste, depois sera /home)
-                header('Location: /dono');
+                header('Location: /homeGeral');
                 exit;
             } elseif ($_SESSION["user_tipo"] == 'Policia') {
                 DB::transaction(function () {
                     $id_table_user = DB::table('utilizador')->insertGetId(['email' => $_SESSION['user_email'], 'ativo' => 'S']);
                     DB::table('policia')->insert(['user_id' => $id_table_user]);
                 });
-                header('Location: /policia');
+                header('Location: /homePolicia');
                 exit;
             } else {
                 DB::transaction(function () {
                     $id_table_user = DB::table('utilizador')->insertGetId(['email' => $_SESSION['user_email'], 'ativo' => 'S']);
                     DB::table('regular')->insert(['user_id' => $id_table_user]);
                 });
-                header('Location: /dono');
+                header('Location: /homeGeral');
                 exit;
             }
         } else {
@@ -101,10 +103,10 @@ class Auth0Controller extends Controller
             echo "ola";
             #Redirecionar o utilizador consoante o seu tipo na base de dados
             if (null != $utilizador_DB_regular) {
-                header('Location: /dono');
+                header('Location: /homeGeral');
                 exit;
             } elseif (null != $utilizador_DB_policia) {
-                header('Location: /policia');
+                header('Location: /homePolicia');
                 exit;
             }
 
@@ -114,8 +116,12 @@ class Auth0Controller extends Controller
     #Metodo para fazer logout do utilizador
     public function logout()
     {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
         #Realizar o Logout e devolver o utilizador a pagina home da aplicacao, sem qualquer credencial
         header('Location: ' . $this->auth0->logout());
+        session_destroy();
         header('Location: /');
         exit;
     }

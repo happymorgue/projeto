@@ -45,4 +45,23 @@ class UtilizadoresController extends Controller
             echo "Não tem permissões para receber notificações deste utilizador";
         }
     }
+
+
+    #Quando estiver pronto, alterar para tambem incluir no json o tipo de objeto, perdido/achado e retirar da pool de objetos a retornar os que ja foram reclamados
+    #Metodo para buscar objetos por categoria
+    public function buscarObjetosPorCategoria($catId){
+        $objetos=DB::table('objeto')->where('categoria_id', $catId)->get();
+        $json=array('objetos'=>$objetos);
+        return response()->json($json);
+    }
+
+    #Quando estiver pronto, alterar para tambem incluir no json o tipo de objeto, perdido/achado e retirar da pool de objetos a retornar os que ja foram reclamados
+    #Metodo para buscar objetos por descricao
+    public function buscarObjetosPorDescricao(Request $request){
+        $data = $request->json()->all();
+        $objetos=DB::table('objeto')->where('descricao', 'like','%' . $data['descricao'] . '%')->orWhere('categoria_id', 'like','%' . $data['descricao'])->orWhere('categoria_id', 'like',$data['descricao'] . '%')->get();
+        $json=array('objetos'=>$objetos);
+        return response()->json($json);
+    }
+
 }

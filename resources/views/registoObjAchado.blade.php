@@ -23,7 +23,7 @@
                   </div>
                 </div>
               </div>
-              <form action="#!">
+              <form id="form" action="#!">
                 <div class="row gy-3 gy-md-4 overflow-hidden">
                   <div class="col-12">
                     <label for="nome" class="form-label">Nome <span class="text-danger">*</span></label>
@@ -37,10 +37,10 @@
                     <label for="categoria" class="form-label">Categoria  <span class="text-danger">*</span></label>
                     <select class="form-control" name="categoria" id="categoria" required>
                       <option value="">Selecione</option>
-                      <option value="categoria1">Categoria 1</option>
-                      <option value="categoria2">Categoria 2</option>
-                      <option value="categoria3">Categoria 3</option>
                     </select>
+                  </div>
+                  <div id="atributos">
+
                   </div>
                   <div class="col-12">
                     <label for="intervaloTempo" class="form-label">Intervalo de Tempo <span class="text-danger">*</span></label>
@@ -81,7 +81,7 @@
                 </div>
                   <div class="col-12">
                     <div class="d-grid">
-                      <button class="btn bsb-btn-xl btn-primary" type="submit">Registar</button>
+                      <button class="btn bsb-btn-xl btn-primary" onclick="registoObjeto()" type="submit">Registar</button>
                     </div>
                   </div>
                 </div>
@@ -96,3 +96,4 @@
   @endsection
 
   <link href="{{ asset('css/registoObjs.css') }}" rel="stylesheet">
+  <script src="{{ asset('js/registarObjetoAchado.js') }}" type="text/javascript"></script>

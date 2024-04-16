@@ -1,0 +1,94 @@
+:root{
+
+  --bege-color: #efc9af;
+  --bege-branco: #f5f5dc;
+  --azul-claro: #1f8ac0;
+  --azul-escuro: #2320b5;
+  --azul-intermedio:  #104c91;
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+/* espaço entre nav e conteudo da pagina */
+body::before {
+  display: block;
+  content: '';
+  height: 5em;
+}
+
+/*-------------- PRIMEIRA NAVBAR -----------------*/
+
+
+.cor-nav-bar{
+  background-color: var(--azul-intermedio) !important;
+}
+
+.navbar-brand {
+  /* tamanho letra 2HandCloth */
+  font-size: 2em;
+}
+
+.logo-cogitavi {
+  height: 1.2em;
+}
+
+/*------------- FOOTER --------------------*/ 
+
+#footer {
+  background-color:var(--azul-intermedio);
+  color: var(--bege-branco) !important;
+}
+
+/*------------ SHOWCASE -----------------*/
+
+.section-showcase {
+  margin-top: -1em;
+}
+
+.btn_vender {
+  background-color: var(--azul-intermedio);
+  color: var(--bege-branco);
+}
+
+.quadrado-showcase {
+  background-color: rgba(31, 138, 192, 0.75); /* traduzido para rgb por causa da opacidade (o ultimo valor) */
+  padding: 3em;
+  border-radius: 0.25em;
+  margin-top: 1em;
+}
+
+#imagemDes {
+  margin-top: -6em;
+  height: 35em;
+  width: 30em;
+  margin-left: -1.9em;
+
+}
+
+#section {
+  margin-top: 0.9em;
+}
+
+.separate {
+  margin-bottom: 0.25em;
+}
+
+.separar {
+  margin-bottom: 10em;
+}
+
+.link_footer {
+  /* color: var(--bege-branco); */
+  color: #FFFFFF8C;
+}
+
+.link_footer:hover {
+  color: white;
+}
+
+
+
+
+
+
+
+

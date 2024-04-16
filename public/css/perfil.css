@@ -1,0 +1,179 @@
+:root{
+    --nav-color:  #104c91;
+    --section-color:  #1f8ac0;
+    --delete-color: #e00a0a;
+}
+
+
+.me-2 {
+    margin-right: .5rem!important;
+}
+
+body{
+    margin-top:20px;
+    color: #1a202c;
+    text-align: left;
+    background-color: #e2e8f0;    
+}
+
+.main-body {
+    padding: 15px;
+}
+
+.card {
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 2rem;
+}
+
+.gutters-sm {
+    margin-right: -8px;
+    margin-left: -8px;
+}
+
+.gutters-sm>.col, .gutters-sm>[class*=col-] {
+    padding-right: 8px;
+    padding-left: 8px;
+}
+.mb-3, .my-3 {
+    margin-bottom: 1rem!important;
+}
+
+.bgPerfil{
+    background-color: #cde3fc;
+}
+
+.bg-gray-300 {
+    background-color: #e2e8f0;
+}
+.h-100 {
+    height: 100%!important;
+}
+.shadow-none {
+    box-shadow: none!important;
+}
+
+.mb-0{
+    line-height: 2.2;
+}
+
+/* --------------- BOTÕES -------------------*/
+
+.btn-edit{
+    background-color: var(--nav-color) !important;
+    color: white !important;
+    height: 2.3em;
+    width: 8.9em;
+}
+
+.btn-edit:hover{
+    background-color: var(--section-color) !important;
+    color: white !important;
+}
+
+
+.btn-desativar{
+    background-color: #e0b000 !important;
+    color: white !important;
+    height: 2.3em;
+    width: 8.9em;
+}
+
+.btn-desativar:hover{
+    background-color: #edda30 !important;
+    color: white !important;
+}
+
+.btn-apagar{
+    /* background-color: #e00a0a !important; */
+    color: var(--delete-color) !important; 
+    height: 2.3em;
+    width: 8.9em;
+}
+
+.btn-apagar:hover{
+    border: 1px solid  var(--delete-color) !important;
+}
+
+.botoes{
+    padding: 0.5em 0 0.5em 0;
+}
+
+/*-------------------EDIT PERFIL----------------------*/
+.me-2 {
+    margin-right: .5rem!important;
+}
+
+.btn-save{
+    background-color: var(--nav-color) !important;
+    color: white !important;
+    height: 2.3em;
+    width: 7.5em;
+}
+
+.btn-save:hover{
+    background-color: var(--section-color) !important;
+    color: white !important;
+}
+
+.btn-cancelar{
+    /* background-color: #e00a0a !important; */
+    color: var(--nav-color) !important;
+    height: 2.3em;
+    width: 7.5em;
+}
+
+
+.btn-cancelar:hover{
+    border: 1px solid  var(--section-color) !important;
+
+}
+
+/* .btn-save:hover{
+    background-color: white !important;
+    color: white !important;
+} */
+
+/* .btn-save:hover{
+    background-color: #f04747 !important;
+    color: white !important;
+} */
+
+/*--------------- PERFIL POLICIA ---------------*/
+
+.divInfo{
+    padding-top: 1.13em;
+}
+
+@media (max-width: 850px) { /* Adjust the maximum width as needed */
+    .btns {
+      display: block;
+      width: 100%;
+      margin-bottom: 5px; /* Adjust spacing between buttons if needed */
+    }
+  }
+
+.ccode{
+  display: flex;
+}
+
+.select{
+    text-align: center;
+    width: 10rem;
+}

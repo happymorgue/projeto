@@ -12,8 +12,7 @@
     <link href="{{ asset('bootstrap-5.0.2-dist/css/bootstrap.css') }}" rel="stylesheet">
     <!-- Your additional CSS -->
     <link href="{{ asset('css/geral.css') }}" rel="stylesheet">
-
-    <link rel="icon" href="{{ asset('lupa.png') }}" type="image/x-icon" >
+    <link rel="icon" href="{{ asset('logo_cogitavi_vbegebranco.png') }}" type="image/x-icon" >
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
@@ -22,6 +21,8 @@
     @include('partials.headerDL')
 
     @yield('content')
+
+    @include('partials.faq')
 
     @include('partials.footer')
 

@@ -39,7 +39,7 @@
 									<h6 class="mb-0">Número Interno</h6>
 								</div>
 								<div class="col-sm-5 text-secondary">
-									<input type="text" class="form-control" name="numero_interno" id="numero_interno" value="">
+									<input type="text" class="form-control" name="numero_interno" id="numero_interno" value="" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
 								</div>
 							</div>
               <hr>

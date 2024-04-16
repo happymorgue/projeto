@@ -70,6 +70,7 @@ function guardarMudancas() {
             let enviarDados = new XMLHttpRequest();
             enviarDados.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
+                    window.location.replace("/perfilRegular");
                 }
             }
             console.log("ola");
@@ -77,7 +78,6 @@ function guardarMudancas() {
             enviarDados.open("POST", "/api/regular/" + idRegular, true);
             enviarDados.setRequestHeader("Content-Type", "application/json");
             enviarDados.send(JSON.stringify(JsonParse));
-            window.location.replace("/perfilRegular");
         }
     }
     pedido.open("GET", "/api/convertUserEmailRegularId", true)

@@ -59,7 +59,7 @@
                   </div>
                   <div class="col-12">
                     <label for="telemovel_nUtilizador" class="form-label">Telemóvel de Quem Encontrou <span class="text-danger">*</span></label>
-                    <input type="telemovel_nUtilizador" class="form-control" name="telemovel_nUtilizador" id="telemovel_nUtilizador" value="" required>
+                    <input type="telemovel_nUtilizador" class="form-control" name="telemovel_nUtilizador" id="telemovel_nUtilizador"  minlength="9" maxlength="9" value="" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
                   </div>
                   <div class="col-12">
                     <label for="pais" class="form-label">País <span class="text-danger">*</span></label>

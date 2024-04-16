@@ -53,24 +53,7 @@
                       </div>
                     </div>
                     <hr>
-                    <div class="row">
-                      <div class="col-sm-4">
-                        <h6 class="mb-0">Género</h6>
-                      </div>
-                      <div class="col-sm-6 text-secondary" name="genero" id="genero">
-                        
-                      </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                      <div class="col-sm-4">
-                        <h6 class="mb-0">Morada</h6>
-                      </div>
-                      <div class="col-sm-6 text-secondary" name="morada" id="morada">
-                        
-                      </div>
-                    </div>
-                    <hr>
+
                     <div class="row">
                       <div class="col-sm-4">
                         <h6 class="mb-0">NIF</h6>
@@ -79,6 +62,17 @@
                         
                       </div>
                     </div>
+                <hr>
+
+                <div class="row">
+                      <div class="col-sm-4">
+                        <h6 class="mb-0">Morada</h6>
+                      </div>
+                      <div class="col-sm-6 text-secondary" name="morada" id="morada">
+                        
+                      </div>
+                    </div>
+
                     <hr>
                     <div class="row">
                       <div class="col-sm-4">
@@ -88,6 +82,7 @@
                         
                       </div>
                     </div>
+
                     <hr>
                     <div class="row">
                       <div class="col-sm-4">
@@ -98,10 +93,18 @@
                       </div>
                     </div>
                     <hr>
-
+                     
+                    <div class="row">
+                      <div class="col-sm-4">
+                        <h6 class="mb-0">Género</h6>
+                      </div>
+                      <div class="col-sm-6 text-secondary" name="genero" id="genero">
+                        
+                      </div>
+                    </div>
                     <div class="row justify-content-center">
                         <div class="col-md-4 col-lg-2 col-sm-8 m-1 "> 
-                          <a class="btn btns btn-edit" href="/editPerfil">Editar Dados</a>
+                          <a class="btn btns btn-edit" href="/editPerfilRegular">Editar Dados</a>
                         </div>
                         <div class="col-md-4 col-lg-2 col-sm-8  m-1"> 
                           <a class="btn btns btn-desativar" href="">Desativar Conta</a>

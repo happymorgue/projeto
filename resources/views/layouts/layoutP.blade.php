@@ -16,8 +16,6 @@
 
     @yield('content')
 
-    @include('partials.faq')
-
     @include('partials.footer')
 
     <!-- jQuery -->

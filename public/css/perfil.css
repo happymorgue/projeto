@@ -1,3 +1,9 @@
+:root{
+    --nav-color:  #104c91;
+    --section-color:  #1f8ac0;
+    --delete-color: #e00a0a;
+}
+
 
 .me-2 {
     margin-right: .5rem!important;
@@ -9,9 +15,11 @@ body{
     text-align: left;
     background-color: #e2e8f0;    
 }
+
 .main-body {
     padding: 15px;
 }
+
 .card {
     box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
 }
@@ -61,17 +69,21 @@ body{
     box-shadow: none!important;
 }
 
+.mb-0{
+    line-height: 2.2;
+}
+
 /* --------------- BOTÕES -------------------*/
 
 .btn-edit{
-    background-color: #104c91 !important;
+    background-color: var(--nav-color) !important;
     color: white !important;
     height: 2.3em;
     width: 8.9em;
 }
 
 .btn-edit:hover{
-    background-color: #1f8ac0 !important;
+    background-color: var(--section-color) !important;
     color: white !important;
 }
 
@@ -88,17 +100,15 @@ body{
     color: white !important;
 }
 
-
 .btn-apagar{
-    background-color: #e00a0a !important;
-    color: white !important;
+    /* background-color: #e00a0a !important; */
+    color: var(--delete-color) !important; 
     height: 2.3em;
     width: 8.9em;
 }
 
 .btn-apagar:hover{
-    background-color: #f04747 !important;
-    color: white !important;
+    border: 1px solid  var(--delete-color) !important;
 }
 
 .botoes{
@@ -111,28 +121,39 @@ body{
 }
 
 .btn-save{
-    background-color: #104c91 !important;
+    background-color: var(--nav-color) !important;
     color: white !important;
     height: 2.3em;
     width: 7.5em;
 }
 
 .btn-save:hover{
-    background-color: #1f8ac0 !important;
+    background-color: var(--section-color) !important;
     color: white !important;
 }
 
 .btn-cancelar{
-    background-color: #e00a0a !important;
-    color: white !important;
+    /* background-color: #e00a0a !important; */
+    color: var(--nav-color) !important;
     height: 2.3em;
     width: 7.5em;
 }
 
-.btn-save:hover{
+
+.btn-cancelar:hover{
+    border: 1px solid  var(--section-color) !important;
+
+}
+
+/* .btn-save:hover{
+    background-color: white !important;
+    color: white !important;
+} */
+
+/* .btn-save:hover{
     background-color: #f04747 !important;
     color: white !important;
-}
+} */
 
 /*--------------- PERFIL POLICIA ---------------*/
 
@@ -147,3 +168,12 @@ body{
       margin-bottom: 5px; /* Adjust spacing between buttons if needed */
     }
   }
+
+.ccode{
+  display: flex;
+}
+
+.select{
+    text-align: center;
+    width: 10rem;
+}

@@ -8,6 +8,7 @@ use App\Http\Controllers\UtilizadoresRegularController;
 use App\Http\Controllers\UtilizadoresDonoController;
 use App\Http\Controllers\UtilizadoresLicitanteController;
 use App\Http\Controllers\UtilizadoresPoliciaController;
+use App\Http\Controllers\ObjetosAchadosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,6 +82,15 @@ Route::get('/postosPolicia', function () {
     return view('postosPolicia');
 });
 
+Route::get('/objAchadosPolicia', [ObjetosAchadosController::class, 'index']);
+
+Route::get('/help', function () {
+    return view('help');
+});
+
+Route::get('/buscaObjPerdido', function () {
+    return view('objPerdidos');
+});
 
 #APIS--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

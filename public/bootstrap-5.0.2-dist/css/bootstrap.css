@@ -3691,6 +3691,7 @@ textarea.form-control-lg {
 
 .dropdown-menu.show {
   display: block;
+  margin-top: 1.1rem;
 }
 
 .dropdown-header {
@@ -3844,7 +3845,7 @@ textarea.form-control-lg {
 .nav-link {
   display: block;
   padding: 0.5rem 1rem;
-  color: #0d6efd;
+  color: red;
   text-decoration: none;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
@@ -10832,6 +10833,57 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+}
+
+/* texto do footer, cor?? font??? geral???*/
+.texto{
+  font-size: 2rem;
+  line-height: 1.25rem;
+
+  font-weight: 400;
+  color: #121314;
+  letter-spacing: .01875rem;
+  
+}
+
+.textofaq{
+  color: #34383c;
+  
+  
+}
+
+/* PERFIL DROPDOWN */
+/* hover para dropdown de perfil */
+.link:hover{
+  background-color: #f5f5f5;
+}
+/* espaçamento entre elementos para dropdown de perfil */
+.conta{
+  padding: 1rem;
+}
+/* linha para separar */
+.horizontal-line {
+  border-bottom: 0.05rem  solid #bfd1ec; /* Adjust the color and thickness as needed */
+  margin: 0.4rem 0; /* Adjust the margin as needed */
+}
+/* linha para separar */
+.horizontal-line2 {
+  border-bottom: 0.05rem  solid #bfd1ec; /* Adjust the color and thickness as needed */
+  margin: 0.4rem 0; /* Adjust the margin as needed */
+  width: 11rem;
+  margin:  0.4rem auto;
+}
+
+.editp{
+  width: 26rem;
+}
+
+.select{
+  width: 8rem;
+}
+
+.tel{
+  width: 17.2rem;
 }
 
 /*# sourceMappingURL=bootstrap.css.map */

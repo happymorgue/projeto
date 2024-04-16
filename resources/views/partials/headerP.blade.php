@@ -10,7 +10,7 @@
       <div class="d-lg-none d-md-flex d-sm-inline-flex justify-content-around">
         <div class="col-2-sm col-2-md">
           <div class="collapse navbar-collapse w-100 d-flex justify-content-center">
-            <a href="/homeGeral" class="navbar-brand"><img class="logo-cogitavi" src="{{ asset('logo_cogitavi_vbegebranco.png') }}"></a>
+            <a href="/homePolicia" class="navbar-brand"><img class="logo-cogitavi" src="{{ asset('logo_cogitavi_vbegebranco.png') }}"></a>
           </div>
         </div>
         <div class="col-2-sm col-2-md">
@@ -53,7 +53,10 @@
             Perfil
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-          <h5 class="conta" >Olá, P</h5> 
+         <div class="layout">
+         <h5 class="conta" >Olá,</h5> 
+          <h5 class="conta" name="nome2"></h5> 
+         </div>
           <div class="horizontal-line"></div>
             <li><a class="dropdown-item bi bi-person-fill" href="/perfilPolicia" > Perfil </a></li>
             <div class="horizontal-line2"></div>
@@ -70,3 +73,5 @@
     </div>
   </div>
 </nav>
+
+<script src="{{ asset('js/perfilPolicia.js') }}" type="text/javascript"></script>

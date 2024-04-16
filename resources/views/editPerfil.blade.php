@@ -13,7 +13,7 @@
           <div class="card">
             <div class="card-body">
               <div class="d-flex flex-column align-items-center text-center">
-                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="rounded-circle" width="150">
+                <img src="{{ asset('profile.png') }}" class="rounded-circle" width="150">
                 <div class="mt-3">
 				<h4  name="nome2" id="nome2"> </h4>
                     <p class="text-muted font-size-sm">Dono e Licitante</p>
@@ -77,7 +77,7 @@
 								</div>
 							</div>
               <!-- <hr> -->
-			  				<h4>Data de Nascimento</h4>
+							<h4>Data de Nascimento</h4>
 							<div class="row">
 								<div class="col-sm-2">
 									<select name="month" id="month" class="form-select">
@@ -94,42 +94,25 @@
 										<option value="10">Outubro</option>
 										<option value="11">Novembro</option>
 										<option value="12">Dezembro</option>
-
 									</select>
 								</div>
 								<div class="col-sm-2">
 									<select name="day" id="day" class="form-select">
 										<option value="">Dia</option>
-										<option value="">1</option>
-										<option value="">2</option>
-										<option value="">3</option>
-										<option value="">4</option>
-										<option value="">5</option>
-										<option value="">6</option>
-										<option value="">7</option>
-										<option value="">8</option>
-										<option value="">9</option>
-										<option value="">10</option>
-					
 									</select>
 								</div>
 								<div class="col-sm-2">
 									<select name="year" id="year" class="form-select">
 										<option value="">Ano</option>
-										<option value="">2002</option>
-										<option value="">2024</option>
+										<option value="2002">2002</option>
+										<option value="2024">2024</option>
 									</select>
 								</div>
 							</div>
 
-							<div class="row mb-3">
-								<div class="col-sm-4">
-									<h6 class="mb-0">Data de Nascimento</h6>
-								</div>
-								<div class="col-sm-6 text-secondary">
-									<input type="date" class="form-control" name="data_nascimento" id="data_nascimento" value="">
-								</div>
-							</div>
+					<!-- Div to display the formatted date -->
+					<div> <span id="data_nascimento" class="d-none"></span> </div>
+
 		<!-- <hr> -->
 		<br>
 							<div class="row mb-3">
@@ -166,3 +149,4 @@
 
 <link href="{{ asset('css/perfil.css') }}" rel="stylesheet">
 <script src="{{ asset('js/editPerfil.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/script.js') }}" type="text/javascript"></script>

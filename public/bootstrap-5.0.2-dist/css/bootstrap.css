@@ -10886,4 +10886,8 @@ textarea.form-control-lg {
   width: 17.2rem;
 }
 
+.layout{
+  display: flex;
+}
+
 /*# sourceMappingURL=bootstrap.css.map */

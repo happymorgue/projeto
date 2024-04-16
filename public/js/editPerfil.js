@@ -61,11 +61,14 @@ function getProfile() {
 }
 
 function guardarMudancas() {
+
+    let dataNascimento = document.getElementById('data_nascimento').innerText;
+
     let pedido = new XMLHttpRequest();
     pedido.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var idRegular = JSON.parse(pedido.responseText);
-            let json = '{"nome":"' + document.getElementsByName("nome")[0].value.trim() + '", "nif":"' + document.getElementsByName("nif")[0].value.trim() + '", "telemovel":"' + document.getElementsByName("telemovel")[0].value.trim() + '", "genero":"' + document.getElementsByName("genero")[0].value.trim() + '", "morada":"' + document.getElementsByName("morada")[0].value.trim() + '", "data_nascimento":"' + document.getElementsByName("data_nascimento")[0].value.trim() + '", "idcivil":"' + document.getElementsByName("identificador civil")[0].value.trim() + '"}';
+            let json = '{"nome":"' + document.getElementsByName("nome")[0].value.trim() + '", "nif":"' + document.getElementsByName("nif")[0].value.trim() + '", "telemovel":"' + document.getElementsByName("telemovel")[0].value.trim() + '", "genero":"' + document.getElementsByName("genero")[0].value.trim() + '", "morada":"' + document.getElementsByName("morada")[0].value.trim() + '", "data_nascimento":"' + dataNascimento + '", "idcivil":"' + document.getElementsByName("identificador civil")[0].value.trim() + '"}';
             let JsonParse = JSON.parse(json);
             let enviarDados = new XMLHttpRequest();
             enviarDados.onreadystatechange = function () {

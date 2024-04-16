@@ -45,7 +45,10 @@
               Perfil
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-            <h5 class="conta" >Olá, DL</h5> 
+            <div class="layout">
+              <h5 class="conta" >Olá,</h5> 
+              <h5 class="conta" name="nome2"></h5> 
+            </div>
               <div class="horizontal-line"></div>
               <li><a class="dropdown-item bi bi-person-fill link" href="/perfilRegular" > Perfil </a></li> 
               <!-- <hr> -->
@@ -79,3 +82,5 @@
     </div>
   </nav>
 </header>
+
+<script src="{{ asset('js/perfil.js') }}" type="text/javascript"></script>

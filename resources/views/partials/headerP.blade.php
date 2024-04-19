@@ -63,6 +63,8 @@
             <li><a class="dropdown-item bi bi-person-fill" href="/postosPolicia" > Postos de Polícia </a></li>
             <div class="horizontal-line2"></div>
             <li><a class="dropdown-item bi bi-bag-fill link" href="/logout">Terminar sessão</a>
+            <div class="horizontal-line2"></div>
+            <li><a class="dropdown-item bi bi-bag-fill link deleteAcc" href="">Apagar Conta</a>
           </ul>
         </li>
 

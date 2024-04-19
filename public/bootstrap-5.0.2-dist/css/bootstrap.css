@@ -10890,4 +10890,8 @@ textarea.form-control-lg {
   display: flex;
 }
 
+.deleteAcc{
+  color: red;
+}
+
 /*# sourceMappingURL=bootstrap.css.map */

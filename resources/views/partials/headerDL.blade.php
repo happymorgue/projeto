@@ -47,7 +47,7 @@
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
             <div class="layout">
               <h5 class="conta" >Olá,</h5> 
-              <h5 class="conta" name="nome2"></h5> 
+              <h5 class="conta" name="nome"></h5> 
             </div>
               <div class="horizontal-line"></div>
               <li><a class="dropdown-item bi bi-person-fill link" href="/perfilRegular" > Perfil </a></li> 
@@ -59,6 +59,8 @@
               <li><a class="dropdown-item bi bi-bag-fill link" href=""> Minhas licitações </a></li>
               <div class="horizontal-line2"></div>
               <li><a class="dropdown-item bi bi-bag-fill link" href="/logout">Terminar sessão</a>
+              <div class="horizontal-line2"></div>
+              <li><a class="dropdown-item bi bi-bag-fill link deleteAcc" href="">Apagar Conta</a>
           </li>
             </ul>
           </li> 

@@ -12,6 +12,7 @@ function getProfile() {
                     console.log(document.getElementsByName('nome'));
                     if (responseJson['nome'] != null) {
                         document.getElementsByName('nome')[0].value = responseJson['nome'].trim();
+                        document.getElementsByName('nome2')[0].innerHTML = responseJson['nome'];
                     } else {
                         document.getElementsByName('nome')[0].value = responseJson['nome'];
                     }
@@ -60,15 +61,19 @@ function getProfile() {
 }
 
 function guardarMudancas() {
+
+    let dataNascimento = document.getElementById('data_nascimento').innerText;
+
     let pedido = new XMLHttpRequest();
     pedido.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var idRegular = JSON.parse(pedido.responseText);
-            let json = '{"nome":"' + document.getElementsByName("nome")[0].value.trim() + '", "nif":"' + document.getElementsByName("nif")[0].value.trim() + '", "telemovel":"' + document.getElementsByName("telemovel")[0].value.trim() + '", "genero":"' + document.getElementsByName("genero")[0].value.trim() + '", "morada":"' + document.getElementsByName("morada")[0].value.trim() + '", "data_nascimento":"' + document.getElementsByName("data_nascimento")[0].value.trim() + '", "idcivil":"' + document.getElementsByName("identificador civil")[0].value.trim() + '"}';
+            let json = '{"nome":"' + document.getElementsByName("nome")[0].value.trim() + '", "nif":"' + document.getElementsByName("nif")[0].value.trim() + '", "telemovel":"' + document.getElementsByName("telemovel")[0].value.trim() + '", "genero":"' + document.getElementsByName("genero")[0].value.trim() + '", "morada":"' + document.getElementsByName("morada")[0].value.trim() + '", "data_nascimento":"' + dataNascimento + '", "idcivil":"' + document.getElementsByName("identificador civil")[0].value.trim() + '"}';
             let JsonParse = JSON.parse(json);
             let enviarDados = new XMLHttpRequest();
             enviarDados.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
+                    window.location.replace("/perfilRegular");
                 }
             }
             console.log("ola");
@@ -76,7 +81,6 @@ function guardarMudancas() {
             enviarDados.open("POST", "/api/regular/" + idRegular, true);
             enviarDados.setRequestHeader("Content-Type", "application/json");
             enviarDados.send(JSON.stringify(JsonParse));
-            window.location.replace("/perfilRegular");
         }
     }
     pedido.open("GET", "/api/convertUserEmailRegularId", true)

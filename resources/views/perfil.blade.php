@@ -14,10 +14,10 @@
                 <div class="card">
                   <div class="card-body">
                     <div class="d-flex flex-column align-items-center text-center">
-                      <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="profile picture" class="rounded-circle" width="150">
+                      <img src="{{ asset('profile.png') }}" alt="profile picture" class="rounded-circle" width="150">
                       <div class="mt-3">
-                        <h4>John Doe</h4>
-                        <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                      <h4  name="nome2" id="nome2"> </h4>
+                        <p class="text-muted font-size-sm">Dono e Licitante</p>
                       </div>
                     </div>
                   </div>
@@ -27,81 +27,93 @@
                 <div class="card mb-3">
                   <div class="card-body">
                     <div class="row">
-                      <div class="col-sm-3">
+                      <div class="col-sm-4">
                         <h6 class="mb-0">Nome</h6>
                       </div>
-                      <div class="col-sm-9 text-secondary" name="nome" id="nome">
-                        Kenneth Valdez
+                      <div class="col-sm-6 text-secondary" name="nome" id="nome">
+                        
                       </div>
                     </div>
                     <hr>
                     <div class="row">
-                      <div class="col-sm-3">
+                      <div class="col-sm-4">
                         <h6 class="mb-0">Email</h6>
                       </div>
-                      <div class="col-sm-9 text-secondary" name="email" id="email">
-                        fip@jukmuh.al
+                      <div class="col-sm-6 text-secondary" name="email" id="email">
+                        
                       </div>
                     </div>
                     <hr>
                     <div class="row">
-                      <div class="col-sm-3">
+                      <div class="col-sm-4">
                         <h6 class="mb-0">Telemóvel</h6>
                       </div>
-                      <div class="col-sm-9 text-secondary" name="telemovel" id="telemovel">
-                        (239) 816-9029
+                      <div class="col-sm-6 text-secondary" name="telemovel" id="telemovel">
+                        
                       </div>
                     </div>
                     <hr>
+
                     <div class="row">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">Género</h6>
-                      </div>
-                      <div class="col-sm-9 text-secondary" name="genero" id="genero">
-                        Masculino
-                      </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">Morada</h6>
-                      </div>
-                      <div class="col-sm-9 text-secondary" name="morada" id="morada">
-                        Bay Area, San Francisco, CA
-                      </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                      <div class="col-sm-3">
+                      <div class="col-sm-4">
                         <h6 class="mb-0">NIF</h6>
                       </div>
-                      <div class="col-sm-9 text-secondary" name="nif" id="nif">
-                        320380453
+                      <div class="col-sm-6 text-secondary" name="nif" id="nif">
+                        
                       </div>
                     </div>
+                <hr>
+
+                <div class="row">
+                      <div class="col-sm-4">
+                        <h6 class="mb-0">Morada</h6>
+                      </div>
+                      <div class="col-sm-6 text-secondary" name="morada" id="morada">
+                        
+                      </div>
+                    </div>
+
                     <hr>
                     <div class="row">
-                      <div class="col-sm-3">
+                      <div class="col-sm-4">
                         <h6 class="mb-0">ID Civil</h6>
                       </div>
-                      <div class="col-sm-9 text-secondary" name="id_civil" id="id_civil">
-                        12345678
+                      <div class="col-sm-6 text-secondary" name="id_civil" id="id_civil">
+                        
                       </div>
                     </div>
+
                     <hr>
                     <div class="row">
-                      <div class="col-sm-3">
+                      <div class="col-sm-4">
                         <h6 class="mb-0">Data de Nascimento</h6>
                       </div>
-                      <div class="col-sm-9 text-secondary" name="data_nascimento">
-                        12/01/2001
+                      <div class="col-sm-6 text-secondary" name="data_nascimento">
+                        
                       </div>
                     </div>
                     <hr>
+                     
                     <div class="row">
-                      <div class="col-sm-12">
-                        <a class="btn btn-edit btn-primary" href="/editPerfilRegular">Editar</a>
+                      <div class="col-sm-4">
+                        <h6 class="mb-0">Género</h6>
                       </div>
+                      <div class="col-sm-6 text-secondary" name="genero" id="genero">
+                        
+                      </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-md-4 col-lg-2 col-sm-8 m-1 "> 
+                          <a class="btn btns btn-edit" href="/editPerfilRegular">Editar Dados</a>
+                        </div>
+                        <div class="col-md-4 col-lg-2 col-sm-8  m-1"> 
+                          <a class="btn btns btn-desativar" href="">Desativar Conta</a>
+                        </div>
+                        <!-- <div class="col-md-4 col-lg-2 col-sm-8 m-1"> 
+                          <a class="btn btns btn-apagar" href="">Apagar Conta</a>
+                        </div> -->
+                      </div>
+
                     </div>
                   </div>
                 </div>

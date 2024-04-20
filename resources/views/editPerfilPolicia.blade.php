@@ -13,10 +13,10 @@
           <div class="card">
             <div class="card-body">
               <div class="d-flex flex-column align-items-center text-center">
-                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                <img src="{{ asset('profile.png') }}" alt="Admin" class="rounded-circle" width="150">
                 <div class="mt-3">
-                  <h4>John Doe</h4>
-                  <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+				<h4  name="nome2" id="nome2"> </h4>
+                  <p class="text-muted font-size-sm">Polícia</p>
                 </div>
               </div>
             </div>
@@ -39,7 +39,7 @@
 									<h6 class="mb-0">Número Interno</h6>
 								</div>
 								<div class="col-sm-5 text-secondary">
-									<input type="text" class="form-control" name="numero_interno" id="numero_interno" value="">
+									<input type="text" class="form-control" name="numero_interno" id="numero_interno" value="" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
 								</div>
 							</div>
               <hr>
@@ -53,9 +53,12 @@
 								</div>
 							</div>
               <hr>
-							<div class="row">
-								<div class="col-sm-9 text-secondary">
-									<a class="btn btn-save btn-primary px-3" onclick=guardarMudancas()>Salvar Mudanças</a>
+			  				<div class="row justify-content-center botoes">
+								<div class="col-md-6 col-lg-2 mx-2 my-1">
+									<a class="btn btn-save" onclick=guardarMudancas()>Salvar</a>
+								</div>
+								<div class="col-md-6 col-lg-2 mx-2 my-1">
+									<a class="btn btn-cancelar" href="/perfilPolicia">Cancelar</a>
 								</div>
 							</div>
 						</div>

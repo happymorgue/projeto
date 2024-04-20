@@ -26,7 +26,7 @@
               <form id="form" action="#!">
                 <div class="row gy-3 gy-md-4 overflow-hidden">
                   <div class="col-12">
-                    <label for="nome" class="form-label">Nome <span class="text-danger">*</span></label>
+                    <label for="nome" class="form-label">Nome<span class="text-danger">*</span></label>
                     <input type="text" class="form-control" name="nome" id="nome" required>
                   </div>
                   <div class="col-12">
@@ -52,6 +52,14 @@
                       <input type="date" class="form-control" name="dataFim" id="dataFim" required>
                     </div>
                     <small class="form-text text-muted">Por favor introduza o intervalo de tempo aproximado em que o objeto foi achado.</small>
+                  </div>
+                  <div class="col-12">
+                    <label for="nome_nUtilizador" class="form-label">Nome de Quem Encontrou<span class="text-danger">*</span></label>
+                    <input type="nome_nUtilizador" class="form-control" name="nome_nUtilizador" id="nome_nUtilizador" value="" required>
+                  </div>
+                  <div class="col-12">
+                    <label for="telemovel_nUtilizador" class="form-label">Telemóvel de Quem Encontrou <span class="text-danger">*</span></label>
+                    <input type="telemovel_nUtilizador" class="form-control" name="telemovel_nUtilizador" id="telemovel_nUtilizador"  minlength="9" maxlength="9" value="" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
                   </div>
                   <div class="col-12">
                     <label for="pais" class="form-label">País <span class="text-danger">*</span></label>

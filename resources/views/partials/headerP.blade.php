@@ -23,9 +23,6 @@
       <div class="collapse navbar-collapse col-2-lg" id="navmenu">
         <ul class="nav navbar-nav d-flex justify-content-start w-100">
           <li class="nav-item d-flex justify-content-around px-2">
-            <a href="/leiloesPolicia" class="nav-link">Leilões</a>
-          </li>
-          <li class="nav-item d-flex justify-content-around px-2">
             <a href="/buscaObjPerdido" class="nav-link">Objetos</a>
           </li>
         </ul>
@@ -68,9 +65,6 @@
           </ul>
         </li>
 
-        <!-- <li class="nav-item">
-          <a href="/logout" class="nav-link">Terminar sessão</a>
-        </li>   -->
       </ul>
     </div>
   </div>

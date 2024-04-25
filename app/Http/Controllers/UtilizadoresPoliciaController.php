@@ -137,13 +137,13 @@ class UtilizadoresPoliciaController extends Controller
                     $data['rua'] = null;
                 }
                 $id_table_objeto = DB::table('objeto')->insertGetId(['descricao' => $data['descricao'], 'categoria_id' => $data['categoria_id'], 'data_inicio' => $data['data_inicio'], 'data_fim' => $data['data_fim'], "pais" => $data['pais'], "distrito" => $data['distrito'], "cidade" => $data['cidade'], "freguesia" => $data['freguesia'], "rua" => $data['rua'], "localizacao" => $data['localizacao'], "imagem" => $data['imagem']]);
-                DB::table('objetoe')->insert(['objeto_id' => $id_table_objeto, 'policia_id' => $policiaId]);
+                $id_table_objetoE = DB::table('objetoe')->insertGetId(['objeto_id' => $id_table_objeto, 'policia_id' => $policiaId]);
                 $atributos = $data['atributos'];
                 foreach ($atributos as $atributo) {
                     DB::table('valoratributos')->insert(['objeto_id' => $id_table_objeto, 'atributo_id' => $atributo['atributo_id'], 'valor' => $atributo['valor']]);
                 }
                 if(isset($data['nutilizador'])){
-                    #TRATAMENTO DE ADICIONAR O NAO UTILIZADOR
+                    DB::table('objetoe')->where('id', $id_table_objetoE)->update(['nutilizador_id' => $data['nutilizador']]);
                 }
             } else {
                 #ALTERAR PARA ERRO 403/404

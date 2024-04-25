@@ -26,11 +26,7 @@
               <form id='form' action="#!">
                 <div class="row gy-3 gy-md-4 overflow-hidden">
                   <div class="col-12">
-                    <label for="nome" class="form-label">Nome <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="nome" id="nome" required>
-                  </div>
-                  <div class="col-12">
-                    <label for="descricao" class="form-label">Descrição <span class="text-danger">*</span></label>
+                    <label for="descricao" class="form-label">Nome <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" name="descricao" id="descricao" required>
                   </div>
                   <div class="col-12">

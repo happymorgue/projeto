@@ -7,7 +7,7 @@
 
 <section class="bgColor">
   <div class="container py-5">
-    <div class="row justify-content-center mb-3">
+    <div id="leiloes" class="row justify-content-center mb-3">
         
       <div class="col-md-12 col-xl-10">
         <div class="card shadow-0 border rounded-3">
@@ -57,10 +57,6 @@
               </div>
               <div class="col-md-6 col-lg-6 col-xl-6">
                 <h5>Nome do objeto</h5>
-                <p class="mb-4 mb-md-0" style="overflow: hidden; overflow-wrap: break-word;">
-                    Aqui será colocada a descrição do objeto. Terá as características deste objeto. 
-                    Este objeto é reconhecido por sua forma distinta e propriedade única.
-                </p>
               </div>
               <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
                 <div class="d-flex flex-row align-items-center mb-1">
@@ -124,3 +120,4 @@
 @endsection
 
 <link href="{{ asset('css/leiloes.css') }}" rel="stylesheet">
+<script src="{{ asset('js/leiloesShowAll.js') }}" type="text/javascript"></script>

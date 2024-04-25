@@ -20,7 +20,8 @@ class NaoUtilizadoresController extends Controller
     #CRIA UM NOVO UTILIZADOR
     public function adicionaNovoNaoUtilizador(Request $request){
         $data = $request->json()->all();
-        DB::table('nutilizador')->insert(['nome' => $data['nome'], 'telemovel' => $data['telemovel']]);
+        $idNUtilizador = DB::table('nutilizador')->insertGetId(['nome' => $data['nome'], 'telemovel' => $data['telemovel']]);
+        return response()->json(['id' => $idNUtilizador]);
     }
 
     #RETORNA A INSTANCIA DO NAO UTILIZADOR
@@ -35,6 +36,9 @@ class NaoUtilizadoresController extends Controller
     #ATUALIZAR UM NAO UTILIZADOR COM OS DADOS, DANDO O ID
     public function atualizarNaoUtilizadorComId(Request $request, $nUtilizadorId){
         $data = $request->json()->all();
+        if(isset($data['telemovel']) == false){
+            $data['telemovel'] = null;
+        }
         $n_utilizador_DB = DB::table('nutilizador')->where('id', $nUtilizadorId)->first();
         if($n_utilizador_DB != null){
             DB::table('nutilizador')->update(['nome' => $data['nome'], 'telemovel' => $data['telemovel']]);

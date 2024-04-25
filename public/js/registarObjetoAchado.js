@@ -103,6 +103,24 @@ function registarObjetoPerdido(idPolicia) {
         }
     }
 
+    if (document.getElementsByName('nome_nUtilizador')[0].value.trim() != "" && document.getElementsByName('telemovel_nUtilizador')[0].value.trim() != "") {
+        let nomeNUtilizador = document.getElementsByName("nome_nUtilizador")[0].value.trim()
+        let json = '{"nome":"' + nomeNUtilizador + '"';
+        let telemovelNUtilizador = document.getElementsByName("telemovel_nUtilizador")[0].value.trim()
+        json = json + ', "telemovel":"' + telemovelNUtilizador + '"';
+        json = json + '}';
+        let JsonParse = JSON.parse(json);
+        let inserirNaoUtilizador = xhttp = new XMLHttpRequest();
+        inserirNaoUtilizador.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                objeto['nutilizador'] = JSON.parse(inserirNaoUtilizador.responseText)['id'];
+            }
+
+        }
+        inserirNaoUtilizador.open("POST", "/api/nUtilizador", true);
+        inserirNaoUtilizador.setRequestHeader("Content-Type", "application/json");
+        inserirNaoUtilizador.send(JSON.stringify(JsonParse));
+    }
     let objeto = {};
     objeto['descricao'] = descricao;
     objeto['categoria_id'] = categoria;

@@ -3,7 +3,7 @@
       <!--Logotipo-->
       <div class="d-none d-lg-block">
         <div class="collapse navbar-collapse w-100 d-flex justify-content-around">
-          <a href="/homeGeral" class="navbar-brand"><img class="logo-cogitavi" src="{{ asset('logo_cogitavi_vbegebranco.png') }}"></a>
+          <a href="/homePolicia" class="navbar-brand"><img class="logo-cogitavi" src="{{ asset('logo_cogitavi_vbegebranco.png') }}"></a>
         </div>
       </div>
       <!--Logotipo small screen tab-->
@@ -22,9 +22,6 @@
       <!-- ILL FUCKING FIX THIS SHIT LATER-->
       <div class="collapse navbar-collapse col-2-lg" id="navmenu">
         <ul class="nav navbar-nav d-flex justify-content-start w-100">
-          <li class="nav-item d-flex justify-content-around px-2">
-            <a href="" class="nav-link">Leilões</a>
-          </li>
           <li class="nav-item d-flex justify-content-around px-2">
             <a href="/buscaObjPerdido" class="nav-link">Objetos</a>
           </li>
@@ -68,9 +65,6 @@
           </ul>
         </li>
 
-        <!-- <li class="nav-item">
-          <a href="/logout" class="nav-link">Terminar sessão</a>
-        </li>   -->
       </ul>
     </div>
   </div>

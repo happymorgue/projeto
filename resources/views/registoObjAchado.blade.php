@@ -26,11 +26,7 @@
               <form id="form" action="#!">
                 <div class="row gy-3 gy-md-4 overflow-hidden">
                   <div class="col-12">
-                    <label for="nome" class="form-label">Nome<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="nome" id="nome" required>
-                  </div>
-                  <div class="col-12">
-                    <label for="descricao" class="form-label">Descrição <span class="text-danger">*</span></label>
+                    <label for="descricao" class="form-label">Nome <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" name="descricao" id="descricao" required>
                   </div>
                   <div class="col-12">
@@ -67,19 +63,19 @@
                   </div>
                   <div class="col-12">
                     <label for="distrito" class="form-label">Distrito<span class="text-danger">*</span></label>
-                    <input type="distrito" class="form-control" name="distrito" id="distrito" value="" required>
+                    <input type="distrito" class="form-control" name="distrito" id="distrito" value="">
                   </div>
                   <div class="col-12">
                     <label for="cidade" class="form-label">Cidade<span class="text-danger">*</span></label>
-                    <input type="cidade" class="form-control" name="cidade" id="cidade" value="" required>
+                    <input type="cidade" class="form-control" name="cidade" id="cidade" value="">
                   </div>
                   <div class="col-12">
                     <label for="freguesia" class="form-label">Freguesia<span class="text-danger">*</span></label>
-                    <input type="freguesia" class="form-control" name="freguesia" id="freguesia" value="" required>
+                    <input type="freguesia" class="form-control" name="freguesia" id="freguesia" value="">
                   </div>
                   <div class="col-12">
                     <label for="rua" class="form-label">Rua<span class="text-danger">*</span></label>
-                    <input type="rua" class="form-control" name="rua" id="rua" value="" required>
+                    <input type="rua" class="form-control" name="rua" id="rua" value="">
                   </div>
                   <div class="col-12">
                     <label for="imagem" class="form-label">Imagem do Objeto</label>

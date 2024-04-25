@@ -28,7 +28,7 @@
       <div class="collapse navbar-collapse col-2-lg" id="navmenu">
         <ul class="nav navbar-nav d-flex justify-content-start w-100">
           <li class="nav-item d-flex justify-content-around px-2">
-            <a href="" class="nav-link">Leilões</a>
+            <a href="/leiloes" class="nav-link">Leilões</a>
           </li>
           <li class="nav-item d-flex justify-content-around px-2">
             <a href="/buscaObjAchados" class="nav-link">Objetos</a>

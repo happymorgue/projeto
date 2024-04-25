@@ -115,7 +115,6 @@ function registarObjetoPerdido(idPolicia) {
     objeto['rua'] = rua;
     objeto['localizacao'] = localizacao;
     objeto['atributos'] = atributosParsed;
-
     sendImage().then(image => {
         objeto['imagem'] = image;
         fetch('/api/policia/' + idPolicia + '/registarObjetoAchado', {

@@ -92,6 +92,14 @@ Route::get('/buscaObjPerdido', function () {
     return view('objPerdidos');
 });
 
+Route::get('/leiloes', function () {
+    return view('leiloes');
+});
+
+Route::get('/leiloesPolicia', function () {
+    return view('leiloesPolicia');
+});
+
 #APIS--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #CRIACAO CONTAS

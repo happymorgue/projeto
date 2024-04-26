@@ -6,13 +6,3 @@
     .border-sm-start-none { border-left: none !important; } 
 }
 
-.price {
-    margin-top: auto;
-    text-align: center; /* Center the content horizontally */
-}
-  
-.bg-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}

@@ -3,6 +3,8 @@
 
 @section('title', 'Cogitavi - Leilão')
 
+@include('partials.licitarModal')
+
 @section('content')
 
 <section class="bgColor">
@@ -28,13 +30,13 @@
                   </div>
                   <div class="container countdown-container">
                     <div class="countdown d-flex flex-row justify-content-center align-items-center" id="countdown" style="width:70%;">
-                          <span id="days" class="countdown-number">00d</span>
+                          <span id="days" class="countdown-number">00</span>d
                           <span class="divider">:</span>
-                          <span id="hours" class="countdown-number">00h</span> 
+                          <span id="hours" class="countdown-number">00</span> h
                           <span class="divider">:</span>
-                          <span id="minutes" class="countdown-number">00m</span> 
+                          <span id="minutes" class="countdown-number">00</span>m 
                           <span class="divider">:</span>
-                          <span id="seconds" class="countdown-number">00s</span>
+                          <span id="seconds" class="countdown-number">00</span>s
                     </div>
                   </div>
                   <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 price align-self-start align-items-center p-2">
@@ -42,11 +44,11 @@
                         <h1 class="mb-1">€17.99</h1>
                       </div>
                       <div class="d-flex flex-row mb-2">
-                        <h4 class="mb-1 text-decoration-line-through">€14.99</h4> <!-- será licitação atual ou valor base?-->
+                        <h4 class="mb-1 text-decoration-line-through">€14.99</h4> <!-- será licitação que foi outbided ou valor base?-->
                       </div>
                       <h6 class="text-success text-start fw-light">Termina em 30/06/2024 às 15:00</h6>
                       <div class="d-flex flex-column mt-4">
-                        <button class="btn btn-primary btn-sm" type="button">Licitar</button>
+                        <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#licitarModal">Licitar</button>
                         <button class="btn btn-outline-primary btn-sm mt-2" type="button"> Inscrever-se </button>
                       </div>
                     </div>
@@ -129,3 +131,4 @@
 @endsection
 
 <link href="{{ asset('css/leilao.css') }}" rel="stylesheet">
+<script src="{{ asset('js/countdown.js') }}" type="text/javascript"></script>

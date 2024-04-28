@@ -121,3 +121,4 @@
 
 <link href="{{ asset('css/leiloes.css') }}" rel="stylesheet">
 <script src="{{ asset('js/leiloesShowAll.js') }}" type="text/javascript"></script>
+

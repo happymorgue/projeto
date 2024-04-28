@@ -7,9 +7,9 @@
 
 <section class="bgColor">
   <div class="container py-5">
-    <div id="leiloes" class="row justify-content-center mb-3">
+    <div id="divLeiloes" class="row justify-content-center mb-3">
         
-      <div class="col-md-12 col-xl-10">
+      <div class="col-md-12 col-xl-10" id="leilaoDiv">
         <div class="card shadow-0 border rounded-3">
           <div class="card-body">
             <div class="row">
@@ -32,7 +32,7 @@
                 </div>
                 <h6 class="text-success">Leilão a decorrer</h6>
                 <div class="d-flex flex-column mt-4">
-                  <button class="btn btn-primary btn-sm" type="button">Licitar</button>
+                  <a href="/leilao" class="btn btn-primary btn-sm" role="button">Licitar</a>
                   <button class="btn btn-outline-primary btn-sm mt-2" type="button">
                   Inscrever-se
                   </button>

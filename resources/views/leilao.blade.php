@@ -19,7 +19,7 @@
             <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-4 mb-lg-0 d-flex">
                 <div class="bg-image">
-                  <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/new/img(4).webp"
+                  <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/img%20(4).webp"
                     class="w-100" />
                 </div>
               </div>

@@ -96,8 +96,8 @@ Route::get('/leiloes', function () {
     return view('leiloes');
 });
 
-Route::get('/leiloesPolicia', function () {
-    return view('leiloesPolicia');
+Route::get('/leilao', function () {
+    return view('leilao');
 });
 
 #APIS--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

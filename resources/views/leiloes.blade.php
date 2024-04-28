@@ -7,7 +7,7 @@
 
 <section class="bgColor">
   <div class="container py-5">
-    <div id="divLeiloes" class="row justify-content-center mb-3">
+    <div id="leiloes" class="row justify-content-center mb-3">
         
       <div class="col-md-12 col-xl-10" id="leilaoDiv">
         <div class="card shadow-0 border rounded-3">

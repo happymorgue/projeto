@@ -10,7 +10,7 @@ function carregarLeiloes(){
                     console.log(responseJson);
                     let leiloes=responseJson['leiloes'];
                     console.log(leiloes);
-                    let divGlobal = document.getElementById('divLeiloes');
+                    let divGlobal = document.getElementById('leiloes');
                     leiloes.forEach(leilao => {
                         let row_justify_content_center_mb3 = document.createElement('div');
                         row_justify_content_center_mb3.className= 'row justify-content-center mb-3 ';
@@ -23,7 +23,7 @@ function carregarLeiloes(){
 
                 }
             }
-            pedido2.open("GET", "/api/regular/licitante/"+idRegular+"/verLeiloes", true)
+            pedido2.open("GET", "/api/regular/licitante/"+ idRegular +"/verLeiloes", true)
             pedido2.send();
         }
     }

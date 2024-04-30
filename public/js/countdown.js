@@ -4,7 +4,7 @@ window.addEventListener('load', startCountdown);
 
     function startCountdown() {
       // Get the date and time
-      let dateString = new Date("2024-04-30T15:00:00Z");
+      let dateString = new Date("2024-04-30T00:00:00Z");
       countdownDate = dateString.getTime();
  
       // Update the countdown every 1 second

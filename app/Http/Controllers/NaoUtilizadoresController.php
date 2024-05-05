@@ -13,7 +13,7 @@ class NaoUtilizadoresController extends Controller
         $data = $request->json()->all();
         $n_utilizador_DB = DB::table('nutilizador')->where('id', $data['id'])->first();
         if($n_utilizador_DB != null){
-            DB::table('nutilizador')->update(['nome' => $data['nome'], 'telemovel' => $data['telemovel']]);
+            DB::table('nutilizador')->where('id',$data['id'])->update(['nome' => $data['nome'], 'telemovel' => $data['telemovel']]);
         }
     }
 
@@ -41,7 +41,7 @@ class NaoUtilizadoresController extends Controller
         }
         $n_utilizador_DB = DB::table('nutilizador')->where('id', $nUtilizadorId)->first();
         if($n_utilizador_DB != null){
-            DB::table('nutilizador')->update(['nome' => $data['nome'], 'telemovel' => $data['telemovel']]);
+            DB::table('nutilizador')->where('id',$nUtilizadorId)->update(['nome' => $data['nome'], 'telemovel' => $data['telemovel']]);
         }
     }
 

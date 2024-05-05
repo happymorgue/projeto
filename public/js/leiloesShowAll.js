@@ -1,4 +1,4 @@
-function carregarLeiloes(){
+function carregarLeiloes() {
     let pedido = xhttp = new XMLHttpRequest();
     pedido.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -14,7 +14,6 @@ function carregarLeiloes(){
                     leiloes.forEach(leilao => {
                         let row_justify_content_center_mb3 = document.createElement('div');
                         row_justify_content_center_mb3.className = 'row justify-content-center mb-3 ';
-
 
                         divGlobal.appendChild(row_justify_content_center_mb3);
                     });

@@ -53,6 +53,9 @@ Route::get('/homePolicia', function () {
 Route::get('/verObjPerdidos', function () {
     return view('meusObjsPerdidos');
 });
+Route::get('/verObj', function () {
+    return view('verObjs');
+});
 Route::get('/buscaObjAchados', function () {
     return view('objAchados');
 });

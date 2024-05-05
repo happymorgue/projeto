@@ -12,6 +12,9 @@
     <link href="{{ asset('bootstrap-5.0.2-dist/css/bootstrap.css') }}" rel="stylesheet">
     <!-- Your additional CSS -->
     <link href="{{ asset('css/geral.css') }}" rel="stylesheet">
+
+    <link rel="icon" href="{{ asset('lupa.png') }}" type="image/x-icon" >
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
 </head>
@@ -20,14 +23,12 @@
 
     @yield('content')
 
-    @include('partials.faq')
-
     @include('partials.footer')
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <!-- Bootstrap JS -->
-    <script type="text/javascript" src="{{ asset('bootstrap-5.0.2-dist/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js') }}"></script>
 
 </body>
 </html>

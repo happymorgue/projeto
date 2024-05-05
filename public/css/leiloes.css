@@ -1,0 +1,8 @@
+.bgColor{
+    background-color: #cde3fc;
+}
+
+@media (max-width: 767.98px) { 
+    .border-sm-start-none { border-left: none !important; } 
+}
+

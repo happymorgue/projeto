@@ -23,24 +23,20 @@
                   </div>
                 </div>
               </div>
-              <form action="#!">
+              <form id="form" action="#!">
                 <div class="row gy-3 gy-md-4 overflow-hidden">
                   <div class="col-12">
-                    <label for="nome" class="form-label">Nome <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="nome" id="nome" placeholder="Ex. Sapatilhas, Chapéu, ..." required>
-                  </div>
-                  <div class="col-12">
-                    <label for="descricao" class="form-label">Descrição <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Ex. Sapatilhas brancas 37" required>
+                    <label for="descricao" class="form-label">Nome <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" name="descricao" id="descricao" required>
                   </div>
                   <div class="col-12">
                     <label for="categoria" class="form-label">Categoria  <span class="text-danger">*</span></label>
                     <select class="form-control" name="categoria" id="categoria" required>
                       <option value="">Selecione</option>
-                      <option value="categoria1">Categoria 1</option>
-                      <option value="categoria2">Categoria 2</option>
-                      <option value="categoria3">Categoria 3</option>
                     </select>
+                  </div>
+                  <div id="atributos">
+
                   </div>
                   <div class="col-12">
                     <label for="intervaloTempo" class="form-label">Intervalo de Tempo <span class="text-danger">*</span></label>
@@ -54,24 +50,32 @@
                     <small class="form-text text-muted">Por favor introduza o intervalo de tempo aproximado em que o objeto foi achado.</small>
                   </div>
                   <div class="col-12">
+                    <label for="nome_nUtilizador" class="form-label">Nome de Quem Encontrou<span class="text-danger">*</span></label>
+                    <input type="nome_nUtilizador" class="form-control" name="nome_nUtilizador" id="nome_nUtilizador" value="" required>
+                  </div>
+                  <div class="col-12">
+                    <label for="telemovel_nUtilizador" class="form-label">Telemóvel de Quem Encontrou <span class="text-danger">*</span></label>
+                    <input type="telemovel_nUtilizador" class="form-control" name="telemovel_nUtilizador" id="telemovel_nUtilizador"  minlength="9" maxlength="9" value="" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
+                  </div>
+                  <div class="col-12">
                     <label for="pais" class="form-label">País <span class="text-danger">*</span></label>
-                    <input type="pais" class="form-control" name="pais" id="pais" placeholder="País" required>
+                    <input type="pais" class="form-control" name="pais" id="pais" value="" required>
                   </div>
                   <div class="col-12">
                     <label for="distrito" class="form-label">Distrito<span class="text-danger">*</span></label>
-                    <input type="distrito" class="form-control" name="distrito" id="distrito" value="Distrito" required>
+                    <input type="distrito" class="form-control" name="distrito" id="distrito" value="">
                   </div>
                   <div class="col-12">
                     <label for="cidade" class="form-label">Cidade<span class="text-danger">*</span></label>
-                    <input type="cidade" class="form-control" name="cidade" id="cidade" value="Cidade" required>
+                    <input type="cidade" class="form-control" name="cidade" id="cidade" value="">
                   </div>
                   <div class="col-12">
                     <label for="freguesia" class="form-label">Freguesia<span class="text-danger">*</span></label>
-                    <input type="freguesia" class="form-control" name="freguesia" id="freguesia" value="Freguesia" required>
+                    <input type="freguesia" class="form-control" name="freguesia" id="freguesia" value="">
                   </div>
                   <div class="col-12">
                     <label for="rua" class="form-label">Rua<span class="text-danger">*</span></label>
-                    <input type="rua" class="form-control" name="rua" id="rua" value="Rua" required>
+                    <input type="rua" class="form-control" name="rua" id="rua" value="">
                   </div>
                   <div class="col-12">
                     <label for="imagem" class="form-label">Imagem do Objeto</label>
@@ -81,7 +85,7 @@
                 </div>
                   <div class="col-12">
                     <div class="d-grid">
-                      <button class="btn bsb-btn-xl btn-primary" type="submit">Registar</button>
+                      <button class="btn bsb-btn-xl btn-primary" onclick="registoObjeto()" type="submit">Registar</button>
                     </div>
                   </div>
                 </div>
@@ -94,3 +98,6 @@
   </section>
 
   @endsection
+
+  <link href="{{ asset('css/registoObjs.css') }}" rel="stylesheet">
+  <script src="{{ asset('js/registarObjetoAchado.js') }}" type="text/javascript"></script>

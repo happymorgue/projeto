@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="m-0 py-5 px-1 position-sticky-bottom container-fluid" id="footer">
+<footer class="m-0 py-5 px-1 position-sticky-bottom container-fluid text-color" id="footer">
     <div class="m-0 container-fluid justify-content-between row">
       <div class="col-4 d-inline">
         <ul class="">
@@ -10,7 +10,7 @@
             Serviços
           </li>
           <li class="link_footer">
-            Perguntas Frequentes
+            Ajuda
           </li>
         </ul>
       </div>

@@ -21,8 +21,10 @@ class UtilizadoresLicitanteController extends Controller
         } else {
             $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_dono_DB->user_id)->first();
             if($_SESSION["user_email"] == $utilizador_DB->email){
+                #OBTER O LEILAO E VER SE EXISTE
                 $leilao = DB::table('leilao')->where('id', $leilaoId)->first();
                 if($leilao != null){
+                    #INSERIR NA TABELA DE SUBSCRICAO
                     DB::table('subscricao')->insert([
                         'leilao_id' => $leilaoId,
                         'licitante_id' => $regularId
@@ -51,8 +53,10 @@ class UtilizadoresLicitanteController extends Controller
         } else {
             $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_dono_DB->user_id)->first();
             if($_SESSION["user_email"] == $utilizador_DB->email){
+                #OBTER O LEILAO E VER SE EXISTE
                 $leilao = DB::table('leilao')->where('id', $leilaoId)->first();
                 if($leilao != null){
+                    #REMOVER A TABELA DE SUBSCRICAO
                     DB::table('subscricao')->where('leilao_id', $leilaoId)->where('licitante_id', $regularId)->delete();
                 }else{
                     #ALTERAR PARA ERRO 403/404
@@ -69,6 +73,8 @@ class UtilizadoresLicitanteController extends Controller
         #VER DEPOIS COMO FAZER COM A API DO STRIPE OS PAGAMENTOS
     }
 
+
+    #FUNCAO DE LICITAR
     public function licitar($regularId, $leilaoId, Request $request){
         if(!isset($_SESSION)) 
         {   
@@ -82,25 +88,31 @@ class UtilizadoresLicitanteController extends Controller
         } else {
             $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_dono_DB->user_id)->first();
             if($_SESSION["user_email"] == $utilizador_DB->email){
+                #OBTER O LEILAO E VER SE EXISTE E SE AINDA ESTA ATIVO
                 $leilao = DB::table('leilao')->where('id', $leilaoId)->first();
-                if($leilao != null){
+                if($leilao != null && $leilao->estado == 'A'){
                     $data = $request->json()->all();
                     $valor = $data['valor'];
+                    #VERIFICAR O VALOR MAIS ALTO DA LICITACAO ATUAL
                     $maxLicitacao = DB::table('licitacao')->where('leilao_id', $leilaoId)->max('valor');
-                    if (($maxLicitacao != null and $valor <= $maxLicitacao) or $leilao->vencedor != null){
+                    if (($maxLicitacao != null and $valor <= $maxLicitacao and $valor <= $leilao->valor) or $leilao->vencedor != null){
                         #ALTERAR PARA ERRO 403/404
-                        echo "O valor da licitação tem de ser superior ao valor atual do leilão, ou leilão já terminou";
+                        echo "O valor da licitação tem de ser superior ao valor atual do leilão";
                     }else{
+                        #INSERIR NA TABELA DE LICITACAO
                         DB::table('licitacao')->insert([
-                        'leilao_id' => $leilaoId,
-                        'licitante_id' => $regularId,
-                        'data_licitacao' => date('Y-m-d'),
-                        'valor' => $valor
-                    ]);
+                            'leilao_id' => $leilaoId,
+                            'licitante_id' => $regularId,
+                            'data_licitacao' => date('Y-m-d'),
+                            'valor' => $valor
+                        ]);
+                        #ATUALIZAR O VALOR DO LEILAO
+                        DB::table('leilao')->where('id', $leilaoId)->update(['valor' => $valor]);
+                        #FALTA ADICIONAR A PARTE DE ENVIAR AS NOTIFICACOES ( EXTRA )
                     }
                 }else{
                     #ALTERAR PARA ERRO 403/404
-                    echo "Não existe esse leilão";
+                    echo "Não existe esse leilão ou não está ativo";
                 }
             }else{
                 #ALTERAR PARA ERRO 403/404
@@ -125,11 +137,15 @@ class UtilizadoresLicitanteController extends Controller
             $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_dono_DB->user_id)->first();
             if($_SESSION["user_email"] == $utilizador_DB->email){
                 $leiloes = DB::table('leilao')->where('vencedor', $regularId)->get();
-                $leiloesJson = array();
-                foreach($leiloes as $leilao){
-                    array_push($leiloesJson, array('data_inicio' => $leilao->data_inicio, 'data_fim' => $leilao->data_fim, 'estado' => $leilao->estado, 'vencedor' => DB::table('utilizador')->where('id', DB::table('regular')->where('id', $regularId)->pluck('user_id'))->get(), 'licitacoes' => DB::table('licitacao')->where('leilao_id', $leilao->id)->get()));
+                foreach ($leiloes as $leilao) {
+                    $objetoleilao = DB::table('objetoleilao')->where('id', $leilao->objeto_leilao_id)->first();
+                    $objetoE = DB::table('objetoe')->where('id', $objetoleilao->objeto_e_id)->first();
+                    $objeto = DB::table('objeto')->where('id', $objetoE->objeto_id)->first();
+                    $leilao->objeto = $objeto;
+                    $licitacoes = DB::table('licitacao')->where('leilao_id', $leilao->id)->get(['data_licitacao', 'valor', 'licitante_id']);
+                    $leilao->licitacoes = $licitacoes;
                 }
-                $json = array('leiloes_ganhos' => $leiloesJson);
+                $json = array('leiloes_ganhos' => $leiloes);
                 #ADICIONAR CASO EM QUE NAO EXISTAM LEILOES GANHOS PARA NAO SER NULL A RESPOSTA
                     return response()->json($json);
             }else{
@@ -139,6 +155,8 @@ class UtilizadoresLicitanteController extends Controller
         }
     }
 
+
+    #VER INFORMACAO RELATIVA A UM LEILAO ESPECIFICO
     public function verHistoricoLeilao($regularId, $leilaoId){
         if(!isset($_SESSION)) 
         {   
@@ -154,9 +172,13 @@ class UtilizadoresLicitanteController extends Controller
             if($_SESSION["user_email"] == $utilizador_DB->email){
                 $leilao = DB::table('leilao')->where('id', $leilaoId)->first();
                 if ($leilao != null) {
-                    #ADICIONAR NO JSON PARA COLOCAR O OBJETO EM VEZ DE SO O ID, MESMO COISA PARA O VENCEDOR
-                    #TER CUIDADO COM AS LICITACOES VAZIAS
-                    $json = array('leilao' => $leilao, 'licitacoes' => DB::table('licitacao')->where('leilao_id', $leilaoId)->get());
+                    $objetoleilao = DB::table('objetoleilao')->where('id', $leilao->objeto_leilao_id)->first();
+                    $objetoE = DB::table('objetoe')->where('id', $objetoleilao->objeto_e_id)->first();
+                    $objeto = DB::table('objeto')->where('id', $objetoE->objeto_id)->first();
+                    $leilao->objeto = $objeto;
+                    $licitacoes = DB::table('licitacao')->where('leilao_id', $leilao->id)->get(['data_licitacao', 'valor', 'licitante_id']);
+                    $leilao->licitacoes = $licitacoes;
+                    $json = array('leilao' => $leilao);
                     return response()->json($json);
                 }else{
                     #ALTERAR PARA ERRO 403/404
@@ -169,6 +191,7 @@ class UtilizadoresLicitanteController extends Controller
         }
     }
 
+    #VER LEILOES PASSADOS, FUTUROS E ATIVOS
     public function verLeiloes($regularId){
         if(!isset($_SESSION)) 
         {   
@@ -183,7 +206,16 @@ class UtilizadoresLicitanteController extends Controller
             $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_dono_DB->user_id)->first();
             if($_SESSION["user_email"] == $utilizador_DB->email){
                 $leiloes = DB::table('leilao')->get();
-                #ADICIONAR NO JSON PARA COLOCAR O OBJETO EM VEZ DE SO O ID, MESMO COISA PARA O VENCEDOR
+                foreach ($leiloes as $leilao) {
+                    $objetoleilao = DB::table('objetoleilao')->where('id', $leilao->objeto_leilao_id)->first();
+                    $objetoE = DB::table('objetoe')->where('id', $objetoleilao->objeto_e_id)->first();
+                    $objeto = DB::table('objeto')->where('id', $objetoE->objeto_id)->first();
+                    $leilao->objeto = $objeto;
+                    $licitacoes = DB::table('licitacao')->where('leilao_id', $leilao->id)->get(['data_licitacao', 'valor', 'licitante_id']);
+                    $leilao->licitacoes = $licitacoes;
+                }
+
+                
                 $json = array('leiloes' => $leiloes);
                 #ADICIONAR CASO EM QUE NAO EXISTAM LEILOES PARA NAO SER NULL A RESPOSTA
                     return response()->json($json);
@@ -194,10 +226,11 @@ class UtilizadoresLicitanteController extends Controller
         }
     }
 
+
+    #MOSTRAR O HISTORICO DE LICITACOES REFERENTES AO UTILIZADOR
     public function verHistoricoLicitacao($regularId){
         if(!isset($_SESSION)) 
-        {   
-            #APARECER PARA NAO DEIXAR ENTRAR NO METODO
+        { 
             session_start(); 
         }
         $utilizador_dono_DB = DB::table('regular')->where('id', $regularId)->first();
@@ -206,9 +239,17 @@ class UtilizadoresLicitanteController extends Controller
             echo "Não existe esse utilizador";
         } else {
             $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_dono_DB->user_id)->first();
-            if($_SESSION["user_email"] == $utilizador_DB->email){
+            if($utilizador_DB->email == $_SESSION['user_email']){
                 $licitacoes = DB::table('licitacao')->where('licitante_id', $regularId)->get();
-                #ADICIONAR NO JSON PARA COLOCAR OS DADOS DA BASE DE DADOS REFERENTES AS COISAS ME VEZ DE SO OS IDS
+
+                foreach($licitacoes as $licitacao){
+                    $leilao = DB::table('leilao')->where('id', $licitacao->leilao_id)->first();
+                    $objetoleilao = DB::table('objetoleilao')->where('id', $leilao->objeto_leilao_id)->first();
+                    $objetoE = DB::table('objetoe')->where('id', $objetoleilao->objeto_e_id)->first();
+                    $objeto = DB::table('objeto')->where('id', $objetoE->objeto_id)->first();
+                    $leilao->objeto = $objeto;
+                    $licitacao->leilao = $leilao;
+                }
                 $json = array('licitacoes' => $licitacoes);
                 #ADICIONAR CASO EM QUE NAO EXISTAM LEILOES PARA NAO SER NULL A RESPOSTA
                     return response()->json($json);

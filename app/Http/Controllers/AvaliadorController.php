@@ -91,11 +91,11 @@ class AvaliadorController extends Controller
         $objetoLeiloado=DB::table('objetoleilao')->where('id', $objetoId)->first();
 
         #SE O OBJETO EXISTIR, CRIA-SE O LEILAO COM O VALOR BASE DO OBJETO
-        if ($objetoLeiloado != null) {
+        if ($objetoLeiloado != null && DB::table('leilao')->where('objeto_leilao_id', $objetoId)->first() == null){
             DB::table('leilao')->insert(['data_inicio' => $data['data_inicio'], 'data_fim' => $data['data_fim'], 'valor' => $objetoLeiloado->valor, 'estado' => $data['estado'], 'objeto_leilao_id' => $objetoId]);
         }else{
             #MUDAR O ERRO
-            echo "Esse objeto não existe";
+            echo "Esse objeto não existe ou já foi leiloado";
         }
     }
 
@@ -119,6 +119,8 @@ class AvaliadorController extends Controller
         $leilao=DB::table('leilao')->where('id', $leilaoId)->first();
         if ($leilao != null) {
             DB::table('leilao')->where('id', $leilaoId)->update(['estado' => 'T']);
+            $maior_licitacao=DB::table('licitacao')->where('leilao_id', $leilaoId)->orderBy('valor', 'desc')->first();
+            DB::table('leilao')->where('id', $leilaoId)->update(['vencedor' => $maior_licitacao->licitante_id]);
         }else{
             #MUDAR O ERRO
             echo "Esse leilão não existe";

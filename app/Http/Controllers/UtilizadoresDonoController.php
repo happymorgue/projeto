@@ -36,6 +36,28 @@ class UtilizadoresDonoController extends Controller
                 }
             }
             $objetos_perdidos_final = DB::table('objeto')->whereIn('id', $Id_objetos_perdidos)->orderBy('id', 'asc')->get();
+
+            foreach ($objetos_perdidos_final as $objeto) {
+
+            #Buscar os valores dos atributos do objeto
+            $atributos=DB::table('valoratributos')->where('objeto_id', $objeto->id)->get(['atributo_id','valor']);
+
+
+            #Buscar a informação dos atributos
+            foreach ($atributos as $atributo) {
+                $atributo_info=DB::table('atributo')->where('id', $atributo->atributo_id)->first();
+
+                #Colocar a informação do atributo no objeto
+                $atributo->nome=$atributo_info->nome;
+
+                #Colocar o tipo do atributo no objeto
+                $atributo->tipo=$atributo_info->tipo_dados;
+            }
+
+            #Colocar os atributos no objeto
+            $objeto->atributos=$atributos;
+            }
+
             $json = array('objetos_perdidos_encontrados' => $objetos_perdidos_final );
             return response()->json($json);
         } else {
@@ -65,6 +87,28 @@ class UtilizadoresDonoController extends Controller
                     array_push($Id_objetos_perdidos, $objeto_perdido->objeto_id);
                 }
                 $objetos_perdidos_final = DB::table('objeto')->whereIn('id', $Id_objetos_perdidos)->orderBy('id', 'asc')->get();
+
+                foreach ($objetos_perdidos_final as $objeto) {
+
+                    #Buscar os valores dos atributos do objeto
+                    $atributos=DB::table('valoratributos')->where('objeto_id', $objeto->id)->get(['atributo_id','valor']);
+
+
+                    #Buscar a informação dos atributos
+                    foreach ($atributos as $atributo) {
+                        $atributo_info=DB::table('atributo')->where('id', $atributo->atributo_id)->first();
+
+                        #Colocar a informação do atributo no objeto
+                        $atributo->nome=$atributo_info->nome;
+
+                        #Colocar o tipo do atributo no objeto
+                        $atributo->tipo=$atributo_info->tipo_dados;
+                    }
+
+                    #Colocar os atributos no objeto
+                    $objeto->atributos=$atributos;
+                }
+
                 $json = array('objetos_perdidos' => $objetos_perdidos_final);
                 return response()->json($json);
             } else {
@@ -82,6 +126,7 @@ class UtilizadoresDonoController extends Controller
             session_start(); 
         }
         $Id_objetos_encontrados_entregues=array();
+        $Id_objetos_leilao=array();
         $Id_objetos_encontrados=array();
         $utilizador_dono_DB = DB::table('regular')->where('id', $regularId)->first();
         if ($utilizador_dono_DB== null){
@@ -90,20 +135,51 @@ class UtilizadoresDonoController extends Controller
         } else {
             $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_dono_DB->user_id)->first();
             if ($utilizador_DB->email == $_SESSION['user_email']) {
+
+
                 #OBTER OS OBJETOS QUE JA FORAM ENTREGUES, E OBTER OS SEUS IDs DE OBJETO ACHADO
                 $objetos_entregues = DB::table('objetor')->get();
                 foreach ($objetos_entregues as $objeto_entregues) {
                     array_push($Id_objetos_encontrados_entregues, $objeto_entregues->objeto_e_id);
                 }
+                $objetos_em_leilao = DB::table('objetoleilao')->get();
+                foreach ($objetos_em_leilao as $objeto_leilao) {
+                    array_push($Id_objetos_leilao, $objeto_leilao->objeto_e_id);
+                }
                 #OBTER OS IDs DOS OBJETOS ACHADOS, EXCETO OS QUE JA FORAM ENTREGUES
-                $objetos_encontrados = DB::table('objetoe')->whereNotIn('id',$Id_objetos_encontrados_entregues )->get();
+                $objetos_encontrados = DB::table('objetoe')->whereNotIn('id',$Id_objetos_encontrados_entregues)->whereNotIn('id',$Id_objetos_leilao)->get();
                 foreach ($objetos_encontrados as $objeto_encontrado) {
                     array_push($Id_objetos_encontrados, $objeto_encontrado->objeto_id);
                 }
                 #OBTER OS DADOS DOS OBJETOS
                 $objetos_encontrados_final = DB::table('objeto')->whereIn('id', $Id_objetos_encontrados)->orderBy('id', 'asc')->get();
+
+                foreach ($objetos_encontrados_final as $objeto) {
+
+                    #Buscar os valores dos atributos do objeto
+                    $atributos=DB::table('valoratributos')->where('objeto_id', $objeto->id)->get(['atributo_id','valor']);
+
+
+                    #Buscar a informação dos atributos
+                    foreach ($atributos as $atributo) {
+                        $atributo_info=DB::table('atributo')->where('id', $atributo->atributo_id)->first();
+
+                        #Colocar a informação do atributo no objeto
+                        $atributo->nome=$atributo_info->nome;
+
+                        #Colocar o tipo do atributo no objeto
+                        $atributo->tipo=$atributo_info->tipo_dados;
+                    }
+
+                    #Colocar os atributos no objeto
+                    $objeto->atributos=$atributos;
+                }
+
+
                 $json = array('objetos_perdidos' => $objetos_encontrados_final);
                 return response()->json($json);
+
+
             } else {
                 #ALTERAR PARA ERRO 403/404
                 echo "Não tem permissões para aceder aos dados desse utilizador";
@@ -185,7 +261,16 @@ class UtilizadoresDonoController extends Controller
                     $data['rua'] = null;
                 }
                 $id_objeto = DB::table('objetop')->where('id', $objetoPerdidoId)->first();
-                DB::table('objeto')->where('id', $id_objeto->objeto_id)->update(['descricao' => $data['descricao'], 'categoria_id' => $data['categoria_id'], 'data_inicio' => $data['data_inicio'], 'data_fim' => $data['data_fim'], "pais" => $data['pais'], "distrito" => $data['distrito'], "cidade" => $data['cidade'], "freguesia" => $data['freguesia'], "rua" => $data['rua'], "localizacao" => $data['localizacao'], "imagem" => $data['imagem']]);
+                DB::table('objeto')->where('id', $id_objeto->objeto_id)->update(['descricao' => $data['descricao'], 'data_inicio' => $data['data_inicio'], 'data_fim' => $data['data_fim'], "pais" => $data['pais'], "distrito" => $data['distrito'], "cidade" => $data['cidade'], "freguesia" => $data['freguesia'], "rua" => $data['rua'], "localizacao" => $data['localizacao'], "imagem" => $data['imagem']]);
+                if(isset($data['atributos'])){
+                    DB::table('objeto')->where('id', $id_objeto->objeto_id)->update(['categoria_id' => $data['categoria_id']]);
+                    DB::table('valoratributos')->where('objeto_id', $id_objeto->objeto_id)->delete();
+                    $atributos = $data['atributos'];
+                    foreach ($atributos as $atributo) {
+                        DB::table('atributo')->where('categoria_id', $data['categoria_id'])->first();
+                        DB::table('valoratributos')->insert(['objeto_id' => $id_objeto->objeto_id, 'atributo_id' => $atributo['atributo_id'], 'valor' => $atributo['valor']]);
+                    }
+                }
             } else {
                 #ALTERAR PARA ERRO 403/404
                 echo "Não tem permissões para aceder aos dados desse utilizador";
@@ -225,9 +310,6 @@ class UtilizadoresDonoController extends Controller
         { 
             session_start(); 
         }
-        $Id_objetos_entregues=array();
-        $Id_objetos_encontrados=array();
-        $Id_objetos_perdidos=array();
         $utilizador_dono_DB = DB::table('regular')->where('id', $regularId)->first();
         if ($utilizador_dono_DB== null){
             #ALTERAR PARA ERRO 403/404
@@ -236,25 +318,48 @@ class UtilizadoresDonoController extends Controller
             $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_dono_DB->user_id)->first();
             if ($utilizador_DB->email == $_SESSION['user_email']) {
                 $objetoP = DB::table('objetop')->where('id', $objetoPerdidoId)->where('dono_id', $regularId)->first();
+                $objeto = DB::table('objeto')->where('id', $objetoP->objeto_id)->first();
                 if($objetoP != null){
-                    #3 FORS PARA FILTRAR OS OBJETOS DISPONIVEIS
-                    $objetos_entregues = DB::table('objetor')->get();
-                    foreach ($objetos_entregues as $objeto_entregues) {
-                        array_push($Id_objetos_entregues, $objeto_entregues->objeto_e_id);
+                    $id_dos_objetos_a_nao_incluir = array();
+
+                    #Obter os objetos que estão em leilão
+                    $id_dos_objetos_que_estao_em_leilao=DB::table('objetoleilao')->pluck('objeto_e_id');
+
+                    #Obter os objetos que foram encontrados
+                    $id_dos_objetos_que_foram_encontrados=DB::table('objetor')->pluck('objeto_e_id');
+
+                    #Criar a combinação dos dois arrays
+                    $id_dos_objetos_a_nao_incluir = $id_dos_objetos_que_estao_em_leilao->concat($id_dos_objetos_que_foram_encontrados);
+
+                    $id_dos_objetos_a_ir_buscar=DB::table('objetoe')->whereNotIn('id', $id_dos_objetos_a_nao_incluir)->pluck('objeto_id');
+
+                    #Objetos que correspondem à pesquisa
+                    $objetos=DB::table('objeto')->whereIn('id',$id_dos_objetos_a_ir_buscar)->where('categoria_id',$objeto->categoria_id)->get();
+
+                    #Ir buscar os atributos dos objetos
+                    foreach ($objetos as $objeto) {
+
+                        #Buscar os valores dos atributos do objeto
+                        $atributos=DB::table('valoratributos')->where('objeto_id', $objeto->id)->get(['atributo_id','valor']);
+
+
+                        #Buscar a informação dos atributos
+                        foreach ($atributos as $atributo) {
+                            $atributo_info=DB::table('atributo')->where('id', $atributo->atributo_id)->first();
+
+                            #Colocar a informação do atributo no objeto
+                            $atributo->nome=$atributo_info->nome;
+
+                            #Colocar o tipo do atributo no objeto
+                            $atributo->tipo=$atributo_info->tipo_dados;
+                        }
+
+                        #Colocar os atributos no objeto
+                        $objeto->atributos=$atributos;
                     }
-                    $objetos_encontrados = DB::table('objetoe')->WhereNotIn('id', $Id_objetos_entregues)->get();
-                    foreach ($objetos_encontrados as $objeto_encontrados) {
-                        array_push($Id_objetos_encontrados, $objeto_encontrados->objeto_id);
-                    }
-                    $objetos_perdidos = DB::table('objetop')->get();
-                    foreach ($objetos_perdidos as $objeto_perdidos) {
-                        array_push($Id_objetos_perdidos, $objeto_perdidos->objeto_id);
-                    }
-                    #OBTER O OBJETO DADO, SENDO POSSIVEL EXTRAIR A CATEGORIA
-                    $objeto = DB::table('objeto')->where('id', $objetoP->objeto_id)->first();
-                    #BUSCAR OS OBJETOS DISPONIVEIS, QUE PERTENCEM A CATEGORIA DO OBJETO DADO
-                    $objetos = DB::table('objeto')->where('categoria_id', $objeto->categoria_id)->whereNotIn('id',$Id_objetos_perdidos)->whereIn('id', $Id_objetos_encontrados)->orderBy('id', 'asc')->get();
-                    $json = array('objetos_encontrados' => $objetos);
+
+                    #Colocar num json e retornar
+                    $json=array('objetos'=>$objetos);
                     return response()->json($json);
                 } else {
                     #ALTERAR PARA ERRO 403/404
@@ -275,9 +380,6 @@ class UtilizadoresDonoController extends Controller
         { 
             session_start(); 
         }
-        $Id_objetos_entregues=array();
-        $Id_objetos_encontrados=array();
-        $Id_objetos_perdidos=array();
         $utilizador_dono_DB = DB::table('regular')->where('id', $regularId)->first();
         if ($utilizador_dono_DB== null){
             #ALTERAR PARA ERRO 403/404
@@ -286,22 +388,48 @@ class UtilizadoresDonoController extends Controller
             $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_dono_DB->user_id)->first();
             if ($utilizador_DB->email == $_SESSION['user_email']) {
                 $objetoP = DB::table('objetop')->where('id', $objetoPerdidoId)->where('dono_id', $regularId)->first();
+                $objeto = DB::table('objeto')->where('id', $objetoP->objeto_id)->first();
                 if($objetoP != null){
-                    $objetos_entregues = DB::table('objetor')->get();
-                    foreach ($objetos_entregues as $objeto_entregues) {
-                        array_push($Id_objetos_entregues, $objeto_entregues->objeto_e_id);
+                    $id_dos_objetos_a_nao_incluir = array();
+
+                    #Obter os objetos que estão em leilão
+                    $id_dos_objetos_que_estao_em_leilao=DB::table('objetoleilao')->pluck('objeto_e_id');
+
+                    #Obter os objetos que foram encontrados
+                    $id_dos_objetos_que_foram_encontrados=DB::table('objetor')->pluck('objeto_e_id');
+
+                    #Criar a combinação dos dois arrays
+                    $id_dos_objetos_a_nao_incluir = $id_dos_objetos_que_estao_em_leilao->concat($id_dos_objetos_que_foram_encontrados);
+
+                    $id_dos_objetos_a_ir_buscar=DB::table('objetoe')->whereNotIn('id', $id_dos_objetos_a_nao_incluir)->pluck('objeto_id');
+
+                    #Objetos que correspondem à pesquisa
+                    $objetos_por_filtrar=DB::table('objeto')->where('descricao', 'like','%' . $objeto->descricao . '%')->orWhere('descricao', 'like','%' . $objeto->descricao)->orWhere('descricao', 'like',$objeto->descricao . '%')->pluck('id');
+                    $objetos=DB::table('objeto')->whereIn('id',$objetos_por_filtrar)->whereIn('id',$id_dos_objetos_a_ir_buscar)->get();
+                    #Ir buscar os atributos dos objetos
+                    foreach ($objetos as $objeto) {
+
+                        #Buscar os valores dos atributos do objeto
+                        $atributos=DB::table('valoratributos')->where('objeto_id', $objeto->id)->get(['atributo_id','valor']);
+
+
+                        #Buscar a informação dos atributos
+                        foreach ($atributos as $atributo) {
+                            $atributo_info=DB::table('atributo')->where('id', $atributo->atributo_id)->first();
+
+                            #Colocar a informação do atributo no objeto
+                            $atributo->nome=$atributo_info->nome;
+
+                            #Colocar o tipo do atributo no objeto
+                            $atributo->tipo=$atributo_info->tipo_dados;
+                        }
+
+                        #Colocar os atributos no objeto
+                        $objeto->atributos=$atributos;
                     }
-                    $objetos_encontrados = DB::table('objetoe')->WhereNotIn('id', $Id_objetos_entregues)->get();
-                    foreach ($objetos_encontrados as $objeto_encontrados) {
-                        array_push($Id_objetos_encontrados, $objeto_encontrados->objeto_id);
-                    }
-                    $objetos_perdidos = DB::table('objetop')->get();
-                    foreach ($objetos_perdidos as $objeto_perdidos) {
-                        array_push($Id_objetos_perdidos, $objeto_perdidos->objeto_id);
-                    }
-                    $objeto = DB::table('objeto')->where('id', $objetoP->objeto_id)->first();
-                    $objetos = DB::table('objeto')->where('descricao', 'like','%' . $objeto->descricao)->whereIn('id', $Id_objetos_encontrados)->whereNotIn('id',$Id_objetos_perdidos)->orderBy('id', 'asc')->orWhere('descricao', 'like','%' . $objeto->descricao . '%')->whereIn('id', $Id_objetos_encontrados)->whereNotIn('id',$Id_objetos_perdidos)->orderBy('id', 'asc')->orWhere('descricao', 'like',$objeto->descricao  . '%')->whereIn('id', $Id_objetos_encontrados)->whereNotIn('id',$Id_objetos_perdidos)->orderBy('id', 'asc')->get();
-                    $json = array('objetos_encontrados' => $objetos);
+
+                    #Colocar num json e retornar
+                    $json=array('objetos'=>$objetos);
                     return response()->json($json);
                 } else {
                     #ALTERAR PARA ERRO 403/404

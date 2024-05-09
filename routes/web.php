@@ -100,6 +100,10 @@ Route::get('/leilao', function () {
     return view('leilao');
 });
 
+Route::get('/notificacoes', function () {
+    return view('notificacoes');
+});
+
 #APIS--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #CRIACAO CONTAS

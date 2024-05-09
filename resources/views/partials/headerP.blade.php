@@ -27,6 +27,13 @@
           </li>
         </ul>
       </div>
+      <!--Search bar, needs fixing for sm (and maybe for xl not sure will need joao to test it)-->
+      <div class="collapse navbar-collapse col-4-sm col-4-md">
+        <form class="d-flex container-fluid m-0" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-primary" type="submit">Search</button>
+        </form>
+      </div>
 
     <div class="collapse navbar-collapse col-4" id="navmenu">
       <ul class="nav navbar-nav ms-auto">

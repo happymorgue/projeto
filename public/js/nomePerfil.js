@@ -1,6 +1,6 @@
 
 function getProfile() {
-    console.log("js: perfil");
+    console.log("js: nomePerfil");
     let pedido = xhttp = new XMLHttpRequest();
     pedido.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -9,14 +9,9 @@ function getProfile() {
             pedido2.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     var responseJson = JSON.parse(pedido2.responseText);
-                    document.getElementsByName('nome')[0].innerHTML = responseJson['nome'];
-                    document.getElementsByName('nif')[0].innerHTML = responseJson['nif'];
-                    document.getElementsByName('telemovel')[0].innerHTML = responseJson['telemovel'];
-                    document.getElementsByName('genero')[0].innerHTML = responseJson['genero'];
-                    document.getElementsByName('morada')[0].innerHTML = responseJson['morada'];
-                    document.getElementsByName('data_nascimento')[0].innerHTML = responseJson['data_nascimento'];
-                    document.getElementsByName('email')[0].innerHTML = responseJson['email'];
-                    document.getElementsByName('id_civil')[0].innerHTML = responseJson['identificador civil'];
+                    if(responseJson['nome'] != "null"){
+                        document.getElementsByName('nome2')[0].innerHTML = responseJson['nome'];
+                    }
                     console.log(responseJson);
                     console.log(responseJson['email']);
 

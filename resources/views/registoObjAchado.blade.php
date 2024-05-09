@@ -7,7 +7,7 @@
 
   
     
-  <section class="p-3 p-md-4 p-xl-5">
+  <section class="p-3 p-md-4 p-xl-5 bgColor">
     <div class="container">
       <div class="card border-light-subtle shadow-sm">
         <div class="row g-0">

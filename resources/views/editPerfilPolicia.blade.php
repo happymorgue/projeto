@@ -6,7 +6,8 @@
 @section('content')
 
   
-  <div class="container bgPerfil">
+<section class="bgPerfil">
+  <div class="container">
 		<div class="main-body">
       <div class="row gutters-sm">
         <div class="col-md-4 mb-3">
@@ -26,34 +27,37 @@
 					<div class="card">
 						<div class="card-body">
 							<div class="row mb-3">
-								<div class="col-sm-4">
+								<h4>Nome</h4>
+								<!--<div class="col-sm-4">
 									<h6 class="mb-0">Nome</h6>
-								</div>
+								</div>-->
 								<div class="col-sm-5 text-secondary">
 									<input type="text" class="form-control" name="nome" id="nome" value="">
 								</div>
 							</div>
-              <hr>
+
+							<h4>Número Interno</h4>
 							<div class="row mb-3">
-								<div class="col-sm-4">
+								<!--<div class="col-sm-4">
 									<h6 class="mb-0">Número Interno</h6>
-								</div>
+								</div>-->
 								<div class="col-sm-5 text-secondary">
 									<input type="text" class="form-control" name="numero_interno" id="numero_interno" value="" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
 								</div>
 							</div>
-              <hr>
+
 							<div class="row mb-3">
-								<div class="col-sm-4">
+								<h4>Posto de Polícia</h4>
+								<!--<div class="col-sm-4">
 									<h6 class="mb-0">Posto de Polícia</h6>
-								</div>
+								</div>-->
 								<div class="col-sm-5 text-secondary">
 									<select class="form-select" name="posto_policia" id="posto_policia">
 									</select>
 								</div>
 							</div>
-              <hr>
-			  				<div class="row justify-content-center botoes">
+
+			  				<div class="row justify-content-start botoes">
 								<div class="col-md-6 col-lg-2 mx-2 my-1">
 									<a class="btn btn-save" onclick=guardarMudancas()>Salvar</a>
 								</div>
@@ -69,6 +73,7 @@
 		</div>
 	</div>
 
+</section>
 @endsection
 
 <link href="{{ asset('css/perfil.css') }}" rel="stylesheet">

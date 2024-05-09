@@ -6,7 +6,8 @@
 @section('content')
 
   
-  <div class="container bgPerfil">
+<section class="bgPerfil">
+  <div class="container">
 		<div class="main-body">
       <div class="row gutters-sm">
         <div class="col-md-4 mb-3">
@@ -32,7 +33,7 @@
 									<h6 class="mb-0">Nome</h6>
 								</div> -->
 								<div class="col-sm-9 text-secondary editp">
-									<input type="text" class="form-control" placeholder="Nome*" value="" name="nome" id="nome">
+									<input type="text" class="form-control" placeholder="Nome" value="" name="nome" id="nome">
 								</div>
 							</div>
               <!-- <hr> -->
@@ -53,7 +54,7 @@
 									<h6 class="mb-0">NIF</h6>
 								</div> -->
 								<div class="col-sm-6 text-secondary">
-									<input type="text" class="form-control"  name="nif" id="nif" minlength="9" maxlength="9" placeholder="NIF*" value="" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+									<input type="text" class="form-control"  name="nif" id="nif" minlength="9" maxlength="9" placeholder="NIF" value="" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
 								</div>
 							</div>
            
@@ -64,7 +65,7 @@
 									<h6 class="mb-0">Morada</h6>
 								</div> -->
 								<div class="col-sm-6 text-secondary" >
-									<input type="text" class="form-control" name="morada" id="morada" placeholder="Morada*" value="">
+									<input type="text" class="form-control" name="morada" id="morada" placeholder="Morada" value="">
 								</div>
 							</div>
               <!-- <hr> -->
@@ -73,7 +74,7 @@
 									<h6 class="mb-0">ID Civil</h6>
 								</div> -->
 								<div class="col-sm-6 text-secondary">
-									<input type="text" class="form-control" name="identificador civil" id="identificador civil" placeholder="ID Civil*" value="" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+									<input type="text" class="form-control" name="identificador civil" id="identificador civil" placeholder="ID Civil" value="" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
 								</div>
 							</div>
               <!-- <hr> -->
@@ -145,6 +146,7 @@
 		</div>
 	</div>
 
+</section>
 @endsection
 
 <link href="{{ asset('css/perfil.css') }}" rel="stylesheet">

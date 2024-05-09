@@ -33,7 +33,7 @@
     </div>
   </div>
   <div class="container p-5 col-md-3 bgColorMyItems">
-    <h3>Meus Items Perdidos</h2>
+    <h3>Meus Itens Perdidos</h2>
     <div>
       <div id="MeusObjetosPerdidos" class="d-flex justify-content-center row">
         <div class="card shadow-1 border rounded-3 col-md-12 m-1 my-3">

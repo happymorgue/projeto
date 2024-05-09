@@ -38,8 +38,11 @@
       <!--Search bar, needs fixing for sm (and maybe for xl not sure will need joao to test it)-->
       <div class="collapse navbar-collapse col-4-sm col-4-md">
         <form class="d-flex container-fluid m-0" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-primary" type="submit">Search</button>
+          <input class="form-control me-2" type="search" placeholder="Pesquisa" aria-label="Search">
+          <button class="btn btn-primary btnSearch">
+            <i class="bi bi-search search"></i> 
+          </button>
+
         </form>
       </div>
       <div class="collapse navbar-collapse col-2-lg" id="navmenu">
@@ -56,17 +59,17 @@
               <h5 class="conta" name="nome"></h5> 
             </div>
               <div class="horizontal-line"></div>
-              <li><a class="dropdown-item bi bi-person-fill link" href="/perfilRegular" > Perfil </a></li> 
+              <li><a class="dropdown-item link" href="/perfilRegular" > Perfil </a></li> 
               <!-- <hr> -->
               <div class="horizontal-line2"></div>
-              <li><a class="dropdown-item bi bi-heart-fill link" href="/verObjPerdidos"> Meus objetos perdidos </a></li>
+              <li><a class="dropdown-item link" href="/verObjPerdidos"> Meus objetos perdidos </a></li>
                <!-- <hr>  -->
               <div class="horizontal-line2"></div>
-              <li><a class="dropdown-item bi bi-bag-fill link" href=""> Minhas licitações </a></li>
+              <li><a class="dropdown-item link" href=""> Minhas licitações </a></li>
               <div class="horizontal-line2"></div>
-              <li><a class="dropdown-item bi bi-bag-fill link" href="/logout">Terminar sessão</a>
+              <li><a class="dropdown-item link" href="/logout">Terminar sessão</a>
               <div class="horizontal-line2"></div>
-              <li><a class="dropdown-item bi bi-bag-fill link deleteAcc" href="">Apagar Conta</a>
+              <li><a class="dropdown-item link deleteAcc" href="">Apagar Conta</a>
           </li>
             </ul>
           </li> 

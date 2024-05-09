@@ -30,8 +30,10 @@
       <!--Search bar, needs fixing for sm (and maybe for xl not sure will need joao to test it)-->
       <div class="collapse navbar-collapse col-4-sm col-4-md">
         <form class="d-flex container-fluid m-0" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-primary" type="submit">Search</button>
+          <input class="form-control me-2" type="search" placeholder="Pesquisa" aria-label="Search">
+          <button class="btn btn-primary btnSearch">
+            <i class="bi bi-search search"></i> 
+          </button>
         </form>
       </div>
 
@@ -44,31 +46,30 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-end  " aria-labelledby="navbarDropdownMenuLink">
             <!-- <div class="horizontal-line"></div> -->
-            <li><a class="dropdown-item bi bi-person-fill" href="/verPoliciaObjAchados" > Objetos Achados </a></li>
+            <li><a class="dropdown-item" href="/verPoliciaObjAchados" > Objetos Achados </a></li>
             <div class="horizontal-line2"></div>
-            <li><a class="dropdown-item bi bi-person-fill" href="/registarObjAchado" > Novo Objeto Achado </a></li>
+            <li><a class="dropdown-item" href="/registarObjAchado" > Novo Objeto Achado </a></li>
             <div class="horizontal-line2"></div>
-            <li><a class="dropdown-item bi bi-heart-fill" href="/buscaObjPerdidos"> Objetos Perdidos </a></li>
+            <li><a class="dropdown-item" href="/buscaObjPerdidos"> Objetos Perdidos </a></li>
           </ul>
         </li>
-
         <li class="nav-item dropdown">
           <a href="" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-bs-toggle="dropdown">
             Perfil
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
          <div class="layout">
-         <h5 class="conta" >Olá,</h5> 
-          <h5 class="conta" name="nome2"></h5> 
+         <h5 class="conta" >Olá, </h5> 
+          <h5 class="conta" name="nome"></h5> 
          </div>
           <div class="horizontal-line"></div>
-            <li><a class="dropdown-item bi bi-person-fill" href="/perfilPolicia" > Perfil </a></li>
+            <li><a class="dropdown-item" href="/perfilPolicia" > Perfil </a></li>
             <div class="horizontal-line2"></div>
-            <li><a class="dropdown-item bi bi-person-fill" href="/postosPolicia" > Postos de Polícia </a></li>
+            <li><a class="dropdown-item" href="/postosPolicia" > Postos de Polícia </a></li>
             <div class="horizontal-line2"></div>
-            <li><a class="dropdown-item bi bi-bag-fill link" href="/logout">Terminar sessão</a>
+            <li><a class="dropdown-item link" href="/logout">Terminar sessão</a>
             <div class="horizontal-line2"></div>
-            <li><a class="dropdown-item bi bi-bag-fill link deleteAcc" href="">Apagar Conta</a>
+            <li><a class="dropdown-item link deleteAcc" href="">Apagar Conta</a>
           </ul>
         </li>
 

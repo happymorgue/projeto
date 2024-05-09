@@ -144,10 +144,19 @@ function registarObjetoPerdido(idPolicia) {
         })
             .then(response => {
                 if (response.ok) {
-                    alert('Objeto registado com sucesso');
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Objeto registado com sucesso',
+                        text: 'O objeto foi registado com sucesso.',
+                    });
+                    
                     window.location.replace('/perfilPolicia');
                 } else {
-                    alert('Erro ao registar objeto');
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Erro ao registar objeto',
+                        text: 'Houve um erro ao registar o objeto. Por favor, tente novamente mais tarde.',
+                    });
                 }
             })
             .catch(error => console.error('Error:', error));

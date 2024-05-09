@@ -11,7 +11,13 @@
     <link href="{{ asset('css/geral.css') }}" rel="stylesheet">
 
     <link rel="icon" href="{{ asset('lupa.png') }}" type="image/x-icon" >
-    
+    <!-- SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+     <!-- Icons -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+
 </head>
 <body>
     @include('partials.headerP')

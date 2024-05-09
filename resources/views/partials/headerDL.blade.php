@@ -76,6 +76,7 @@
               </div>
               <div class="horizontal-line"></div>
 <<<<<<< HEAD
+<<<<<<< HEAD
               <li><a class="dropdown-item link" href="/perfilRegular" > Perfil </a></li> 
               <!-- <hr> -->
               <div class="horizontal-line2"></div>
@@ -86,6 +87,9 @@
 =======
               <li><a class="dropdown-item bi bi-person-fill link" href="/perfilRegular"> Perfil </a></li>
 >>>>>>> 9066e1b00a697b86c108ca8966ec097f50b7c32f
+=======
+              <li><a class="dropdown-item bi bi-person-fill link" href="/perfilRegular"> Perfil </a></li>
+>>>>>>> Luiza
               <div class="horizontal-line2"></div>
               <li><a class="dropdown-item link" href="/logout">Terminar sessão</a>
               <div class="horizontal-line2"></div>
@@ -97,6 +101,11 @@
           </ul>
 >>>>>>> 9066e1b00a697b86c108ca8966ec097f50b7c32f
           </li>
+<<<<<<< HEAD
+=======
+          </ul>
+          </li>
+>>>>>>> Luiza
           @else
           <!-- If not, user logged out -->
           <li class="nav-item d-flex justify-content-center px-2">
@@ -123,4 +132,8 @@
   </nav>
 </header>
 
+<<<<<<< HEAD
 <script src="{{ asset('js/nomePerfil.js') }}" type="text/javascript"></script>
+=======
+<script src="{{ asset('js/nomePerfil.js') }}" type="text/javascript"></script>
+>>>>>>> Luiza

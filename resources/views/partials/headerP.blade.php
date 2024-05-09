@@ -70,6 +70,7 @@
         </ul>
       </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <!--Search bar, needs fixing for sm (and maybe for xl not sure will need joao to test it)-->
       <div class="collapse navbar-collapse col-4-sm col-4-md">
         <form class="d-flex container-fluid m-0" role="search">
@@ -119,6 +120,8 @@
       </ul>
 =======
 >>>>>>> 9066e1b00a697b86c108ca8966ec097f50b7c32f
+=======
+>>>>>>> Luiza
     </div>
   </nav>
 </header>

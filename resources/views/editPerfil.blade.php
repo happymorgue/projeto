@@ -80,6 +80,11 @@
 							<h4>Data de Nascimento</h4>
 							<div class="row">
 								<div class="col-sm-2">
+									<select name="year" id="year" class="form-select">
+										<option value="">Ano</option>
+									</select>
+								</div>
+								<div class="col-sm-2">
 									<select name="month" id="month" class="form-select">
 										<option value="">Mês</option>
 										<option value="1">Janeiro</option>
@@ -101,13 +106,6 @@
 										<option value="">Dia</option>
 									</select>
 								</div>
-								<div class="col-sm-2">
-									<select name="year" id="year" class="form-select">
-										<option value="">Ano</option>
-										<option value="2002">2002</option>
-										<option value="2024">2024</option>
-									</select>
-								</div>
 							</div>
 
 					<!-- Div to display the formatted date -->
@@ -121,7 +119,7 @@
 								</div> -->
 								<div class="col-sm-6 text-secondary">
 									<select class="form-select" name="genero" id="genero">
-										<!-- <option value=""selected>Selecione</option> -->
+										<option value="" selected>Selecione o genero</option>
 										<option value="M">Masculino</option>
 										<option value="F">Feminino</option>
 										<option value="O">Outro</option>

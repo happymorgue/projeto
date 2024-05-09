@@ -66,7 +66,7 @@
               <div class="horizontal-line2"></div>
               <li><a class="dropdown-item bi bi-bag-fill link" href="/logout">Terminar sessão</a>
               <div class="horizontal-line2"></div>
-              <li><a class="dropdown-item bi bi-bag-fill link deleteAcc" href="">Apagar Conta</a>
+              <li><a class="dropdown-item bi bi-bag-fill link deleteAcc" href="/api/utilizador/conta/apagar">Apagar Conta</a>
           </li>
             </ul>
           </li> 
@@ -91,4 +91,4 @@
   </nav>
 </header>
 
-<script src="{{ asset('js/perfil.js') }}" type="text/javascript"></script>
+<!--<script src="{{ asset('js/perfil.js') }}" type="text/javascript"></script>-->

@@ -131,4 +131,5 @@
 @endsection
 
 <link href="{{ asset('css/leilao.css') }}" rel="stylesheet">
-<script src="{{ asset('js/countdown.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/leilao.js') }}" type="text/javascript"></script>
+<!--<script src="{{ asset('js/countdown.js') }}" type="text/javascript"></script>-->

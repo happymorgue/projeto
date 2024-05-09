@@ -99,7 +99,7 @@ Route::get('/leiloes', function () {
     return view('leiloes');
 });
 
-Route::get('/leilao', function () {
+Route::get('/leilao/{leilaoId}', function () {
     return view('leilao');
 });
 

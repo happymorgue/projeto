@@ -1,5 +1,6 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Function to format the date as DD/MM/YYYY
+    carregarAnos();
     function formatDate(day, month, year) {
         return day.padStart(2, '0') + '/' + month.padStart(2, '0') + '/' + year;
     }
@@ -22,6 +23,19 @@ document.addEventListener('DOMContentLoaded', function() {
             // Display an error message if any field is not selected
             document.getElementById('data_nascimento').innerText = 'Por favor, selecione o dia, mês e ano.';
             console.log("Por favor, selecione o dia, mês e ano.");
+        }
+    }
+
+    function carregarAnos() {
+        const yearSelect = document.getElementById('year');
+        const currentYear = new Date().getFullYear();
+
+        // Populate years from 1900 to the current year
+        for (let i = currentYear; i >= 1900; i--) {
+            const option = document.createElement('option');
+            option.value = i;
+            option.textContent = i;
+            yearSelect.appendChild(option);
         }
     }
 

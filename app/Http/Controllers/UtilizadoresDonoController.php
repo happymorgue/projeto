@@ -86,7 +86,7 @@ class UtilizadoresDonoController extends Controller
                 foreach ($objetos_perdidos as $objeto_perdido) {
                     array_push($Id_objetos_perdidos, $objeto_perdido->objeto_id);
                 }
-                $objetos_perdidos_final = DB::table('objeto')->whereIn('id', $Id_objetos_perdidos)->orderBy('id', 'asc')->get();
+                $objetos_perdidos_final = DB::table('objeto')->whereIn('id', $Id_objetos_perdidos)->orderBy('id', 'desc')->get();
 
                 foreach ($objetos_perdidos_final as $objeto) {
 
@@ -152,7 +152,7 @@ class UtilizadoresDonoController extends Controller
                     array_push($Id_objetos_encontrados, $objeto_encontrado->objeto_id);
                 }
                 #OBTER OS DADOS DOS OBJETOS
-                $objetos_encontrados_final = DB::table('objeto')->whereIn('id', $Id_objetos_encontrados)->orderBy('id', 'asc')->get();
+                $objetos_encontrados_final = DB::table('objeto')->whereIn('id', $Id_objetos_encontrados)->orderBy('id', 'desc')->get();
 
                 foreach ($objetos_encontrados_final as $objeto) {
 

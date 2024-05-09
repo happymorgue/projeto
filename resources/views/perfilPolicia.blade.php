@@ -6,8 +6,7 @@
 @section('content')
 
   
-<section class="bgPerfil">
-    <div class="container">
+    <div class="container bgPerfil">
       <div class="main-body">
       
             <div class="row gutters-sm">
@@ -85,7 +84,6 @@
           </div>
       </div>
 
-</section>
 @endsection
 
 <link href="{{ asset('css/perfil.css') }}" rel="stylesheet">

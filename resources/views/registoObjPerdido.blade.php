@@ -7,7 +7,7 @@
 
 
 
-  <section class="p-3 p-md-4 p-xl-5">
+  <section class="p-3 p-md-4 p-xl-5 bgColor">
     <div class="container">
       <div class="card border-light-subtle shadow-sm">
         <div class="row g-0">
@@ -92,4 +92,5 @@
 
 @endsection
 
+<link href="{{ asset('css/registoObjs.css') }}" rel="stylesheet">
 <script src="{{ asset('js/registarObjetoPerdido.js') }}" type="text/javascript"></script>

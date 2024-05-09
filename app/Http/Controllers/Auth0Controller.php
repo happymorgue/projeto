@@ -55,8 +55,16 @@ class Auth0Controller extends Controller
             $this->auth0->exchange();
         }
         #Obter as credenciais do utilizador
-        $user = $this->auth0->getCredentials()?->user;
-        $_SESSION['user_email'] = $user['name'];
+        try {
+            $user = $this->auth0->getCredentials()?->user;
+            $_SESSION['user_email'] = $user['name'];
+        } catch (\Exception $e) {
+            echo '<script type="text/javascript">';
+            echo 'alert("Conta desativada");';
+            echo 'window.location.href="/homeGeral";'; // Redirect after alert
+            echo '</script>';
+            exit;
+        }
         Session::put('user_email', $user['name']);
         #Verificar se um utilizador com esse email ja existe
         $utilizador_DB = DB::table('utilizador')->where('email', $_SESSION['user_email'])->first();
@@ -161,6 +169,104 @@ class Auth0Controller extends Controller
             // Delete the user
             $client->delete("users/$userId");
         }
+        $this->logout();
+    }
+
+    public function deactivateUserFromAuth0(){
+                $client = new Client([
+            'base_uri' => 'https://dev-c5xznpgxsg1a5slt.eu.auth0.com',
+        ]);
+
+        $response = $client->post('oauth/token', [
+            'json' => [
+                'client_id' => '92F8bftfLRDygWdNmRqvmzQClaZY8ySA',
+                'client_secret' => '4_hP2pLCw1dmbiS346hvRRF9AZDC9Ee9RQP2KsSMxzcgqStzcM0T9ggr2E2lxVub',
+                'audience' => 'https://dev-c5xznpgxsg1a5slt.eu.auth0.com/api/v2/',
+                'grant_type' => 'client_credentials',
+            ],
+        ]);
+
+        $body = $response->getBody();
+        $data = json_decode($body, true);
+
+        $token = $data['access_token'];
+
+
+
+        $client = new Client([
+            'base_uri' => 'https://dev-c5xznpgxsg1a5slt.eu.auth0.com/api/v2/',
+            'headers' => ['authorization' => 'Bearer ' . $token]
+        ]);
+
+        $email = $this->auth0->getCredentials()?->user['name'];
+
+        // Get the user's ID
+        $response = $client->get('users-by-email', [
+            'query' => ['email' => $email]
+        ]);
+
+        $body = $response->getBody();
+        $data = json_decode($body, true);
+
+        if (count($data) > 0) {
+            $userId = $data[0]['user_id'];
+
+            // deactivate the user
+            $client->patch("users/$userId",[
+                'json' => [
+                    'blocked' => true
+                ]
+            ]);
+        }
+        DB::table('utilizador')->where('email', $email )->update(['ativo' => 'N']);
+        $this->logout();
+    }
+
+    public function activateUserFromAuth0($email){
+                $client = new Client([
+            'base_uri' => 'https://dev-c5xznpgxsg1a5slt.eu.auth0.com',
+        ]);
+
+        $response = $client->post('oauth/token', [
+            'json' => [
+                'client_id' => '92F8bftfLRDygWdNmRqvmzQClaZY8ySA',
+                'client_secret' => '4_hP2pLCw1dmbiS346hvRRF9AZDC9Ee9RQP2KsSMxzcgqStzcM0T9ggr2E2lxVub',
+                'audience' => 'https://dev-c5xznpgxsg1a5slt.eu.auth0.com/api/v2/',
+                'grant_type' => 'client_credentials',
+            ],
+        ]);
+
+        $body = $response->getBody();
+        $data = json_decode($body, true);
+
+        $token = $data['access_token'];
+
+
+
+        $client = new Client([
+            'base_uri' => 'https://dev-c5xznpgxsg1a5slt.eu.auth0.com/api/v2/',
+            'headers' => ['authorization' => 'Bearer ' . $token]
+        ]);
+
+        // Get the user's ID
+        $response = $client->get('users-by-email', [
+            'query' => ['email' => $email]
+        ]);
+
+        $body = $response->getBody();
+        $data = json_decode($body, true);
+
+        if (count($data) > 0) {
+            $userId = $data[0]['user_id'];
+
+            // Delete the user
+            $client->patch("users/$userId",[
+                'json' => [
+                    'blocked' => false
+                ]
+            ]);
+        }
+        DB::table('utilizador')->where('email', $email )->update(['ativo' => 'S']);
     }
 
     #Metodo para registar um utilizador, consoante o tipo que escolheu

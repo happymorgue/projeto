@@ -259,4 +259,5 @@ class UtilizadoresLicitanteController extends Controller
             }
         }
     }
+
 }

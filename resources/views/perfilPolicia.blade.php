@@ -6,7 +6,8 @@
 @section('content')
 
   
-    <div class="container bgPerfil">
+<section class="bgPerfil">
+    <div class="container">
       <div class="main-body">
       
             <div class="row gutters-sm">
@@ -68,7 +69,7 @@
                           <a class="btn btns btn-edit" href="/editPerfilPolicia">Editar Dados</a>
                         </div>
                         <div class="col-md-4 col-lg-2 col-sm-8  m-1"> 
-                          <a class="btn btns btn-desativar" href="">Desativar Conta</a>
+                          <a class="btn btns btn-desativar" href="/api/utilizador/conta/desativar">Desativar Conta</a>
                         </div>
                         <!-- <div class="col-md-4 col-lg-2 col-sm-8 m-1"> 
                           <a class="btn btns btn-apagar" href="">Apagar Conta</a>
@@ -84,6 +85,7 @@
           </div>
       </div>
 
+</section>
 @endsection
 
 <link href="{{ asset('css/perfil.css') }}" rel="stylesheet">

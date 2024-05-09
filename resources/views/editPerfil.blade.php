@@ -6,7 +6,8 @@
 @section('content')
 
   
-  <div class="container bgPerfil">
+<section class="bgPerfil">
+  <div class="container">
 		<div class="main-body">
       <div class="row gutters-sm">
         <div class="col-md-4 mb-3">
@@ -32,7 +33,7 @@
 									<h6 class="mb-0">Nome</h6>
 								</div> -->
 								<div class="col-sm-9 text-secondary editp">
-									<input type="text" class="form-control" placeholder="Nome*" value="" name="nome" id="nome">
+									<input type="text" class="form-control" placeholder="Nome" value="" name="nome" id="nome">
 								</div>
 							</div>
               <!-- <hr> -->
@@ -53,7 +54,7 @@
 									<h6 class="mb-0">NIF</h6>
 								</div> -->
 								<div class="col-sm-6 text-secondary">
-									<input type="text" class="form-control"  name="nif" id="nif" minlength="9" maxlength="9" placeholder="NIF*" value="" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+									<input type="text" class="form-control"  name="nif" id="nif" minlength="9" maxlength="9" placeholder="NIF" value="" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
 								</div>
 							</div>
            
@@ -64,7 +65,7 @@
 									<h6 class="mb-0">Morada</h6>
 								</div> -->
 								<div class="col-sm-6 text-secondary" >
-									<input type="text" class="form-control" name="morada" id="morada" placeholder="Morada*" value="">
+									<input type="text" class="form-control" name="morada" id="morada" placeholder="Morada" value="">
 								</div>
 							</div>
               <!-- <hr> -->
@@ -73,12 +74,17 @@
 									<h6 class="mb-0">ID Civil</h6>
 								</div> -->
 								<div class="col-sm-6 text-secondary">
-									<input type="text" class="form-control" name="identificador civil" id="identificador civil" placeholder="ID Civil*" value="" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+									<input type="text" class="form-control" name="identificador civil" id="identificador civil" placeholder="ID Civil" value="" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
 								</div>
 							</div>
               <!-- <hr> -->
 							<h4>Data de Nascimento</h4>
 							<div class="row">
+								<div class="col-sm-2">
+									<select name="year" id="year" class="form-select">
+										<option value="">Ano</option>
+									</select>
+								</div>
 								<div class="col-sm-2">
 									<select name="month" id="month" class="form-select">
 										<option value="">Mês</option>
@@ -101,13 +107,6 @@
 										<option value="">Dia</option>
 									</select>
 								</div>
-								<div class="col-sm-2">
-									<select name="year" id="year" class="form-select">
-										<option value="">Ano</option>
-										<option value="2002">2002</option>
-										<option value="2024">2024</option>
-									</select>
-								</div>
 							</div>
 
 					<!-- Div to display the formatted date -->
@@ -121,7 +120,7 @@
 								</div> -->
 								<div class="col-sm-6 text-secondary">
 									<select class="form-select" name="genero" id="genero">
-										<!-- <option value=""selected>Selecione</option> -->
+										<option value="" selected>Selecione o genero</option>
 										<option value="M">Masculino</option>
 										<option value="F">Feminino</option>
 										<option value="O">Outro</option>
@@ -145,6 +144,7 @@
 		</div>
 	</div>
 
+</section>
 @endsection
 
 <link href="{{ asset('css/perfil.css') }}" rel="stylesheet">

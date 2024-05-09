@@ -50,7 +50,45 @@ class UtilizadoresController extends Controller
     #Quando estiver pronto, alterar para tambem incluir no json o tipo de objeto, perdido/achado e retirar da pool de objetos a retornar os que ja foram reclamados
     #Metodo para buscar objetos por categoria
     public function buscarObjetosPorCategoria($catId){
-        $objetos=DB::table('objeto')->where('categoria_id', $catId)->get();
+        $id_dos_objetos_a_nao_incluir = array();
+
+        #Obter os objetos que estão em leilão
+        $id_dos_objetos_que_estao_em_leilao=DB::table('objetoleilao')->pluck('objeto_e_id');
+
+        #Obter os objetos que foram encontrados
+        $id_dos_objetos_que_foram_encontrados=DB::table('objetor')->pluck('objeto_e_id');
+
+        #Criar a combinação dos dois arrays
+        $id_dos_objetos_a_nao_incluir = $id_dos_objetos_que_estao_em_leilao->concat($id_dos_objetos_que_foram_encontrados);
+
+        $id_dos_objetos_a_ir_buscar=DB::table('objetoe')->whereNotIn('id', $id_dos_objetos_a_nao_incluir)->pluck('objeto_id');
+
+        #Objetos que correspondem à pesquisa
+        $objetos=DB::table('objeto')->whereIn('id',$id_dos_objetos_a_ir_buscar)->where('categoria_id',$catId)->get();
+
+        #Ir buscar os atributos dos objetos
+        foreach ($objetos as $objeto) {
+
+            #Buscar os valores dos atributos do objeto
+            $atributos=DB::table('valoratributos')->where('objeto_id', $objeto->id)->get(['atributo_id','valor']);
+
+
+            #Buscar a informação dos atributos
+            foreach ($atributos as $atributo) {
+                $atributo_info=DB::table('atributo')->where('id', $atributo->atributo_id)->first();
+
+                #Colocar a informação do atributo no objeto
+                $atributo->nome=$atributo_info->nome;
+
+                #Colocar o tipo do atributo no objeto
+                $atributo->tipo=$atributo_info->tipo_dados;
+            }
+
+            #Colocar os atributos no objeto
+            $objeto->atributos=$atributos;
+        }
+
+        #Colocar num json e retornar
         $json=array('objetos'=>$objetos);
         return response()->json($json);
     }
@@ -58,8 +96,49 @@ class UtilizadoresController extends Controller
     #Quando estiver pronto, alterar para tambem incluir no json o tipo de objeto, perdido/achado e retirar da pool de objetos a retornar os que ja foram reclamados
     #Metodo para buscar objetos por descricao
     public function buscarObjetosPorDescricao(Request $request){
+
+        #Receber os dados do pedido
         $data = $request->json()->all();
-        $objetos=DB::table('objeto')->where('descricao', 'like','%' . $data['descricao'] . '%')->orWhere('categoria_id', 'like','%' . $data['descricao'])->orWhere('categoria_id', 'like',$data['descricao'] . '%')->get();
+
+        $id_dos_objetos_a_nao_incluir = array();
+
+        #Obter os objetos que estão em leilão
+        $id_dos_objetos_que_estao_em_leilao=DB::table('objetoleilao')->pluck('objeto_e_id');
+
+        #Obter os objetos que foram encontrados
+        $id_dos_objetos_que_foram_encontrados=DB::table('objetor')->pluck('objeto_e_id');
+
+        #Criar a combinação dos dois arrays
+        $id_dos_objetos_a_nao_incluir = $id_dos_objetos_que_estao_em_leilao->concat($id_dos_objetos_que_foram_encontrados);
+
+        $id_dos_objetos_a_ir_buscar=DB::table('objetoe')->whereNotIn('id', $id_dos_objetos_a_nao_incluir)->pluck('objeto_id');
+
+        #Objetos que correspondem à pesquisa
+        $objetos_por_filtrar=DB::table('objeto')->where('descricao', 'like','%' . $data['descricao'] . '%')->orWhere('descricao', 'like','%' . $data['descricao'])->orWhere('descricao', 'like',$data['descricao'] . '%')->pluck('id');
+        $objetos=DB::table('objeto')->whereIn('id',$objetos_por_filtrar)->whereIn('id',$id_dos_objetos_a_ir_buscar)->get();
+        #Ir buscar os atributos dos objetos
+        foreach ($objetos as $objeto) {
+
+            #Buscar os valores dos atributos do objeto
+            $atributos=DB::table('valoratributos')->where('objeto_id', $objeto->id)->get(['atributo_id','valor']);
+
+
+            #Buscar a informação dos atributos
+            foreach ($atributos as $atributo) {
+                $atributo_info=DB::table('atributo')->where('id', $atributo->atributo_id)->first();
+
+                #Colocar a informação do atributo no objeto
+                $atributo->nome=$atributo_info->nome;
+
+                #Colocar o tipo do atributo no objeto
+                $atributo->tipo=$atributo_info->tipo_dados;
+            }
+
+            #Colocar os atributos no objeto
+            $objeto->atributos=$atributos;
+        }
+
+        #Colocar num json e retornar
         $json=array('objetos'=>$objetos);
         return response()->json($json);
     }

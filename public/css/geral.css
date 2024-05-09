@@ -50,10 +50,13 @@ body::before {
 }
 
 .quadrado-showcase {
-  background-color: rgba(31, 138, 192, 0.75); /* traduzido para rgb por causa da opacidade (o ultimo valor) */
   padding: 3em;
   border-radius: 0.25em;
   margin-top: 1em;
+}
+
+.diplay-items{
+  height: 30%;
 }
 
 #imagemDes {
@@ -66,6 +69,10 @@ body::before {
 
 #section {
   margin-top: 0.9em;
+}
+
+#myItems {
+  margin: 0em;
 }
 
 .separate {
@@ -84,11 +91,3 @@ body::before {
 .link_footer:hover {
   color: white;
 }
-
-
-
-
-
-
-
-

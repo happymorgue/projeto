@@ -11,6 +11,7 @@ use App\Http\Controllers\UtilizadoresRegularController;
 use App\Http\Controllers\UtilizadoresDonoController;
 use App\Http\Controllers\UtilizadoresLicitanteController;
 use App\Http\Controllers\UtilizadoresPoliciaController;
+use App\Http\Controllers\ForTesteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -139,3 +140,13 @@ Route::get('/obterPostosPolicia', [FuncionalidadesExtraController::class,'obterP
 Route::get('/obterCategorias', [FuncionalidadesExtraController::class,'obterCategorias']);
 Route::get('/obterAtributos/{categoriaId}', [FuncionalidadesExtraController::class,'obterAtributos']);
 Route::post('/uploadImage', [FuncionalidadesExtraController::class,'uploadImage']);
+
+
+
+#TRATAMENTOS TESTE
+Route::get('/getDefaultEmailUtilizador', [ForTesteController::class,'utilizador']);
+Route::get('/getDefaultEmailRegular', [ForTesteController::class,'regular1']);
+Route::get('/getDefaultEmailRegular2', [ForTesteController::class,'regular2']);
+Route::get('/getDefaultEmailPolicia', [ForTesteController::class,'policia']);
+Route::get('/getDefaultEmailPolicia2', [ForTesteController::class,'policia2']);
+Route::get('/getDefaultEmailAvaliador', [ForTesteController::class,'avaliador']);

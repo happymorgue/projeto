@@ -14,7 +14,7 @@ class UtilizadoresPoliciaController extends Controller
         { 
             session_start(); 
         }
-        $Id_objetos_perdidos=array();
+        $Ids_objetos_encontrados=array();
         $utilizador_policia_DB = DB::table('policia')->where('id', $policiaId)->first();
         if ($utilizador_policia_DB== null){
             #ALTERAR PARA ERRO 403/404
@@ -22,13 +22,34 @@ class UtilizadoresPoliciaController extends Controller
         } else {
             $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_policia_DB->user_id)->first();
             if ($utilizador_DB->email == $_SESSION['user_email']) {
-                $objetos_perdidos = DB::table('objetoe')->where('policia_id', $policiaId)->get();
-                #OBTER O ID DOS OBJETOS NA TABELA DOS OBJETOS ENCONTRADOS PARA A BUSCA
-                foreach ($objetos_perdidos as $objeto_perdido) {
-                    array_push($Id_objetos_perdidos, $objeto_perdido->objeto_id);
+            $objetos_encontrados = DB::table('objetoe')->where('policia_id', $policiaId)->get();
+                foreach ($objetos_encontrados as $objetos_encontrado) {
+                    array_push($Ids_objetos_encontrados, $objetos_encontrado->objeto_id);
                 }
-                $objetos_perdidos_final = DB::table('objeto')->whereIn('id', $Id_objetos_perdidos)->orderBy('id', 'asc')->get();
-                $json = array('objetos_perdidos' => $objetos_perdidos_final);
+                $objetos_encontrados_final = DB::table('objeto')->whereIn('id', $Ids_objetos_encontrados)->orderBy('id', 'asc')->get();
+
+                foreach ($objetos_encontrados_final as $objeto) {
+
+                    #Buscar os valores dos atributos do objeto
+                    $atributos=DB::table('valoratributos')->where('objeto_id', $objeto->id)->get(['atributo_id','valor']);
+
+
+                    #Buscar a informação dos atributos
+                    foreach ($atributos as $atributo) {
+                        $atributo_info=DB::table('atributo')->where('id', $atributo->atributo_id)->first();
+
+                        #Colocar a informação do atributo no objeto
+                        $atributo->nome=$atributo_info->nome;
+
+                        #Colocar o tipo do atributo no objeto
+                        $atributo->tipo=$atributo_info->tipo_dados;
+                    }
+
+                    #Colocar os atributos no objeto
+                    $objeto->atributos=$atributos;
+                }
+
+                $json = array('objetos_encontrados' => $objetos_encontrados_final);
                 return response()->json($json);
             } else {
                 #ALTERAR PARA ERRO 403/404
@@ -53,16 +74,36 @@ class UtilizadoresPoliciaController extends Controller
         }else{
             $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_dono_DB->user_id)->first();
         if ($utilizador_DB->email == $_SESSION['user_email']) {
-            #BUSCAR OS OBJETOS ENCONTRADOS PELO POLICIA, E VERIFICAR SE JA FORAM ENTREGUES
             $objetos_encontrados_possiveis = DB::table('objetoe')->where('policia_id', $policiaId)->get();
-            foreach($objetos_encontrados_possiveis as $objeto_encontrado){
-                $objetos_encontrado_entregue = DB::table('objetor')->where('objeto_e_id', $objeto_encontrado->id)->first();
-                if($objetos_encontrado_entregue != null){
-                    array_push($Id_objetos_encontrados, $objeto_encontrado->objeto_id);
+            foreach($objetos_encontrados_possiveis as $objeto_perdido){
+                $objetos_encontrado = DB::table('objetor')->where('objeto_e_id', $objeto_perdido->id)->first();
+                if($objetos_encontrado != null){
+                    array_push($Id_objetos_encontrados, $objeto_perdido->objeto_id);
                 }
             }
-            #SE FORAM ENTREGUES, BUSCAR OS DADOS DOS OBJETOS E RETORNA LOS
             $objetos_perdidos_final = DB::table('objeto')->whereIn('id', $Id_objetos_encontrados)->orderBy('id', 'asc')->get();
+
+            foreach ($objetos_perdidos_final as $objeto) {
+
+            #Buscar os valores dos atributos do objeto
+            $atributos=DB::table('valoratributos')->where('objeto_id', $objeto->id)->get(['atributo_id','valor']);
+
+
+            #Buscar a informação dos atributos
+            foreach ($atributos as $atributo) {
+                $atributo_info=DB::table('atributo')->where('id', $atributo->atributo_id)->first();
+
+                #Colocar a informação do atributo no objeto
+                $atributo->nome=$atributo_info->nome;
+
+                #Colocar o tipo do atributo no objeto
+                $atributo->tipo=$atributo_info->tipo_dados;
+            }
+
+            #Colocar os atributos no objeto
+            $objeto->atributos=$atributos;
+            }
+
             $json = array('objetos_perdidos_encontrados' => $objetos_perdidos_final );
             return response()->json($json);
         } else {
@@ -99,7 +140,7 @@ class UtilizadoresPoliciaController extends Controller
                     array_push($Id_objetos_perdidos, $objeto_perdido->objeto_id);
                 }
                 $objetos_encontrados_final = DB::table('objeto')->whereIn('id', $Id_objetos_perdidos)->orderBy('id', 'asc')->get();
-                $json = array('objetos_encontrados' => $objetos_encontrados_final);
+                $json = array('objetos_perdidos' => $objetos_encontrados_final);
                 return response()->json($json);
             } else {
                 #ALTERAR PARA ERRO 403/404
@@ -183,9 +224,11 @@ class UtilizadoresPoliciaController extends Controller
                 DB::table('objeto')->where('id', $objetoId)->update(['descricao' => $data['descricao'], 'categoria_id' => $data['categoria_id'], 'data_inicio' => $data['data_inicio'], 'data_fim' => $data['data_fim'], "pais" => $data['pais'], "distrito" => $data['distrito'], "cidade" => $data['cidade'], "freguesia" => $data['freguesia'], "rua" => $data['rua'], "localizacao" => $data['localizacao'], "imagem" => $data['imagem']]);
                 $atributos = $data['atributos'];
                 #APAGAR OS ATRIBUTOS PARA NAO HAVER CONFLITO NOS NOVOS ATRIBUTOS COM OS ANTERIORES, SE POR EXEMPLO, TIVESSE SIDO ALTERADA A CATEGORIA
-                DB::table('valoratributos')->where('objeto_id', $objetoId)->delete();
-                foreach ($atributos as $atributo) {
-                    DB::table('valoratributos')->insert(['objeto_id' => $objetoId, 'atributo_id' => $atributo['atributo_id'], 'valor' => $atributo['valor']]);
+                if(isset($data['atributos'])){
+                    DB::table('valoratributos')->where('objeto_id', $objetoId)->delete();
+                    foreach ($atributos as $atributo) {
+                        DB::table('valoratributos')->insert(['objeto_id' => $objetoId, 'atributo_id' => $atributo['atributo_id'], 'valor' => $atributo['valor']]);
+                    }
                 }
                 if(isset($data['nutilizador'])){
                     #TRATAMENTO DE ADICIONAR O NAO UTILIZADOR
@@ -310,14 +353,14 @@ class UtilizadoresPoliciaController extends Controller
     public function UpdatePoliciaPUT(Request $request)
     {
         $data=$request->json()->all();
-        $policiaId=$data['policiaId'];
+        $policiaId=$data['id'];
         $idInterno=$data['idInterno'];
-        $nome=$data['name'];
+        $nome=$data['nome'];
         $postoId=$data['postoId'];
         if($policiaId != null ){
             $utilizador_policia_DB = DB::table('policia')->where('id', $policiaId)->first();
             if ($utilizador_policia_DB != null) {
-                DB::table('policia')->where('id', $policiaId)->update(['idInterno' => $idInterno, 'nome' => $nome, 'posto_id' => $postoId]);
+                DB::table('policia')->where('id', $policiaId)->update(['idinterno' => $idInterno, 'nome' => $nome, 'posto_id' => $postoId]);
                 return response()->json($data, 200);
             }else{
                 #ALTERAR PARA ERRO 403/404

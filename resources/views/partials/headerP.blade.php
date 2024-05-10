@@ -60,7 +60,7 @@
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
          <div class="layout">
          <h5 class="conta" >Olá, </h5> 
-          <h5 class="conta" name="nome"></h5> 
+          <h5 class="conta" name="nome3"></h5> 
          </div>
           <div class="horizontal-line"></div>
             <li><a class="dropdown-item" href="/perfilPolicia" > Perfil </a></li>
@@ -78,4 +78,4 @@
   </div>
 </nav>
 
-<script src="{{ asset('js/perfilPolicia.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/test.js') }}" type="text/javascript"></script>

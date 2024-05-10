@@ -17,6 +17,7 @@
                     <img src="{{ asset('profile.png') }}" alt="profile picture" class="rounded-circle" width="150">
                     <div class="mt-3">
                     <h4  name="nome2" id="nome2"> </h4>
+                    <h4  name="nome4" id="nome4"> </h4>
                       <p class="text-muted font-size-sm">Dono e Licitante</p>
                     </div>
                   </div>

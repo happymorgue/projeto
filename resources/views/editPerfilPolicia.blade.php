@@ -30,7 +30,7 @@
 									<h6 class="mb-0">Nome</h6>
 								</div>
 								<div class="col-sm-5 text-secondary">
-									<input type="text" class="form-control" name="nome" id="nome" value="">
+									<input type="text" class="form-control" name="isim" id="isim" value="">
 								</div>
 							</div>
               <hr>

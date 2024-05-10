@@ -6,8 +6,9 @@
 @section('content')
 
 <section class="bgColor">
-  <div id="leiloes" class="container py-5">
-    <!-- <div class="row justify-content-center mb-3">
+  <div class="container py-5">
+    <div id="leiloes" class="row justify-content-center mb-3">
+        
       <div class="col-md-12 col-xl-10" id="leilaoDiv">
         <div class="card shadow-0 border rounded-3">
           <div class="card-body">
@@ -110,7 +111,7 @@
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
     
     </div>
   </div>
@@ -120,4 +121,3 @@
 
 <link href="{{ asset('css/leiloes.css') }}" rel="stylesheet">
 <script src="{{ asset('js/leiloesShowAll.js') }}" type="text/javascript"></script>
-

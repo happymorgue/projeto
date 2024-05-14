@@ -12,6 +12,7 @@ function carregarLeilao() {
         if (this.readyState == 4 && this.status == 200) {
             leilao = JSON.parse(pedidoLeilao.responseText)['leilao'];
             //CARREGAR LEILAO
+            console.log(leilao);
             divGlobal = document.getElementById('leilao');
 
             divContainerLeilao = document.createElement('div');

@@ -16,7 +16,7 @@
               <div class="d-flex flex-column align-items-center text-center">
                 <img src="{{ asset('profile.png') }}" class="rounded-circle" width="150">
                 <div class="mt-3">
-				<h4  name="nome2" id="nome2"> </h4>
+				<h4  name="nome3" id="nome3"> </h4>
                     <p class="text-muted font-size-sm">Dono e Licitante</p>
                 </div>
               </div>
@@ -80,32 +80,8 @@
               <!-- <hr> -->
 							<h4>Data de Nascimento</h4>
 							<div class="row">
-								<div class="col-sm-2">
-									<select name="year" id="year" class="form-select">
-										<option value="">Ano</option>
-									</select>
-								</div>
-								<div class="col-sm-2">
-									<select name="month" id="month" class="form-select">
-										<option value="">Mês</option>
-										<option value="1">Janeiro</option>
-										<option value="2">Fevereiro</option>
-										<option value="3">Março</option>
-										<option value="4">Abril</option>
-										<option value="5">Maio</option>
-										<option value="6">Junho</option>
-										<option value="7">Julho</option>
-										<option value="8">Agosto</option>
-										<option value="9">Setembro</option>
-										<option value="10">Outubro</option>
-										<option value="11">Novembro</option>
-										<option value="12">Dezembro</option>
-									</select>
-								</div>
-								<div class="col-sm-2">
-									<select name="day" id="day" class="form-select">
-										<option value="">Dia</option>
-									</select>
+								<div class="col-sm-6">
+									<input type="date" class="form-control" name="data_nascimento" id="data_nascimento">
 								</div>
 							</div>
 
@@ -149,4 +125,4 @@
 
 <link href="{{ asset('css/perfil.css') }}" rel="stylesheet">
 <script src="{{ asset('js/editPerfil.js') }}" type="text/javascript"></script>
-<script src="{{ asset('js/script.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/nomeIconePerfil.js') }}" type="text/javascript"></script>

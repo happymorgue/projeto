@@ -16,7 +16,7 @@
               <div class="d-flex flex-column align-items-center text-center">
                 <img src="{{ asset('profile.png') }}" alt="Admin" class="rounded-circle" width="150">
                 <div class="mt-3">
-				<h4  name="nome2" id="nome2"> </h4>
+				<h4  name="nome3" id="nome3"> </h4>
                   <p class="text-muted font-size-sm">Polícia</p>
                 </div>
               </div>
@@ -32,7 +32,7 @@
 									<h6 class="mb-0">Nome</h6>
 								</div>-->
 								<div class="col-sm-5 text-secondary">
-									<input type="text" class="form-control" name="isim" id="isim" value="">
+									<input type="text" class="form-control" name="nome" id="nome" value="">
 								</div>
 							</div>
 
@@ -78,3 +78,4 @@
 
 <link href="{{ asset('css/perfil.css') }}" rel="stylesheet">
 <script src="{{ asset('js/editPerfilPolicia.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/nomeIconePolicia.js') }}" type="text/javascript"></script>

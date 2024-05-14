@@ -55,7 +55,7 @@
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
          <div class="layout">
          <h5 class="conta" >Olá, </h5> 
-          <h5 class="conta" name="nome"></h5> 
+          <h5 class="conta" name="nome2"></h5> 
          </div>
           <div class="horizontal-line"></div>
             <li><a class="dropdown-item" href="/perfilPolicia" > Perfil </a></li>
@@ -73,4 +73,4 @@
   </nav>
 </header>
 
-<script src="{{ asset('js/nomePerfil.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/nomePerfilPolicia.js') }}" type="text/javascript"></script>

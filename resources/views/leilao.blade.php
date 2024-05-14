@@ -9,10 +9,10 @@
 
 <section class="bgColor">
   <div class="container py-5">
-    <div id="leiloes" class="row justify-content-center">
+    <div id="leilao" class="row justify-content-center">
      
     <!-- Objeto do leilão -->
-    <div class="row justify-content-center">
+    <!--<div class="row justify-content-center">
       <div class="col-sm-12 col-md-12 col-xl-11">
         <div class="card shadow-0 border rounded-3">
           <div class="card-body p-4">
@@ -44,7 +44,7 @@
                         <h1 class="mb-1">€17.99</h1>
                       </div>
                       <div class="d-flex flex-row mb-2">
-                        <h4 class="mb-1 text-decoration-line-through">€14.99</h4> <!-- valor base dado pelo avaliador -->
+                        <h4 class="mb-1 text-decoration-line-through">€14.99</h4>valor base dado pelo avaliador
                       </div>
                       <h6 class="text-success text-start fw-light">Termina ao fim do dia 30/06/2024</h6>
                       <div class="d-flex flex-column mt-4">
@@ -59,7 +59,7 @@
       </div>
     </div>
 
-    <!-- Histórico de Licitações -->
+    Histórico de Licitações 
 
         <div class="row justify-content-center mt-2">
             <div class="col-sm-12 col-md-12 col-xl-11">
@@ -117,7 +117,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
 
 
@@ -131,4 +131,5 @@
 @endsection
 
 <link href="{{ asset('css/leilao.css') }}" rel="stylesheet">
+<script src="{{ asset('js/leilao.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/countdown.js') }}" type="text/javascript"></script>

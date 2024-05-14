@@ -49,13 +49,13 @@
               Objetos
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item bi bi-person-fill link" href="/buscaObjAchados"> Objetos Achados </a></li>
+              <li><a class="dropdown-item link" href="/buscaObjAchados"> Objetos Achados </a></li>
               <!-- <hr> -->
               <div class="horizontal-line2"></div>
-              <li><a class="dropdown-item bi bi-heart-fill link" href="/verObjPerdidos"> Meus objetos perdidos </a></li>
+              <li><a class="dropdown-item link" href="/verObjPerdidos"> Meus objetos perdidos </a></li>
               <!-- <hr>  -->
               <div class="horizontal-line2"></div>
-              <li><a class="dropdown-item bi bi-bag-fill link" href=""> Minhas licitações </a></li>
+              <li><a class="dropdown-item link" href=""> Minhas licitações </a></li>
           </ul>
           </li>
           @endif
@@ -71,7 +71,7 @@
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
               <div class="layout">
                 <h5 class="conta">Olá,</h5>
-                <h5 class="conta" name="nome"></h5>
+                <h5 class="conta" name="nome2"></h5>
               </div>
               <div class="horizontal-line"></div>
               <li><a class="dropdown-item link" href="/perfilRegular" > Perfil </a></li> 

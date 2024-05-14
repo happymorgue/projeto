@@ -7,9 +7,9 @@
 <section class="section-showcase text-center text-sm-start m-0 bgColor d-flex" id="myItems">
   <div class="container p-5 d-flex col-md-9">
     <div id="ObjetosEncontrados" class="w-100">
-    <!--Cada Linha de Items terá este layout-->
+    <!--Cada Linha de Items terá este layout
       <div class="row d-flex justify-content-around">
-        <!--Cada Item terá este layout-->
+        Cada Item terá este layout
 
         <div class="card shadow-1 border rounded-3 col-md-3 m-1 my-3">
           <a href="/verObj">
@@ -28,7 +28,7 @@
             </a>
           </div>
         </div>
-      </div>
+      </div>-->
 
     </div>
   </div>
@@ -36,7 +36,7 @@
     <h3>Meus Itens Perdidos</h2>
     <div>
       <div id="MeusObjetosPerdidos" class="d-flex justify-content-center row">
-        <div class="card shadow-1 border rounded-3 col-md-12 m-1 my-3">
+        <!--<div class="card shadow-1 border rounded-3 col-md-12 m-1 my-3">
           <div class="card-body m-0 pt-2">
             <div class="w-100 m-0 p-0">
               <img class="img-thumbnail border-0" src="calcas.jpg">
@@ -50,7 +50,7 @@
               </div> 
             </div>
           </div>
-        </div>
+        </div>-->
       </div>
       
       

@@ -1,6 +1,6 @@
 
 function getProfile() {
-    console.log("js: perfil");
+    console.log("js: nomeIconePerfil");
     let pedido = xhttp = new XMLHttpRequest();
     pedido.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -10,7 +10,8 @@ function getProfile() {
                 if (this.readyState == 4 && this.status == 200) {
                     var responseJson = JSON.parse(pedido2.responseText);
 
-                    document.getElementsByName('nome4')[0].innerHTML = responseJson['nome'];
+                    document.getElementsByName('nome3')[0].innerHTML = responseJson['nome'];
+                    console.log(document.getElementsByName('nome3')[0]);
                 
 
                 }

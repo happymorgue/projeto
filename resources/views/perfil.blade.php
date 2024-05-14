@@ -16,7 +16,7 @@
                   <div class="d-flex flex-column align-items-center text-center">
                     <img src="{{ asset('profile.png') }}" alt="profile picture" class="rounded-circle" width="150">
                     <div class="mt-3">
-                    <h4  name="nome2" id="nome2"> </h4>
+                    <h4  name="nome3" id="nome3"> </h4>
                       <p class="text-muted font-size-sm">Dono e Licitante</p>
                     </div>
                   </div>
@@ -128,3 +128,4 @@
 
 <link href="{{ asset('css/perfil.css') }}" rel="stylesheet">
 <script src="{{ asset('js/perfil.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/nomeIconePerfil.js') }}" type="text/javascript"></script>

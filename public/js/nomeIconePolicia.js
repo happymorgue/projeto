@@ -1,5 +1,5 @@
 function getProfile() {
-    console.log("1");
+    console.log("js: nomeIconePolicia");
     let pedido = xhttp = new XMLHttpRequest();
     pedido.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -8,7 +8,7 @@ function getProfile() {
             pedido2.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     var responseJson = JSON.parse(pedido2.responseText);
-                    document.getElementsByName('nome3s')[0].innerHTML = responseJson['nome'];
+                    document.getElementsByName('nome3')[0].innerHTML = responseJson['nome'];
                 }
             }
             pedido2.open("GET", "/api/policia/" + idPolicia, true)

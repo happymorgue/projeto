@@ -10,8 +10,6 @@ function getProfile() {
                 if (this.readyState == 4 && this.status == 200) {
                     var responseJson = JSON.parse(pedido2.responseText);
                     document.getElementsByName('nome')[0].innerHTML = responseJson['nome'];
-                    document.getElementsByName('nome2')[0].innerHTML = responseJson['nome'];
-                    document.getElementsByName('nome4')[0].innerHTML = responseJson['nome'];
                     document.getElementsByName('nif')[0].innerHTML = responseJson['nif'];
                     document.getElementsByName('telemovel')[0].innerHTML = responseJson['telemovel'];
                     document.getElementsByName('genero')[0].innerHTML = responseJson['genero'];

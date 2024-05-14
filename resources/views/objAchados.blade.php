@@ -61,3 +61,4 @@
 @endsection
 
 <link href="{{ asset('css/obj.css') }}" rel="stylesheet">
+<script src="{{ asset('js/objAchados.js') }}" type="text/javascript"></script>

@@ -99,7 +99,7 @@ Route::get('/leiloes', function () {
     return view('leiloes');
 });
 
-Route::get('/leilao', function () {
+Route::get('/leilao/{leilaoId}', function () {
     return view('leilao');
 });
 
@@ -116,4 +116,3 @@ Route::get('/callback', [Auth0Controller::class, 'callback']);
 Route::get('/register_dono', [Auth0Controller::class, 'register_dono']);
 Route::get('/register_policia', [Auth0Controller::class, 'register_policia']);
 Route::get('/logout', [Auth0Controller::class, 'logout']);
-

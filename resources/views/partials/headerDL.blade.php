@@ -1,4 +1,3 @@
-
 <header>
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg bg-dark navbar-dark cor-nav-bar py-3 fixed-top"> 
@@ -25,8 +24,11 @@
       <!--Search bar, needs fixing for sm (and maybe for xl not sure will need joao to test it)-->
       <div class="collapse navbar-collapse  col-md-4 col-lg-4 col-xl-4 col-xxl-4">
         <form class="d-flex container-fluid m-0" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-primary" type="submit">Search</button>
+          <input class="form-control me-2" type="search" placeholder="Pesquisa" aria-label="Search">
+          <button class="btn btn-primary btnSearch">
+            <i class="bi bi-search search"></i> 
+          </button>
+
         </form>
       </div>
 
@@ -47,13 +49,13 @@
               Objetos
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item bi bi-person-fill link" href="/buscaObjAchados"> Objetos Achados </a></li>
+              <li><a class="dropdown-item link" href="/buscaObjAchados"> Objetos Achados </a></li>
               <!-- <hr> -->
               <div class="horizontal-line2"></div>
-              <li><a class="dropdown-item bi bi-heart-fill link" href="/verObjPerdidos"> Meus objetos perdidos </a></li>
+              <li><a class="dropdown-item link" href="/verObjPerdidos"> Meus objetos perdidos </a></li>
               <!-- <hr>  -->
               <div class="horizontal-line2"></div>
-              <li><a class="dropdown-item bi bi-bag-fill link" href=""> Minhas licitações </a></li>
+              <li><a class="dropdown-item link" href=""> Minhas licitações </a></li>
           </ul>
           </li>
           @endif
@@ -69,14 +71,20 @@
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
               <div class="layout">
                 <h5 class="conta">Olá,</h5>
-                <h5 class="conta" name="nome"></h5>
+                <h5 class="conta" name="nome2"></h5>
               </div>
               <div class="horizontal-line"></div>
-              <li><a class="dropdown-item bi bi-person-fill link" href="/perfilRegular"> Perfil </a></li>
+              <li><a class="dropdown-item link" href="/perfilRegular" > Perfil </a></li> 
+              <!-- <hr> -->
               <div class="horizontal-line2"></div>
-              <li><a class="dropdown-item bi bi-bag-fill link" href="/logout">Terminar sessão</a>
+              <li><a class="dropdown-item link" href="/verObjPerdidos"> Meus objetos perdidos </a></li>
+               <!-- <hr>  -->
               <div class="horizontal-line2"></div>
-              <li><a class="dropdown-item bi bi-bag-fill link deleteAcc" href="">Apagar Conta</a>
+              <li><a class="dropdown-item link" href=""> Minhas licitações </a></li>
+              <div class="horizontal-line2"></div>
+              <li><a class="dropdown-item link" href="/logout">Terminar sessão</a>
+              <div class="horizontal-line2"></div>
+              <li><a class="dropdown-item link deleteAcc" href="">Apagar Conta</a>
           </li>
           </ul>
           </li>
@@ -89,9 +97,9 @@
             <a href="" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-bs-toggle="dropdown">
               Registo
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item bi bi-person-fill" href="/register_dono"> Utilizador </a></li>
-              <li><a class="dropdown-item bi bi-heart-fill" href="/register_policia"> Polícia </a></li>
+            <ul class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item " href="/register_dono" > Utilizador </a></li>
+              <li><a class="dropdown-item " href="/register_policia"> Polícia </a></li>
             </ul>
           </li>
           @endif

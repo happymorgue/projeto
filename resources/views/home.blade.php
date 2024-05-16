@@ -88,4 +88,3 @@
   @endsection
 
   <link href="{{ asset('css/home.css') }}" rel="stylesheet">
-

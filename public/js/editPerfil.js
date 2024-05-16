@@ -12,7 +12,6 @@ function getProfile() {
                     console.log(document.getElementsByName('nome'));
                     if (responseJson['nome'] != null) {
                         document.getElementsByName('nome')[0].value = responseJson['nome'].trim();
-                        document.getElementsByName('nome2')[0].innerHTML = responseJson['nome'];
                     } else {
                         document.getElementsByName('nome')[0].value = responseJson['nome'];
                     }

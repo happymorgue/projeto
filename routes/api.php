@@ -30,7 +30,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 #UTILIZADORES GERAIS
-Route::get('/utilizador/conta/{utilizadorId}/desativar', [UtilizadoresController::class, 'desativarUtilizador']);
+Route::get('/utilizador/conta/desativar', [Auth0Controller::class, 'deactivateUserFromAuth0']);
+Route::get('/utilizador/conta/apagar', [Auth0Controller::class, 'deleteUserFromAuth0']);
 Route::get('/utilizador/dados/{utilizadorId}/receberNotificacao', [UtilizadoresController::class, 'receberNotificacao']);
 Route::get('/utilizador/objetos/buscarObjetosPorCategoria/{categoriaId}', [UtilizadoresController::class, 'buscarObjetosPorCategoria']);
 Route::post('/utilizador/objetos/buscarObjetosPorDescricao', [UtilizadoresController::class, 'buscarObjetosPorDescricao']);
@@ -150,3 +151,5 @@ Route::get('/getDefaultEmailRegular2', [ForTesteController::class,'regular2']);
 Route::get('/getDefaultEmailPolicia', [ForTesteController::class,'policia']);
 Route::get('/getDefaultEmailPolicia2', [ForTesteController::class,'policia2']);
 Route::get('/getDefaultEmailAvaliador', [ForTesteController::class,'avaliador']);
+
+Route::get('/utilizador/ativar/{email}', [Auth0Controller::class, 'activateUserFromAuth0']);

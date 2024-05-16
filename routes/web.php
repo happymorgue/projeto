@@ -107,6 +107,10 @@ Route::get('/notificacoes', function () {
     return view('notificacoes');
 });
 
+Route::get('/meusleiloes', function () {
+    return view('meusleiloes');
+});
+
 #APIS--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #CRIACAO CONTAS

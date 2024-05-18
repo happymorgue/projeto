@@ -60,7 +60,7 @@
               <div class="horizontal-line2"></div>
               <li><a class="dropdown-item link" href="/verObjPerdidos">Meus objetos perdidos</a></li>
               <div class="horizontal-line2"></div>
-              <li><a class="dropdown-item link" href="/meusleiloes">Meus leilões</a></li>
+              <li><a class="dropdown-item link" href="/meusleiloes">Meus leilões/licitações</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -76,8 +76,6 @@
               <li><a class="dropdown-item link" href="/perfilRegular">Perfil</a></li>
               <div class="horizontal-line2"></div>
               <li><a class="dropdown-item link" href="/verObjPerdidos">Meus objetos perdidos</a></li>
-              <div class="horizontal-line2"></div>
-              <li><a class="dropdown-item link" href="">Minhas licitações</a></li>
               <div class="horizontal-line2"></div>
               <li><a class="dropdown-item link" href="/logout">Terminar sessão</a></li>
               <div class="horizontal-line2"></div>

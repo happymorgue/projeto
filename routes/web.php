@@ -111,6 +111,10 @@ Route::get('/meusleiloes', function () {
     return view('meusleiloes');
 });
 
+Route::get('/leiloesLoggedOut', function () {
+    return view('leiloesSLogin');
+});
+
 #APIS--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #CRIACAO CONTAS

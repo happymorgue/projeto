@@ -47,10 +47,10 @@
 
         <!-- Navbar links -->
         <ul class="navbar-nav ms-auto">
+          @if(isset($_SESSION['user_email']))
           <li class="nav-item me-2">
             <a href="/leiloes" class="nav-link">Leilões</a>
           </li>
-          @if(isset($_SESSION['user_email']))
           <li class="nav-item dropdown me-2">
             <a href="" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-bs-toggle="dropdown">
               Objetos
@@ -83,6 +83,9 @@
             </ul>
           </li>
           @else
+          <li class="nav-item me-2">
+            <a href="/leiloesLoggedOut" class="nav-link">Leilões</a>
+          </li>
           <li class="nav-item">
             <a href="/login" class="nav-link">Iniciar Sessão</a>
           </li>

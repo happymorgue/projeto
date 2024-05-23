@@ -27,36 +27,33 @@
 					<div class="card">
 						<div class="card-body">
 							<div class="row mb-3">
-								<h4>Nome</h4>
-								<!--<div class="col-sm-4">
-									<h6 class="mb-0">Nome</h6>
-								</div>-->
+								<div class="col-sm-4">
+									<h5 class="mb-0">Nome</h5>
+								</div>
 								<div class="col-sm-5 text-secondary">
 									<input type="text" class="form-control" name="nome" id="nome" value="">
 								</div>
 							</div>
-
-							<h4>Número Interno</h4>
+							<hr>
 							<div class="row mb-3">
-								<!--<div class="col-sm-4">
-									<h6 class="mb-0">Número Interno</h6>
-								</div>-->
+								<div class="col-sm-4">
+									<h5 class="mb-0">Número Interno</h5>
+								</div>
 								<div class="col-sm-5 text-secondary">
 									<input type="text" class="form-control" name="numero_interno" id="numero_interno" value="" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
 								</div>
 							</div>
-
+							<hr>
 							<div class="row mb-3">
-								<h4>Posto de Polícia</h4>
-								<!--<div class="col-sm-4">
-									<h6 class="mb-0">Posto de Polícia</h6>
-								</div>-->
+								<div class="col-sm-4">
+									<h5 class="mb-0">Posto de Polícia</h5>
+								</div>
 								<div class="col-sm-5 text-secondary">
 									<select class="form-select" name="posto_policia" id="posto_policia">
 									</select>
 								</div>
 							</div>
-
+							<hr>
 			  				<div class="row justify-content-start botoes">
 								<div class="col-md-6 col-lg-2 mx-2 my-1">
 									<a class="btn btn-save" onclick=guardarMudancas()>Salvar</a>

@@ -1,4 +1,4 @@
-let idRegular = 0;
+let idPolicia = 0;
 
 function carregarObjetos() {
     let pedido2 = xhttp = new XMLHttpRequest();
@@ -8,7 +8,7 @@ function carregarObjetos() {
             var objetos = JSON.parse(pedido2.responseText)['objetos_perdidos'];
 
             //DIV QUE VAI CONTER AS LINHAS
-            let divGlobal = document.getElementById('ObjetosEncontrados');
+            let divGlobal = document.getElementById('ObjetosPerdidosPolicia');
             let divRow = document.createElement('div');
             divRow.className = 'row d-flex justify-content-around';
             objetos.forEach(objeto => {
@@ -84,17 +84,17 @@ function carregarObjetos() {
         }
 
     }
-    pedido2.open("GET", "/api/regular/dono/" + idRegular + "/verObjetosAchados", true)
+    pedido2.open("GET", "/api/policia/" + idPolicia + "/verObjetosPerdidos", true)
     pedido2.send();
 
     let pedidoObjetosPerdidosSeus = xhttp = new XMLHttpRequest();
     pedidoObjetosPerdidosSeus.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            var objetosPerdidos = JSON.parse(pedidoObjetosPerdidosSeus.responseText)['objetos_perdidos'];
+            var objetosPerdidos = JSON.parse(pedidoObjetosPerdidosSeus.responseText)['objetos_encontrados'];
             console.log(objetosPerdidos);
 
             //DIV QUE VAI CONTER OS OBJETOS PERDIDOS
-            let divGlobalPerdidos = document.getElementById('MeusObjetosPerdidos');
+            let divGlobalPerdidos = document.getElementById('MeusObjetosAchados');
 
             objetosPerdidos.forEach(objeto => {
                 let divCardPerdidos = document.createElement('div');
@@ -159,7 +159,7 @@ function carregarObjetos() {
 
         }
     }
-    pedidoObjetosPerdidosSeus.open("GET", "/api/regular/dono/" + idRegular + "/verHistoricoObjetosPerdidos", true)
+    pedidoObjetosPerdidosSeus.open("GET", "/api/policia/" + idPolicia + "/verHistoricoObjetosEncontrados", true)
     pedidoObjetosPerdidosSeus.send();
 
 
@@ -170,13 +170,13 @@ function obterIdECarregarObjetos() {
     let pedido = xhttp = new XMLHttpRequest();
     pedido.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            idRegular = JSON.parse(pedido.responseText);
-            console.log(idRegular);
+            idPolicia = JSON.parse(pedido.responseText);
+            console.log(idPolicia);
             carregarObjetos();
         }
 
     }
-    pedido.open("GET", "/api/convertUserEmailRegularId", true)
+    pedido.open("GET", "/api/convertUserEmailPoliciaId", true)
     pedido.send();
 }
 

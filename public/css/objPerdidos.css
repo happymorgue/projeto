@@ -1,69 +1,56 @@
-@charset "UTF-8";
+.bgColor{
+  background-color: #cde3fc;
+}
 
-/* BARRA DE PESQUISA */
+.bgColorMyItems{
+  background-color: white;
+}
 
-.input-box {
+.card {
   position: relative;
-  height: 70px;
-  max-width: 900px;
-  width: 100%;
-  background: #fffefe;
-  margin: 20px 0px;
-  border-radius: 8px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-}
-.input-box i,
-.input-box .button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
-.input-box i {
-  left: 20px;
-  font-size: 30px;
-  color: #707070;
-}
-.input-box input {
-  height: 100%;
-  width: 100%;
-  outline: none;
-  font-size: 18px;
-  font-weight: 400;
-  border: none;
-  padding: 0 155px 0 45px;
-  background-color: transparent;
-}
-.input-box .button {
-  right: 20px;
-  font-size: 16px;
-  font-weight: 400;
-  color: #fff;
-  border: none;
-  padding: 12px 30px;
-  border-radius: 6px;
-  background-color: #4070f4;
-  cursor: pointer;
-}
-.input-box .button:active {
-  transform: translateY(-50%) scale(0.98);
+  height: 470px; /* Set a fixed height for all cards */
 }
 
-/* Responsiviness */
-@media screen and (max-width: 500px) {
-  .input-box {
-    height: 66px;
-    margin: 0 8px;
-  }
-  .input-box i {
-    left: 12px;
-    font-size: 25px;
-  }
-  .input-box input {
-    padding: 0 112px 0 50px;
-  }
-  .input-box .button {
-    right: 12px;
-    font-size: 14px;
-    padding: 8px 18px;
-  }
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.img-thumbnail {
+  display: block; /* Ensures margin auto works */
+  width: auto;
+  max-width: 100%;
+  max-height: 240px;
+  object-fit: contain;
+  margin: 0 auto; /* Center the image horizontally */
+}
+
+.btn-editar {
+  align-self: flex-end;
+}
+
+.content-wrapper {
+  flex-grow: 1;
+}
+
+.card-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-subtitle {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mt-auto {
+  margin-top: auto;
 }

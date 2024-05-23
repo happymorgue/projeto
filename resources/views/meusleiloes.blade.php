@@ -10,11 +10,11 @@
 
   <div  class="row justify-content-center mb-3">
     <div class="col-md-12 col-xl-10">
-      <h1 class="mb-2">Meus Leilões</h1>
+      <h1 class="mb-2">Leilões Subscritos</h1>
     </div>
   </div>
 
-    <div class="row justify-content-center mb-3">
+    <!--<div class="row justify-content-center mb-3">
       <div class="col-md-12 col-xl-10" id="licitacoesDiv">
         <div class="card shadow-0 border rounded-3">
           <div class="card-body">
@@ -118,7 +118,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div>-->
 
 
     
@@ -129,7 +129,7 @@
 @endsection
 
 <link href="{{ asset('css/leiloes.css') }}" rel="stylesheet">
-<script src="{{ asset('js/leiloesShowAll.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/showLicitacoes_leilao.js') }}" type="text/javascript"></script>
 
 
 

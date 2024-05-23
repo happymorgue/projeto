@@ -5,7 +5,7 @@
 
 @section('content')
 <section class="section-showcase text-center text-sm-start m-0 bgColor d-flex" id="myItems">
-  <div class="container p-5 d-flex col-md-9">
+  <div class="container p-5 d-flex col-md-9 col-xxl-9">
     <div id="ObjetosEncontrados" class="w-100">
     <!--Cada Linha de Items terá este layout
       <div class="row d-flex justify-content-around">
@@ -32,7 +32,7 @@
 
     </div>
   </div>
-  <div class="container p-5 col-md-3 bgColorMyItems">
+  <div class="container p-5 col-md-3 bgColorMyItems col-xxl-3">
     <h3>Meus Itens Perdidos</h2>
     <div>
       <div id="MeusObjetosPerdidos" class="d-flex justify-content-center row">

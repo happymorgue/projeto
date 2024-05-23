@@ -143,4 +143,24 @@ class UtilizadoresController extends Controller
         return response()->json($json);
     }
 
+
+
+
+    public function verLeiloes(){
+                $leiloes = DB::table('leilao')->get();
+                foreach ($leiloes as $leilao) {
+                    $objetoleilao = DB::table('objetoleilao')->where('id', $leilao->objeto_leilao_id)->first();
+                    $objetoE = DB::table('objetoe')->where('id', $objetoleilao->objeto_e_id)->first();
+                    $objeto = DB::table('objeto')->where('id', $objetoE->objeto_id)->first();
+                    $leilao->objeto = $objeto;
+                    $licitacoes = DB::table('licitacao')->where('leilao_id', $leilao->id)->get(['data_licitacao', 'valor', 'licitante_id']);
+                    $leilao->licitacoes = $licitacoes;
+                }
+
+                
+                $json = array('leiloes' => $leiloes);
+                #ADICIONAR CASO EM QUE NAO EXISTAM LEILOES PARA NAO SER NULL A RESPOSTA
+                    return response()->json($json);
+    }
+
 }

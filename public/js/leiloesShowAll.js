@@ -1,9 +1,9 @@
 function carregarLeiloes() {
-    let pedido = xhttp = new XMLHttpRequest();
+    let pedido = new XMLHttpRequest();
     pedido.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var idRegular = JSON.parse(pedido.responseText);
-            let pedido2 = xhttp = new XMLHttpRequest();
+            let pedido2 = new XMLHttpRequest();
             pedido2.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     var responseJson = JSON.parse(pedido2.responseText);
@@ -138,9 +138,27 @@ function carregarLeiloes() {
                         divContainer.appendChild(divLeilao);
 
                         divGlobal.appendChild(divContainer);
+                        pedidoVerificarSubscricao = new XMLHttpRequest();
+                        pedidoVerificarSubscricao.onreadystatechange = function () {
+                            if (this.readyState == 4 && this.status == 200) {
+                                console.log(pedidoVerificarSubscricao.responseText);
+                                var responseJson = JSON.parse(pedidoVerificarSubscricao.responseText);
+                                console.log(responseJson);
+                                if (responseJson['subscrito']) {
+                                    botaoInscrever.innerHTML = 'Cancelar Subscrição';
+                                    botaoInscrever.addEventListener('click', function () {
+                                        inscreverLeilao(leilao['id'], event);
+                                    });
+                                } else {
+                                    botaoInscrever.addEventListener('click', function () {
+                                        inscreverLeilao(leilao['id'], event);
+                                    });
+                                }
+                            }
+                        }
+                        pedidoVerificarSubscricao.open("GET", "/api/regular/licitante/" + idRegular + "/verificarSubscricao/" + leilao['id'], false)
+                        pedidoVerificarSubscricao.send();
                     });
-
-
                 }
             }
             pedido2.open("GET", "/api/regular/licitante/" + idRegular + "/verLeiloes", true)
@@ -151,7 +169,50 @@ function carregarLeiloes() {
     pedido.send();
 }
 
+function inscreverLeilao(idLeilao, event) {
+    if (event.target.innerHTML == 'Cancelar Subscrição') {
+        cancelarSubLeilao(idLeilao, event);
+        return;
+    }
+    let pedido2 = new XMLHttpRequest();
+    pedido2.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var idRegular = JSON.parse(pedido2.responseText);
+            let pedido = new XMLHttpRequest();
+            pedido.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log("Subbed com sucesso");
+                    event.target.innerHTML = 'Cancelar Subscrição';
+                }
+            }
+            pedido.open("GET", "/api/regular/licitante/" + idRegular + "/subscreverLeilao/" + idLeilao, true)
+            pedido.send();
+        }
 
+    }
+    pedido2.open("GET", "/api/convertUserEmailRegularId", true)
+    pedido2.send();
+}
+
+function cancelarSubLeilao(idLeilao, event) {
+    let pedido2 = new XMLHttpRequest();
+    pedido2.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var idRegular = JSON.parse(pedido2.responseText);
+            let pedido = new XMLHttpRequest();
+            pedido.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log("Cancelado com sucesso");
+                    event.target.innerHTML = 'Inscrever-se';
+                }
+            }
+            pedido.open("GET", "/api/regular/licitante/" + idRegular + "/anularSubscreverLeilao/" + idLeilao, true)
+            pedido.send();
+        }
+    }
+    pedido2.open("GET", "/api/convertUserEmailRegularId", true)
+    pedido2.send();
+}
 
 
 

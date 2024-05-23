@@ -12,7 +12,7 @@
     </div>
 
   <div id="leiloes" class="container py-5">
-    <div  class="row justify-content-center mb-3">
+    <!--<div  class="row justify-content-center mb-3">
 
         
       <div class="col-md-12 col-xl-10" id="leilaoDiv">
@@ -119,11 +119,11 @@
       </div>
     </div>
     
-    </div>
+    </div>-->
   </div>
 </section>
 
 @endsection
 
 <link href="{{ asset('css/leiloes.css') }}" rel="stylesheet">
-<!--<script src="{{ asset('js/leiloesShowAll.js') }}" type="text/javascript"></script>-->
+<script src="{{ asset('js/leiloesShowAllNotLogged.js') }}" type="text/javascript"></script>

@@ -63,7 +63,7 @@ Route::get('/verPoliciaObjAchados', function () {
     return view('objAchadosPolicia');
 });
 Route::get('/buscaObjPerdidos', function () {
-    return view('objPerdidos');
+    return view('objPerdidosPolicia');
 });
 Route::get('/perfilRegular', function () {
     return view('perfil');

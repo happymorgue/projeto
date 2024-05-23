@@ -5,3 +5,50 @@
 .bgColorMyItems{
     background-color: white;
 }
+.card {
+    position: relative;
+    height: 450px; /* Set a fixed height for all cards */
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.img-thumbnail {
+    width: auto;
+    max-width: 100%; /* Ensure the image width does not exceed its container */
+    max-height: 200px; /* Set a maximum height for the images */
+    object-fit: contain; /* Ensures the image fits within the specified dimensions */
+}
+
+.btn-meu {
+    align-self: flex-end;
+}
+
+.btn-editar {
+    align-self: flex-end;
+}
+
+.content-wrapper {
+    flex-grow: 1;
+}
+
+.card-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-subtitle {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+

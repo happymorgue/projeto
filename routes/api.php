@@ -138,6 +138,7 @@ Route::delete('/nUtilizador/{nUtilizadorId}', [NaoUtilizadoresController::class,
 
 #TRATAMENTOS AUXILIARES
 #OBTER ID REGULAR ATRAVES DO EMAIL DE UTILIZADOR
+Route::get('/convertUserEmailUtilizadorId', [FuncionalidadesExtraController::class,'convertUserEmailUtilizadorId']);
 Route::get('/convertUserEmailRegularId', [FuncionalidadesExtraController::class,'convertUserEmailRegularId']);
 Route::get('/convertUserEmailPoliciaId', [FuncionalidadesExtraController::class,'convertUserEmailPoliciaId']);
 Route::get('/obterPostosPolicia', [FuncionalidadesExtraController::class,'obterPostosPolicia']);

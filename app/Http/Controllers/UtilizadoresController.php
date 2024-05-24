@@ -36,8 +36,23 @@ class UtilizadoresController extends Controller
         }
         $utilizador_DB = DB::table('utilizador')->where('id', $utilizadorId)->first();
         if ($utilizador_DB->email==$_SESSION['user_email']) {
-            $notificacoes=DB::table('notificacao')->where('utilizador_id', $utilizadorId)->where('vista','N')->pluck('mensagem');
+            $notificacoes=DB::table('notificacao')->where('utilizador_id', $utilizadorId)->get();
             DB::table('notificacao')->where('utilizador_id', $utilizadorId)->update(['vista' => 'S']);
+            foreach($notificacoes as $notificacao){
+                if ($notificacao->leilao_id==null) {
+                    $objeto=DB::table('objeto')->where('id', $notificacao->objeto_perdido_id)->first();
+                    $notificacao->objeto_perdido=$objeto;
+                    $objeto=DB::table('objeto')->where('id', $notificacao->objeto_achado_id)->first();
+                    $notificacao->objeto_achado=$objeto;
+                }else{
+                    $leilao=DB::table('leilao')->where('id', $notificacao->leilao_id)->first();
+                    $objetoleilao = DB::table('objetoleilao')->where('id', $leilao->objeto_leilao_id)->first();
+                    $objetoE = DB::table('objetoe')->where('id', $objetoleilao->objeto_e_id)->first();
+                    $objeto = DB::table('objeto')->where('id', $objetoE->objeto_id)->first();
+                    $leilao->objeto = $objeto;
+                    $notificacao->leilao_id=$leilao;
+                }
+            }
             $json=array('notificacoes'=>$notificacoes);
             return response()->json($json);
         }else{

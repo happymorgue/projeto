@@ -8,9 +8,9 @@
 <section class="bgColor">
   <div class="container py-5 col-sm-12 col-md-12 col-lg-8 col-xl-6">
 
-      <div class="row justify-content-center">
+      <div id="notificacoes" class="row justify-content-center">
 
-        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-1" id="notificacaoLeilaoDiv">
+        <!--<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-1" id="notificacaoLeilaoDiv">
           <div class="card shadow-0 border rounded-3">
             <div class="card-body">
               <div class="row">
@@ -70,7 +70,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
 
       </div>
 
@@ -81,7 +81,7 @@
 @endsection
 
 <link href="{{ asset('css/notificacoes.css') }}" rel="stylesheet">
-<script src="{{ asset('js/notificacoes.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/showNotificacoes.js') }}" type="text/javascript"></script>
 
 
 

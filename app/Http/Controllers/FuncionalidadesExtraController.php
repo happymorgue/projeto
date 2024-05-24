@@ -42,6 +42,22 @@ class FuncionalidadesExtraController extends Controller
         }
     }
 
+    public function convertUserEmailUtilizadorId()
+    {
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        }
+        #BUSCAR O UTILIZADOR COM O EMAIL NA SESSION, E CONVERTER PARA O ID DO UTILIZADOR
+        $utilizador_DB = DB::table('utilizador')->where('email', $_SESSION['user_email'])->first();
+        if ($utilizador_DB != null) {
+            return $utilizador_DB->id;
+        } else {
+            #ALTERAR PARA ERRO 403/404
+            echo "Não tem permissões para apagar esse utilizador";
+        }
+    }
+
     public function obterPostosPolicia()
     {
         #OBTER TODOS OS POSTOS DE POLICIA NA BASE DE DADOS

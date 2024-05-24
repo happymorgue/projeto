@@ -12,14 +12,14 @@
           <div class="input-group">
             <span class="input-group-text">€</span> <!-- O formato do valor precisa ser modificado para ter os céntimos-->
             <input type="number" class="form-control" id="licitacaoUser" name="licitacaoUser" 
-            placeholder="00.00" aria-label="licitacao" required>
+            placeholder="00" aria-label="licitacao" required>
           </div>
           </div>
         </form>
       </div>
       <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-primary">Confirmar</button>
+            <button type="button" class="btn btn-primary" onclick="licitar()">Confirmar</button>
       </div>
     </div>
   </div>

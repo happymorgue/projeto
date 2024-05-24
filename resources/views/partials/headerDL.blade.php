@@ -79,7 +79,7 @@
               <div class="horizontal-line2"></div>
               <li><a class="dropdown-item link" href="/logout">Terminar sessão</a></li>
               <div class="horizontal-line2"></div>
-              <li><a class="dropdown-item link deleteAcc" href="">Apagar Conta</a></li>
+              <li><a class="dropdown-item link deleteAcc" href="/api/utilizador/conta/apagar">Apagar Conta</a></li>
             </ul>
           </li>
           @else

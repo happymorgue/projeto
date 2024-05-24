@@ -1,4 +1,5 @@
 var idRegular;
+var idLeilao;
 let countdownDate
 
 console.log(window.location.href.split('/')[4]);
@@ -13,6 +14,7 @@ function carregarLeilao() {
             leilao = JSON.parse(pedidoLeilao.responseText)['leilao'];
             //CARREGAR LEILAO
             console.log(leilao);
+            idLeilao = leilao['id'];
             divGlobal = document.getElementById('leilao');
 
             divContainerLeilao = document.createElement('div');
@@ -115,6 +117,27 @@ function carregarLeilao() {
             divContainerLeilao.appendChild(divLeilao);
             divGlobal.appendChild(divContainerLeilao);
 
+            pedidoVerificarSubscricao = new XMLHttpRequest();
+            pedidoVerificarSubscricao.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(pedidoVerificarSubscricao.responseText);
+                    var responseJson = JSON.parse(pedidoVerificarSubscricao.responseText);
+                    console.log(responseJson);
+                    if (responseJson['subscrito']) {
+                        divBotao2.innerHTML = 'Cancelar Subscrição';
+                        divBotao2.addEventListener('click', function () {
+                            inscreverLeilao(leilao['id'], event);
+                        });
+                    } else {
+                        divBotao2.addEventListener('click', function () {
+                            inscreverLeilao(leilao['id'], event);
+                        });
+                    }
+                }
+            }
+            pedidoVerificarSubscricao.open("GET", "/api/regular/licitante/" + idRegular + "/verificarSubscricao/" + leilao['id'], false)
+            pedidoVerificarSubscricao.send();
+
             startCountdown(leilao['data_fim']);
 
 
@@ -184,6 +207,28 @@ function carregarLeilao() {
             divGlobal.appendChild(divGlobalLicitacoes);
 
 
+            console.log(leilao['valor']);
+            $('#licitarModal').on('show.bs.modal', function (event) {
+                // Replace this with the actual current bid value
+                var currentBid = leilao['valor'] + 1;
+
+                // Get the input field
+                var inputField = document.getElementById('licitacaoUser');
+
+                // Set the min attribute
+                inputField.min = currentBid;
+
+                inputField.value = currentBid;
+
+                // Add an input event listener
+                inputField.addEventListener('input', function () {
+                    if (this.value < currentBid) {
+                        this.value = currentBid;
+                    }
+                });
+            })
+            console.log(leilao['valor']);
+
 
 
 
@@ -194,8 +239,74 @@ function carregarLeilao() {
     pedidoLeilao.send();
 }
 
+function inscreverLeilao(idLeilao, event) {
+    if (event.target.innerHTML == 'Cancelar Subscrição') {
+        cancelarSubLeilao(idLeilao, event);
+        return;
+    }
+    let pedido2 = new XMLHttpRequest();
+    pedido2.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var idRegular = JSON.parse(pedido2.responseText);
+            let pedido = new XMLHttpRequest();
+            pedido.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log("Subbed com sucesso");
+                    event.target.innerHTML = 'Cancelar Subscrição';
+                }
+            }
+            pedido.open("GET", "/api/regular/licitante/" + idRegular + "/subscreverLeilao/" + idLeilao, true)
+            pedido.send();
+        }
+
+    }
+    pedido2.open("GET", "/api/convertUserEmailRegularId", true)
+    pedido2.send();
+}
+
+function cancelarSubLeilao(idLeilao, event) {
+    let pedido2 = new XMLHttpRequest();
+    pedido2.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var idRegular = JSON.parse(pedido2.responseText);
+            let pedido = new XMLHttpRequest();
+            pedido.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log("Cancelado com sucesso");
+                    event.target.innerHTML = 'Inscrever-se';
+                }
+            }
+            pedido.open("GET", "/api/regular/licitante/" + idRegular + "/anularSubscreverLeilao/" + idLeilao, true)
+            pedido.send();
+        }
+    }
+    pedido2.open("GET", "/api/convertUserEmailRegularId", true)
+    pedido2.send();
+}
 
 
+
+function licitar() {
+    let pedido2 = new XMLHttpRequest();
+    pedido2.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var idRegular = JSON.parse(pedido2.responseText);
+            let pedido = new XMLHttpRequest();
+            let json = '{ "valor": ' + document.getElementById('licitacaoUser').value + '}';
+            let JsonParse = JSON.parse(json);
+            pedido.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    window.location.reload();
+                }
+            }
+            pedido.open("POST", "/api/regular/licitante/" + idRegular + "/licitar/" + idLeilao, true)
+            pedido.setRequestHeader("Content-Type", "application/json");
+            pedido.send(JSON.stringify(JsonParse));
+        }
+    }
+    pedido2.open("GET", "/api/convertUserEmailRegularId", true)
+    pedido2.send();
+}
 
 function startCountdown(time) {
     // Get the date and time

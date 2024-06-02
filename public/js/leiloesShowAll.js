@@ -80,7 +80,7 @@ function carregarLeiloes() {
 
                             botaoLicitar = document.createElement('a');
                             botaoLicitar.className = 'btn btn-primary btn-sm';
-                            botaoLicitar.innerHTML = 'Licitar';
+                            botaoLicitar.innerHTML = 'Ver Detalhes';
                             botaoLicitar.href = '/leilao/' + leilao['id'];
                             botaoLicitar.role = 'button';
 
@@ -94,8 +94,8 @@ function carregarLeiloes() {
                             divCardLeilaoInfoEstado.innerHTML = 'Leilão Concluido';
 
                             botaoLicitar = document.createElement('a');
-                            botaoLicitar.className = 'btn btn-primary btn-sm disabled';
-                            botaoLicitar.innerHTML = 'Licitar';
+                            botaoLicitar.className = 'btn btn-primary btn-sm';
+                            botaoLicitar.innerHTML = 'Ver Detalhes';
                             botaoLicitar.href = '/leilao/' + leilao['id'];
                             botaoLicitar.role = 'button';
 
@@ -108,8 +108,8 @@ function carregarLeiloes() {
                             divCardLeilaoInfoEstado.innerHTML = 'Leilão começa em breve';
 
                             botaoLicitar = document.createElement('a');
-                            botaoLicitar.className = 'btn btn-primary btn-sm disabled';
-                            botaoLicitar.innerHTML = 'Licitar';
+                            botaoLicitar.className = 'btn btn-primary btn-sm';
+                            botaoLicitar.innerHTML = 'Ver Detalhes';
                             botaoLicitar.href = '/leilao/' + leilao['id'];
                             botaoLicitar.role = 'button';
 

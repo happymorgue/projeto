@@ -9,10 +9,10 @@
 
 <section class="bgColor">
   <div class="container py-5">
-    <div id="leiloes" class="row justify-content-center">
+    <div id="leilao" class="row justify-content-center">
      
     <!-- Objeto do leilão -->
-    <div class="row justify-content-center">
+    <!--<div class="row justify-content-center">
       <div class="col-sm-12 col-md-12 col-xl-11">
         <div class="card shadow-0 border rounded-3">
           <div class="card-body p-4">
@@ -44,9 +44,9 @@
                         <h1 class="mb-1">€17.99</h1>
                       </div>
                       <div class="d-flex flex-row mb-2">
-                        <h4 class="mb-1 text-decoration-line-through">€14.99</h4> <!-- será licitação que foi outbided ou valor base?-->
+                        <h4 class="mb-1 text-decoration-line-through">€14.99</h4>valor base dado pelo avaliador
                       </div>
-                      <h6 class="text-success text-start fw-light">Termina em 30/06/2024 às 15:00</h6>
+                      <h6 class="text-success text-start fw-light">Termina ao fim do dia 30/06/2024</h6>
                       <div class="d-flex flex-column mt-4">
                         <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#licitarModal">Licitar</button>
                         <button class="btn btn-outline-primary btn-sm mt-2" type="button"> Inscrever-se </button>
@@ -59,7 +59,7 @@
       </div>
     </div>
 
-    <!-- Histórico de Licitações -->
+    Histórico de Licitações 
 
         <div class="row justify-content-center mt-2">
             <div class="col-sm-12 col-md-12 col-xl-11">
@@ -76,7 +76,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>ID</th>
+                                    <th>Nome do Licitante</th>
                                     <th>Data</th>
                                     <th>Valor</th>
                                 </tr>
@@ -84,31 +84,31 @@
                             <tbody>
                                 <tr>
                                     <td>1</td>
-                                    <td>34534</td>
+                                    <td>isdee</td>
                                     <td>27/04/2024</td>
                                     <td>€17.99</td>
                                 </tr>
                                 <tr>
                                     <td>2</td>
-                                    <td>76667</td>
+                                    <td>hej</td>
                                     <td>27/04/2024</td>
                                     <td>€16.99</td>
                                 </tr>
                                 <tr>
                                     <td>3</td>
-                                    <td>28459</td>
+                                    <td>posak</td>
                                     <td>26/04/2024</td>
                                     <td>€16.00</td>
                                 </tr>
                                 <tr>
                                     <td>4</td>
-                                    <td>26528</td>
+                                    <td>qdek</td>
                                     <td>26/04/2024</td>
                                     <td>€15.00</td>
                                 </tr>
                                 <tr>
                                     <td>5</td>
-                                    <td>32552</td>
+                                    <td>pars</td>
                                     <td>25/04/2024</td>
                                     <td>€14.99</td>
                                 </tr>
@@ -117,7 +117,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
 
 
@@ -131,4 +131,5 @@
 @endsection
 
 <link href="{{ asset('css/leilao.css') }}" rel="stylesheet">
+<script src="{{ asset('js/leilao.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/countdown.js') }}" type="text/javascript"></script>

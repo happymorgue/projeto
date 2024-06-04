@@ -69,6 +69,37 @@ class UtilizadoresLicitanteController extends Controller
         }
     }
 
+    public function verificarSubscricao($regularId, $leilaoId){
+        if(!isset($_SESSION)) 
+        {   
+            #APARECER PARA NAO DEIXAR ENTRAR NO METODO
+            session_start(); 
+        }
+        $utilizador_dono_DB = DB::table('regular')->where('id', $regularId)->first();
+        if($utilizador_dono_DB == null){
+            return response()->json(['error' => 'Não existe esse utilizador'], 404);
+        } else {
+            $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_dono_DB->user_id)->first();
+            if($_SESSION["user_email"] == $utilizador_DB->email){
+                #OBTER O LEILAO E VER SE EXISTE
+                $leilao = DB::table('leilao')->where('id', $leilaoId)->first();
+                if($leilao != null){
+                    #VERIFICAR SUBSCRICAO
+                    $sub=DB::table('subscricao')->where('leilao_id', $leilaoId)->where('licitante_id', $regularId)->first();
+                    if ($sub != null) {
+                        return response()->json(['subscrito' => true]);
+                    }else{
+                        return response()->json(['subscrito' => false]);
+                    }
+                }else{
+                    return response()->json(['error' => 'Não existe esse leilão'], 404);
+                }
+            }else{
+                return response()->json(['error' => 'Não tem permissões para aceder a este utilizador'], 403);
+            }
+        }
+    }
+
     public function pagamento($regularId, $leilaoId){
         #VER DEPOIS COMO FAZER COM A API DO STRIPE OS PAGAMENTOS
     }
@@ -211,7 +242,7 @@ class UtilizadoresLicitanteController extends Controller
                     $objetoE = DB::table('objetoe')->where('id', $objetoleilao->objeto_e_id)->first();
                     $objeto = DB::table('objeto')->where('id', $objetoE->objeto_id)->first();
                     $leilao->objeto = $objeto;
-                    $licitacoes = DB::table('licitacao')->where('leilao_id', $leilao->id)->get(['data_licitacao', 'valor', 'licitante_id']);
+                    $licitacoes = DB::table('licitacao')->where('leilao_id', $leilao->id)->orderBy('valor', 'desc')->get(['data_licitacao', 'valor', 'licitante_id']);
                     $leilao->licitacoes = $licitacoes;
                 }
 
@@ -259,4 +290,37 @@ class UtilizadoresLicitanteController extends Controller
             }
         }
     }
+
+    public function obterLeiloesSubscritos($regularId){
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        }
+        $utilizador_dono_DB = DB::table('regular')->where('id', $regularId)->first();
+        if($utilizador_dono_DB == null){
+            #ALTERAR PARA ERRO 403/404
+            echo "Não existe esse utilizador";
+        } else {
+            $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_dono_DB->user_id)->first();
+            if($utilizador_DB->email == $_SESSION['user_email']){
+                $leilao_subscricoes = DB::table('subscricao')->where('licitante_id', $regularId)->pluck('leilao_id');
+                $leiloes = DB::table('leilao')->whereIn('id', $leilao_subscricoes)->get();
+                foreach ($leiloes as $leilao) {
+                    $objetoleilao = DB::table('objetoleilao')->where('id', $leilao->objeto_leilao_id)->first();
+                    $objetoE = DB::table('objetoe')->where('id', $objetoleilao->objeto_e_id)->first();
+                    $objeto = DB::table('objeto')->where('id', $objetoE->objeto_id)->first();
+                    $leilao->objeto = $objeto;
+                    $licitacoes = DB::table('licitacao')->where('leilao_id', $leilao->id)->where('licitante_id',$regularId)->orderBy('valor', 'desc')->get(['data_licitacao', 'valor', 'licitante_id']);
+                    $leilao->licitacoes = $licitacoes;
+                }
+                $json = array('leilões' => $leiloes);
+                #ADICIONAR CASO EM QUE NAO EXISTAM LEILOES PARA NAO SER NULL A RESPOSTA
+                    return response()->json($json);
+            }else{
+                #ALTERAR PARA ERRO 403/404
+                echo "Não tem permissões para aceder a este utilizador";
+            }
+        }
+    }
+
 }

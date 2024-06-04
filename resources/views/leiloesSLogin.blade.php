@@ -6,8 +6,14 @@
 @section('content')
 
 <section class="bgColor">
+
+    <div class="p-2 d-flex align-items-center justify-content-center w-100 bg-light border">
+      <h4 class="px-2">Registe-se ou inicie sessão para inscrever-se e licitar em leilões</h4>
+    </div>
+
   <div id="leiloes" class="container py-5">
-  <!--  <div  class="row justify-content-center mb-3">
+    <!--<div  class="row justify-content-center mb-3">
+
         
       <div class="col-md-12 col-xl-10" id="leilaoDiv">
         <div class="card shadow-0 border rounded-3">
@@ -32,8 +38,8 @@
                 </div>
                 <h6 class="text-success">Leilão a decorrer</h6>
                 <div class="d-flex flex-column mt-4">
-                  <a href="/leilao" class="btn btn-primary btn-sm" role="button">Licitar</a>
-                  <button class="btn btn-outline-primary btn-sm mt-2" type="button">
+                  <a href="/leilao" class="btn btn-primary btn-sm disabled" role="button">Licitar</a>
+                  <button class="btn btn-outline-primary btn-sm mt-2 disabled" type="button">
                   Inscrever-se
                   </button>
                 </div>
@@ -102,7 +108,7 @@
                 <h6 class="text-warning">Leilão começa em breve</h6>
                 <div class="d-flex flex-column mt-4">
                   <button class="btn btn-primary btn-sm disabled" type="button">Licitar</button>
-                  <button class="btn btn-outline-primary btn-sm mt-2" type="button">
+                  <button class="btn btn-outline-primary btn-sm mt-2 disabled" type="button">
                   Inscrever-se
                   </button>
                 </div>
@@ -120,4 +126,4 @@
 @endsection
 
 <link href="{{ asset('css/leiloes.css') }}" rel="stylesheet">
-<script src="{{ asset('js/leiloesShowAll.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/leiloesShowAllNotLogged.js') }}" type="text/javascript"></script>

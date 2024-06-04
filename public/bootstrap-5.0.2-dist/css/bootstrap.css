@@ -10859,7 +10859,7 @@ textarea.form-control-lg {
 }
 /* espaçamento entre elementos para dropdown de perfil */
 .conta{
-  padding: 1rem;
+  padding: 0.1rem 0.01rem 0rem 0.6rem;
 }
 /* linha para separar */
 .horizontal-line {
@@ -10871,7 +10871,17 @@ textarea.form-control-lg {
   border-bottom: 0.05rem  solid #bfd1ec; /* Adjust the color and thickness as needed */
   margin: 0.4rem 0; /* Adjust the margin as needed */
   width: 11rem;
-  margin:  0.4rem auto;
+  margin: 0.4rem auto;
+}
+
+.search{
+  left: 10px; 
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.btnSearch{
+  margin-left: -3.1rem;
 }
 
 .editp{

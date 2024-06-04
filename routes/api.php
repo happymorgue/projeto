@@ -30,10 +30,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 #UTILIZADORES GERAIS
-Route::get('/utilizador/conta/{utilizadorId}/desativar', [UtilizadoresController::class, 'desativarUtilizador']);
+Route::get('/utilizador/conta/desativar', [Auth0Controller::class, 'deactivateUserFromAuth0']);
+Route::get('/utilizador/conta/apagar', [Auth0Controller::class, 'deleteUserFromAuth0']);
 Route::get('/utilizador/dados/{utilizadorId}/receberNotificacao', [UtilizadoresController::class, 'receberNotificacao']);
 Route::get('/utilizador/objetos/buscarObjetosPorCategoria/{categoriaId}', [UtilizadoresController::class, 'buscarObjetosPorCategoria']);
 Route::post('/utilizador/objetos/buscarObjetosPorDescricao', [UtilizadoresController::class, 'buscarObjetosPorDescricao']);
+Route::get('/utilizador/leiloes/buscarLeiloes', [UtilizadoresController::class, 'verLeiloes']);
 
 
 #UTILIZADORES REGULARES
@@ -88,6 +90,8 @@ Route::post('/regular/licitante/{regularId}/licitar/{leilaoId}', [UtilizadoresLi
 Route::get('/regular/licitante/{regularId}/pagamento/{leilaoId}', [UtilizadoresLicitanteController::class,'pagamento']);
 Route::get('/regular/licitante/{regularId}/subscreverLeilao/{leilaoId}', [UtilizadoresLicitanteController::class,'subscreverLeilao']);
 Route::get('/regular/licitante/{regularId}/anularSubscreverLeilao/{leilaoId}', [UtilizadoresLicitanteController::class,'anularSubscreverLeilao']);
+Route::get('/regular/licitante/{regularId}/obterLeiloesSubcritos', [UtilizadoresLicitanteController::class,'obterLeiloesSubscritos']);
+Route::get('/regular/licitante/{regularId}/verificarSubscricao/{leilaoId}', [UtilizadoresLicitanteController::class,'verificarSubscricao']);
 
 #AVALIADOR
 
@@ -134,6 +138,7 @@ Route::delete('/nUtilizador/{nUtilizadorId}', [NaoUtilizadoresController::class,
 
 #TRATAMENTOS AUXILIARES
 #OBTER ID REGULAR ATRAVES DO EMAIL DE UTILIZADOR
+Route::get('/convertUserEmailUtilizadorId', [FuncionalidadesExtraController::class,'convertUserEmailUtilizadorId']);
 Route::get('/convertUserEmailRegularId', [FuncionalidadesExtraController::class,'convertUserEmailRegularId']);
 Route::get('/convertUserEmailPoliciaId', [FuncionalidadesExtraController::class,'convertUserEmailPoliciaId']);
 Route::get('/obterPostosPolicia', [FuncionalidadesExtraController::class,'obterPostosPolicia']);
@@ -150,3 +155,5 @@ Route::get('/getDefaultEmailRegular2', [ForTesteController::class,'regular2']);
 Route::get('/getDefaultEmailPolicia', [ForTesteController::class,'policia']);
 Route::get('/getDefaultEmailPolicia2', [ForTesteController::class,'policia2']);
 Route::get('/getDefaultEmailAvaliador', [ForTesteController::class,'avaliador']);
+
+Route::get('/utilizador/ativar/{email}', [Auth0Controller::class, 'activateUserFromAuth0']);

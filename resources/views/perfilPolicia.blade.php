@@ -6,7 +6,8 @@
 @section('content')
 
   
-    <div class="container bgPerfil">
+<section class="bgPerfil">
+    <div class="container">
       <div class="main-body">
       
             <div class="row gutters-sm">
@@ -16,7 +17,7 @@
                     <div class="d-flex flex-column align-items-center text-center">
                       <img src="{{ asset('profile.png') }}" alt="Admin" class="rounded-circle" width="150">
                       <div class="mt-3">
-                        <h4  name="nome2" id="nome2"> </h4>
+                        <h4  name="nome3" id="nome3"> </h4>
                         <p class="text-muted font-size-sm">Polícia</p>
                       </div>
                     </div>
@@ -84,7 +85,9 @@
           </div>
       </div>
 
+</section>
 @endsection
 
 <link href="{{ asset('css/perfil.css') }}" rel="stylesheet">
 <script src="{{ asset('js/perfilPolicia.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/nomeIconePolicia.js') }}" type="text/javascript"></script>

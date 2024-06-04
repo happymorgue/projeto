@@ -6,7 +6,8 @@
 @section('content')
 
   
-  <div class="container bgPerfil">
+<section class="bgPerfil">
+  <div class="container">
 		<div class="main-body">
       <div class="row gutters-sm">
         <div class="col-md-4 mb-3">
@@ -15,7 +16,7 @@
               <div class="d-flex flex-column align-items-center text-center">
                 <img src="{{ asset('profile.png') }}" class="rounded-circle" width="150">
                 <div class="mt-3">
-				<h4  name="nome2" id="nome2"> </h4>
+				<h4  name="nome3" id="nome3"> </h4>
                     <p class="text-muted font-size-sm">Dono e Licitante</p>
                 </div>
               </div>
@@ -32,7 +33,7 @@
 									<h6 class="mb-0">Nome</h6>
 								</div> -->
 								<div class="col-sm-9 text-secondary editp">
-									<input type="text" class="form-control" placeholder="Nome*" value="" name="nome" id="nome">
+									<input type="text" class="form-control" placeholder="Nome" value="" name="nome" id="nome">
 								</div>
 							</div>
               <!-- <hr> -->
@@ -53,7 +54,7 @@
 									<h6 class="mb-0">NIF</h6>
 								</div> -->
 								<div class="col-sm-6 text-secondary">
-									<input type="text" class="form-control"  name="nif" id="nif" minlength="9" maxlength="9" placeholder="NIF*" value="" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+									<input type="text" class="form-control"  name="nif" id="nif" minlength="9" maxlength="9" placeholder="NIF" value="" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
 								</div>
 							</div>
            
@@ -64,7 +65,7 @@
 									<h6 class="mb-0">Morada</h6>
 								</div> -->
 								<div class="col-sm-6 text-secondary" >
-									<input type="text" class="form-control" name="morada" id="morada" placeholder="Morada*" value="">
+									<input type="text" class="form-control" name="morada" id="morada" placeholder="Morada" value="">
 								</div>
 							</div>
               <!-- <hr> -->
@@ -73,40 +74,14 @@
 									<h6 class="mb-0">ID Civil</h6>
 								</div> -->
 								<div class="col-sm-6 text-secondary">
-									<input type="text" class="form-control" name="identificador civil" id="identificador civil" placeholder="ID Civil*" value="" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+									<input type="text" class="form-control" name="identificador civil" id="identificador civil" placeholder="ID Civil" value="" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
 								</div>
 							</div>
               <!-- <hr> -->
 							<h4>Data de Nascimento</h4>
 							<div class="row">
-								<div class="col-sm-2">
-									<select name="month" id="month" class="form-select">
-										<option value="">Mês</option>
-										<option value="1">Janeiro</option>
-										<option value="2">Fevereiro</option>
-										<option value="3">Março</option>
-										<option value="4">Abril</option>
-										<option value="5">Maio</option>
-										<option value="6">Junho</option>
-										<option value="7">Julho</option>
-										<option value="8">Agosto</option>
-										<option value="9">Setembro</option>
-										<option value="10">Outubro</option>
-										<option value="11">Novembro</option>
-										<option value="12">Dezembro</option>
-									</select>
-								</div>
-								<div class="col-sm-2">
-									<select name="day" id="day" class="form-select">
-										<option value="">Dia</option>
-									</select>
-								</div>
-								<div class="col-sm-2">
-									<select name="year" id="year" class="form-select">
-										<option value="">Ano</option>
-										<option value="2002">2002</option>
-										<option value="2024">2024</option>
-									</select>
+								<div class="col-sm-6">
+									<input type="date" class="form-control" name="data_nascimento" id="data_nascimento">
 								</div>
 							</div>
 
@@ -121,7 +96,7 @@
 								</div> -->
 								<div class="col-sm-6 text-secondary">
 									<select class="form-select" name="genero" id="genero">
-										<!-- <option value=""selected>Selecione</option> -->
+										<option value="" selected>Selecione o genero</option>
 										<option value="M">Masculino</option>
 										<option value="F">Feminino</option>
 										<option value="O">Outro</option>
@@ -145,8 +120,9 @@
 		</div>
 	</div>
 
+</section>
 @endsection
 
 <link href="{{ asset('css/perfil.css') }}" rel="stylesheet">
 <script src="{{ asset('js/editPerfil.js') }}" type="text/javascript"></script>
-<script src="{{ asset('js/script.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/nomeIconePerfil.js') }}" type="text/javascript"></script>

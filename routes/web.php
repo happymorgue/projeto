@@ -63,7 +63,7 @@ Route::get('/verPoliciaObjAchados', function () {
     return view('objAchadosPolicia');
 });
 Route::get('/buscaObjPerdidos', function () {
-    return view('objPerdidos');
+    return view('objPerdidosPolicia');
 });
 Route::get('/perfilRegular', function () {
     return view('perfil');
@@ -99,8 +99,20 @@ Route::get('/leiloes', function () {
     return view('leiloes');
 });
 
-Route::get('/leilao', function () {
+Route::get('/leilao/{leilaoId}', function () {
     return view('leilao');
+});
+
+Route::get('/notificacoes', function () {
+    return view('notificacoes');
+});
+
+Route::get('/meusleiloes', function () {
+    return view('meusleiloes');
+});
+
+Route::get('/leiloesLoggedOut', function () {
+    return view('leiloesSLogin');
 });
 
 #APIS--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -112,4 +124,3 @@ Route::get('/callback', [Auth0Controller::class, 'callback']);
 Route::get('/register_dono', [Auth0Controller::class, 'register_dono']);
 Route::get('/register_policia', [Auth0Controller::class, 'register_policia']);
 Route::get('/logout', [Auth0Controller::class, 'logout']);
-

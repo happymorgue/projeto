@@ -29,6 +29,15 @@ Route::get('/', function () {
 Route::get('/admin', function () {
     return view('administrador');
 });
+Route::get('/adminLeiloes', function () {
+    return view('adminLeiloes');
+});
+Route::get('/adminObj', function () {
+    return view('adminObj');
+});
+Route::get('/adminStats', function () {
+    return view('AdminEstatisticas');
+});
 Route::get('/ajuda', function () {
     return view('ajuda');
 });

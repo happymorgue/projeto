@@ -86,3 +86,4 @@
 
 <script src="{{ asset('js/nomePerfilPolicia.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/confirmDelete.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/averiguarDadosCompletosPolicia.js') }}" type="text/javascript"></script>

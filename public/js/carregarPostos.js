@@ -1,82 +1,197 @@
+idPosto = 0;
+
 function carregarPostos() {
     let pedidogetId = new XMLHttpRequest();
-    console.log("ola");
+    numObj = 1;
     pedidogetId.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            let PoliciaId=this.responseText;
+            let PoliciaId = this.responseText;
             let pedido = new XMLHttpRequest();
             pedido.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     let responseJson = JSON.parse(this.responseText);
                     console.log(responseJson);
-                    let divGlobal = document.getElementById('postosPolicia');
+                    let divGlobal = document.getElementById('main');
+                    let divRow = document.getElementById('row-inicial');
                     responseJson.forEach(station => {
-                        let divRow = document.createElement('div');
-                        divRow.className = 'row justify-content-center mb-3';
+                        if (numObj % 4 == 0) {
+                            divGlobal.appendChild(divRow);
+                            let divRow = document.createElement('div');
+                            divRow.className = 'row gutters-sm';
 
-                        let divPosto = document.createElement('div');
-                        divPosto.className = 'col-md-12 col-xl-10';
+                        }
+                        let divInicial = document.createElement('div');
+                        divInicial.className = 'col-md-6 col-xl-3 mb-3';
 
                         let divCard = document.createElement('div');
-                        divCard.className = 'card shadow-0 border rounded-3';
+                        divCard.className = 'card';
 
                         let divCardBody = document.createElement('div');
                         divCardBody.className = 'card-body';
 
-                        let divCardRow = document.createElement('div');
-                        divCardRow.className = 'row';
-
-                        let divCardContainerImage = document.createElement('div');
-                        divCardContainerImage.className = 'col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0';
-
-                        let divCardImage = document.createElement('div');
-                        divCardImage.className = 'bg-image';
+                        let divCardInformacao = document.createElement('div');
+                        divCardInformacao.className = 'd-flex flex-column align-items-center text-center';
 
                         let img = document.createElement('img');
-                        img.src = '/posto.png';
-                        img.onerror = function () {
-                            img.src = '/storage/imagens_posto/default_posto.jpg';
-                        };
-                        img.className = 'w-100';
+                        img.src = 'posto.png';
+                        img.class = 'rounded-circle';
+                        img.width = '120';
 
-                        divCardImage.appendChild(img);
-                        divCardContainerImage.appendChild(divCardImage);
-                        divCardRow.appendChild(divCardContainerImage);
+                        divCardInformacao.appendChild(img);
 
-                        let divCardContainerInfo = document.createElement('div');
-                        divCardContainerInfo.className = 'col-md-6 col-lg-6 col-xl-6';
+                        let divDados = document.createElement('div');
+                        divDados.className = 'mt-3';
 
-                        let divCardInfoName = document.createElement('h5');
-                        divCardInfoName.innerHTML = station['morada'];
+                        let h5Morada = document.createElement('h5');
+                        h5Morada.innerHTML = station.morada;
 
-                        let divCardInfoAddress = document.createElement('p');
-                        divCardInfoAddress.className = 'mb-4 mb-md-0';
-                        divCardInfoAddress.innerHTML = "Morada: " + station['morada'];
+                        let pTelemovel = document.createElement('p');
+                        pTelemovel.innerHTML = station.telefone;
 
-                        let divCardInfoPhone = document.createElement('p');
-                        divCardInfoPhone.className = 'mb-4 mb-md-0';
-                        divCardInfoPhone.innerHTML = "Telemóvel: " + station['telefone'];
+                        divDados.appendChild(h5Morada);
+                        divDados.appendChild(pTelemovel);
 
-                        divCardContainerInfo.appendChild(divCardInfoName);
-                        divCardContainerInfo.appendChild(divCardInfoAddress);
-                        divCardContainerInfo.appendChild(divCardInfoPhone);
+                        divCardInformacao.appendChild(divDados);
 
-                        divCardRow.appendChild(divCardContainerInfo);
 
-                        divCardBody.appendChild(divCardRow);
+                        let divCardBotoes = document.createElement('div');
+                        divCardBotoes.className = 'mt-3 text-center';
+
+                        let bEditar = document.createElement('button');
+                        bEditar.className = 'btn btn-primary';
+                        bEditar.innerHTML = 'Editar';
+                        bEditar.type = 'button';
+                        bEditar.setAttribute('data-bs-toggle', 'modal');
+                        bEditar.setAttribute('data-bs-target', '#editModal');
+                        bEditar.id = station.id;
+                        bEditar.onclick = function () { mostrarModal(station.id); };
+
+                        let bApagar = document.createElement('button');
+                        bApagar.className = 'btn btn-danger';
+                        bApagar.innerHTML = 'Apagar';
+                        bApagar.onclick = function () { apagarPosto(station.id); };
+
+                        divCardBotoes.appendChild(bEditar);
+                        divCardBotoes.appendChild(bApagar);
+
+
+                        divCardBody.appendChild(divCardInformacao);
+                        divCardBody.appendChild(divCardBotoes);
                         divCard.appendChild(divCardBody);
-                        divPosto.appendChild(divCard);
-                        divRow.appendChild(divPosto);
-                        divGlobal.appendChild(divRow);
+                        divInicial.appendChild(divCard);
+                        divRow.appendChild(divInicial);
+
+
                     });
                 }
             }
-            pedido.open("GET", "/api/policia/"+PoliciaId+"/allPostoPolicia", true);
+            pedido.open("GET", "/api/policia/" + PoliciaId + "/allPostoPolicia", true);
             pedido.send();
         }
     }
     pedidogetId.open("GET", "/api/convertUserEmailPoliciaId", true);
     pedidogetId.send();
+
+
 }
+
+
+function mostrarModal(id) {
+    console.log(id);
+    idPosto = id;
+
+    let pedidogetId = new XMLHttpRequest();
+    pedidogetId.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            pedidoApagarPosto = new XMLHttpRequest();
+            pedidoApagarPosto.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById('editMoradaPosto').value = JSON.parse(this.responseText).morada;
+                    document.getElementById('editTelemovelPosto').value = JSON.parse(this.responseText).telefone;
+                }
+            }
+            pedidoApagarPosto.open("GET", "/api/policia/" + this.responseText + "/postoPolicia/" + id, true);
+            pedidoApagarPosto.send();
+        }
+    }
+    pedidogetId.open("GET", "/api/convertUserEmailPoliciaId", true);
+    pedidogetId.send();
+
+}
+
+function salvarAlteracoes() {
+    let pedidogetId = new XMLHttpRequest();
+    pedidogetId.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            pedidoSalvarPosto = new XMLHttpRequest();
+            pedidoSalvarPosto.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    location.reload();
+                }
+            }
+            let json = '{"morada":"' + document.getElementById("editMoradaPosto").value + '", "telefone":' + document.getElementById("editTelemovelPosto").value + '}';
+            console.log(json);
+            let JsonParse = JSON.parse(json);
+            pedidoSalvarPosto.open("POST", "/api/policia/" + this.responseText + "/postoPolicia/" + idPosto, true);
+            pedidoSalvarPosto.setRequestHeader("Content-Type", "application/json");
+            pedidoSalvarPosto.send(JSON.stringify(JsonParse));
+        }
+    }
+    pedidogetId.open("GET", "/api/convertUserEmailPoliciaId", true);
+    pedidogetId.send();
+
+}
+
+function apagarPosto(id) {
+    let pedidogetId = new XMLHttpRequest();
+    pedidogetId.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            pedidoApagarPosto = new XMLHttpRequest();
+            pedidoApagarPosto.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    location.reload();
+                }
+            }
+            pedidoApagarPosto.open("DELETE", "/api/policia/" + this.responseText + "/postoPolicia/" + id, true);
+            pedidoApagarPosto.send();
+        }
+    }
+    pedidogetId.open("GET", "/api/convertUserEmailPoliciaId", true);
+    pedidogetId.send();
+}
+
+
+function adicionarPosto() {
+    document.getElementById('FAdicionarPosto').addEventListener('submit', function (e) {
+        e.preventDefault();
+        // your form submission code here
+    });
+    if (document.getElementById('moradaPostoF').value == '' || document.getElementById('telemovelPostoF').value == '') {
+
+        return;
+    } else {
+        let pedidogetId = new XMLHttpRequest();
+        pedidogetId.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                pedidoApagarPosto = new XMLHttpRequest();
+                pedidoApagarPosto.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        location.reload();
+                    }
+                }
+                let json = '{"morada":"' + document.getElementsByName("moradaPostoF")[0].value + '", "telefone":' + document.getElementsByName("telemovelPostoF")[0].value + '}';
+                console.log(json);
+                let JsonParse = JSON.parse(json);
+                pedidoApagarPosto.open("POST", "/api/policia/" + this.responseText + "/postoPolicia", true);
+                pedidoApagarPosto.setRequestHeader("Content-Type", "application/json");
+                pedidoApagarPosto.send(JSON.stringify(JsonParse));
+            }
+        }
+        pedidogetId.open("GET", "/api/convertUserEmailPoliciaId", true);
+        pedidogetId.send();
+    }
+}
+
+
 
 window.onload = carregarPostos();

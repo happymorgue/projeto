@@ -27,6 +27,7 @@
               <div class="col-md-8">
                 <div class="card mb-3 divInfo">
                       <div class="card-body">
+                        <h4 id="preencherDadosPolicia" hidden class="text-danger">Preencha os dados antes de prosseguir</h4>
                         <div class="row">
                           <div class="col-sm-4">
                             <h6 class="mb-0">Nome</h6>

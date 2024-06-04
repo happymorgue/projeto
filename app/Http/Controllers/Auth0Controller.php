@@ -79,21 +79,21 @@ class Auth0Controller extends Controller
                     DB::table('regular')->insert(['user_id' => $id_table_user]);
                 });
                 #Redirecionar o utilizador para a sua home (Por agora esta /dono por estar na fase teste, depois sera /home)
-                header('Location: /homeGeral');
+                header('Location: /perfilRegular');
                 exit;
             } elseif ($_SESSION["user_tipo"] == 'Policia') {
                 DB::transaction(function () {
                     $id_table_user = DB::table('utilizador')->insertGetId(['email' => $_SESSION['user_email'], 'ativo' => 'S']);
                     DB::table('policia')->insert(['user_id' => $id_table_user]);
                 });
-                header('Location: /homePolicia');
+                header('Location: /perfilPolicia');
                 exit;
             } else {
                 DB::transaction(function () {
                     $id_table_user = DB::table('utilizador')->insertGetId(['email' => $_SESSION['user_email'], 'ativo' => 'S']);
                     DB::table('regular')->insert(['user_id' => $id_table_user]);
                 });
-                header('Location: /homeGeral');
+                header('Location: /perfilRegular');
                 exit;
             }
         } else {
@@ -103,10 +103,10 @@ class Auth0Controller extends Controller
 
             #Redirecionar o utilizador consoante o seu tipo na base de dados
             if (null != $utilizador_DB_regular) {
-                header('Location: /homeGeral');
+                header('Location: /perfilRegular');
                 exit;
             } elseif (null != $utilizador_DB_policia) {
-                header('Location: /homePolicia');
+                header('Location: /perfilPolicia');
                 exit;
             }
 

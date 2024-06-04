@@ -1,27 +1,27 @@
 let idRegular = 0;
 
 function carregarObjetos() {
-    let pedidoObjetosEncontrados = new XMLHttpRequest();
-    pedidoObjetosEncontrados.onreadystatechange = function () {
+    let pedidoObjetosPerdidos = new XMLHttpRequest();
+    pedidoObjetosPerdidos.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            var objetosPerdidos = JSON.parse(pedidoObjetosEncontrados.responseText)['objetos_perdidos'];
+            var objetosPerdidos = JSON.parse(pedidoObjetosPerdidos.responseText)['objetos_perdidos'];
             console.log(objetosPerdidos);
 
             // DIV QUE VAI CONTER OS OBJETOS PERDIDOS
-            let divGlobalEncontrados = document.getElementById('MeusObjetosPerdidos');
+            let divGlobalPerdidos = document.getElementById('MeusObjetosPerdidos');
             let numObjetos = 0;
             let divRow = document.createElement('div');
             divRow.className = 'row d-flex justify-content-around';
 
-            if (objetosPerdidos.length ==0){
-                let divGlobalPerdidos = document.getElementById('MeusObjetosEncontrados');
+            if (objetosPerdidos.length == 0) {
+                let divGlobalPerdidos = document.getElementById('MeusObjetosPerdidos');
 
                 let divSemObjetos = document.createElement('h5');
-                divSemObjetos.innerHTML = 'Não existem objetos encontrados';
+                divSemObjetos.innerHTML = 'Não existem objetos perdidos';
                 divSemObjetos.className = "fw-light";
 
                 divGlobalPerdidos.appendChild(divSemObjetos);
-                
+
                 return;
             }
 
@@ -96,37 +96,37 @@ function carregarObjetos() {
             divGlobalPerdidos.appendChild(divRow);
         }
     }
-    pedidoObjetosPerdidosSeus.open("GET", "/api/regular/dono/" + idRegular + "/verHistoricoObjetosPerdidos", true);
-    pedidoObjetosPerdidosSeus.send();
+    pedidoObjetosPerdidos.open("GET", "/api/regular/dono/" + idRegular + "/verHistoricoObjetosPerdidos", true);
+    pedidoObjetosPerdidos.send();
 }
 
 function carregarObjetosEncontrados() {
-    let pedidoObjetosPerdidosSeus = new XMLHttpRequest();
-    pedidoObjetosPerdidosSeus.onreadystatechange = function () {
+    let pedidoObjetosEncontradosSeus = new XMLHttpRequest();
+    pedidoObjetosEncontradosSeus.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            var objetosPerdidos = JSON.parse(pedidoObjetosPerdidosSeus.responseText)['objetos_perdidos_encontrados'];
-            console.log(objetosPerdidos);
-            if (objetosPerdidos.length ==0){
-                let divGlobalPerdidos = document.getElementById('MeusObjetosEncontrados');
+            var objetosEncontrados = JSON.parse(pedidoObjetosEncontradosSeus.responseText)['objetos_perdidos_encontrados'];
+            console.log(objetosEncontrados);
+            if (objetosEncontrados.length == 0) {
+                let divGlobalEncontrados = document.getElementById('MeusObjetosEncontrados');
 
                 let divSemObjetos = document.createElement('h5');
                 divSemObjetos.innerHTML = 'Não existem objetos encontrados';
                 divSemObjetos.className = "fw-light";
 
-                divGlobalPerdidos.appendChild(divSemObjetos);
-                
+                divGlobalEncontrados.appendChild(divSemObjetos);
+
                 return;
             }
 
-            // DIV QUE VAI CONTER OS OBJETOS PERDIDOS
-            let divGlobalPerdidos = document.getElementById('MeusObjetosEncontrados');
+            // DIV QUE VAI CONTER OS OBJETOS Encontrados
+            let divGlobalEncontrados = document.getElementById('MeusObjetosEncontrados');
             let numObjetos = 0;
             let divRow = document.createElement('div');
             divRow.className = 'row d-flex justify-content-around';
 
-            objetosPerdidos.forEach(objeto => {
+            objetosEncontrados.forEach(objeto => {
                 if (numObjetos % 3 == 0) {
-                    divGlobalPerdidos.appendChild(divRow);
+                    divGlobalEncontrados.appendChild(divRow);
                     divRow = document.createElement('div');
                     divRow.className = 'row d-flex justify-content-around';
                 }
@@ -195,8 +195,8 @@ function carregarObjetosEncontrados() {
             divGlobalPerdidos.appendChild(divRow);
         }
     }
-    pedidoObjetosPerdidosSeus.open("GET", "/api/regular/dono/" + idRegular + "/verHistoricoObjetosPerdidosEncontrados", true);
-    pedidoObjetosPerdidosSeus.send();
+    pedidoObjetosEncontradosSeus.open("GET", "/api/regular/dono/" + idRegular + "/verHistoricoObjetosPerdidosEncontrados", true);
+    pedidoObjetosEncontradosSeus.send();
 }
 
 

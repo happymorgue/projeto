@@ -107,3 +107,4 @@
 
 <script src="{{ asset('js/nomePerfil.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/confirmDelete.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/averiguarDadosCompletosRegular.js') }}" type="text/javascript"></script>

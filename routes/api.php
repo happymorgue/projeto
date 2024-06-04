@@ -69,6 +69,7 @@ Route::put('/policia/{policiaId}/postoPolicia', [UtilizadoresPoliciaController::
 Route::post('/policia/{policiaId}/postoPolicia', [UtilizadoresPoliciaController::class,'CreatePostoPoliciaPOST']);
 Route::get('/policia/{policiaId}/postoPolicia/{postoId}', [UtilizadoresPoliciaController::class,'getPoliciaPosto']);
 Route::post('/policia/{policiaId}/postoPolicia/{postoId}', [UtilizadoresPoliciaController::class,'UpdatePostoPoliciaPOST']);
+Route::get('/policia/{policiaId}/allPostoPolicia', [UtilizadoresPoliciaController::class,'getAllPoliciaPosto']);
 Route::delete('/policia/{policiaId}/postoPolicia/{postoId}', [UtilizadoresPoliciaController::class,'DeletePostoPolicia']);
 Route::get('/policia/{policiaId}/verHistoricoObjetosEncontrados', [UtilizadoresPoliciaController::class,'verHistoricoObjetosEncontrados']);
 Route::get('/policia/{policiaId}/verHistoricoObjetosEntregues', [UtilizadoresPoliciaController::class,'verHistoricoObjetosEntregues']);

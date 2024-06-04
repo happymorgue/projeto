@@ -24,11 +24,9 @@
     
 </head>
 <body>
-    @include('partials.headerDL')
+    @include('partials.headerA')
 
     @yield('content')
-
-    @include('partials.faq')
 
     @include('partials.footer')
 

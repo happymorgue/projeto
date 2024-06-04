@@ -9,6 +9,7 @@ use App\Http\Controllers\UtilizadoresDonoController;
 use App\Http\Controllers\UtilizadoresLicitanteController;
 use App\Http\Controllers\UtilizadoresPoliciaController;
 use App\Http\Controllers\ObjetosAchadosController;
+use App\Http\Controllers\PostoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,8 +30,17 @@ Route::get('/', function () {
 Route::get('/admin', function () {
     return view('administrador');
 });
+Route::get('/adminLeiloes', function () {
+    return view('adminLeiloes');
+});
+Route::get('/adminObj', function () {
+    return view('adminObj');
+});
+Route::get('/adminStats', function () {
+    return view('AdminEstatisticas');
+});
 Route::get('/ajuda', function () {
-    return view('ajuda');
+    return view('help');
 });
 Route::get('/editObjAchados', function () {
     return view('editAchados');

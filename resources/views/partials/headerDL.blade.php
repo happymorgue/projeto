@@ -79,7 +79,7 @@
               <div class="horizontal-line2"></div>
               <li><a class="dropdown-item link" href="/logout">Terminar sessão</a></li>
               <div class="horizontal-line2"></div>
-              <li><a class="dropdown-item link deleteAcc" href="/api/utilizador/conta/apagar">Apagar Conta</a></li>
+              <li><a class="dropdown-item link deleteAcc" onclick="confirmDelete('/api/utilizador/conta/apagar')">Apagar Conta</a></li>
             </ul>
           </li>
           @else
@@ -106,3 +106,4 @@
 </header>
 
 <script src="{{ asset('js/nomePerfil.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/confirmDelete.js') }}" type="text/javascript"></script>

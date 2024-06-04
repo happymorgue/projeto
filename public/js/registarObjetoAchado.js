@@ -148,9 +148,14 @@ function registarObjetoPerdido(idPolicia) {
                         icon: 'success',
                         title: 'Objeto registado com sucesso',
                         text: 'O objeto foi registado com sucesso.',
+                        confirmButtonText: 'Prosseguir',
+                    }).then((result) => {
+                        if(result){
+                            window.location.href = '/perfilPolicia';
+                        }
                     });
                     
-                    window.location.replace('/perfilPolicia');
+                    //window.location.replace('/perfilPolicia');
                 } else {
                     Swal.fire({
                         icon: 'error',

@@ -1,17 +1,29 @@
 let idRegular = 0;
 
 function carregarObjetos() {
-    let pedidoObjetosPerdidosSeus = new XMLHttpRequest();
-    pedidoObjetosPerdidosSeus.onreadystatechange = function () {
+    let pedidoObjetosEncontrados = new XMLHttpRequest();
+    pedidoObjetosEncontrados.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            var objetosPerdidos = JSON.parse(pedidoObjetosPerdidosSeus.responseText)['objetos_perdidos'];
+            var objetosPerdidos = JSON.parse(pedidoObjetosEncontrados.responseText)['objetos_perdidos'];
             console.log(objetosPerdidos);
 
             // DIV QUE VAI CONTER OS OBJETOS PERDIDOS
-            let divGlobalPerdidos = document.getElementById('MeusObjetosPerdidos');
+            let divGlobalEncontrados = document.getElementById('MeusObjetosPerdidos');
             let numObjetos = 0;
             let divRow = document.createElement('div');
             divRow.className = 'row d-flex justify-content-around';
+
+            if (objetosPerdidos.length ==0){
+                let divGlobalPerdidos = document.getElementById('MeusObjetosEncontrados');
+
+                let divSemObjetos = document.createElement('h5');
+                divSemObjetos.innerHTML = 'Não existem objetos encontrados';
+                divSemObjetos.className = "fw-light";
+
+                divGlobalPerdidos.appendChild(divSemObjetos);
+                
+                return;
+            }
 
             objetosPerdidos.forEach(objeto => {
                 if (numObjetos % 3 == 0) {

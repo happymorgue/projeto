@@ -56,6 +56,35 @@
 
 /* ----------------------------------------------------------------------------*/
 
+.carousel-container2 {
+  overflow: hidden;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.carousel2 img {
+  max-width: 100px; /* Defina o tamanho máximo que você deseja para as imagens */
+  height: auto;
+  margin-right: 200px; /* Adicione margem à direita de cada imagem */
+}
+
+.carousel2 {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll 8s linear infinite;
+  animation-timing-function: linear; /* Mantém a velocidade constante */
+}
+
+@keyframes scroll {
+  0% {
+      transform: translateX(0%);
+  }
+  100% {
+      transform: translateX(calc(-100% - 30px)); /* move uma largura de contêiner e uma margem */
+  }
+}
+
+
 
 
 

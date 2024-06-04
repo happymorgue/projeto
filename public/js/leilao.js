@@ -95,11 +95,17 @@ function carregarLeilao() {
             divBotao1.type = 'button';
             divBotao1.setAttribute('data-bs-toggle', 'modal');
             divBotao1.setAttribute('data-bs-target', '#licitarModal');
+            if(leilao['estado']=='T' || leilao['estado']=='I'){
+                divBotao1.disabled = 'true';
+            }
 
             divBotao2 = document.createElement('button');
             divBotao2.className = 'btn btn-outline-primary btn-sm mt-2';
             divBotao2.innerHTML = 'Inscrever-se';
             divBotao2.type = 'button';
+            if(leilao['estado']=='T'){
+                divBotao2.disabled = 'true';
+            }
 
             divInfoParaLicitante.appendChild(divBotao1);
             divInfoParaLicitante.appendChild(divBotao2);

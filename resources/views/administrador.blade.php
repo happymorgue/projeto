@@ -6,7 +6,7 @@
 @section('content')
 
 
-  <h1 class=" text-center pt-5"> Aqui será a página do administrador</h1>
+  <button class="btn primary"> Aqui será a página do administrador</button>
 
 
 @endsection

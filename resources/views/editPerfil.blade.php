@@ -29,15 +29,18 @@
 
 							<h4>Dados Pessoais</h4>
 							<div class="row mb-3">
-								<!-- <div class="col-sm-4">
+								<div class="col-sm-4">
 									<h6 class="mb-0">Nome</h6>
-								</div> -->
+								</div>
 								<div class="col-sm-9 text-secondary editp">
 									<input type="text" class="form-control" placeholder="Nome" value="" name="nome" id="nome">
 								</div>
 							</div>
               <!-- <hr> -->
 							<div class="row mb-3">
+								<div class="col-sm-4">
+									<h6 class="mb-0">Telemóvel</h6>
+								</div>
 								<div class="col-sm-2 text-secondary ccode">
 									<select class="form-select select" name="ccode">
 										<option value="+1">&#x1F1FA;&#x1F1F8; (+1)</option>
@@ -50,9 +53,9 @@
 								</div>
 							</div>
 								<div class="row mb-3">
-								<!-- <div class="col-sm-4">
+								<div class="col-sm-4">
 									<h6 class="mb-0">NIF</h6>
-								</div> -->
+								</div>
 								<div class="col-sm-6 text-secondary">
 									<input type="text" class="form-control"  name="nif" id="nif" minlength="9" maxlength="9" placeholder="NIF" value="" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
 								</div>
@@ -61,39 +64,40 @@
 			 				 
               <!-- <hr> -->
 							<div class="row mb-3">
-								<!-- <div class="col-sm-4">
+								<div class="col-sm-4">
 									<h6 class="mb-0">Morada</h6>
-								</div> -->
+								</div>
 								<div class="col-sm-6 text-secondary" >
 									<input type="text" class="form-control" name="morada" id="morada" placeholder="Morada" value="">
 								</div>
 							</div>
               <!-- <hr> -->
 			  				<div class="row mb-3">
-								<!-- <div class="col-sm-4">
+								<div class="col-sm-4">
 									<h6 class="mb-0">ID Civil</h6>
-								</div> -->
+								</div>
 								<div class="col-sm-6 text-secondary">
 									<input type="text" class="form-control" name="identificador civil" id="identificador civil" placeholder="ID Civil" value="" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
 								</div>
 							</div>
               <!-- <hr> -->
-							<h4>Data de Nascimento</h4>
-							<div class="row">
-								<div class="col-sm-6">
+			  			<div class="row mb-3">
+								<div class="col-sm-4">
+									<h6 class="mb-0">Data de Nascimento</h6>
+								</div>
+								<div class="col-sm-6 text-secondary">
 									<input type="date" class="form-control" name="data_nascimento" id="data_nascimento">
 								</div>
 							</div>
 
 					<!-- Div to display the formatted date -->
-					<div> <span id="data_nascimento" class="d-none"></span> </div>
+					<!-- <div> <span id="data_nascimento" class="d-none"></span> </div> -->
 
 		<!-- <hr> -->
-		<br>
 							<div class="row mb-3">
-								<!-- <div class="col-sm-4">
+								<div class="col-sm-4">
 									<h6 class="mb-0">Género</h6>
-								</div> -->
+								</div>
 								<div class="col-sm-6 text-secondary">
 									<select class="form-select" name="genero" id="genero">
 										<option value="" selected>Selecione o genero</option>

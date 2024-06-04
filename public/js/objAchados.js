@@ -95,6 +95,13 @@ function carregarObjetos() {
 
             //DIV QUE VAI CONTER OS OBJETOS PERDIDOS
             let divGlobalPerdidos = document.getElementById('MeusObjetosPerdidos');
+            if (objetosPerdidos.length == 0){
+                let divSemObjetos = document.createElement('h5');
+                divSemObjetos.innerHTML = 'Não existem objetos encontrados';
+                divSemObjetos.className = "fw-light";
+
+                divGlobalPerdidos.appendChild(divSemObjetos);
+            }
 
             objetosPerdidos.forEach(objeto => {
                 let divCardPerdidos = document.createElement('div');

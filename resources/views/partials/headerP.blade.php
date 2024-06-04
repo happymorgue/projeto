@@ -75,7 +75,7 @@
               <div class="horizontal-line2"></div>
               <li><a class="dropdown-item link" href="/logout">Terminar sessão</a></li>
               <div class="horizontal-line2"></div>
-              <li><a class="dropdown-item link deleteAcc"  href="/api/utilizador/conta/desativar">Apagar Conta</a></li>
+              <li><a class="dropdown-item link deleteAcc" href="#" onclick="confirmDelete('/api/utilizador/conta/apagar')">Apagar Conta</a></li>
             </ul>
           </li>
         </ul>
@@ -85,3 +85,4 @@
 </header>
 
 <script src="{{ asset('js/nomePerfilPolicia.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/confirmDelete.js') }}" type="text/javascript"></script>

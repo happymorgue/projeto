@@ -72,19 +72,52 @@
     </div>
 
     <div id="empresas" class="p-5 text-center">
-      <h3>Algumas das empresas que trabalhamos com:</h3>
-      <div class="d-flex justify-content-around align-items-center p-5">
-        <div class="col-1">
-          <img class="img-thumbnail border-0" src="empresa1.png">
+    <h3>Algumas das empresas que trabalhamos com:</h3>
+    <div id="carouselContainer2" class="carousel-container2">
+        <div class="carousel2">
+            <img class="img-thumbnail border-0" src="empresa1.png" alt="Empresa 1">
+            <img class="img-thumbnail border-0" src="empresa2.webp" alt="Empresa 2">
+            <img class="img-thumbnail border-0" src="empresa3.jpg" alt="Empresa 3">
         </div>
-        <div class="col-1">
-          <img class="img-thumbnail border-0" src="empresa2.webp">
-        </div>
-        <div class="col-1">
-          <img class="img-thumbnail border-0" src="empresa3.jpg">
-        </div>
-      </div>
     </div>
+</div>
+
+
+    <div class="col-md">
+        <div id="googleMap" style="width:100%;height:400px;"></div>
+    </div>
+
+
+    <!-- js -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js"></script>
+
+    <script>
+    function myMap() {
+      mapboxgl.accessToken = 'pk.eyJ1IjoiYmV0dWxpZWUiLCJhIjoiY2x4MGRscnMxMDNzcjJrczhybDk0OGY4NiJ9.jbj9XvMN9mbvv2T5kfOElg';
+      const map = new mapboxgl.Map({
+        container: 'googleMap',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        projection: 'globe', // Display the map as a globe, since satellite-v9 defaults to Mercator
+        zoom: 7,
+        center: [-9.1393,38.7223]
+        });
+
+        map.addControl(new mapboxgl.NavigationControl());
+        map.scrollZoom.disable();
+
+        map.on('style.load', () => {
+            map.setFog({}); // Set the default atmosphere style
+        });
+        /*var mapProp = {
+            center: new google.maps.LatLng(38.7223, -9.1393), // Coordenadas de Lisboa
+            zoom: 10,
+        };
+        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);*/
+    }
+    myMap();
+</script>
+
   @endsection
 
   <link href="{{ asset('css/home.css') }}" rel="stylesheet">

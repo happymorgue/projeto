@@ -532,6 +532,27 @@ class UtilizadoresPoliciaController extends Controller
         
     }
 
+    public function getAllPoliciaPosto($policiaId,Request $request)
+    {
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        }
+        $utilizador_DB = DB::table('utilizador')->where('email', $_SESSION['user_email'])->first();
+        if ($utilizador_DB != null) {
+            $utilizador_talvez_policia_DB = DB::table('policia')->where('user_id', $utilizador_DB->id)->first();
+            if ($utilizador_talvez_policia_DB != null && $utilizador_talvez_policia_DB->id == $policiaId) {
+                $postoPolicia = DB::table('posto')->get();
+                return response()->json($postoPolicia, 200);
+            }
+        }else{
+            #ALTERAR PARA ERRO 403/404
+            echo "Não existe esse utilizador";
+            
+        }
+        
+    }
+
     public function UpdatePostoPoliciaPOST($policiaId,$postoId,Request $request)
     {
         if(!isset($_SESSION)) 

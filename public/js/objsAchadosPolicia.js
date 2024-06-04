@@ -13,6 +13,13 @@ function carregarObjetos() {
             let divRow = document.createElement('div');
             divRow.className = 'row d-flex justify-content-around';
 
+            if (objetosPerdidos.length == 0) {
+                let h5 = document.createElement('h5');
+                h5.className = 'fw-light';
+                h5.innerHTML = "Não existem objetos encontrados";
+                divGlobalPerdidos.appendChild(h5);
+            }
+
             objetosPerdidos.forEach(objeto => {
                 if (numObjetos % 3 == 0) {
                     divGlobalPerdidos.appendChild(divRow);
@@ -93,7 +100,7 @@ function obterIdECarregarObjetos() {
     let pedido = xhttp = new XMLHttpRequest();
     pedido.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            idPolicia= JSON.parse(pedido.responseText);
+            idPolicia = JSON.parse(pedido.responseText);
             console.log(idPolicia);
             carregarObjetos();
         }

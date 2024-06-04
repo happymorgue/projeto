@@ -9,22 +9,18 @@
       <div class="modal-body">
         <form>
           <div class="form-group">
-            <label for="editNomePosto">Nome</label>
-            <input type="text" class="form-control" id="editNomePosto">
-          </div>
-          <div class="form-group">
             <label for="editMoradaPosto">Morada</label>
             <input type="text" class="form-control" id="editMoradaPosto">
           </div>
           <div class="form-group">
             <label for="editTelemovelPosto">Telemóvel</label>
-            <input type="text" class="form-control" id="editTelemovelPosto">
+            <input type="text" maxlength="9" class="form-control" id="editTelemovelPosto">
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Salvar</button>
+        <button type="button" onclick="salvarAlteracoes()" class="btn btn-primary">Salvar</button>
       </div>
     </div>
   </div>

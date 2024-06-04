@@ -61,7 +61,7 @@ function getProfile() {
 
 function guardarMudancas() {
 
-    let dataNascimento = document.getElementById('data_nascimento').innerText;
+    let dataNascimento = document.getElementById('data_nascimento').value;
 
     let pedido = new XMLHttpRequest();
     pedido.onreadystatechange = function () {

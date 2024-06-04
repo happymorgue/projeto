@@ -88,7 +88,4 @@ function carregarPostos(posto) {
     pedido.send();
 }
 
-
-
-
 window.onload = getProfile();

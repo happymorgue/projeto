@@ -4,7 +4,7 @@ function getCategorias() {
         .then(data => {
             let categorias = data;
             let select = document.getElementById('categoria');
-            document.getElementById('categoria').addEventListener('change', alterarAtributos);
+            select.addEventListener('change', alterarAtributos);
             document.getElementById('form').addEventListener('submit', function (event) {
                 event.preventDefault();
             });
@@ -131,7 +131,7 @@ function registarObjetoPerdido(idRegular) {
                         icon: 'success',
                         title: 'Objeto registado com sucesso',
                         text: 'O objeto foi registado com sucesso.',
-                    });                    
+                    });
                     window.location.replace('/perfilRegular');
                 } else {
                     Swal.fire({
@@ -197,4 +197,6 @@ function verificarAtributos() {
 
 
 
-window.onload = getCategorias();
+window.addEventListener('DOMContentLoaded', function () {
+    getCategorias();
+});

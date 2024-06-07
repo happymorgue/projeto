@@ -151,7 +151,7 @@ function registarObjetoPerdido(idPolicia) {
                         confirmButtonText: 'Prosseguir',
                     }).then((result) => {
                         if(result){
-                            window.location.href = '/perfilPolicia';
+                            window.location.href = '/verPoliciaObjAchados';
                         }
                     });
                     
@@ -219,5 +219,6 @@ function verificarAtributos() {
 }
 
 
-
-window.onload = getCategorias();
+window.addEventListener('DOMContentLoaded', function () {
+    getCategorias();
+});

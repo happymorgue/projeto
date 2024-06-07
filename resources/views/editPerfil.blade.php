@@ -48,9 +48,6 @@
 										<option value="+351" selected>&#x1F1F5;&#x1F1F9; (+351)</option>
 									</select>
 								</div>
-								<div class="col-sm-4">
-									<h6 class="mb-0">Telemóvel</h6>
-								</div>
 								<div class="col-sm-6 text-secondary tel">
 									<input class="form-control" type="text" id="telemovel" name="telemovel" minlength="9" maxlength="9" placeholder="948 284 195" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
 								</div>
@@ -84,12 +81,11 @@
 								</div>
 							</div>
               <!-- <hr> -->
-							<h4>Data de Nascimento</h4>
-							<div class="row mb-3">
-							<div class="col-sm-4">
+			  			<div class="row mb-3">
+								<div class="col-sm-4">
 									<h6 class="mb-0">Data de Nascimento</h6>
 								</div>
-								<div class="col-sm-6">
+								<div class="col-sm-6 text-secondary">
 									<input type="date" class="form-control" name="data_nascimento" id="data_nascimento">
 								</div>
 							</div>
@@ -98,7 +94,6 @@
 					<!-- <div> <span id="data_nascimento" class="d-none"></span> </div> -->
 
 		<!-- <hr> -->
-		<!-- <br> -->
 							<div class="row mb-3">
 								<div class="col-sm-4">
 									<h6 class="mb-0">Género</h6>

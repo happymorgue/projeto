@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="py-5 px-1 container-fluid text-center text-color" id="footer">
+<footer class="py-5 px-1 container-fluid text-center text-color" id="footer-p">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-4 d-inline">

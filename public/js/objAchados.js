@@ -41,13 +41,13 @@ function carregarObjetos() {
                 divInfo = document.createElement('div');
                 divInfo.className = 'text-start';
 
-                let nomeObjeto = document.createElement('h5');
+                let nomeObjeto = document.createElement('h6');
                 nomeObjeto.className = 'card-title';
-                nomeObjeto.innerHTML = objeto['descricao'];
+                nomeObjeto.innerHTML = 'Objeto: ' + objeto['descricao'];
 
                 let local = document.createElement('h6');
                 local.className = 'card-subtitle text-body-secondary';
-                local.innerHTML = objeto['localizacao'];
+                local.innerHTML = 'Localização: ' + objeto['localizacao'];
 
                 let data = document.createElement('p');
                 data.className = 'card-text';

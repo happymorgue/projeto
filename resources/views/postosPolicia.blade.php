@@ -16,24 +16,28 @@
             
             <!-- Form Novo Posto de Policia -->
 
-            <div class="col-md-6 col-xl-3 mb-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title mb-2">Adicionar Posto de Polícia</h5>
-                        <form id="FAdicionarPosto">
-                            <div class="form-group">
-                                <label for="inputPhoneNumber">Morada</label>
-                                <input type="tel" class="form-control" required name="moradaPostoF" id="moradaPostoF" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="inputID">Telemóvel</label>
-                                <input type="text" class="form-control" required name="telemovelPostoF" maxlength="9" id="telemovelPostoF" placeholder="">
-                            </div>
-                            <button type="submit" class="btn btn-primary mt-2 " onclick="adicionarPosto()">Adicionar</button>
-                        </form>
+            <div class="row gutters-sm">
+    <!-- Your existing card code here -->
+    <div class="col-md-6 col-xl-3 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title mb-2">Adicionar Posto de Polícia</h5>
+                <form id="FAdicionarPosto">
+                    <div class="form-group">
+                        <label for="inputPhoneNumber">Morada</label>
+                        <input type="tel" class="form-control" required name="moradaPostoF" id="moradaPostoF" placeholder="">
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label for="inputID">Telemóvel</label>
+                        <input type="text" class="form-control" required name="telemovelPostoF" maxlength="9" id="telemovelPostoF" placeholder="">
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-2 " onclick="adicionarPosto()">Adicionar</button>
+                </form>
             </div>
+        </div>
+    </div>
+</div>
+
 
             <!-- Postos de Policia 
 

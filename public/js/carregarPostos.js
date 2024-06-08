@@ -10,18 +10,25 @@ function carregarPostos() {
             pedido.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     let responseJson = JSON.parse(this.responseText);
-                    console.log(responseJson);
+                    // console.log(responseJson);
+                    // ordenar pela morada
+                    responseJson.sort((a, b) => (a.morada > b.morada) ? 1 : -1); 
                     let divGlobal = document.getElementById('main');
-                    let divRow = document.getElementById('row-inicial');
-                    responseJson.forEach(station => {
-                        if (numObj % 4 == 0) {
-                            divGlobal.appendChild(divRow);
-                            let divRow = document.createElement('div');
-                            divRow.className = 'row gutters-sm';
 
+                    let title = document.createElement('h2');
+                    title.textContent = 'Lista de Postos Existentes'; 
+                    divGlobal.appendChild(title);
+
+                    let divRow;
+                    responseJson.forEach((station, index) => {
+                        if (index % 4 == 0) {
+                            divRow = document.createElement('div');
+                            divRow.className = 'row gutters-sm';
+                            divGlobal.appendChild(divRow);
                         }
                         let divInicial = document.createElement('div');
                         divInicial.className = 'col-md-6 col-xl-3 mb-3';
+
 
                         let divCard = document.createElement('div');
                         divCard.className = 'card';
@@ -81,7 +88,7 @@ function carregarPostos() {
                         divInicial.appendChild(divCard);
                         divRow.appendChild(divInicial);
 
-
+                        divRow.appendChild(divInicial);
                     });
                 }
             }
@@ -126,7 +133,16 @@ function salvarAlteracoes() {
             pedidoSalvarPosto = new XMLHttpRequest();
             pedidoSalvarPosto.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
-                    location.reload();
+                    // Success message after saving changes
+                    Swal.fire({
+                        title: "Sucesso!",
+                        text: "As alterações foram salvas com sucesso!",
+                        icon: "success",
+                        confirmButtonColor: "#007bff", // Bootstrap's btn-primary color
+                        confirmButtonText: "OK",
+                    }).then(() => {
+                        location.reload();
+                    });
                 }
             }
             let json = '{"morada":"' + document.getElementById("editMoradaPosto").value + '", "telefone":' + document.getElementById("editTelemovelPosto").value + '}';
@@ -143,23 +159,44 @@ function salvarAlteracoes() {
 }
 
 function apagarPosto(id) {
-    let pedidogetId = new XMLHttpRequest();
-    pedidogetId.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            pedidoApagarPosto = new XMLHttpRequest();
-            pedidoApagarPosto.onreadystatechange = function () {
+    Swal.fire({
+        title: "Tem a certeza?",
+        text: "Ao apagar, não será possível recuperar este posto!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#dc3545",
+        confirmButtonText: "Sim, apagar!",
+        cancelButtonText: "Não, cancelar!",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            let pedidogetId = new XMLHttpRequest();
+            pedidogetId.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
-                    location.reload();
+                    pedidoApagarPosto = new XMLHttpRequest();
+                    pedidoApagarPosto.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            Swal.fire({
+                                title: "Sucesso!",
+                                text: "O posto foi apagado com sucesso!",
+                                icon: "success",
+                                confirmButtonColor: "#007bff", 
+                                confirmButtonText: "OK",
+                            }).then(() => {
+                                location.reload();
+                            });
+                        }
+                    }
+                    pedidoApagarPosto.open("DELETE", "/api/policia/" + this.responseText + "/postoPolicia/" + id, true);
+                    pedidoApagarPosto.send();
                 }
             }
-            pedidoApagarPosto.open("DELETE", "/api/policia/" + this.responseText + "/postoPolicia/" + id, true);
-            pedidoApagarPosto.send();
+            pedidogetId.open("GET", "/api/convertUserEmailPoliciaId", true);
+            pedidogetId.send();
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            Swal.fire("Cancelado", "O seu posto está seguro :)", "info");
         }
-    }
-    pedidogetId.open("GET", "/api/convertUserEmailPoliciaId", true);
-    pedidogetId.send();
+    });
 }
-
 
 function adicionarPosto() {
     document.getElementById('FAdicionarPosto').addEventListener('submit', function (e) {
@@ -167,7 +204,6 @@ function adicionarPosto() {
         // your form submission code here
     });
     if (document.getElementById('moradaPostoF').value == '' || document.getElementById('telemovelPostoF').value == '') {
-
         return;
     } else {
         let pedidogetId = new XMLHttpRequest();
@@ -176,7 +212,17 @@ function adicionarPosto() {
                 pedidoApagarPosto = new XMLHttpRequest();
                 pedidoApagarPosto.onreadystatechange = function () {
                     if (this.readyState == 4 && this.status == 200) {
-                        location.reload();
+                        Swal.fire({
+                            title: "Sucesso!",
+                            text: "O posto foi adicionado com sucesso!",
+                            icon: "success",
+                            confirmButtonColor: "#007bff", 
+                            confirmButtonText: "OK",
+                        }).then(() => {
+                            // Recarregar postos e reordenar
+                            location.reload();
+                            carregarPostos();
+                        });
                     }
                 }
                 let json = '{"morada":"' + document.getElementsByName("moradaPostoF")[0].value + '", "telefone":' + document.getElementsByName("telemovelPostoF")[0].value + '}';
@@ -191,6 +237,7 @@ function adicionarPosto() {
         pedidogetId.send();
     }
 }
+
 
 
 

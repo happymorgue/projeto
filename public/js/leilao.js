@@ -50,9 +50,9 @@ function carregarLeilao() {
 
             divObjeto = document.createElement('div');
             divObjeto.className = 'nome align-self-start';
-            h3DescricaoObjeto = document.createElement('h3');
-            h3DescricaoObjeto.innerHTML = leilao['objeto']['descricao'];
-            divObjeto.appendChild(h3DescricaoObjeto);
+            h5DescricaoObjeto = document.createElement('h5');
+            h5DescricaoObjeto.innerHTML = "Descrição: " + leilao['objeto']['descricao'];
+            divObjeto.appendChild(h5DescricaoObjeto);
             pLocalObjeto = document.createElement('p');
             pLocalObjeto.className = 'text-muted fw-light';
             pLocalObjeto.innerHTML = "Localização: " + leilao['objeto']['localizacao'];
@@ -107,9 +107,19 @@ function carregarLeilao() {
                 divBotao2.disabled = 'true';
             }
 
+            divBotao3 = document.createElement('button');
+            divBotao3.className = 'btn btn-outline-primary btn-sm mt-2';
+            divBotao3.innerHTML = 'Voltar';
+            divBotao3.type = 'button';
+
+            // Voltar a página anterior que estava
+            divBotao3.addEventListener('click', function() {
+                window.history.back();
+            });
+
             divInfoParaLicitante.appendChild(divBotao1);
             divInfoParaLicitante.appendChild(divBotao2);
-
+            divInfoParaLicitante.appendChild(divBotao3);
 
 
             divInfo.appendChild(divValorAtual);

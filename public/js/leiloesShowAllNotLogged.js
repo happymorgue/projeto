@@ -46,7 +46,7 @@ function carregarLeiloes() {
 
                 let divCardObjectInfoName = document.createElement('h5');
                 divCardObjectInfoName.className = 'card-title';
-                divCardObjectInfoName.innerHTML = "Data de final do leilao: " + leilao['data_fim'];
+                divCardObjectInfoName.innerHTML = "Data final do leilao: " + leilao['data_fim'];
                 let divCardObjectInfoDesc = document.createElement('p');
                 divCardObjectInfoDesc.className = 'mb-4 mb-md-0';
                 divCardObjectInfoDesc.style = 'overflow: hidden; overflow - wrap: break-word;';

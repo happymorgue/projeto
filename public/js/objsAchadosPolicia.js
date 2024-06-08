@@ -53,11 +53,11 @@ function carregarObjetos() {
 
                 let divCardPerdidosNomeObjeto = document.createElement('h5');
                 divCardPerdidosNomeObjeto.className = 'card-title';
-                divCardPerdidosNomeObjeto.innerHTML = objeto['descricao'];
+                divCardPerdidosNomeObjeto.innerHTML = 'Objeto: ' + objeto['descricao'];
 
                 let divCardPerdidosLocal = document.createElement('h6');
                 divCardPerdidosLocal.className = 'card-subtitle text-body-secondary';
-                divCardPerdidosLocal.innerHTML = objeto['localizacao'];
+                divCardPerdidosLocal.innerHTML = 'Localização: ' + objeto['localizacao'];
 
                 let divCardPerdidosData = document.createElement('p');
                 divCardPerdidosData.className = 'card-text';

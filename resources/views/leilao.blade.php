@@ -10,7 +10,6 @@
 <section class="bgColor">
   <div class="container py-5">
     <div id="leilao" class="row justify-content-center">
-     
     <!-- Objeto do leilão -->
     <!--<div class="row justify-content-center">
       <div class="col-sm-12 col-md-12 col-xl-11">

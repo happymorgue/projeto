@@ -1,6 +1,6 @@
 <header>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg bg-dark navbar-dark cor-nav-bar py-3 fixed-top">
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark cor-nav-bar-p py-3 fixed-top">
   <div class="container d-flex justify-content-between align-items-center">
       <!-- Logo para telas grandes ou + -->
       <div class="d-none d-lg-flex col-lg-4 col-xl-4 col-xxl-4 ps-lg-3">
@@ -61,7 +61,7 @@
           </li>
           <li class="nav-item dropdown">
             <a href="" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-bs-toggle="dropdown">
-              Perfil
+              <span name="nome3"></span>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
               <div class="layout">

@@ -21,6 +21,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <!-- MapBox -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
+
+    
+
     
 </head>
 <body>
@@ -28,7 +35,7 @@
 
     @yield('content')
 
-    @include('partials.footer')
+    @include('partials.footerDL')
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

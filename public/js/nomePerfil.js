@@ -11,6 +11,7 @@ function getProfile() {
                     var responseJson = JSON.parse(pedido2.responseText);
                     if(responseJson['nome'] != "null"){
                         document.getElementsByName('nome2')[0].innerHTML = responseJson['nome'];
+                        document.getElementsByName('nome3')[0].innerHTML = responseJson['nome'];
                     }
                     console.log(responseJson);
                     console.log(responseJson['email']);

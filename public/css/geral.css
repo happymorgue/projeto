@@ -5,6 +5,7 @@
   --azul-claro: #1f8ac0;
   --azul-escuro: #2320b5;
   --azul-intermedio:  #104c91;
+  --homeDL:  #099a76;
 }
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
@@ -18,7 +19,12 @@ body::before {
 /*-------------- PRIMEIRA NAVBAR -----------------*/
 
 
-.cor-nav-bar{
+.cor-nav-bar-dl{
+  background-color: var(--homeDL) !important;
+}
+
+
+.cor-nav-bar-p{
   background-color: var(--azul-intermedio) !important;
 }
 
@@ -33,7 +39,12 @@ body::before {
 
 /*------------- FOOTER --------------------*/ 
 
-#footer {
+#footer-dl {
+  background-color:var(--homeDL);
+  color: var(--bege-branco) !important;
+}
+
+#footer-p {
   background-color:var(--azul-intermedio);
   color: var(--bege-branco) !important;
 }
@@ -44,7 +55,12 @@ body::before {
   margin-top: -1em;
 }
 
-.btn_vender {
+.btn_vender-dl {
+  background-color: var(--homeDL);
+  color: var(--bege-branco);
+}
+
+.btn_vender-p {
   background-color: var(--azul-intermedio);
   color: var(--bege-branco);
 }

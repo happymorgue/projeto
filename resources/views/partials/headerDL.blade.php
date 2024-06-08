@@ -1,6 +1,6 @@
 <header>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg bg-dark navbar-dark cor-nav-bar py-3 fixed-top">
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark cor-nav-bar-dl py-3 fixed-top">
   <div class="container d-flex justify-content-between align-items-center">
       <!-- Logo para telas grandes ou + -->
       <div class="d-none d-lg-flex col-lg-4 col-xl-4 col-xxl-4 ps-lg-3">
@@ -56,16 +56,16 @@
               Objetos
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item link" href="/buscaObjAchados">Objetos achados</a></li>
+              <li><a class="dropdown-item link" href="/buscaObjAchados">Objetos Achados</a></li>
               <div class="horizontal-line2"></div>
-              <li><a class="dropdown-item link" href="/verObjPerdidos">Meus objetos perdidos</a></li>
+              <li><a class="dropdown-item link" href="/verObjPerdidos">Meus Objetos Perdidos</a></li>
               <div class="horizontal-line2"></div>
               <li><a class="dropdown-item link" href="/meusleiloes">Leilões Subscritos</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
             <a href="" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-bs-toggle="dropdown">
-              Perfil
+              <span name="nome3"></span>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
               <div class="layout">
@@ -75,11 +75,11 @@
               <div class="horizontal-line"></div>
               <li><a class="dropdown-item link" href="/perfilRegular">Perfil</a></li>
               <div class="horizontal-line2"></div>
-              <li><a class="dropdown-item link" href="/verObjPerdidos">Meus objetos perdidos</a></li>
-              <div class="horizontal-line2"></div>
+              <!-- <li><a class="dropdown-item link" href="/verObjPerdidos">Meus objetos perdidos</a></li>
+              <div class="horizontal-line2"></div> -->
               <li><a class="dropdown-item link" href="/logout">Terminar sessão</a></li>
               <div class="horizontal-line2"></div>
-              <li><a class="dropdown-item link deleteAcc" onclick="confirmDelete('/api/utilizador/conta/apagar')">Apagar Conta</a></li>
+              <li><a class="dropdown-item link deleteAcc" href="#" onclick="confirmDelete('/api/utilizador/conta/apagar')">Apagar Conta</a></li>
             </ul>
           </li>
           @else

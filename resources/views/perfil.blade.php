@@ -5,7 +5,7 @@
 
 @section('content')
 
-<section class="bgPerfil">
+<section class="bgPerfil mt-3">
   <div class="container bgPerfil">
     <div class="main-body">
     
@@ -103,6 +103,7 @@
                       
                     </div>
                   </div>
+                  <hr>
                   <div class="row justify-content-center">
                       <div class="col-md-4 col-lg-2 col-sm-8 m-1 "> 
                         <a class="btn btns btn-edit" href="/editPerfilRegular">Editar Dados</a>

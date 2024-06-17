@@ -7,14 +7,14 @@
 <section class="section-showcase text-center text-sm-start m-0 bgColor d-flex align-items-center" id="myItems">
   <div class="w-100">
     <div class="p-2 d-flex align-items-center justify-content-center w-100 bgColorMyItems border">
-      <h4 class="px-2">Perdeu outro objeto que não aparece aqui?</h3>
+      <h4 class="px-2 pt-1">Perdeu outro objeto que não aparece aqui?</h3>
       <a href="/registarObjPerdido" class="btn btn-primary d-block px-2 mx-3">Adicionar Objeto Perdido</a>
     </div>
 
 
     <div class="p-5 d-flex w-100 bgColor">
       <div id="MeusObjetosEncontrados" class="w-100">
-        <h2>Meus Objetos Encontrados</h2>
+        <h3>Meus Objetos Encontrados</h2>
         <hr>
         <!--Cada Linha de Items terá este layout-->
         <!-- <div class="row d-flex justify-content-around"> -->
@@ -41,7 +41,7 @@
 
     <div class="p-5 d-flex w-100 bgColor">
       <div id="MeusObjetosPerdidos" class="w-100">
-      <h2>Meus Objetos Perdidos</h2>
+      <h3>Meus Objetos Perdidos</h3>
       <hr>
         <!--Cada Linha de Items terá este layout-->
         <!-- <div class="row d-flex justify-content-around"> -->

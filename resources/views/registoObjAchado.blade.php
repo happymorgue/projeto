@@ -26,11 +26,11 @@
               <form id="form" action="#!">
                 <div class="row gy-3 gy-md-4 overflow-hidden">
                   <div class="col-12">
-                    <label for="descricao" class="form-label">Nome <span class="text-danger">*</span></label>
+                    <label for="descricao" class="form-label">Nome  </label>
                     <input type="text" class="form-control" name="descricao" id="descricao" required>
                   </div>
                   <div class="col-12">
-                    <label for="categoria" class="form-label">Categoria  <span class="text-danger">*</span></label>
+                    <label for="categoria" class="form-label">Categoria   </label>
                     <select class="form-control" name="categoria" id="categoria" required>
                       <option value="">Selecione</option>
                     </select>
@@ -39,7 +39,7 @@
 
                   </div>
                   <div class="col-12">
-                    <label for="intervaloTempo" class="form-label">Intervalo de Tempo <span class="text-danger">*</span></label>
+                    <label for="intervaloTempo" class="form-label">Intervalo de Tempo  </label>
                     <div class="input-group">
                       <input type="date" class="form-control" name="dataInicio" id="dataInicio" required>
                       <div class="input-group-prepend input-group-append">
@@ -50,31 +50,31 @@
                     <small class="form-text text-muted">Por favor introduza o intervalo de tempo aproximado em que o objeto foi achado.</small>
                   </div>
                   <div class="col-12">
-                    <label for="nome_nUtilizador" class="form-label">Nome de Quem Encontrou<span class="text-danger">*</span></label>
+                    <label for="nome_nUtilizador" class="form-label">Nome de Quem Encontrou </label>
                     <input type="nome_nUtilizador" class="form-control" name="nome_nUtilizador" id="nome_nUtilizador" value="" required>
                   </div>
                   <div class="col-12">
-                    <label for="telemovel_nUtilizador" class="form-label">Telemóvel de Quem Encontrou <span class="text-danger">*</span></label>
+                    <label for="telemovel_nUtilizador" class="form-label">Telemóvel de Quem Encontrou  </label>
                     <input type="telemovel_nUtilizador" class="form-control" name="telemovel_nUtilizador" id="telemovel_nUtilizador"  minlength="9" maxlength="9" value="" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
                   </div>
                   <div class="col-12">
-                    <label for="pais" class="form-label">País <span class="text-danger">*</span></label>
+                    <label for="pais" class="form-label">País  </label>
                     <input type="pais" class="form-control" name="pais" id="pais" value="" required>
                   </div>
                   <div class="col-12">
-                    <label for="distrito" class="form-label">Distrito<span class="text-danger">*</span></label>
+                    <label for="distrito" class="form-label">Distrito </label>
                     <input type="distrito" class="form-control" name="distrito" id="distrito" value="">
                   </div>
                   <div class="col-12">
-                    <label for="cidade" class="form-label">Cidade<span class="text-danger">*</span></label>
+                    <label for="cidade" class="form-label">Cidade </label>
                     <input type="cidade" class="form-control" name="cidade" id="cidade" value="">
                   </div>
                   <div class="col-12">
-                    <label for="freguesia" class="form-label">Freguesia<span class="text-danger">*</span></label>
+                    <label for="freguesia" class="form-label">Freguesia </label>
                     <input type="freguesia" class="form-control" name="freguesia" id="freguesia" value="">
                   </div>
                   <div class="col-12">
-                    <label for="rua" class="form-label">Rua<span class="text-danger">*</span></label>
+                    <label for="rua" class="form-label">Rua </label>
                     <input type="rua" class="form-control" name="rua" id="rua" value="">
                   </div>
                   <div class="col-12">

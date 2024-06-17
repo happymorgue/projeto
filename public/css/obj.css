@@ -7,7 +7,7 @@
 }
 .card {
     position: relative;
-    height: 450px; /* Set a fixed height for all cards */
+    height:500px; /* Set a fixed height for all cards */
 }
 
 .card-body {
@@ -20,7 +20,7 @@
 .img-thumbnail {
     width: auto;
     max-width: 100%; /* Ensure the image width does not exceed its container */
-    max-height: 200px; /* Set a maximum height for the images */
+    max-height: 40em; /* Set a maximum height for the images */
     object-fit: contain; /* Ensures the image fits within the specified dimensions */
 }
 

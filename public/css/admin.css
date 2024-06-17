@@ -1,0 +1,24 @@
+body::before {
+    display: block;
+    content: '';
+    height: 5em;
+}
+
+body{
+    background-color: rgb(230, 230, 230);
+    padding: 3em;
+
+}
+
+/*-------------- PRIMEIRA NAVBAR -----------------*/
+
+  
+.navbar-brand {
+/* tamanho letra 2HandCloth */
+font-size: 2em;
+}
+
+.logo-cogitavi {
+height: 1.2em;
+}
+  

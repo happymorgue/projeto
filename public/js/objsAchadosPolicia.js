@@ -16,7 +16,7 @@ function carregarObjetos() {
             if (objetosPerdidos.length == 0) {
                 let h5 = document.createElement('h5');
                 h5.className = 'fw-light';
-                h5.innerHTML = "Não existem objetos encontrados";
+                h5.innerHTML = "Não existem objetos achados";
                 divGlobalPerdidos.appendChild(h5);
             }
 

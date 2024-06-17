@@ -49,7 +49,14 @@
         <ul class="navbar-nav ms-auto">
           @if(isset($_SESSION['user_email']))
           <li class="nav-item me-2">
-            <a href="/leiloes" class="nav-link">Leilões</a>
+          <li class="nav-item dropdown me-2">
+            <a href="" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-bs-toggle="dropdown">
+              Leilões
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item link" href="/leiloes">Leilões</a></li>
+              <li><a class="dropdown-item link" href="/meusleiloes">Leilões Subscritos</a></li>
+            </ul>
           </li>
           <li class="nav-item dropdown me-2">
             <a href="" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-bs-toggle="dropdown">
@@ -59,8 +66,6 @@
               <li><a class="dropdown-item link" href="/buscaObjAchados">Objetos Achados</a></li>
               <div class="horizontal-line2"></div>
               <li><a class="dropdown-item link" href="/verObjPerdidos">Meus Objetos Perdidos</a></li>
-              <div class="horizontal-line2"></div>
-              <li><a class="dropdown-item link" href="/meusleiloes">Leilões Subscritos</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">

@@ -6,7 +6,7 @@
 @section('content')
 
   
-<section class="bgPerfil">
+<section class="bgPerfil pt-3">
     <div class="container">
       <div class="main-body">
       

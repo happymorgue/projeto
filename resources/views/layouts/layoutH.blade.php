@@ -24,6 +24,7 @@
     
 </head>
 <body>
+
     @include('partials.headerDL')
 
     @yield('content')

@@ -10,10 +10,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 /* espaço entre nav e conteudo da pagina */
+
 body::before {
   display: block;
   content: '';
   height: 5em;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+/* Coloca o footer no final da página no DL*/
+.wrapper { 
+  background-color:  #cde3fc;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(80vh - 5em); 
 }
 
 /*-------------- PRIMEIRA NAVBAR -----------------*/

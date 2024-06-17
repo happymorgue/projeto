@@ -8,10 +8,15 @@
 <section class="bgColor">
 
     <div class="p-2 d-flex align-items-center justify-content-center w-100 bg-light border">
-      <h4 class="px-2">Registe-se ou inicie sessão para inscrever-se e licitar em leilões</h4>
+      <h4 class="px-2 mb-2">Registe-se ou inicie sessão para inscrever-se e licitar em leilões</h4>
     </div>
 
   <div id="leiloes" class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-12 col-xl-10">
+        <h3 class="mb-3">Lista de Leilões</h3>
+      </div>  
+    </div>
     <!--<div  class="row justify-content-center mb-3">
 
         

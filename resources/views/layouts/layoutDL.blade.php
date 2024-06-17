@@ -31,6 +31,7 @@
     
 </head>
 <body>
+<div class="wrapper">
     @include('partials.headerDL')
 
     @yield('content')
@@ -41,6 +42,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="{{ asset('bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js') }}"></script>
-
+</div>
 </body>
 </html>

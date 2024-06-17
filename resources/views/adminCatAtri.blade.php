@@ -3,10 +3,11 @@
 @section('title', 'Cogitavi - Administrador')
 
 @section('content')
+  
 
-<div>
-    <h3>Categorias</h3>
-    <button>Criar Categorias</button>
+<section>
+    <h2 class="mb-3">Categorias</h2>
+    <button class="btn btn-dark">Criar Categorias</button>
 
     <table class="table m-3">
         <thead class="thead-dark">
@@ -29,17 +30,16 @@
                     </button>
                 </td>
                 <td>
-                    <button>
-                        remover
+                    <button type="button" class="btn btn-danger">
+                        Remover
                     </button>
                 </td>
             </tr>
         </tbody>
     </table>
 
-    
-    <h3>Atributos</h3>
-    <button>Criar Atributos</button>
+    <h2 class="mb-3">Atributos</h2>
+    <button class="btn btn-dark">Criar Atributos</button>
 
     <table class="table m-3">
         <thead class="thead-dark">
@@ -60,8 +60,8 @@
                     </button>
                 </td>
                 <td>
-                    <button>
-                        remover
+                    <button type="button" class="btn btn-danger">
+                        Remover
                     </button>
                 </td>
             </tr>
@@ -69,47 +69,50 @@
     </table>
 
     <!-- Modal -->
-    <div class="modal fade" id="ModalCat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal fade" id="ModalCat" tabindex="-1" aria-labelledby="bidModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
+            <h5 class="modal-title" id="bidModalLabel">Editar Categoria</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            CAt
+            <form id="editarCatForm">
+                <label for="nomeCat" class="form-label">Nome</label>
+                <input type="text" class="form-control" name="nomeCat" id="nomeCat">
+            </form>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="">Salvar</button>
         </div>
         </div>
     </div>
     </div>
 
-
-    <div class="modal fade" id="ModalAt" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal fade" id="ModalAt" tabindex="-1" aria-labelledby="bidModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
+            <h5 class="modal-title" id="bidModalLabel">Editar Atributo</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            At
+            <form id="editarCatForm">
+                <label for="nomeAtri" class="form-label">Nome</label>
+                <input type="text" class="form-control" name="nomeAtri" id="nomeAtri">
+                <label for="tipoAtri" class="form-label">Tipo</label>
+                <input type="text" class="form-control" name="tipoAtri" id="tipoAtri">
+            </form>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="">Salvar</button>
         </div>
         </div>
     </div>
     </div>
-</div>
 
+</section>
 
 @endsection

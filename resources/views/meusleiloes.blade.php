@@ -10,7 +10,7 @@
 
   <div  class="row justify-content-center mb-3">
     <div class="col-md-12 col-xl-10">
-      <h1 class="mb-2">Leilões Subscritos</h1>
+      <h3 class="mb-3">Leilões Subscritos</h3>
     </div>
   </div>
 

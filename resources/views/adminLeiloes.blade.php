@@ -4,8 +4,8 @@
 
 @section('content')
 
-<div>
-    <h3>Objs</h3>
+<section>
+    <h2 class="mb-3">Objetos Disponíveis para Leilão</h2>
     <table class="table m-3">
         <thead class="thead-dark">
             <tr>
@@ -14,7 +14,7 @@
             <th scope="col">Local</th>
             <th scope="col">Data</th>
             <th scope="col">Resgatado</th>
-            <th scope="col">Iniciar leilao</th>
+            <th scope="col">Iniciar Leilão</th>
             </tr>
         </thead>
         <tbody>
@@ -25,9 +25,9 @@
                 <td>15-5</td>
                 <td>Id do encontrado?</td>
                 <td>
-                    <input type="number" class="form" placeholder="Preco inicial">
-                    <button>
-                        iniciar
+                    <input type="number" class="form" placeholder="Valor inicial">
+                    <button type="button" class="btn btn-success ms-1">
+                        Iniciar
                     </button>
                 </td>
             </tr>
@@ -35,16 +35,16 @@
     </table>
 
 
-    <h3>Leiloes</h3>
+    <h2 class="mb-3">Leilões</h2>
     <table class="table m-3">
         <thead class="thead-dark">
             <tr>
             <th scope="col">ID</th>
-            <th scope="col">Obj</th>
+            <th scope="col">Objeto</th>
             <th scope="col">Data de inicio</th>
             <th scope="col">Data de fim</th>
-            <th scope="col">maior bid</th>
-            <th scope="col">Terminar leilao</th>
+            <th scope="col">Maior Lictação</th>
+            <th scope="col">Terminar Leilão</th>
             </tr>
         </thead>
         <tbody>
@@ -55,14 +55,13 @@
                 <td>20-5</td>
                 <td>2$</td>
                 <td>
-                    <button>
-                        terminar
+                    <button type="button" class="btn btn-danger">
+                        Terminar
                     </button>
                 </td>
             </tr>
         </tbody>
     </table>
-</div>
-
+</section>
 
 @endsection

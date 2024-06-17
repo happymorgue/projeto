@@ -33,8 +33,8 @@ Route::get('/admin', function () {
 Route::get('/adminLeiloes', function () {
     return view('adminLeiloes');
 });
-Route::get('/adminObj', function () {
-    return view('adminObj');
+Route::get('/adminCategoriasAtributos', function () {
+    return view('adminCatAtri');
 });
 Route::get('/adminStats', function () {
     return view('AdminEstatisticas');
@@ -63,7 +63,7 @@ Route::get('/homePolicia', function () {
 Route::get('/verObjPerdidos', function () {
     return view('meusObjsPerdidos');
 });
-Route::get('/verObj', function () {
+Route::get('/verObj/{objId}', function () {
     return view('verObjs');
 });
 Route::get('/buscaObjAchados', function () {

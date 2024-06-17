@@ -9,7 +9,7 @@
   <div id="leiloes" class="container py-5">
   <div class="row justify-content-center">
       <div class="col-md-12 col-xl-10">
-        <h1 class="my-2">Lista de Leilões</h1>
+        <h3 class="mb-3">Lista de Leilões</h3>
       </div>
     </div>
   <!--  <div  class="row justify-content-center mb-3">

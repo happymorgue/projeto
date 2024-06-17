@@ -97,10 +97,10 @@ function carregarObjetos() {
             let divGlobalPerdidos = document.getElementById('MeusObjetosAchados');
 
             if (objetosPerdidos.length == 0) {
-                h5 = document.createElement('h5');
-                h5.className = 'fw-light'
-                h5.innerHTML = 'Não existem objetos encontrados';
-                divGlobalPerdidos.appendChild(h5);
+                h6 = document.createElement('h6');
+                h6.className = 'fw-light'
+                h6.innerHTML = 'Não existem objetos achados';
+                divGlobalPerdidos.appendChild(h6);
             }
 
             objetosPerdidos.forEach(objeto => {

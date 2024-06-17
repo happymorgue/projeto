@@ -21,7 +21,7 @@ function carregarObjetos() {
                 let divObjeto = document.createElement('div');
                 divObjeto.className = 'card shadow-1 border rounded-3 col-md-3 m-1 my-3';
                 divObjeto.addEventListener('click', function () {
-                    window.location.href = '/objetoAchado/' + objeto['id'];
+                    window.location.href = '/verObj/' + objeto['id'];
                 });
 
                 let divCard = document.createElement('div');
@@ -96,7 +96,7 @@ function carregarObjetos() {
             //DIV QUE VAI CONTER OS OBJETOS PERDIDOS
             let divGlobalPerdidos = document.getElementById('MeusObjetosPerdidos');
             if (objetosPerdidos.length == 0) {
-                let divSemObjetos = document.createElement('h5');
+                let divSemObjetos = document.createElement('h6');
                 divSemObjetos.innerHTML = 'Não existem objetos perdidos';
                 divSemObjetos.className = "fw-light";
 

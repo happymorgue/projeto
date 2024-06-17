@@ -38,11 +38,18 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item dropdown me-2">
             <a class="nav-link" id="navbarDropdownMenuLink" href="/adminLeiloes">
-              Leiloes/Objetos
+              Objetos e Leilões
             </a>
           </li>
           <li class="nav-item me-2">
-            <a href="/adminObj" class="nav-link">Categorias/Atributos</a>
+            <a href="/adminCategoriasAtributos" class="nav-link">
+              Categorias e Atributos
+            </a>
+          </li>
+          <li class="nav-item dropdown me-2">
+            <a class="nav-link" id="navbarDropdownMenuLink" href="/adminStats">
+              Estatísticas
+            </a>
           </li>
         </ul>
       </div>
@@ -50,4 +57,3 @@
   </nav>
 </header>
 
-<script src="{{ asset('js/nomePerfil.js') }}" type="text/javascript"></script>

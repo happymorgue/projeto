@@ -95,3 +95,4 @@
   
 
 @endsection
+<link href="{{ asset('css/registoObjs.css') }}" rel="stylesheet">

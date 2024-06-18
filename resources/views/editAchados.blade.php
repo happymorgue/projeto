@@ -83,10 +83,10 @@
                 </div>
                   <div class="col-12">
                     <div class="d-grid">
-                      <button class="btn bsb-btn-xl btn-primary" onclick="" type="submit">Salvar</button>
+                      <button class="btn bsb-btn-xl btn-primary mb-1" onclick="" type="submit">Salvar</button>
                     </div>
                     <div class="d-grid">
-                      <button class="btn bsb-btn-xl btn-danger" type="button" href="">Cancelar</button>
+                      <button class="btn bsb-btn-xl btn-secondary" type="button" href="">Cancelar</button>
                     </div>
                   </div>
                 </div>

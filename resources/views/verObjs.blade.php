@@ -10,7 +10,7 @@
     <div class="row gutters-sm mt-3">
         <div class="col-md-4 mb-3 d-flex flex-column">
             <div class="d-flex flex-column align-items-center text-center flex-grow-1">
-                <img src="" alt="object picture" class="img-thumbnail">
+                <img id="img" src="" alt="object picture" class="img-thumbnail">
             </div>
             <div class="mt-auto">
                 <a class="btn btn-lg w-100 btn-primary" href="">É meu</a>

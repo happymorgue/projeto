@@ -1,6 +1,6 @@
 @extends('layouts.layoutDL')
 
-@section('title', 'Cogitavi - Objeto Achado')
+@section('title', 'Cogitavi - Objetos Achados')
 
 @section('content')
 <section class="text-center text-sm-start m-0 bgColor d-flex" id="myItems">

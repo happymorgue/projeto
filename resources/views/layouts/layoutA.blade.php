@@ -10,6 +10,7 @@
     <title>@yield('title')</title>
     <!-- Bootstrap -->
     <link href="{{ asset('bootstrap-5.0.2-dist/css/bootstrap.css') }}" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Your additional CSS -->
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 

@@ -121,6 +121,10 @@ Route::get('/notificacoes', function () {
     return view('notificacoes');
 });
 
+Route::get('/notificacoesPolicia', function () {
+    return view('notificacoesPolicia');
+});
+
 Route::get('/meusleiloes', function () {
     return view('meusleiloes');
 });

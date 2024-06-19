@@ -14,7 +14,7 @@
 
     <div class="p-5 d-flex w-100 bgColor">
       <div id="MeusObjetosEncontrados" class="w-100">
-        <h3>Meus Objetos Encontrados</h2>
+        <h3>Meus Objetos Encontrados</h3>
         <hr>
         <!--Cada Linha de Items terá este layout-->
         <!-- <div class="row d-flex justify-content-around"> -->

@@ -66,6 +66,10 @@ Route::get('/verObjPerdidos', function () {
 Route::get('/verObj/{objId}', function () {
     return view('verObjs');
 });
+
+Route::get('/verObjPolicia', function () {
+    return view('verObjsPolicia');
+});
 Route::get('/buscaObjAchados', function () {
     return view('objAchados');
 });
@@ -117,6 +121,10 @@ Route::get('/notificacoes', function () {
     return view('notificacoes');
 });
 
+Route::get('/notificacoesPolicia', function () {
+    return view('notificacoesPolicia');
+});
+
 Route::get('/meusleiloes', function () {
     return view('meusleiloes');
 });
@@ -124,6 +132,13 @@ Route::get('/meusleiloes', function () {
 Route::get('/leiloesLoggedOut', function () {
     return view('leiloesSLogin');
 });
+
+Route::get('/correspondencia', function () {
+    return view('correspondencia');
+});
+
+
+
 
 #APIS--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

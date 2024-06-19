@@ -1,0 +1,56 @@
+.bgColor{
+    background-color: #cde3fc;
+}
+
+.bgColorMyItems{
+    background-color: white;
+}
+
+.objetoCorresp{
+    position: relative;
+    height:400px; /* Set a fixed height for all cards */
+
+}
+
+.cardAchados {
+    position: relative;
+    height:500px; /* Set a fixed height for all cards */
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.img-thumbnail {
+    width: auto;
+    max-width: 100%; /* Ensure the image width does not exceed its container */
+    max-height: 40em; /* Set a maximum height for the images */
+    object-fit: contain; /* Ensures the image fits within the specified dimensions */
+}
+
+.btn-selecionar {
+    align-self: flex-end;
+}
+
+.content-wrapper {
+    flex-grow: 1;
+}
+
+.card-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-subtitle {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

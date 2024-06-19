@@ -129,6 +129,11 @@ Route::get('/leiloesLoggedOut', function () {
     return view('leiloesSLogin');
 });
 
+Route::get('/correspondencia', function () {
+    return view('correspondencia');
+});
+
+
 
 
 #APIS--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

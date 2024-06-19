@@ -5,26 +5,44 @@
 @section('content')
 
 <section class="bgColor">
-  <div class="container py-5">
+    <div class="container py-5">
     <div class="row justify-content-center">
       <div class="col-12">
         <h3 class="mb-3">Estatísticas</h3>
       </div>
     </div>
 
-
     <div class="container mt-5">
 
-        <div class="chart-container col-md-5 col-lg-5 col-xl-5">
-            <h3 class="text-center">Objetos</h3>
-            <canvas id="barChartObjs"></canvas>
+        <div class="row my-5 justify-content-center">
+
+            <div class="chart-container cc col-md-5 col-lg-5 col-xl-5">
+                <h4 class="text-center">Objetos</h4>
+                <canvas id="barChartObjs"></canvas>
+            </div>
+
+            <div class="chart-container cc col-md-5 col-lg-5 col-xl-5 ms-md-4">
+                <h4 class="text-center">Utilizadores</h4>
+                <canvas id="doughnutChartUsers"></canvas>
+            </div>
+
         </div>
 
-        <div class="chart-container col-md-5 col-lg-5 col-xl-5">
-            <h3 class="text-center">Utilizadores</h3>
-            <canvas id="doughnutChartUsers"></canvas>
+
+      <div class="row my-5 justify-content-center">
+
+        <div class="chart-container cc col-md-5 col-lg-5 col-xl-5">
+          <h4 class="text-center">Correspondências entre Objetos</h4>
+          <canvas id="pieChartCorres"></canvas>
         </div>
 
+        <div class="chart-container cc col-md-5 col-lg-5 col-xl-5 ms-4">
+          <h4 class="text-center">Leilões</h4>
+          <canvas id="barChartLeiloes"></canvas>
+        </div>
+
+      </div>
+      
     </div>
 
     <script>
@@ -34,8 +52,8 @@
             data: {
                 labels: ['Perdidos', 'Encontrados', 'Correspondidos', 'Entregues', 'Leiloados', 'Vendidos'],
                 datasets: [{
-                    label: 'Número de objetos',
-                    data: [12, 19, 3, 5, 2, 3],
+                    label: 'Quantidade de objetos',
+                    data: [300, 247, 20, 17, 59, 56],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
@@ -65,32 +83,112 @@
         });
     </script>
 
-<script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            const ctx = document.getElementById('doughnutChartUsers').getContext('2d');
-            const doughnutChart = new Chart(ctx, {
-                type: 'doughnut',
+    <script>
+            document.addEventListener('DOMContentLoaded', (event) => {
+                const ctx = document.getElementById('doughnutChartUsers').getContext('2d');
+                const doughnutChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Dono e Licitante', 'Policia'],
+                        datasets: [{
+                            label: 'Dataset',
+                            data: [300, 50],
+                            backgroundColor: ['#099a76', '#104c91'],
+                            hoverBackgroundColor: ['#0bae8e', '#1c5aaf']
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        legend: {
+                            position: 'top',
+                        },
+                        animation: {
+                            animateScale: true,
+                            animateRotate: true
+                        }
+                    }
+                });
+            });
+        </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const ctx = document.getElementById('pieChartCorres').getContext('2d');
+            const myPieChart = new Chart(ctx, {
+                type: 'pie',
                 data: {
-                    labels: ['Red', 'Blue', 'Yellow'],
+                    labels: ['Correspondidos', 'Remanescentes'],
                     datasets: [{
-                        label: 'Dataset 1',
-                        data: [300, 50, 100],
-                        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-                        hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+                        data: [12, 19],
+                        backgroundColor: [
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 99, 132, 0.2)',
+                        ],
+                        borderColor: [
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 99, 132, 1)',
+                        ],
+                        borderWidth: 1
                     }]
                 },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: true,
-                    legend: {
-                        position: 'top',
-                    },
-                    animation: {
-                        animateScale: true,
-                        animateRotate: true
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    let label = context.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.raw !== null) {
+                                        label += context.raw;
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
                     }
                 }
             });
+        });
+    </script>
+
+    <script>
+        var ctx = document.getElementById('barChartLeiloes').getContext('2d');
+        var myBarChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Total', 'Ativos', 'Passados', 'Futuros'],
+                datasets: [{
+                    label: 'Quantidade de Leilões',
+                    data: [300, 247, 20, 17, 59, 56],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
         });
     </script>
 

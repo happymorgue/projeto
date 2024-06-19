@@ -147,6 +147,12 @@ function carregarObjetos() {
                 botao.innerHTML = "Editar";
                 botao.href = "#";
 
+                let botaoApagar = document.createElement('a');
+                botaoApagar.className = 'btn btn-danger btn-apagar me-1';
+                botaoApagar.innerHTML = "Apagar";
+                botaoApagar.href = "#";
+
+                divCardPerdidosBotao.appendChild(botaoApagar);
                 divCardPerdidosBotao.appendChild(botao);
 
                 divCardPerdidosInfo.appendChild(divCardPerdidosNomeObjeto);

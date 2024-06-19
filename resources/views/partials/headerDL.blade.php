@@ -80,8 +80,8 @@
               <div class="horizontal-line"></div>
               <li><a class="dropdown-item link" href="/perfilRegular">Perfil</a></li>
               <div class="horizontal-line2"></div>
-              <!-- <li><a class="dropdown-item link" href="/verObjPerdidos">Meus objetos perdidos</a></li>
-              <div class="horizontal-line2"></div> -->
+              <li><a class="dropdown-item link" href="/notificacoes">Notificações</a></li>
+              <div class="horizontal-line2"></div>
               <li><a class="dropdown-item link" href="/logout">Terminar sessão</a></li>
               <div class="horizontal-line2"></div>
               <li><a class="dropdown-item link deleteAcc" href="#" onclick="confirmDelete('/api/utilizador/conta/apagar')">Apagar Conta</a></li>

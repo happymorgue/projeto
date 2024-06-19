@@ -66,6 +66,10 @@ Route::get('/verObjPerdidos', function () {
 Route::get('/verObj/{objId}', function () {
     return view('verObjs');
 });
+
+Route::get('/verObjPolicia', function () {
+    return view('verObjsPolicia');
+});
 Route::get('/buscaObjAchados', function () {
     return view('objAchados');
 });
@@ -124,6 +128,8 @@ Route::get('/meusleiloes', function () {
 Route::get('/leiloesLoggedOut', function () {
     return view('leiloesSLogin');
 });
+
+
 
 #APIS--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

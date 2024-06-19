@@ -71,6 +71,8 @@
               <div class="horizontal-line"></div>
               <li><a class="dropdown-item link" href="/perfilPolicia" > Perfil</a></li>
               <div class="horizontal-line2"></div>
+              <li><a class="dropdown-item link" href="/notificacoes" > Notificações</a></li>
+              <div class="horizontal-line2"></div>
               <li><a class="dropdown-item link" href="/postosPolicia" > Postos de Polícia</a></li>
               <div class="horizontal-line2"></div>
               <li><a class="dropdown-item link" href="/logout">Terminar sessão</a></li>

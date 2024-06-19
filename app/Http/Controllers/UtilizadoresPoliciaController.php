@@ -22,11 +22,12 @@ class UtilizadoresPoliciaController extends Controller
         } else {
             $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_policia_DB->user_id)->first();
             if ($utilizador_DB->email == $_SESSION['user_email']) {
-            $objetos_encontrados = DB::table('objetoe')->where('policia_id', $policiaId)->get();
+                $objetos_entregues=DB::table('objetor')->pluck('objeto_e_id')->toArray();
+                $objetos_encontrados = DB::table('objetoe')->where('policia_id', $policiaId)->whereNotIn('id',$objetos_entregues)->get();
                 foreach ($objetos_encontrados as $objetos_encontrado) {
                     array_push($Ids_objetos_encontrados, $objetos_encontrado->objeto_id);
                 }
-                $objetos_encontrados_final = DB::table('objeto')->whereIn('id', $Ids_objetos_encontrados)->orderBy('id', 'asc')->get();
+                $objetos_encontrados_final = DB::table('objeto')->whereIn('id', $Ids_objetos_encontrados)->orderBy('id', 'desc')->get();
 
                 foreach ($objetos_encontrados_final as $objeto) {
 
@@ -81,7 +82,7 @@ class UtilizadoresPoliciaController extends Controller
                     array_push($Id_objetos_encontrados, $objeto_perdido->objeto_id);
                 }
             }
-            $objetos_perdidos_final = DB::table('objeto')->whereIn('id', $Id_objetos_encontrados)->orderBy('id', 'asc')->get();
+            $objetos_perdidos_final = DB::table('objeto')->whereIn('id', $Id_objetos_encontrados)->orderBy('id', 'desc')->get();
 
             foreach ($objetos_perdidos_final as $objeto) {
 
@@ -139,7 +140,7 @@ class UtilizadoresPoliciaController extends Controller
                 foreach ($objetos_perdidos as $objeto_perdido) {
                     array_push($Id_objetos_perdidos, $objeto_perdido->objeto_id);
                 }
-                $objetos_encontrados_final = DB::table('objeto')->whereIn('id', $Id_objetos_perdidos)->orderBy('id', 'asc')->get();
+                $objetos_encontrados_final = DB::table('objeto')->whereIn('id', $Id_objetos_perdidos)->orderBy('id', 'desc')->get();
                 $json = array('objetos_perdidos' => $objetos_encontrados_final);
                 return response()->json($json);
             } else {
@@ -177,13 +178,40 @@ class UtilizadoresPoliciaController extends Controller
                 if(!isset($data['rua'])){
                     $data['rua'] = null;
                 }
+
+
+                $data['descricao']=htmlspecialchars($data['descricao']);
+                $data['descricao']=mb_substr($data['descricao'], 0, 200);
+
+                $data['pais']=htmlspecialchars($data['pais']);
+                $data['pais']=mb_substr($data['pais'], 0, 30);
+
+                $data['distrito']=htmlspecialchars($data['distrito']);
+                $data['distrito']=mb_substr($data['distrito'], 0, 50);
+
+                $data['cidade']=htmlspecialchars($data['cidade']);
+                $data['cidade']=mb_substr($data['cidade'], 0, 50);
+
+                $data['freguesia']=htmlspecialchars($data['freguesia']);
+                $data['freguesia']=mb_substr($data['freguesia'], 0, 45);
+
+                $data['rua']=htmlspecialchars($data['rua']);
+                $data['rua']=mb_substr($data['rua'], 0, 70);
+
+                $data['localizacao']=htmlspecialchars($data['localizacao']);
+                $data['localizacao']=mb_substr($data['localizacao'], 0, 255);
+
+
                 $id_table_objeto = DB::table('objeto')->insertGetId(['descricao' => $data['descricao'], 'categoria_id' => $data['categoria_id'], 'data_inicio' => $data['data_inicio'], 'data_fim' => $data['data_fim'], "pais" => $data['pais'], "distrito" => $data['distrito'], "cidade" => $data['cidade'], "freguesia" => $data['freguesia'], "rua" => $data['rua'], "localizacao" => $data['localizacao'], "imagem" => $data['imagem']]);
                 $id_table_objetoE = DB::table('objetoe')->insertGetId(['objeto_id' => $id_table_objeto, 'policia_id' => $policiaId]);
                 $atributos = $data['atributos'];
                 foreach ($atributos as $atributo) {
+                    $atributo['valor']=htmlspecialchars($atributo['valor']);
+                    $atributo['valor']=mb_substr($atributo['valor'], 0, 200);
                     DB::table('valoratributos')->insert(['objeto_id' => $id_table_objeto, 'atributo_id' => $atributo['atributo_id'], 'valor' => $atributo['valor']]);
                 }
                 if(isset($data['nutilizador'])){
+                    $data['nutilizador']=htmlspecialchars($data['nutilizador']);
                     DB::table('objetoe')->where('id', $id_table_objetoE)->update(['nutilizador_id' => $data['nutilizador']]);
                 }
             } else {

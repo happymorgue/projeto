@@ -36,7 +36,7 @@ class UtilizadoresController extends Controller
         }
         $utilizador_DB = DB::table('utilizador')->where('id', $utilizadorId)->first();
         if ($utilizador_DB->email==$_SESSION['user_email']) {
-            $notificacoes=DB::table('notificacao')->where('utilizador_id', $utilizadorId)->get();
+            $notificacoes=DB::table('notificacao')->where('utilizador_id', $utilizadorId)->orderBy('id', 'desc')->get();
             DB::table('notificacao')->where('utilizador_id', $utilizadorId)->update(['vista' => 'S']);
             foreach($notificacoes as $notificacao){
                 if ($notificacao->leilao_id==null) {

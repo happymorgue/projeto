@@ -57,6 +57,26 @@ function carregarLeilao() {
             pLocalObjeto.className = 'text-muted fw-light';
             pLocalObjeto.innerHTML = "Localização: " + leilao['objeto']['localizacao'];
             divObjeto.appendChild(pLocalObjeto);
+
+            pCategoriaObjeto = document.createElement('p');
+            pCategoriaObjeto.className = 'text-muted fw-light';
+            pCategoriaObjeto.innerHTML = "Categoria: " + leilao['objeto']['categoria']['nome'];
+            divObjeto.appendChild(pCategoriaObjeto);
+
+            leilao['objeto']['atributos'].forEach(atributo => {
+                pAtributoObjeto = document.createElement('p');
+                pAtributoObjeto.className = 'text-muted fw-light';
+                pAtributoObjeto.innerHTML = atributo['nome'] + ": " + atributo['valor'];
+                divObjeto.appendChild(pAtributoObjeto);
+            });
+
+            if (leilao['objeto']['atributos'].length == 0) {
+                pAtributoObjeto = document.createElement('p');
+                pAtributoObjeto.className = 'text-muted fw-light';
+                pAtributoObjeto.innerHTML = "Este objeto não possuí atributos associados";
+                divObjeto.appendChild(pAtributoObjeto);
+            }
+
             divInfo.appendChild(divObjeto);
 
             divTimerLeilao = document.createElement('div');
@@ -95,7 +115,7 @@ function carregarLeilao() {
             divBotao1.type = 'button';
             divBotao1.setAttribute('data-bs-toggle', 'modal');
             divBotao1.setAttribute('data-bs-target', '#licitarModal');
-            if(leilao['estado']=='T' || leilao['estado']=='I'){
+            if (leilao['estado'] == 'T' || leilao['estado'] == 'I') {
                 divBotao1.disabled = 'true';
             }
 
@@ -103,7 +123,7 @@ function carregarLeilao() {
             divBotao2.className = 'btn btn-outline-primary btn-sm mt-2';
             divBotao2.innerHTML = 'Inscrever-se';
             divBotao2.type = 'button';
-            if(leilao['estado']=='T'){
+            if (leilao['estado'] == 'T') {
                 divBotao2.disabled = 'true';
             }
 
@@ -113,7 +133,7 @@ function carregarLeilao() {
             divBotao3.type = 'button';
 
             // Voltar a página anterior que estava
-            divBotao3.addEventListener('click', function() {
+            divBotao3.addEventListener('click', function () {
                 window.history.back();
             });
 

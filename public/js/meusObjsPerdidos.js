@@ -17,7 +17,7 @@ function carregarObjetos() {
                 let divGlobalPerdidos = document.getElementById('MeusObjetosPerdidos');
 
                 let divSemObjetos = document.createElement('h5');
-                divSemObjetos.innerHTML = 'Não existem objetos perdidos';
+                divSemObjetos.innerHTML = 'Não existem objetos perdidos que não tenham sido entregues';
                 divSemObjetos.className = "fw-light";
 
                 divGlobalPerdidos.appendChild(divSemObjetos);
@@ -135,9 +135,6 @@ function carregarObjetosEncontrados() {
                 let divCardPerdidos = document.createElement('div');
                 divCardPerdidos.className = 'card shadow-1 border rounded-3 col-md-3 m-1 my-3';
 
-                divCardPerdidos.addEventListener('click', function () {
-                    window.location.href = '/editObjAchado/' + objeto['id'];
-                });
 
                 let divCardPerdidosBody = document.createElement('div');
                 divCardPerdidosBody.className = 'card-body m-0 pt-2 d-flex flex-column justify-content-between';
@@ -170,12 +167,6 @@ function carregarObjetosEncontrados() {
                 let divCardPerdidosBotao = document.createElement('div');
                 divCardPerdidosBotao.className = 'd-flex justify-content-end mt-auto';
 
-                let botao = document.createElement('a');
-                botao.className = 'btn btn-primary btn-editar';
-                botao.innerHTML = "Editar";
-                botao.href = "#";
-
-                divCardPerdidosBotao.appendChild(botao);
 
                 divCardPerdidosInfo.appendChild(divCardPerdidosNomeObjeto);
                 divCardPerdidosInfo.appendChild(divCardPerdidosData);
@@ -192,7 +183,7 @@ function carregarObjetosEncontrados() {
                 numObjetos++;
             });
 
-            divGlobalPerdidos.appendChild(divRow);
+            divGlobalEncontrados.appendChild(divRow);
         }
     }
     pedidoObjetosEncontradosSeus.open("GET", "/api/regular/dono/" + idRegular + "/verHistoricoObjetosPerdidosEncontrados", true);

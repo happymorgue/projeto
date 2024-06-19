@@ -21,7 +21,7 @@ function carregarObjetos() {
                 let divObjeto = document.createElement('div');
                 divObjeto.className = 'card shadow-1 border rounded-3 col-md-3 m-1 my-3';
                 divObjeto.addEventListener('click', function () {
-                    window.location.href = '/objetoAchado/' + objeto['id'];
+                    window.location.href = '/verObj/' + objeto['id'];
                 });
 
                 let divCard = document.createElement('div');
@@ -99,7 +99,7 @@ function carregarObjetos() {
             if (objetosPerdidos.length == 0) {
                 h6 = document.createElement('h6');
                 h6.className = 'fw-light'
-                h6.innerHTML = 'Não existem objetos achados';
+                h6.innerHTML = 'Não existem objetos achados que não tenham sido entregues';
                 divGlobalPerdidos.appendChild(h6);
             }
 

@@ -11,6 +11,7 @@
   <div  class="row justify-content-center mb-3">
     <div class="col-md-12 col-xl-10">
       <h3 class="mb-3">Leilões Subscritos</h3>
+      <hr>
     </div>
   </div>
 
@@ -121,7 +122,6 @@
     </div>-->
 
 
-    
     </div>
   </div>
 </section>

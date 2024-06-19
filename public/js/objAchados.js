@@ -97,7 +97,7 @@ function carregarObjetos() {
             let divGlobalPerdidos = document.getElementById('MeusObjetosPerdidos');
             if (objetosPerdidos.length == 0) {
                 let divSemObjetos = document.createElement('h6');
-                divSemObjetos.innerHTML = 'Não existem objetos perdidos';
+                divSemObjetos.innerHTML = 'Não existem objetos perdidos que não tenham sido entregues';
                 divSemObjetos.className = "fw-light";
 
                 divGlobalPerdidos.appendChild(divSemObjetos);

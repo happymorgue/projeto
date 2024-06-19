@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 
 class UtilizadoresLicitanteController extends Controller
@@ -140,6 +141,23 @@ class UtilizadoresLicitanteController extends Controller
                         #ATUALIZAR O VALOR DO LEILAO
                         DB::table('leilao')->where('id', $leilaoId)->update(['valor' => $valor]);
                         #FALTA ADICIONAR A PARTE DE ENVIAR AS NOTIFICACOES ( EXTRA )
+
+                        $utilizador_ids=DB::table('subscricao')->where('leilao_id', $leilaoId)->whereNot('licitante_id',$regularId)->pluck('licitante_id')->toArray();
+                        foreach($utilizador_ids as $utilizador_id){
+                            $utilizador_dono_DB = DB::table('regular')->where('id', $utilizador_id)->first();
+                            $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_dono_DB->user_id)->first();
+                            $mensagem = "O leilão foi licitado por com o valor de ".$valor."€";
+                            $data = Date('Y-m-d');
+                            DB::table('notificacao')->insert([
+                                'data_criacao' => $data,
+                                'utilizador_id' => $utilizador_DB->id,
+                                'vista' => 'N',
+                                'mensagem' => $mensagem,
+                                'leilao_id' => $leilaoId,
+                                
+                            ]);
+                            #ENVIAR EMAIL
+                        }
                     }
                 }else{
                     #ALTERAR PARA ERRO 403/404
@@ -173,8 +191,14 @@ class UtilizadoresLicitanteController extends Controller
                     $objetoE = DB::table('objetoe')->where('id', $objetoleilao->objeto_e_id)->first();
                     $objeto = DB::table('objeto')->where('id', $objetoE->objeto_id)->first();
                     $leilao->objeto = $objeto;
-                    $licitacoes = DB::table('licitacao')->where('leilao_id', $leilao->id)->get(['data_licitacao', 'valor', 'licitante_id']);
+                    $licitacoes = DB::table('licitacao')->where('leilao_id', $leilao->id)->orderBy('id', 'desc')->get(['data_licitacao', 'valor', 'licitante_id']);
                     $leilao->licitacoes = $licitacoes;
+                    $pagamento = DB::table('pagamento')->where('leilao_id', $leilao->id)->first();
+                    if($pagamento != null){
+                        $leilao->pagamento = true;
+                    }else{
+                        $leilao->pagamento = false;
+                    }
                 }
                 $json = array('leiloes_ganhos' => $leiloes);
                 #ADICIONAR CASO EM QUE NAO EXISTAM LEILOES GANHOS PARA NAO SER NULL A RESPOSTA
@@ -206,8 +230,26 @@ class UtilizadoresLicitanteController extends Controller
                     $objetoleilao = DB::table('objetoleilao')->where('id', $leilao->objeto_leilao_id)->first();
                     $objetoE = DB::table('objetoe')->where('id', $objetoleilao->objeto_e_id)->first();
                     $objeto = DB::table('objeto')->where('id', $objetoE->objeto_id)->first();
+                    $categoria=DB::table('categoria')->where('id', $objeto->categoria_id)->first();
+                    $objeto->categoria = $categoria;
+                    $atributos=DB::table('valoratributos')->where('objeto_id', $objeto->id)->get(['atributo_id','valor']);
+
+
+                    #Buscar a informação dos atributos
+                    foreach ($atributos as $atributo) {
+                        $atributo_info=DB::table('atributo')->where('id', $atributo->atributo_id)->first();
+
+                        #Colocar a informação do atributo no objeto
+                        $atributo->nome=$atributo_info->nome;
+
+                        #Colocar o tipo do atributo no objeto
+                        $atributo->tipo=$atributo_info->tipo_dados;
+                    }
+
+                    #Colocar os atributos no objeto
+                    $objeto->atributos=$atributos;
                     $leilao->objeto = $objeto;
-                    $licitacoes = DB::table('licitacao')->where('leilao_id', $leilao->id)->get(['data_licitacao', 'valor', 'licitante_id']);
+                    $licitacoes = DB::table('licitacao')->where('leilao_id', $leilao->id)->orderBy('id', 'desc')->get(['data_licitacao', 'valor', 'licitante_id']);
                     $leilao->licitacoes = $licitacoes;
                     $json = array('leilao' => $leilao);
                     return response()->json($json);
@@ -242,7 +284,7 @@ class UtilizadoresLicitanteController extends Controller
                     $objetoE = DB::table('objetoe')->where('id', $objetoleilao->objeto_e_id)->first();
                     $objeto = DB::table('objeto')->where('id', $objetoE->objeto_id)->first();
                     $leilao->objeto = $objeto;
-                    $licitacoes = DB::table('licitacao')->where('leilao_id', $leilao->id)->orderBy('valor', 'desc')->get(['data_licitacao', 'valor', 'licitante_id']);
+                    $licitacoes = DB::table('licitacao')->where('leilao_id', $leilao->id)->orderBy('id', 'desc')->get(['data_licitacao', 'valor', 'licitante_id']);
                     $leilao->licitacoes = $licitacoes;
                 }
 
@@ -310,7 +352,7 @@ class UtilizadoresLicitanteController extends Controller
                     $objetoE = DB::table('objetoe')->where('id', $objetoleilao->objeto_e_id)->first();
                     $objeto = DB::table('objeto')->where('id', $objetoE->objeto_id)->first();
                     $leilao->objeto = $objeto;
-                    $licitacoes = DB::table('licitacao')->where('leilao_id', $leilao->id)->where('licitante_id',$regularId)->orderBy('valor', 'desc')->get(['data_licitacao', 'valor', 'licitante_id']);
+                    $licitacoes = DB::table('licitacao')->where('leilao_id', $leilao->id)->where('licitante_id',$regularId)->orderBy('id', 'desc')->get(['data_licitacao', 'valor', 'licitante_id']);
                     $leilao->licitacoes = $licitacoes;
                 }
                 $json = array('leilões' => $leiloes);

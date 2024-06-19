@@ -59,6 +59,8 @@ Route::get('/regular/dono/{regularId}/encontrarObjetoPorDescricao/{objetoPerdido
 Route::get('/regular/dono/{regularId}/registarPossivelDono/{ObjetoAchadoId}', [UtilizadoresDonoController::class,'registarPossivelDono']);
 Route::get('/regular/dono/{regularId}/confirmarDono/{ObjetoAchadoId}/{ObjetoPerdidoId}', [UtilizadoresDonoController::class,'confirmarDono']);
 
+Route::get('/obterObjeto/{ObjetoId}', [UtilizadoresDonoController::class,'retornarObjeto']);
+
 
 #UTILIZADORES POLICIA
 Route::put('/policia', [UtilizadoresPoliciaController::class,'UpdatePoliciaPUT']);

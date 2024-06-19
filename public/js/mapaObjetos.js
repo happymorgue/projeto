@@ -11,7 +11,37 @@ var map = new mapboxgl.Map({
 
 var marker;
 
-function updateLocationName(coordinates) {
+function searchLocationAndAddMarker(locationString) {
+  var geocodeURL = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(locationString)}.json?access_token=${mapboxgl.accessToken}&limit=1`;
+
+  fetch(geocodeURL)
+    .then(response => response.json())
+    .then(data => {
+      if (data.features && data.features.length > 0) {
+        var coordinates = data.features[0].center; // [longitude, latitude]
+
+        // If a marker already exists, remove it
+        if (marker) {
+          marker.remove();
+        }
+
+        // Create a new marker and add it to the map
+        marker = new mapboxgl.Marker()
+          .setLngLat(coordinates)
+          .addTo(map);
+
+        // Optionally, center the map on the new marker
+        map.flyTo({ center: coordinates, zoom: 15 });
+      } else {
+        console.error('Location not found');
+      }
+    })
+    .catch(error => {
+      console.error('Error during geocoding:', error);
+    });
+}
+
+/*function updateLocationName(coordinates) {
   var reverseGeocodeURL = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + coordinates.lng + ',' + coordinates.lat + '.json?access_token=' + mapboxgl.accessToken;
 
   fetch(reverseGeocodeURL)
@@ -23,21 +53,4 @@ function updateLocationName(coordinates) {
     .catch(error => {
       console.error('Error fetching location name:', error);
     });
-}
-
-// Add a marker when the user clicks on the map
-map.on('click', function(e) {
-  var coordinates = e.lngLat;
-  if (marker) {
-    marker.remove();
-  }
-  marker = new mapboxgl.Marker()
-    .setLngLat(coordinates)
-    .addTo(map);
-  
-  clickedLocation = coordinates;  // Save the coordinates in the global variable
-
-  localStorage.setItem('savedCoordinates', JSON.stringify(coordinates));
-
-  updateLocationName(coordinates);  // Update the location name for the clicked coordinates
-});
+} */

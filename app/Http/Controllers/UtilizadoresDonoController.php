@@ -82,7 +82,8 @@ class UtilizadoresDonoController extends Controller
         } else {
             $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_dono_DB->user_id)->first();
             if ($utilizador_DB->email == $_SESSION['user_email']) {
-                $objetos_perdidos = DB::table('objetop')->where('dono_id', $regularId)->get();
+                $objetos_entregues=DB::table('objetor')->pluck('objeto_p_id')->toArray();
+                $objetos_perdidos = DB::table('objetop')->where('dono_id', $regularId)->whereNotIn('id',$objetos_entregues)->get();
                 foreach ($objetos_perdidos as $objeto_perdido) {
                     array_push($Id_objetos_perdidos, $objeto_perdido->objeto_id);
                 }
@@ -215,6 +216,28 @@ class UtilizadoresDonoController extends Controller
                 if(!isset($data['rua'])){
                     $data['rua'] = null;
                 }
+                $data['descricao']=htmlspecialchars($data['descricao']);
+                $data['descricao']=mb_substr($data['descricao'], 0, 200);
+
+                $data['pais']=htmlspecialchars($data['pais']);
+                $data['pais']=mb_substr($data['pais'], 0, 30);
+
+                $data['distrito']=htmlspecialchars($data['distrito']);
+                $data['distrito']=mb_substr($data['distrito'], 0, 50);
+
+                $data['cidade']=htmlspecialchars($data['cidade']);
+                $data['cidade']=mb_substr($data['cidade'], 0, 50);
+
+                $data['freguesia']=htmlspecialchars($data['freguesia']);
+                $data['freguesia']=mb_substr($data['freguesia'], 0, 45);
+
+                $data['rua']=htmlspecialchars($data['rua']);
+                $data['rua']=mb_substr($data['rua'], 0, 70);
+
+                $data['localizacao']=htmlspecialchars($data['localizacao']);
+                $data['localizacao']=mb_substr($data['localizacao'], 0, 255);
+
+
                 #INSERIR O OBJETO NA TABELA DE OBJETOS COM OS DADOS CERTOS, OBTENDO O ID DO INSERT
                 $id_table_objeto = DB::table('objeto')->insertGetId(['descricao' => $data['descricao'], 'categoria_id' => $data['categoria_id'], 'data_inicio' => $data['data_inicio'], 'data_fim' => $data['data_fim'], "pais" => $data['pais'], "distrito" => $data['distrito'], "cidade" => $data['cidade'], "freguesia" => $data['freguesia'], "rua" => $data['rua'], "localizacao" => $data['localizacao'], "imagem" => $data['imagem']]);
                 #INSERIR O OBJETO NA TABELA DE OBJETOS PERDIDOS
@@ -222,6 +245,8 @@ class UtilizadoresDonoController extends Controller
                 #INSERIR OS ATRIBUTOS DO OBJETO NA TABELA DOS VALORES DE ATRIBUTOS DOS OBJETOS
                 $atributos = $data['atributos'];
                 foreach ($atributos as $atributo) {
+                    $atributo['valor']=htmlspecialchars($atributo['valor']);
+                    $atributo['valor']=mb_substr($atributo['valor'], 0, 200);
                     DB::table('valoratributos')->insert(['objeto_id' => $id_table_objeto, 'atributo_id' => $atributo['atributo_id'], 'valor' => $atributo['valor']]);
                 }
             } else {
@@ -496,5 +521,33 @@ class UtilizadoresDonoController extends Controller
                 echo "Não tem permissões para aceder aos dados desse utilizador";
             }
         }
+    }
+
+
+    public function retornarObjeto($objetoId){
+        $objeto = DB::table('objeto')->where('id', $objetoId)->first();
+
+                    #Buscar os valores dos atributos do objeto
+                    $atributos=DB::table('valoratributos')->where('objeto_id', $objeto->id)->get(['atributo_id','valor']);
+                    $categoria=DB::table('categoria')->where('id', $objeto->categoria_id)->first();
+
+                    #Buscar a informação dos atributos
+                    foreach ($atributos as $atributo) {
+                        $atributo_info=DB::table('atributo')->where('id', $atributo->atributo_id)->first();
+
+                        #Colocar a informação do atributo no objeto
+                        $atributo->nome=$atributo_info->nome;
+
+                        #Colocar o tipo do atributo no objeto
+                        $atributo->tipo=$atributo_info->tipo_dados;
+                    }
+
+                    #Colocar os atributos no objeto
+                    $objeto->atributos=$atributos;
+                    $objeto->categoria=$categoria->nome;
+
+
+                $json = array('objeto' => $objeto);
+                return response()->json($json);
     }
 }

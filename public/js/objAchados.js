@@ -108,7 +108,7 @@ function carregarObjetos() {
                 divCardPerdidos.className = 'card shadow-1 border rounded-3 col-md-12 m-1 my-3';
 
                 divCardPerdidos.addEventListener('click', function () {
-                    window.location.href = '/editObjAchado/' + objeto['id'];
+                    window.location.href = '/editObjPerdido/' + objeto['id'];
                 });
 
                 let divCardPerdidosBody = document.createElement('div');

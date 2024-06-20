@@ -6,6 +6,14 @@ function carregarNotifs() {
         if (this.readyState == 4 && this.status == 200) {
             notifs = JSON.parse(pedidoNotificacao.responseText)['notificacoes'];
             console.log(notifs)
+            if (notifs.length == 0) {
+                let divGlobal = document.getElementById("aviso");
+                let h5 = document.createElement("h5");
+                h5.innerHTML = "Não tem notificações";
+                h5.className = "fw-light";
+                divGlobal.appendChild(h5);
+                return
+            }
             //CARREGAR AS NOTIFICACOES
             notifs.forEach(notif => {
                 console.log(notif['leilao_id'] == null);

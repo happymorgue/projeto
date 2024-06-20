@@ -49,7 +49,7 @@ function obterIdECarregarObjeto() {
         }
 
     }
-    pedidoIdRegular.open("GET", "/api/convertUserEmailRegularId", true);
+    pedidoIdRegular.open("GET", "/api/convertUserEmailUtilizadorId", true);
     pedidoIdRegular.send();
 }
 

@@ -249,13 +249,25 @@ class UtilizadoresPoliciaController extends Controller
                 if(!isset($data['rua'])){
                     $data['rua'] = null;
                 }
-                DB::table('objeto')->where('id', $objetoId)->update(['descricao' => $data['descricao'], 'categoria_id' => $data['categoria_id'], 'data_inicio' => $data['data_inicio'], 'data_fim' => $data['data_fim'], "pais" => $data['pais'], "distrito" => $data['distrito'], "cidade" => $data['cidade'], "freguesia" => $data['freguesia'], "rua" => $data['rua'], "localizacao" => $data['localizacao'], "imagem" => $data['imagem']]);
-                $atributos = $data['atributos'];
-                #APAGAR OS ATRIBUTOS PARA NAO HAVER CONFLITO NOS NOVOS ATRIBUTOS COM OS ANTERIORES, SE POR EXEMPLO, TIVESSE SIDO ALTERADA A CATEGORIA
-                if(isset($data['atributos'])){
-                    DB::table('valoratributos')->where('objeto_id', $objetoId)->delete();
-                    foreach ($atributos as $atributo) {
-                        DB::table('valoratributos')->insert(['objeto_id' => $objetoId, 'atributo_id' => $atributo['atributo_id'], 'valor' => $atributo['valor']]);
+                if(isset($data['imagem'])){
+                    DB::table('objeto')->where('id', $objetoId)->update(['descricao' => $data['descricao'], 'categoria_id' => $data['categoria_id'], 'data_inicio' => $data['data_inicio'], 'data_fim' => $data['data_fim'], "pais" => $data['pais'], "distrito" => $data['distrito'], "cidade" => $data['cidade'], "freguesia" => $data['freguesia'], "rua" => $data['rua'], "localizacao" => $data['localizacao'], "imagem" => $data['imagem']]);
+                    $atributos = $data['atributos'];
+                    #APAGAR OS ATRIBUTOS PARA NAO HAVER CONFLITO NOS NOVOS ATRIBUTOS COM OS ANTERIORES, SE POR EXEMPLO, TIVESSE SIDO ALTERADA A CATEGORIA
+                    if(isset($data['atributos'])){
+                        DB::table('valoratributos')->where('objeto_id', $objetoId)->delete();
+                        foreach ($atributos as $atributo) {
+                            DB::table('valoratributos')->insert(['objeto_id' => $objetoId, 'atributo_id' => $atributo['atributo_id'], 'valor' => $atributo['valor']]);
+                        }
+                    }
+                }else{
+                    DB::table('objeto')->where('id', $objetoId)->update(['descricao' => $data['descricao'], 'categoria_id' => $data['categoria_id'], 'data_inicio' => $data['data_inicio'], 'data_fim' => $data['data_fim'], "pais" => $data['pais'], "distrito" => $data['distrito'], "cidade" => $data['cidade'], "freguesia" => $data['freguesia'], "rua" => $data['rua'], "localizacao" => $data['localizacao']]);
+                    $atributos = $data['atributos'];
+                    #APAGAR OS ATRIBUTOS PARA NAO HAVER CONFLITO NOS NOVOS ATRIBUTOS COM OS ANTERIORES, SE POR EXEMPLO, TIVESSE SIDO ALTERADA A CATEGORIA
+                    if(isset($data['atributos'])){
+                        DB::table('valoratributos')->where('objeto_id', $objetoId)->delete();
+                        foreach ($atributos as $atributo) {
+                            DB::table('valoratributos')->insert(['objeto_id' => $objetoId, 'atributo_id' => $atributo['atributo_id'], 'valor' => $atributo['valor']]);
+                        }
                     }
                 }
                 if(isset($data['nutilizador'])){

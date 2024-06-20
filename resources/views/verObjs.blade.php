@@ -24,7 +24,7 @@
                         <div class="col-sm-4">
                             <h6 class="pt-4 mb-0">Nome</h6>
                         </div>
-                        <div class="col-sm-6 text-secondary" name="nome" id="nome">
+                        <div class="pt-4 col-sm-6 text-secondary" name="nome" id="nome">
                             
                         </div>
                     </div>

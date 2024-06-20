@@ -48,14 +48,6 @@
                     <small class="form-text text-muted">Por favor introduza o intervalo de tempo aproximado em que o objeto foi achado.</small>
                   </div>
                   <div class="col-12">
-                    <label for="nome_nUtilizador" class="form-label">Nome de Quem Encontrou</label>
-                    <input type="nome_nUtilizador" class="form-control" name="nome_nUtilizador" id="nome_nUtilizador" value="">
-                  </div>
-                  <div class="col-12">
-                    <label for="telemovel_nUtilizador" class="form-label">Telemóvel de Quem Encontrou </label>
-                    <input type="telemovel_nUtilizador" class="form-control" name="telemovel_nUtilizador" id="telemovel_nUtilizador"  minlength="9" maxlength="9" value="" onkeypress="return event.charCode >= 48 && event.charCode <= 57" >
-                  </div>
-                  <div class="col-12">
                     <label for="pais" class="form-label">País </label>
                     <input type="pais" class="form-control" name="pais" id="pais" value="">
                   </div>
@@ -83,10 +75,10 @@
                 </div>
                   <div class="col-12">
                     <div class="d-grid">
-                      <button class="btn bsb-btn-xl btn-primary mb-1" onclick="" type="submit">Salvar</button>
+                      <button class="btn bsb-btn-xl btn-primary mb-1" onclick="registoObjeto()" type="submit">Salvar</button>
                     </div>
                     <div class="d-grid">
-                      <button class="btn bsb-btn-xl btn-secondary" type="button" href="">Cancelar</button>
+                      <button class="btn bsb-btn-xl btn-secondary" type="button" onclick="retornar()">Cancelar</button>
                     </div>
                   </div>
                 </div>
@@ -102,3 +94,4 @@
 
 @endsection
 <link href="{{ asset('css/registoObjs.css') }}" rel="stylesheet">
+<script src="{{ asset('js/editObjAchado.js') }}" type="text/javascript"></script>

@@ -42,10 +42,10 @@ Route::get('/adminStats', function () {
 Route::get('/ajuda', function () {
     return view('help');
 });
-Route::get('/editObjAchados', function () {
+Route::get('/editObjAchado/{objId}', function () {
     return view('editAchados');
 });
-Route::get('/editObjPerdidos', function () {
+Route::get('/editObjPerdido/{objId}', function () {
     return view('editPerdidos');
 });
 Route::get('/editPerfilRegular', function () {
@@ -67,7 +67,7 @@ Route::get('/verObj/{objId}', function () {
     return view('verObjs');
 });
 
-Route::get('/verObjPolicia', function () {
+Route::get('/verObjPolicia/{objId}', function () {
     return view('verObjsPolicia');
 });
 Route::get('/buscaObjAchados', function () {

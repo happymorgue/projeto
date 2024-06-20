@@ -21,7 +21,7 @@ function carregarObjetos() {
                 let divObjeto = document.createElement('div');
                 divObjeto.className = 'card shadow-1 border rounded-3 col-md-3 m-1 my-3';
                 divObjeto.addEventListener('click', function () {
-                    window.location.href = '/verObj/' + objeto['id'];
+                    window.location.href = '/verObjPolicia/' + objeto['id'];
                 });
 
                 let divCard = document.createElement('div');

@@ -285,15 +285,27 @@ class UtilizadoresDonoController extends Controller
                 if(!isset($data['rua'])){
                     $data['rua'] = null;
                 }
-                $id_objeto = DB::table('objetop')->where('id', $objetoPerdidoId)->first();
-                DB::table('objeto')->where('id', $id_objeto->objeto_id)->update(['descricao' => $data['descricao'], 'data_inicio' => $data['data_inicio'], 'data_fim' => $data['data_fim'], "pais" => $data['pais'], "distrito" => $data['distrito'], "cidade" => $data['cidade'], "freguesia" => $data['freguesia'], "rua" => $data['rua'], "localizacao" => $data['localizacao'], "imagem" => $data['imagem']]);
-                if(isset($data['atributos'])){
-                    DB::table('objeto')->where('id', $id_objeto->objeto_id)->update(['categoria_id' => $data['categoria_id']]);
-                    DB::table('valoratributos')->where('objeto_id', $id_objeto->objeto_id)->delete();
-                    $atributos = $data['atributos'];
-                    foreach ($atributos as $atributo) {
-                        DB::table('atributo')->where('categoria_id', $data['categoria_id'])->first();
-                        DB::table('valoratributos')->insert(['objeto_id' => $id_objeto->objeto_id, 'atributo_id' => $atributo['atributo_id'], 'valor' => $atributo['valor']]);
+                if(isset($data['imagem'])){
+                    DB::table('objeto')->where('id', $objetoPerdidoId)->update(['descricao' => $data['descricao'], 'data_inicio' => $data['data_inicio'], 'data_fim' => $data['data_fim'], "pais" => $data['pais'], "distrito" => $data['distrito'], "cidade" => $data['cidade'], "freguesia" => $data['freguesia'], "rua" => $data['rua'], "localizacao" => $data['localizacao'], "imagem" => $data['imagem']]);
+                    if(isset($data['atributos'])){
+                        DB::table('objeto')->where('id', $objetoPerdidoId)->update(['categoria_id' => $data['categoria_id']]);
+                        DB::table('valoratributos')->where('objeto_id', $objetoPerdidoId)->delete();
+                        $atributos = $data['atributos'];
+                        foreach ($atributos as $atributo) {
+                            DB::table('atributo')->where('categoria_id', $data['categoria_id'])->first();
+                            DB::table('valoratributos')->insert(['objeto_id' => $objetoPerdidoId, 'atributo_id' => $atributo['atributo_id'], 'valor' => $atributo['valor']]);
+                        }
+                    }
+                }else{
+                    DB::table('objeto')->where('id', $objetoPerdidoId)->update(['descricao' => $data['descricao'], 'data_inicio' => $data['data_inicio'], 'data_fim' => $data['data_fim'], "pais" => $data['pais'], "distrito" => $data['distrito'], "cidade" => $data['cidade'], "freguesia" => $data['freguesia'], "rua" => $data['rua'], "localizacao" => $data['localizacao']]);
+                    if(isset($data['atributos'])){
+                        DB::table('objeto')->where('id', $objetoPerdidoId)->update(['categoria_id' => $data['categoria_id']]);
+                        DB::table('valoratributos')->where('objeto_id', $objetoPerdidoId)->delete();
+                        $atributos = $data['atributos'];
+                        foreach ($atributos as $atributo) {
+                            DB::table('atributo')->where('categoria_id', $data['categoria_id'])->first();
+                            DB::table('valoratributos')->insert(['objeto_id' => $objetoPerdidoId, 'atributo_id' => $atributo['atributo_id'], 'valor' => $atributo['valor']]);
+                        }
                     }
                 }
             } else {

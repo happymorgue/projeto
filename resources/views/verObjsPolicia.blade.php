@@ -10,7 +10,7 @@
     <div class="row gutters-sm mt-3">
         <div class="col-md-4 mb-3 d-flex flex-column">
             <div class="d-flex flex-column align-items-center text-center flex-grow-1">
-                <img src="{{ asset('calcas.jpg') }}" alt="object picture" class="img-thumbnail">
+                <img id='img' src="" alt="object picture" class="img-thumbnail">
             </div>
             <div class="mt-auto">
                 <a class="btn btn-lg w-100 btn-primary" href="">Adicionar Correspondência</a>
@@ -24,7 +24,7 @@
                         <div class="col-sm-4">
                             <h6 class="pt-4 mb-0">Nome</h6>
                         </div>
-                        <div class="col-sm-6 text-secondary" name="nome" id="nome">
+                        <div class="pt-4 col-sm-6 text-secondary" name="nome" id="nome">
                             
                         </div>
                     </div>
@@ -86,4 +86,5 @@
 @endsection
 
 <link href="{{ asset('css/obj.css') }}" rel="stylesheet">
+<script src="{{ asset('js/mostrarObjeto.js') }}" type="text/javascript"></script>
 

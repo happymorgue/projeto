@@ -56,7 +56,7 @@
                     <input type="distrito" class="form-control" name="distrito" id="distrito" value="">
                   </div>
                   <div class="col-12">
-                    <label for="cidade" class="form-label">Cidade></label>
+                    <label for="cidade" class="form-label">Cidade</label>
                     <input type="cidade" class="form-control" name="cidade" id="cidade" value="">
                   </div>
                   <div class="col-12">
@@ -75,10 +75,10 @@
                 </div>
                   <div class="col-12">
                     <div class="d-grid">
-                      <button class="btn bsb-btn-xl btn-primary mb-1" onclick="" type="submit">Salvar</button>
+                      <button class="btn bsb-btn-xl btn-primary mb-1" onclick="registoObjeto()" type="submit">Salvar</button>
                     </div>
                     <div class="d-grid">
-                      <button class="btn bsb-btn-xl btn-secondary" type="button" href="">Cancelar</button>
+                      <button class="btn bsb-btn-xl btn-secondary" type="button" onclick="retornar()">Cancelar</button>
                     </div>
                   </div>
                 </div>
@@ -96,3 +96,4 @@
 
 @endsection
 <link href="{{ asset('css/registoObjs.css') }}" rel="stylesheet">
+<script src="{{ asset('js/editObjPerdido.js') }}" type="text/javascript"></script>

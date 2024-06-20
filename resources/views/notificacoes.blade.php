@@ -7,7 +7,7 @@
 
 <section class="bgColor">
   <div class="container py-5 col-sm-12 col-md-12 col-lg-8 col-xl-6">
-      <div class="col-md-12 col-xl-10">
+      <div id="aviso" class="col-md-12 col-xl-10">
         <h3 class="mb-3">Notificações</h3>
       </div>
     </div>

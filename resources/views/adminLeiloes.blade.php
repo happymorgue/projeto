@@ -5,63 +5,108 @@
 @section('content')
 
 <section>
-    <h2 class="mb-3">Objetos Disponíveis para Leilão</h2>
-    <table class="table m-3">
-        <thead class="thead-dark">
-            <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Local</th>
-            <th scope="col">Data</th>
-            <th scope="col">Resgatado</th>
-            <th scope="col">Iniciar Leilão</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>calcas</td>
-                <td>faro</td>
-                <td>15-5</td>
-                <td>Id do encontrado?</td>
-                <td>
-                    <input type="number" class="form" placeholder="Valor inicial">
-                    <button type="button" class="btn btn-success ms-1">
-                        Iniciar
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="container py-3">
 
+        <div class="col-md-12 col-xl-12">
+            <h2 class="mb-5">Leilões e Objetos</h2>
+        </div>
 
-    <h2 class="mb-3">Leilões</h2>
-    <table class="table m-3">
-        <thead class="thead-dark">
-            <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Objeto</th>
-            <th scope="col">Data de inicio</th>
-            <th scope="col">Data de fim</th>
-            <th scope="col">Maior Lictação</th>
-            <th scope="col">Terminar Leilão</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>calcas</td>
-                <td>15-5</td>
-                <td>20-5</td>
-                <td>2$</td>
-                <td>
-                    <button type="button" class="btn btn-danger">
-                        Terminar
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+        <div class="container">
+        <h4 class="mb-3">Avaliar Objetos para Leilão</h4>
+        <div class="table-responsive mb-3">
+            <table class="table table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Local</th>
+                        <th scope="col">Data</th>
+                        <th scope="col">Valor Inicial</th>
+                        <th scope="col">Criar Leilão</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>calcas</td>
+                        <td>faro</td>
+                        <td>15-5</td>
+                        <td>
+                            <input type="number" class="form-control inputValor" placeholder="Valor inicial">
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-success ms-1">
+                                Criar
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 class="mb-3">Leilões Criados</h4>
+        <div class="table-responsive mb-3">
+            <table class="table table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Data de Inicio</th>
+                        <th scope="col">Data de Fim</th>
+                        <th scope="col">Iniciar Leilão</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>calcas</td>
+                        <td>
+                            <input type="date" class="form-control inputData">
+                        </td>
+                        <td>
+                            <input type="date" class="form-control inputData">
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-success ms-1">
+                                Iniciar
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 class="mb-3">Leilões Ativos</h4>
+        <div class="table-responsive mb-3">
+            <table class="table table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Data de inicio</th>
+                        <th scope="col">Data de fim</th>
+                        <th scope="col">Maior Licitação</th>
+                        <th scope="col">Terminar Leilão</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>calcas</td>
+                        <td>15-5</td>
+                        <td>20-5</td>
+                        <td>2$</td>
+                        <td>
+                            <button type="button" class="btn btn-danger" onclick="">
+                                Terminar
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
 </section>
 
 @endsection

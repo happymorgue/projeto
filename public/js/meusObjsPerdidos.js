@@ -80,6 +80,7 @@ function carregarObjetos() {
                 botaoApagar.className = 'btn btn-danger btn-apagar me-1';
                 botaoApagar.innerHTML = "Apagar";
                 botaoApagar.href = "#";
+                botaoApagar.onclick = confirmDelete();
 
                 divCardPerdidosBotao.appendChild(botaoApagar);
                 divCardPerdidosBotao.appendChild(botao);

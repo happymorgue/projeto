@@ -113,11 +113,11 @@ Route::get('avaliador/{avaliadorId}/categoria/{categoriaId}', [AvaliadorControll
 Route::post('avaliador/{avaliadorId}/categoria/{categoriaId}', [AvaliadorController::class, 'updateCategoriaPOST']);
 Route::delete('avaliador/{avaliadorId}/categoria/{categoriaId}', [AvaliadorController::class, 'deleteCategoria']);
 
-Route::put('avaliador/{avaliadorId}/categoria/{categoriaId}/atributo', [AvaliadorController::class, 'updateAtributoPUT']);
-Route::post('avaliador/{avaliadorId}/categoria/{categoriaId}/atributo', [AvaliadorController::class, 'createAtributo']);
-Route::get('avaliador/{avaliadorId}/categoria/{categoriaId}/atributo/{atributoId}', [AvaliadorController::class, 'getAtributo']);
-Route::post('avaliador/{avaliadorId}/categoria/{categoriaId}/atributo/{atributoId}', [AvaliadorController::class, 'updateAtributoPOST']);
-Route::delete('avaliador/{avaliadorId}/categoria/{categoriaId}/atributo/{atributoId}', [AvaliadorController::class, 'deleteAtributo']);
+Route::put('avaliador/{avaliadorId}/atributo', [AvaliadorController::class, 'updateAtributoPUT']);
+Route::post('avaliador/{avaliadorId}/atributo', [AvaliadorController::class, 'createAtributo']);
+Route::get('avaliador/{avaliadorId}/atributo/{atributoId}', [AvaliadorController::class, 'getAtributo']);
+Route::post('avaliador/{avaliadorId}/atributo/{atributoId}', [AvaliadorController::class, 'updateAtributoPOST']);
+Route::delete('avaliador/{avaliadorId}/atributo/{atributoId}', [AvaliadorController::class, 'deleteAtributo']);
 
 Route::post('avaliador/{avaliadorId}/avaliarObjeto/{objectId}', [AvaliadorController::class, 'avaliarObjeto']);
 Route::post('avaliador/{avaliadorId}/criarLeilao/{objectId}', [AvaliadorController::class, 'criarLeilao']);
@@ -127,6 +127,13 @@ Route::get('avaliador/{avaliadorId}/terminarLeilao/{objectId}', [AvaliadorContro
 Route::get('avaliador/{avaliadorId}/utilizador/conta/{utilizadorId}/desativar', [AvaliadorController::class, 'desativarUtilizador']);
 Route::get('avaliador/{avaliadorId}/utilizador/conta/{utilizadorId}/ativar', [AvaliadorController::class, 'ativarUtilizador']);
 
+Route::get('avaliador/{avaliadorId}/getObjetos', [AvaliadorController::class, 'obterObjetosLeiloar']);
+Route::get('avaliador/{avaliadorId}/getObjetosAvaliados', [AvaliadorController::class, 'obterObjetosLeiloarAvaliados']);
+Route::get('avaliador/{avaliadorId}/verLeiloesI', [AvaliadorController::class, 'verLeiloesI']);
+Route::get('avaliador/{avaliadorId}/verLeiloesA', [AvaliadorController::class, 'verLeiloesA']);
+
+Route::get('avaliador/{avaliadorId}/getCategorias', [AvaliadorController::class, 'getCategorias']);
+Route::get('avaliador/{avaliadorId}/getAtributos', [AvaliadorController::class, 'getAtributos']);
 
 
 #NAO UTILIZADORES

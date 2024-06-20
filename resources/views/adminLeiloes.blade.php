@@ -19,14 +19,14 @@
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Nome</th>
-                        <th scope="col">Local</th>
-                        <th scope="col">Data</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Data Encontrado</th>
                         <th scope="col">Valor Inicial</th>
                         <th scope="col">Criar Leilão</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
+                <tbody id="tableObj">
+                    <!--<tr>
                         <th scope="row">1</th>
                         <td>calcas</td>
                         <td>faro</td>
@@ -39,12 +39,12 @@
                                 Criar
                             </button>
                         </td>
-                    </tr>
+                    </tr>-->
                 </tbody>
             </table>
         </div>
 
-        <h4 class="mb-3">Leilões Criados</h4>
+        <h4 class="mb-3">Objetos Para Irem A Leilão</h4>
         <div class="table-responsive mb-3">
             <table class="table table-striped">
                 <thead class="table-dark">
@@ -56,8 +56,8 @@
                         <th scope="col">Iniciar Leilão</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
+                <tbody id="tableObjAva">
+                    <!--<tr>
                         <th scope="row">1</th>
                         <td>calcas</td>
                         <td>
@@ -71,7 +71,37 @@
                                 Iniciar
                             </button>
                         </td>
+                    </tr>-->
+                </tbody>
+            </table>
+        </div>
+
+        <h4 class="mb-3">Leilões Inativos</h4>
+        <div class="table-responsive mb-3">
+            <table class="table table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Data de inicio</th>
+                        <th scope="col">Data de fim</th>
+                        <th scope="col">Valor inicial</th>
+                        <th scope="col">Iniciar Leilão</th>
                     </tr>
+                </thead>
+                <tbody id="LeilaoI">
+                    <!--<tr>
+                        <th scope="row">1</th>
+                        <td>calcas</td>
+                        <td>15-5</td>
+                        <td>20-5</td>
+                        <td>2$</td>
+                        <td>
+                            <button type="button" class="btn btn-success" onclick="">
+                                Iniciar
+                            </button>
+                        </td>
+                    </tr>-->
                 </tbody>
             </table>
         </div>
@@ -85,12 +115,12 @@
                         <th scope="col">Nome</th>
                         <th scope="col">Data de inicio</th>
                         <th scope="col">Data de fim</th>
-                        <th scope="col">Maior Licitação</th>
+                        <th scope="col">Valor atual</th>
                         <th scope="col">Terminar Leilão</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
+                <tbody id="LeilaoA">
+                    <!--<tr>
                         <th scope="row">1</th>
                         <td>calcas</td>
                         <td>15-5</td>
@@ -101,7 +131,7 @@
                                 Terminar
                             </button>
                         </td>
-                    </tr>
+                    </tr>-->
                 </tbody>
             </table>
         </div>
@@ -110,3 +140,5 @@
 </section>
 
 @endsection
+
+<script src="{{ asset('js/adminLeilao.js') }}" type="text/javascript"></script>

@@ -107,10 +107,6 @@ function carregarObjetos() {
                 let divCardPerdidos = document.createElement('div');
                 divCardPerdidos.className = 'card shadow-1 border rounded-3 col-md-12 m-1 my-3';
 
-                divCardPerdidos.addEventListener('click', function () {
-                    window.location.href = '/editObjAchado/' + objeto['id'];
-                });
-
                 let divCardPerdidosBody = document.createElement('div');
                 divCardPerdidosBody.className = 'card-body m-0 pt-2 d-flex flex-column'; // Remove position-relative class
 
@@ -145,13 +141,36 @@ function carregarObjetos() {
                 let botao = document.createElement('a');
                 botao.className = 'btn btn-primary btn-editar';
                 botao.innerHTML = "Editar";
-                botao.href = "#";
+                botao.addEventListener('click', function () {
+                    window.location.href = '/editObjAchado/' + objeto['id'];
+                });
 
                 let botaoApagar = document.createElement('a');
                 botaoApagar.className = 'btn btn-danger btn-apagar me-1';
                 botaoApagar.innerHTML = "Apagar";
-                botaoApagar.href = "#";
-                botaoApagar.onclick = confirmDelete();
+                botaoApagar.onclick = function () {
+                    Swal.fire({
+                        title: 'Tem a certeza?',
+                        text: "Esta ação não pode ser desfeita!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Sim, apagar!',
+                        cancelButtonText: 'Cancelar'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            let pedidoAtributo = new XMLHttpRequest();
+                            pedidoAtributo.onreadystatechange = function () {
+                                if (this.readyState == 4 && this.status == 200) {
+                                    window.location.reload();
+                                }
+                            }
+                            pedidoAtributo.open("DELETE", "/api/policia/" + idPolicia + "/removerObjetoAchado/" + objeto['id'], true);
+                            pedidoAtributo.send();
+                        }
+                    })
+                };
 
                 divCardPerdidosBotao.appendChild(botaoApagar);
                 divCardPerdidosBotao.appendChild(botao);

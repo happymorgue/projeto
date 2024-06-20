@@ -156,7 +156,6 @@ class UtilizadoresLicitanteController extends Controller
                                 'leilao_id' => $leilaoId,
                                 
                             ]);
-                            #ENVIAR EMAIL
                         }
                     }
                 }else{

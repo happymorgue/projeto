@@ -329,9 +329,7 @@ class UtilizadoresDonoController extends Controller
         } else {
             $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_dono_DB->user_id)->first();
             if ($utilizador_DB->email == $_SESSION['user_email']) {
-
-                $objeto = DB::table('objetop')->where('id', $objetoPerdidoId)->first();
-                DB::table('objeto')->where('id', $objeto->objeto_id)->delete();
+                DB::table('objeto')->where('id', $objetoPerdidoId)->delete();
             } else {
                 #ALTERAR PARA ERRO 403/404
                 echo "Não tem permissões para aceder aos dados desse utilizador";

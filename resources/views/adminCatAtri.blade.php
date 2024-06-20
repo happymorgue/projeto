@@ -21,16 +21,14 @@
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Nome</th>
-                            <th scope="col">Atributo associado</th>
                             <th scope="col">Editar Categoria</th>
                             <th scope="col">Remover Categoria</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
+                    <tbody id="Cat">
+                        <!--<tr>
                             <th scope="row">1</th>
                             <td>azul</td>
-                            <td>azul claro</td>
                             <td>
                                 <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#ModalCat">
                                     Editar
@@ -41,7 +39,7 @@
                                     Remover
                                 </button>
                             </td>
-                        </tr>
+                        </tr>-->
                     </tbody>
                 </table>
             </div>
@@ -60,8 +58,8 @@
                             <th scope="col">Remover Atributo</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
+                    <tbody id="Atr">
+                        <!--<tr>
                             <th scope="row">1</th>
                                 <td>azul claro</td>
                                 <td>azul</td>
@@ -75,7 +73,7 @@
                                         Remover
                                     </button>
                                 </td>
-                        </tr>
+                        </tr>-->
                     </tbody>
                 </table>
             </div>
@@ -98,7 +96,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary">Salvar</button>
+                            <button type="button" onclick="editarCat()" class="btn btn-primary">Salvar</button>
                         </div>
                     </div>
                 </div>
@@ -126,7 +124,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary">Salvar</button>
+                            <button type="button" onclick="editarAtributo()" class="btn btn-primary">Salvar</button>
                         </div>
                     </div>
                 </div>
@@ -138,3 +136,4 @@
 @endsection
 
 <script src="{{ asset('js/confirmDelete.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/adminCategorias.js') }}" type="text/javascript"></script>

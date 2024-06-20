@@ -32,12 +32,30 @@ class AvaliadorController extends Controller
     public function updateCategoriaPOST($avaliadorId, $categoriaId,Request $request){
         $data = $request->json()->all();
         #DEPOIS ADICIONAR AQUI A PARTE DE AUTENTICACAO DO AVALIADOR, PARA VER SE ELE CONSEGUE ALTERAR A CATEGORIA
-        DB::table('categoria')->where('id', $categoriaId)->update(['nome'=> $data['nome'], 'descricao'=>  $data['descricao']]);
+        if(isset($data['descricao'])){
+            DB::table('categoria')->where('id', $categoriaId)->update(['nome'=> $data['nome'], 'descricao'=>  $data['descricao']]);
+        }else{
+            DB::table('categoria')->where('id', $categoriaId)->update(['nome'=> $data['nome']]);
+        }
     }
 
     public function deleteCategoria($avaliadorId, $categoriaId,Request $request){
         #DEPOIS ADICIONAR AQUI A PARTE DE AUTENTICACAO DO AVALIADOR, PARA VER SE ELE CONSEGUE ALTERAR A CATEGORIA
         DB::table('categoria')->where('id', $categoriaId)->delete();
+    }
+
+    public function getCategorias(){
+        $categorias = DB::table('categoria')->orderBy('id','asc')->get();
+        return response()->json($categorias, 200);
+    }
+
+    public function getAtributos(){
+        $atributos = DB::table('atributo')->orderBy('categoria_id','asc')->orderBy('id','asc')->get();
+        foreach($atributos as $atributo){
+            $categoria=DB::table('categoria')->where('id',$atributo->categoria_id)->orderBy('id','asc')->pluck('nome');
+            $atributo->categoria=$categoria[0];
+        }
+        return response()->json($atributos, 200);
     }
 
     public function updateAtributoPUT($avaliadorId, $categoriaId,Request $request){
@@ -52,18 +70,17 @@ class AvaliadorController extends Controller
         DB::table('atributo')->insert(['nome'=>  $data['nome'], 'tipo_dados'=>  $data['tipo_dados'], 'categoria_id'=>  $categoriaId]);
     }
 
-    public function getAtributo($avaliadorId, $categoriaId, $atributoId,Request $request){
-        $data = $request->json()->all();
+    public function getAtributo($atributoId,Request $request){
         #DEPOIS ADICIONAR AQUI A PARTE DE AUTENTICACAO DO AVALIADOR, PARA VER SE ELE CONSEGUE ALTERAR O ATRIBUTO
-        $atributo = DB::table('atributo')->where('id', $atributoId)->where('categoria_id',$categoriaId)->first();
-        $json = array('nome' => $atributo->nome, 'tipo_dados' => $atributo->tipo_dados, 'categoria' => DB::table('categoria')->where('id', $categoriaId)->first());
+        $atributo = DB::table('atributo')->where('id', $atributoId)->first();
+        $json = array('nome' => $atributo->nome, 'tipo_dados' => $atributo->tipo_dados);
         return response()->json($json);
     }
 
-    public function updateAtributoPOST($avaliadorId, $categoriaId, $atributoId,Request $request){
+    public function updateAtributoPOST($atributoId,Request $request){
         $data = $request->json()->all();
         #DEPOIS ADICIONAR AQUI A PARTE DE AUTENTICACAO DO AVALIADOR, PARA VER SE ELE CONSEGUE ALTERAR O ATRIBUTO
-        DB::table('atributo')->where('id', $atributoId)->where('categoria_id',$categoriaId)->update(['nome'=>  $data['nome'], 'tipo_dados'=>  $data['tipo_dados']]);
+        DB::table('atributo')->where('id', $atributoId)->update(['nome'=>  $data['nome'], 'tipo_dados'=>  $data['tipo_dados']]);
     }
 
     public function deleteAtributo($avaliadorId, $categoriaId, $atributoId,Request $request){
@@ -83,6 +100,74 @@ class AvaliadorController extends Controller
         DB::table('objetoleilao')->where('id', $objetoId)->update(['valor' => $data['valor']]);
     }
 
+    public function obterObjetosLeiloar(Request $request){
+        #DEPOIS ADICIONAR AQUI A PARTE DE AUTENTICACAO DO AVALIADOR, PARA VER SE ELE CONSEGUE AVALIAR UM OBJETO
+
+        #ATUALIZAR O VALOR DO OBJETO QUE VAI A LEILAO
+        $objetos=DB::table('objetoleilao')->where('valor',null)->orderBy('id','asc')->get();
+        $objetos_id = DB::table('objetoleilao')->where('valor',null)->orderBy('id','asc')->pluck('objeto_e_id');
+
+        $objetos_achados_id = DB::table('objetoe')->whereIn('id',$objetos_id)->orderBy('id','asc')->pluck('objeto_id');
+
+        $objetos_achados = DB::table('objeto')->whereIn('id',$objetos_achados_id)->orderBy('id','asc')->get();
+
+        foreach($objetos_achados as $objeto_achado){
+            $nomeCat=DB::table('categoria')->where('id',$objeto_achado->categoria_id)->orderBy('id','asc')->pluck('nome');
+            $objAchadoId=DB::table('objetoe')->where('objeto_id',$objeto_achado->id)->orderBy('id','asc')->pluck('id');
+            $objeto_achado->e_id=$objAchadoId[0];
+            $objeto_achado->categoria=$nomeCat[0];
+        }
+
+        foreach($objetos as $objeto){
+            foreach($objetos_achados as $objeto_achado){
+                if($objeto->objeto_e_id == $objeto_achado->e_id){
+                    $objeto->categoria = $objeto_achado->categoria;
+                    $objeto->descricao = $objeto_achado->descricao;
+                    $objeto->data = $objeto_achado->data_fim;
+                }
+            }
+        }
+
+        $json=array('objetos'=>$objetos);
+        return response()->json($json);
+    }
+
+    public function obterObjetosLeiloarAvaliados(Request $request){
+        #DEPOIS ADICIONAR AQUI A PARTE DE AUTENTICACAO DO AVALIADOR, PARA VER SE ELE CONSEGUE AVALIAR UM OBJETO
+
+        #ATUALIZAR O VALOR DO OBJETO QUE VAI A LEILAO
+        $objetos_em_leilao = DB::table('leilao')->orderBy('id','asc')->pluck('objeto_leilao_id');
+
+        $objetos=DB::table('objetoleilao')->whereNotNull('valor')->whereNotIn('id', $objetos_em_leilao)->orderBy('id','asc')->get();
+        $objetos_id = DB::table('objetoleilao')->whereNotNull('valor')->whereNotIn('id', $objetos_em_leilao)->orderBy('id','asc')->pluck('objeto_e_id');
+
+        $objetos_achados_id = DB::table('objetoe')->whereIn('id',$objetos_id)->orderBy('id','asc')->pluck('objeto_id');
+
+        $objetos_achados = DB::table('objeto')->whereIn('id',$objetos_achados_id)->orderBy('id','asc')->get();
+
+        foreach($objetos_achados as $objeto_achado){
+            $nomeCat=DB::table('categoria')->where('id',$objeto_achado->categoria_id)->orderBy('id','asc')->pluck('nome');
+            $objAchadoId=DB::table('objetoe')->where('objeto_id',$objeto_achado->id)->orderBy('id','asc')->pluck('id');
+            $objeto_achado->e_id=$objAchadoId[0];
+            $objeto_achado->categoria=$nomeCat[0];
+        }
+
+        foreach($objetos as $objeto){
+            foreach($objetos_achados as $objeto_achado){
+                if($objeto->objeto_e_id == $objeto_achado->e_id){
+                    $objeto->categoria = $objeto_achado->categoria;
+                    $objeto->descricao = $objeto_achado->descricao;
+                    $objeto->data = $objeto_achado->data_fim;
+                }
+            }
+        }
+
+        $json=array('objetos'=>$objetos);
+        return response()->json($json);
+    }
+
+    
+
     public function criarLeilao($avaliadorId, $objetoId,Request $request){
         $data = $request->json()->all();
         #DEPOIS ADICIONAR AQUI A PARTE DE AUTENTICACAO DO AVALIADOR, PARA VER SE ELE CONSEGUE CRIAR UM LEILAO
@@ -99,6 +184,44 @@ class AvaliadorController extends Controller
         }
     }
 
+
+    public function verLeiloesI(){
+                $leiloes = DB::table('leilao')->where('estado','I')->get();
+                foreach ($leiloes as $leilao) {
+                    $objetoleilao = DB::table('objetoleilao')->where('id', $leilao->objeto_leilao_id)->first();
+                    $objetoE = DB::table('objetoe')->where('id', $objetoleilao->objeto_e_id)->first();
+                    $objeto = DB::table('objeto')->where('id', $objetoE->objeto_id)->first();
+                    $leilao->objeto = $objeto;
+                    $licitacoes = DB::table('licitacao')->where('leilao_id', $leilao->id)->orderBy('id', 'desc')->get(['data_licitacao', 'valor', 'licitante_id']);
+                    $leilao->licitacoes = $licitacoes;
+                }
+
+                
+                $json = array('leiloes' => $leiloes);
+                #ADICIONAR CASO EM QUE NAO EXISTAM LEILOES PARA NAO SER NULL A RESPOSTA
+                    return response()->json($json);
+
+    }
+
+    public function verLeiloesA(){
+                $leiloes = DB::table('leilao')->where('estado','A')->get();
+                foreach ($leiloes as $leilao) {
+                    $objetoleilao = DB::table('objetoleilao')->where('id', $leilao->objeto_leilao_id)->first();
+                    $objetoE = DB::table('objetoe')->where('id', $objetoleilao->objeto_e_id)->first();
+                    $objeto = DB::table('objeto')->where('id', $objetoE->objeto_id)->first();
+                    $leilao->objeto = $objeto;
+                    $licitacoes = DB::table('licitacao')->where('leilao_id', $leilao->id)->orderBy('id', 'desc')->get(['data_licitacao', 'valor', 'licitante_id']);
+                    $leilao->licitacoes = $licitacoes;
+                }
+
+                
+                $json = array('leiloes' => $leiloes);
+                #ADICIONAR CASO EM QUE NAO EXISTAM LEILOES PARA NAO SER NULL A RESPOSTA
+                    return response()->json($json);
+
+    }
+
+
     public function iniciarLeilao($avaliadorId, $leilaoId,Request $request){
         #DEPOIS ADICIONAR AQUI A PARTE DE AUTENTICACAO DO AVALIADOR, PARA VER SE ELE CONSEGUE INICIAR UM LEILAO
         #OBTER O LEILAO
@@ -107,6 +230,22 @@ class AvaliadorController extends Controller
         #SE O LEILAO JA TIVER TERMINADO, NAO SE PODE INICIAR
         if ($leilao != null && $leilao->estado != 'T') {
             DB::table('leilao')->where('id', $leilaoId)->update(['estado' => 'A']);
+
+            $utilizador_ids=DB::table('subscricao')->where('leilao_id', $leilaoId)->pluck('licitante_id')->toArray();
+            foreach($utilizador_ids as $utilizador_id){
+                $utilizador_dono_DB = DB::table('regular')->where('id', $utilizador_id)->first();
+                $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_dono_DB->user_id)->first();
+                $mensagem = "O leilão foi iniciado!";
+                $data = Date('Y-m-d');
+                DB::table('notificacao')->insert([
+                    'data_criacao' => $data,
+                    'utilizador_id' => $utilizador_DB->id,
+                    'vista' => 'N',
+                    'mensagem' => $mensagem,
+                    'leilao_id' => $leilaoId,
+                                
+                ]);
+            }
         }else{
             #MUDAR O ERRO
             echo "Esse leilão não existe ou já terminou";
@@ -121,6 +260,22 @@ class AvaliadorController extends Controller
             DB::table('leilao')->where('id', $leilaoId)->update(['estado' => 'T']);
             $maior_licitacao=DB::table('licitacao')->where('leilao_id', $leilaoId)->orderBy('valor', 'desc')->first();
             DB::table('leilao')->where('id', $leilaoId)->update(['vencedor' => $maior_licitacao->licitante_id]);
+
+            $utilizador_ids=DB::table('subscricao')->where('leilao_id', $leilaoId)->pluck('licitante_id')->toArray();
+            foreach($utilizador_ids as $utilizador_id){
+                $utilizador_dono_DB = DB::table('regular')->where('id', $utilizador_id)->first();
+                $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_dono_DB->user_id)->first();
+                $mensagem = "O leilão foi terminado!";
+                $data = Date('Y-m-d');
+                DB::table('notificacao')->insert([
+                    'data_criacao' => $data,
+                    'utilizador_id' => $utilizador_DB->id,
+                    'vista' => 'N',
+                    'mensagem' => $mensagem,
+                    'leilao_id' => $leilaoId,
+                                
+                ]);
+            }
         }else{
             #MUDAR O ERRO
             echo "Esse leilão não existe";

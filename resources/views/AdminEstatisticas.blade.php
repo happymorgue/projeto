@@ -5,12 +5,11 @@
 @section('content')
 
 <section class="bgColor">
-    <div class="container py-5">
-    <div class="row justify-content-center">
+    <div class="container py-3">
+
       <div class="col-12">
-        <h3 class="mb-3">Estatísticas</h3>
+        <h2 class="mb-3">Estatísticas</h2>
       </div>
-    </div>
 
     <div class="container mt-5">
 
@@ -21,7 +20,7 @@
                 <canvas id="barChartObjs"></canvas>
             </div>
 
-            <div class="chart-container cc col-md-5 col-lg-5 col-xl-5 ms-md-4">
+            <div class="chart-container cc col-md-5 col-lg-5 col-xl-5 ms-5">
                 <h4 class="text-center">Utilizadores</h4>
                 <canvas id="doughnutChartUsers"></canvas>
             </div>
@@ -36,7 +35,7 @@
           <canvas id="pieChartCorres"></canvas>
         </div>
 
-        <div class="chart-container cc col-md-5 col-lg-5 col-xl-5 ms-4">
+        <div class="chart-container cc col-md-5 col-lg-5 col-xl-5 ms-5">
           <h4 class="text-center">Leilões</h4>
           <canvas id="barChartLeiloes"></canvas>
         </div>

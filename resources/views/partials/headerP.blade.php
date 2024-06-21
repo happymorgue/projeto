@@ -26,8 +26,8 @@
       <!-- Search bar para telas grandes ou + -->
       <div class="d-none d-lg-flex justify-content-center col-lg-4 col-xl-4 col-xxl-4">
         <form class="d-flex container-fluid m-0" role="search">
-          <input class="form-control me-2" type="search" placeholder="Pesquisa" aria-label="Search">
-          <button class="btn btn-primary btnSearch">
+          <input id="searchInput" class="form-control me-2" type="search" placeholder="Pesquisa" aria-label="Search">
+          <button onclick="pesquisaNavBar(event)" class="btn btn-primary btnSearch">
             <i class="bi bi-search search"></i>
           </button>
         </form>
@@ -38,8 +38,8 @@
         <!-- Search bar para telas pequenas -->
         <div class="d-lg-none my-2">
           <form class="d-flex container-fluid m-0" role="search">
-            <input class="form-control me-2" type="search" placeholder="Pesquisa" aria-label="Search">
-            <button class="btn btn-primary btnSearch">
+            <input id="searchInputS" class="form-control me-2" type="search" placeholder="Pesquisa" aria-label="Search">
+            <button onclick="pesquisaNavBar(event)" class="btn btn-primary btnSearch">
               <i class="bi bi-search search"></i>
             </button>
           </form>
@@ -89,3 +89,4 @@
 <script src="{{ asset('js/nomePerfilPolicia.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/confirmDelete.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/averiguarDadosCompletosPolicia.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/pesquisaNavBarPolicia.js') }}" type="text/javascript"></script>

@@ -364,4 +364,28 @@ class UtilizadoresLicitanteController extends Controller
         }
     }
 
+    public function pagarLeilao($regularId, $leilaoId, Request $request){
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        }
+        $utilizador_dono_DB = DB::table('regular')->where('id', $regularId)->first();
+        if($utilizador_dono_DB == null){
+            #ALTERAR PARA ERRO 403/404
+            echo "Não existe esse utilizador";
+        } else {
+            $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_dono_DB->user_id)->first();
+            if($utilizador_DB->email == $_SESSION['user_email']){
+                DB::table('pagamento')->insert([
+                    'data_pagamento' => date('Y-m-d'),
+                    'vencedor_id' => $regularId,
+                    'leilao_id' => $leilaoId
+                ]);
+            }else{
+                #ALTERAR PARA ERRO 403/404
+                echo "Não tem permissões para aceder a este utilizador";
+            }
+        }
+    }
+
 }

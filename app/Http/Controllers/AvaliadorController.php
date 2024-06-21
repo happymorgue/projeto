@@ -64,28 +64,28 @@ class AvaliadorController extends Controller
         DB::table('atributo')->where('id', $data['atributoId'])->where('categoria_id',$categoriaId)->update(['nome'=>  $data['nome'], 'tipo_dados'=>  $data['tipo_dados']]);
     }
 
-    public function createAtributo($avaliadorId, $categoriaId,Request $request){
+    public function createAtributo($avaliadorId,Request $request){
         $data = $request->json()->all();
         #DEPOIS ADICIONAR AQUI A PARTE DE AUTENTICACAO DO AVALIADOR, PARA VER SE ELE CONSEGUE ALTERAR O ATRIBUTO
-        DB::table('atributo')->insert(['nome'=>  $data['nome'], 'tipo_dados'=>  $data['tipo_dados'], 'categoria_id'=>  $categoriaId]);
+        DB::table('atributo')->insert(['nome'=>  $data['nome'], 'tipo_dados'=>  $data['tipo_dados'], 'categoria_id'=>  $data['categoria_id']]);
     }
 
-    public function getAtributo($atributoId,Request $request){
+    public function getAtributo($avaliadorId, $atributoId,Request $request){
         #DEPOIS ADICIONAR AQUI A PARTE DE AUTENTICACAO DO AVALIADOR, PARA VER SE ELE CONSEGUE ALTERAR O ATRIBUTO
         $atributo = DB::table('atributo')->where('id', $atributoId)->first();
         $json = array('nome' => $atributo->nome, 'tipo_dados' => $atributo->tipo_dados);
         return response()->json($json);
     }
 
-    public function updateAtributoPOST($atributoId,Request $request){
+    public function updateAtributoPOST($avaliadorId, $atributoId,Request $request){
         $data = $request->json()->all();
         #DEPOIS ADICIONAR AQUI A PARTE DE AUTENTICACAO DO AVALIADOR, PARA VER SE ELE CONSEGUE ALTERAR O ATRIBUTO
         DB::table('atributo')->where('id', $atributoId)->update(['nome'=>  $data['nome'], 'tipo_dados'=>  $data['tipo_dados']]);
     }
 
-    public function deleteAtributo($avaliadorId, $categoriaId, $atributoId,Request $request){
+    public function deleteAtributo($avaliadorId,$atributoId,Request $request){
         #DEPOIS ADICIONAR AQUI A PARTE DE AUTENTICACAO DO AVALIADOR, PARA VER SE ELE CONSEGUE ALTERAR O ATRIBUTO
-        DB::table('atributo')->where('id', $atributoId)->where('categoria_id',$categoriaId)->delete();
+        DB::table('atributo')->where('id', $atributoId)->delete();
     }
 
 
@@ -395,6 +395,44 @@ class AvaliadorController extends Controller
         }else{
             echo "Não tem permissões para apagar esse avaliador";
         }
+    }
+
+    public function stats1(){
+        $number_obj_per=DB::table('objetop')->count();
+        $number_obj_enc=DB::table('objetoe')->count();
+        $number_obj_rel=DB::table('objetor')->count();
+        $number_obj_rel_entregues=DB::table('objetor')->where('entregue','S')->count();
+        $number_leilao=DB::table('leilao')->count();
+        $number_leilao_acabado=DB::table('leilao')->whereNotNull('vencedor')->count();
+
+
+        return response()->json(['number_obj_per' => $number_obj_per, 'number_obj_enc' => $number_obj_enc, 'number_obj_rel' => $number_obj_rel, 'number_obj_rel_entregues' => $number_obj_rel_entregues, 'number_leilao' => $number_leilao, 'number_leilao_acabado' => $number_leilao_acabado]);
+    }
+
+    public function stats2(){
+        $number_regular=DB::table('regular')->count();
+        $number_policia=DB::table('policia')->count();
+
+
+        return response()->json(['number_regular' => $number_regular, 'number_policia' => $number_policia]);
+    }
+
+    public function stats3(){
+        $number_objeto=DB::table('objeto')->count();
+        $number_objeto_c=DB::table('objetor')->count();
+
+
+        return response()->json(['number_objeto' => $number_objeto, 'number_objeto_c' => $number_objeto_c]);
+    }
+
+    public function stats4(){
+        $number_leiloes=DB::table('leilao')->count();
+        $number_leiloes_ativos=DB::table('leilao')->where('estado','A')->count();
+        $number_leiloes_passados=DB::table('leilao')->where('estado','T')->count();
+        $number_leiloes_futuros=DB::table('leilao')->where('estado','I')->count();
+
+
+        return response()->json(['number_leiloes' => $number_leiloes, 'number_leiloes_ativos' => $number_leiloes_ativos, 'number_leiloes_passados' => $number_leiloes_passados, 'number_leiloes_futuros' => $number_leiloes_futuros]);
     }
 
 }

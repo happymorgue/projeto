@@ -339,7 +339,7 @@ class UtilizadoresDonoController extends Controller
 
 
     #DANDO UM OBJETO, OBTER TODOS OS OBJETOS ACHADOS POSSIVEIS QUE PERTENCEM A CATEGORIA DO OBJETO PERDIDO
-    public function encontrarObjetoPorCategoria($regularId, $objetoPerdidoId, Request $request)
+    public function encontrarObjetoPorCategoria($regularId, $categoria, Request $request)
     {
         if(!isset($_SESSION)) 
         { 
@@ -352,9 +352,6 @@ class UtilizadoresDonoController extends Controller
         } else {
             $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_dono_DB->user_id)->first();
             if ($utilizador_DB->email == $_SESSION['user_email']) {
-                $objetoP = DB::table('objetop')->where('id', $objetoPerdidoId)->where('dono_id', $regularId)->first();
-                $objeto = DB::table('objeto')->where('id', $objetoP->objeto_id)->first();
-                if($objetoP != null){
                     $id_dos_objetos_a_nao_incluir = array();
 
                     #Obter os objetos que estão em leilão
@@ -369,7 +366,7 @@ class UtilizadoresDonoController extends Controller
                     $id_dos_objetos_a_ir_buscar=DB::table('objetoe')->whereNotIn('id', $id_dos_objetos_a_nao_incluir)->pluck('objeto_id');
 
                     #Objetos que correspondem à pesquisa
-                    $objetos=DB::table('objeto')->whereIn('id',$id_dos_objetos_a_ir_buscar)->where('categoria_id',$objeto->categoria_id)->get();
+                    $objetos=DB::table('objeto')->whereIn('id',$id_dos_objetos_a_ir_buscar)->where('categoria_id',$categoria)->get();
 
                     #Ir buscar os atributos dos objetos
                     foreach ($objetos as $objeto) {
@@ -396,10 +393,6 @@ class UtilizadoresDonoController extends Controller
                     #Colocar num json e retornar
                     $json=array('objetos'=>$objetos);
                     return response()->json($json);
-                } else {
-                    #ALTERAR PARA ERRO 403/404
-                    echo "Esse objeto não existe ou não é seu";
-                }
             } else {
                 #ALTERAR PARA ERRO 403/404
                 echo "Não tem permissões para aceder aos dados desse utilizador";
@@ -409,7 +402,7 @@ class UtilizadoresDonoController extends Controller
 
 
     #MESMO ESQUEMA DA FUNCAO ANTERIOR, MAS COM A DESCRICAO DO OBJETO EM VEZ DA CATEGORIA
-    public function encontrarObjetoPorDescricao($regularId, $objetoPerdidoId, Request $request)
+    public function encontrarObjetoPorDescricao($regularId, $descricao, Request $request)
     {
         if(!isset($_SESSION)) 
         { 
@@ -422,9 +415,6 @@ class UtilizadoresDonoController extends Controller
         } else {
             $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_dono_DB->user_id)->first();
             if ($utilizador_DB->email == $_SESSION['user_email']) {
-                $objetoP = DB::table('objetop')->where('id', $objetoPerdidoId)->where('dono_id', $regularId)->first();
-                $objeto = DB::table('objeto')->where('id', $objetoP->objeto_id)->first();
-                if($objetoP != null){
                     $id_dos_objetos_a_nao_incluir = array();
 
                     #Obter os objetos que estão em leilão
@@ -439,7 +429,7 @@ class UtilizadoresDonoController extends Controller
                     $id_dos_objetos_a_ir_buscar=DB::table('objetoe')->whereNotIn('id', $id_dos_objetos_a_nao_incluir)->pluck('objeto_id');
 
                     #Objetos que correspondem à pesquisa
-                    $objetos_por_filtrar=DB::table('objeto')->where('descricao', 'like','%' . $objeto->descricao . '%')->orWhere('descricao', 'like','%' . $objeto->descricao)->orWhere('descricao', 'like',$objeto->descricao . '%')->pluck('id');
+                    $objetos_por_filtrar=DB::table('objeto')->where('descricao', 'like','%' . $descricao . '%')->orWhere('descricao', 'like','%' . $descricao)->orWhere('descricao', 'like',$descricao . '%')->pluck('id');
                     $objetos=DB::table('objeto')->whereIn('id',$objetos_por_filtrar)->whereIn('id',$id_dos_objetos_a_ir_buscar)->get();
                     #Ir buscar os atributos dos objetos
                     foreach ($objetos as $objeto) {
@@ -466,10 +456,6 @@ class UtilizadoresDonoController extends Controller
                     #Colocar num json e retornar
                     $json=array('objetos'=>$objetos);
                     return response()->json($json);
-                } else {
-                    #ALTERAR PARA ERRO 403/404
-                    echo "Esse objeto não existe ou não é seu";
-                }
             } else {
                 #ALTERAR PARA ERRO 403/404
                 echo "Não tem permissões para aceder aos dados desse utilizador";

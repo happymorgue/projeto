@@ -141,6 +141,7 @@ function carregarInformacaoCategoriaModal(id) {
 
 function carregarInformacaoAtributoModal(id) {
     let pedidoAtributo = new XMLHttpRequest();
+    console.log(id);
     pedidoAtributo.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             atributo = JSON.parse(pedidoAtributo.responseText);
@@ -206,15 +207,15 @@ function removerCat(id) {
         cancelButtonText: 'Cancelar'
     }).then((result) => {
         if (result.isConfirmed) {
-            /*let pedidoCategoria = new XMLHttpRequest();
+            let pedidoCategoria = new XMLHttpRequest();
             pedidoCategoria.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
+                    window.location.reload();
                 }
             }
             pedidoCategoria.open("DELETE", "/api/avaliador/1/categoria/" + id, true);
-            pedidoCategoria.send();*/
+            pedidoCategoria.send();
         }
-        window.location.reload();
     })
 }
 
@@ -231,22 +232,86 @@ function removerAtributo(id) {
         cancelButtonText: 'Cancelar'
     }).then((result) => {
         if (result.isConfirmed) {
-            /*let pedidoAtributo = new XMLHttpRequest();
+            let pedidoAtributo = new XMLHttpRequest();
             pedidoAtributo.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     window.location.reload();
                 }
             }
             pedidoAtributo.open("DELETE", "/api/avaliador/1/atributo/" + id, true);
-            pedidoAtributo.send();*/
+            pedidoAtributo.send();
             console.log("Atributo removido com sucesso!");
-            window.location.reload();
         }
     })
+}
+
+function criarCategoria() {
+    //TODO
+    let nome = document.getElementById("nomeCatCriar").value;
+    let descricao = document.getElementById("descricaoCat").value;
+    let categoria = {
+        "nome": nome,
+        "descricao": descricao
+    }
+    let pedidoCategoria = new XMLHttpRequest();
+    pedidoCategoria.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(pedidoCategoria.responseText);
+            window.location.reload();
+        }
+    }
+    pedidoCategoria.open("POST", "/api/avaliador/1/categoria", true);
+    pedidoCategoria.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    pedidoCategoria.send(JSON.stringify(categoria));
+}
+
+function criarAtributos() {
+    //TODO
+    let nome = document.getElementById("nomeAtriCriar").value;
+    let tipo = document.getElementById("tipoAtriCriar").value;
+    let categoria = document.getElementById("criarAt").value;
+    let atributo = {
+        "nome": nome,
+        "tipo_dados": tipo,
+        "categoria_id": categoria
+    }
+    let pedidoAtributo = new XMLHttpRequest();
+    pedidoAtributo.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(pedidoAtributo.responseText);
+            window.location.reload();
+        }
+    }
+    pedidoAtributo.open("POST", "/api/avaliador/1/atributo", true);
+    pedidoAtributo.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    pedidoAtributo.send(JSON.stringify(atributo));
+}
+
+function carregarCategoriasModal() {
+    let pedidoCategorias = new XMLHttpRequest();
+    pedidoCategorias.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            categorias = JSON.parse(pedidoCategorias.responseText);
+            console.log(categorias);
+
+            let select = document.getElementById("criarAt");
+            for (let i = 0; i < categorias.length; i++) {
+                let option = document.createElement("option");
+                option.value = categorias[i].id;
+                option.innerText = categorias[i].nome;
+                select.appendChild(option);
+            }
+        }
+
+    }
+    pedidoCategorias.open("GET", "/api/avaliador/1/getCategorias", true);
+    pedidoCategorias.send();
+
 }
 
 
 window.addEventListener('DOMContentLoaded', function () {
     carregarCategorias();
     carregarAtributos();
+    carregarCategoriasModal();
 });

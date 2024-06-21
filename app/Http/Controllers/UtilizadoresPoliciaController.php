@@ -636,4 +636,111 @@ class UtilizadoresPoliciaController extends Controller
         }
         
     }
+
+    public function encontrarObjetoPorCategoria($policiaId, $categoria, Request $request)
+    {
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        }
+        $utilizador_dono_DB = DB::table('policia')->where('id', $policiaId)->first();
+        if ($utilizador_dono_DB== null){
+            #ALTERAR PARA ERRO 403/404
+            echo "Não existe esse utilizador";
+        } else {
+            $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_dono_DB->user_id)->first();
+            if ($utilizador_DB->email == $_SESSION['user_email']) {
+                    #Obter os objetos que foram encontrados
+                    $id_dos_objetos_que_foram_encontrados=DB::table('objetor')->pluck('objeto_p_id');
+
+                    $id_dos_objetos_a_ir_buscar=DB::table('objetop')->whereNotIn('id', $id_dos_objetos_que_foram_encontrados)->pluck('objeto_id');
+
+                    #Objetos que correspondem à pesquisa
+                    $objetos=DB::table('objeto')->whereIn('id',$id_dos_objetos_a_ir_buscar)->where('categoria_id',$categoria)->get();
+
+                    #Ir buscar os atributos dos objetos
+                    foreach ($objetos as $objeto) {
+
+                        #Buscar os valores dos atributos do objeto
+                        $atributos=DB::table('valoratributos')->where('objeto_id', $objeto->id)->get(['atributo_id','valor']);
+
+
+                        #Buscar a informação dos atributos
+                        foreach ($atributos as $atributo) {
+                            $atributo_info=DB::table('atributo')->where('id', $atributo->atributo_id)->first();
+
+                            #Colocar a informação do atributo no objeto
+                            $atributo->nome=$atributo_info->nome;
+
+                            #Colocar o tipo do atributo no objeto
+                            $atributo->tipo=$atributo_info->tipo_dados;
+                        }
+
+                        #Colocar os atributos no objeto
+                        $objeto->atributos=$atributos;
+                    }
+
+                    #Colocar num json e retornar
+                    $json=array('objetos'=>$objetos);
+                    return response()->json($json);
+            } else {
+                #ALTERAR PARA ERRO 403/404
+                echo "Não tem permissões para aceder aos dados desse utilizador";
+          }
+        }
+    }
+
+    public function encontrarObjetoPorDescricao($policiaId, $descricao, Request $request)
+    {
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        }
+        $utilizador_dono_DB = DB::table('policia')->where('id', $policiaId)->first();
+        if ($utilizador_dono_DB== null){
+            #ALTERAR PARA ERRO 403/404
+            echo "Não existe esse utilizador";
+        } else {
+            $utilizador_DB = DB::table('utilizador')->where('id', $utilizador_dono_DB->user_id)->first();
+            if ($utilizador_DB->email == $_SESSION['user_email']) {
+
+                    #Obter os objetos que foram encontrados
+                    $id_dos_objetos_que_foram_encontrados=DB::table('objetor')->pluck('objeto_p_id');
+
+                    $id_dos_objetos_a_ir_buscar=DB::table('objetop')->whereNotIn('id', $id_dos_objetos_que_foram_encontrados)->pluck('objeto_id');
+
+                    #Objetos que correspondem à pesquisa
+                    $objetos_por_filtrar=DB::table('objeto')->where('descricao', 'like','%' . $descricao . '%')->orWhere('descricao', 'like','%' . $descricao)->orWhere('descricao', 'like',$descricao . '%')->pluck('id');
+                    $objetos=DB::table('objeto')->whereIn('id',$objetos_por_filtrar)->whereIn('id',$id_dos_objetos_a_ir_buscar)->get();
+                    #Ir buscar os atributos dos objetos
+                    foreach ($objetos as $objeto) {
+
+                        #Buscar os valores dos atributos do objeto
+                        $atributos=DB::table('valoratributos')->where('objeto_id', $objeto->id)->get(['atributo_id','valor']);
+
+
+                        #Buscar a informação dos atributos
+                        foreach ($atributos as $atributo) {
+                            $atributo_info=DB::table('atributo')->where('id', $atributo->atributo_id)->first();
+
+                            #Colocar a informação do atributo no objeto
+                            $atributo->nome=$atributo_info->nome;
+
+                            #Colocar o tipo do atributo no objeto
+                            $atributo->tipo=$atributo_info->tipo_dados;
+                        }
+
+                        #Colocar os atributos no objeto
+                        $objeto->atributos=$atributos;
+                    }
+
+                    #Colocar num json e retornar
+                    $json=array('objetos'=>$objetos);
+                    return response()->json($json);
+            } else {
+                #ALTERAR PARA ERRO 403/404
+                echo "Não tem permissões para aceder aos dados desse utilizador";
+          }
+        }
+    }
 }

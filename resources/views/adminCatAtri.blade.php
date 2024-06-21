@@ -91,17 +91,17 @@
                             <form id="editarCatForm">
                                 <div class="mb-3">
                                     <label for="nomeCatCriar" class="form-label">Nome</label>
-                                    <input type="text" class="form-control" name="nomeCatCriar" id="nomeCatCriar">
+                                    <input type="text" class="form-control" id="nomeCatCriar" name="nomeCatCriar" id="nomeCatCriar">
                                 </div>
                                 <div class="mb-3">
                                     <label for="descricaoCat" class="form-label">Descrição</label>
-                                    <input type="text" class="form-control" name="descricaoCat" id="descricaoCat">
+                                    <input type="text" class="form-control" id="descricaoCat" name="descricaoCat" id="descricaoCat">
                                 </div>
                             </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="button" onclick="criarCat()" class="btn btn-primary">Salvar</button>
+                            <button type="button" onclick="criarCategoria()" class="btn btn-primary">Salvar</button>
                         </div>
                     </div>
                 </div>
@@ -136,30 +136,30 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="ModalAtLabel">Editar Atributo</h5>
+                            <h5 class="modal-title" id="ModalAtLabel">Criar Atributo</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <form id="editarAtriForm">
                                 <div class="mb-3">
                                     <label for="nomeAtriCriar" class="form-label">Nome</label>
-                                    <input type="text" class="form-control" name="nomeAtriCriar" id="nomeAtriCriar">
+                                    <input type="text" class="form-control" id="nomeAtriCriar" name="nomeAtriCriar" id="nomeAtriCriar">
                                 </div>
                                 <div class="mb-3">
                                     <label for="tipoAtriCriar" class="form-label">Tipo</label>
-                                    <input type="text" class="form-control" name="tipoAtriCriar" id="tipoAtriCriar">
+                                    <input type="text" class="form-control" id="tipoAtriCriar" name="tipoAtriCriar" id="tipoAtriCriar">
                                 </div>
                                 <div class="mb-3">
                                     <label for="catAtriCriar" class="form-label">Categoria</label>
-                                    <select class="form-select" aria-label="selecione">
-                                        <option selected>Selecione</option>
+                                    <select id="criarAt" class="form-select" aria-label="selecione">
+                                        
                                     </select>
                                 </div>
                             </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="button" onclick="criarAtributo()" class="btn btn-primary">Salvar</button>
+                            <button type="button" onclick="criarAtributos()" class="btn btn-primary">Salvar</button>
                         </div>
                     </div>
                 </div>

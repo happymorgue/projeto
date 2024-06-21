@@ -53,8 +53,8 @@ Route::get('/regular/dono/{regularId}/verObjetosAchados', [UtilizadoresDonoContr
 Route::post('/regular/dono/{regularId}/registarObjetoPerdido', [UtilizadoresDonoController::class,'registarObjetoPerdido']);
 Route::post('/regular/dono/{regularId}/atualizarObjetoPerdido/{objetoPerdidoId}', [UtilizadoresDonoController::class,'atualizarObjetoPerdido']);
 Route::delete('/regular/dono/{regularId}/removerObjetoPerdido/{objetoPerdidoId}', [UtilizadoresDonoController::class,'removerObjetoPerdido']);
-Route::get('/regular/dono/{regularId}/encontrarObjetoPorCategoria/{objetoPerdidoId}', [UtilizadoresDonoController::class,'encontrarObjetoPorCategoria']);
-Route::get('/regular/dono/{regularId}/encontrarObjetoPorDescricao/{objetoPerdidoId}', [UtilizadoresDonoController::class,'encontrarObjetoPorDescricao']);
+Route::get('/regular/dono/{regularId}/encontrarObjetoPorCategoria/{categoria}', [UtilizadoresDonoController::class,'encontrarObjetoPorCategoria']);
+Route::get('/regular/dono/{regularId}/encontrarObjetoPorDescricao/{descricao}', [UtilizadoresDonoController::class,'encontrarObjetoPorDescricao']);
 
 Route::get('/regular/dono/{regularId}/registarPossivelDono/{ObjetoAchadoId}', [UtilizadoresDonoController::class,'registarPossivelDono']);
 Route::get('/regular/dono/{regularId}/confirmarDono/{ObjetoAchadoId}/{ObjetoPerdidoId}', [UtilizadoresDonoController::class,'confirmarDono']);
@@ -80,6 +80,9 @@ Route::post('/policia/{policiaId}/registarObjetoAchado', [UtilizadoresPoliciaCon
 Route::post('/policia/{policiaId}/atualizarObjetoAchado/{objetoId}', [UtilizadoresPoliciaController::class,'atualizarObjetoAchado']);
 Route::delete('/policia/{policiaId}/removerObjetoAchado/{objetoId}', [UtilizadoresPoliciaController::class,'removerObjetoAchado']);
 
+Route::get('/policia/{policiaId}/encontrarObjetoPorCategoria/{categoria}', [UtilizadoresPoliciaController::class,'encontrarObjetoPorCategoria']);
+Route::get('/policia/{policiaId}/encontrarObjetoPorDescricao/{descricao}', [UtilizadoresPoliciaController::class,'encontrarObjetoPorDescricao']);
+
 Route::get('/policia/{policiaId}/registarPossivelDono/{foundObjectId}/{regularId}', [UtilizadoresPoliciaController::class,'registarPossivelDono']);
 Route::get('/policia/{policiaId}/registaDono/{foundObjectId}/{lostObjectId}', [UtilizadoresPoliciaController::class,'registarObjetoCorrespondente']);
 Route::get('/policia/{policiaId}/registarEntrega/{foundObjectId}', [UtilizadoresPoliciaController::class,'registarEntrega']);
@@ -95,6 +98,8 @@ Route::get('/regular/licitante/{regularId}/subscreverLeilao/{leilaoId}', [Utiliz
 Route::get('/regular/licitante/{regularId}/anularSubscreverLeilao/{leilaoId}', [UtilizadoresLicitanteController::class,'anularSubscreverLeilao']);
 Route::get('/regular/licitante/{regularId}/obterLeiloesSubcritos', [UtilizadoresLicitanteController::class,'obterLeiloesSubscritos']);
 Route::get('/regular/licitante/{regularId}/verificarSubscricao/{leilaoId}', [UtilizadoresLicitanteController::class,'verificarSubscricao']);
+
+Route::get('/regular/licitante/{regularId}/pagarLeilao/{leilaoId}', [UtilizadoresLicitanteController::class,'pagarLeilao']);
 
 #AVALIADOR
 
@@ -134,6 +139,11 @@ Route::get('avaliador/{avaliadorId}/verLeiloesA', [AvaliadorController::class, '
 
 Route::get('avaliador/{avaliadorId}/getCategorias', [AvaliadorController::class, 'getCategorias']);
 Route::get('avaliador/{avaliadorId}/getAtributos', [AvaliadorController::class, 'getAtributos']);
+
+Route::get('avaliador/{avaliadorId}/stats1', [AvaliadorController::class, 'stats1']);
+Route::get('avaliador/{avaliadorId}/stats2', [AvaliadorController::class, 'stats2']);
+Route::get('avaliador/{avaliadorId}/stats3', [AvaliadorController::class, 'stats3']);
+Route::get('avaliador/{avaliadorId}/stats4', [AvaliadorController::class, 'stats4']);
 
 
 #NAO UTILIZADORES

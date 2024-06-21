@@ -1,8 +1,10 @@
+var idRegular;
+
 function carregarLeiloes_licitacoes() {
     let pedido = xhttp = new XMLHttpRequest();
     pedido.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            var idRegular = JSON.parse(pedido.responseText);
+            idRegular = JSON.parse(pedido.responseText);
             let pedido2 = xhttp = new XMLHttpRequest();
             pedido2.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
@@ -319,7 +321,7 @@ function carregarLeiloes_vencer() {
                         divCardLeilaoInfoLicitarBotao2.className = 'btn btn-primary btn-sm w-100 mt-3';
                         divCardLeilaoInfoLicitarBotao2.innerHTML = 'Realizar pagamento';
                         divCardLeilaoInfoLicitarBotao2.addEventListener('click', function () {
-                            window.location.href = '';
+                            realizarPagamento(leilao['id']);
                         });
                         divCardLeilaoInfoLicitarBotao2.type = 'button';
                         if (leilao['pagamento'] == true) {
@@ -352,6 +354,30 @@ function carregarLeiloes_vencer() {
     pedido.send();
 }
 
+function realizarPagamento(idLeilao) {
+    Swal.fire({
+        title: 'Tem a certeza?',
+        text: "Após confirmar já não pode voltar atrás!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sim, pagar!',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            console.log(idLeilao);
+            let pedidoPagar = new XMLHttpRequest();
+            pedidoPagar.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    window.location.reload();
+                }
+            }
+            pedidoPagar.open("GET", "/api/regular/licitante/" + idRegular + "/pagarLeilao/" + idLeilao, true);
+            pedidoPagar.send();
+        }
+    })
+}
 
 
 window.addEventListener('DOMContentLoaded', function () {

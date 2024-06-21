@@ -45,45 +45,58 @@
     </div>
 
     <script>
-        var ctx = document.getElementById('barChartObjs').getContext('2d');
-        var myBarChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Perdidos', 'Encontrados', 'Correspondidos', 'Entregues', 'Leiloados', 'Vendidos'],
-                datasets: [{
-                    label: 'Quantidade de objetos',
-                    data: [300, 247, 20, 17, 59, 56],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
+        let pedidoAtributo = new XMLHttpRequest();
+        pedidoAtributo.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                dados = JSON.parse(pedidoAtributo.responseText);
+                console.log(dados.number_obj_rel);
+                var ctx = document.getElementById('barChartObjs').getContext('2d');
+                var myBarChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Perdidos', 'Encontrados', 'Correspondidos', 'Entregues', 'Leiloados', 'Vendidos'],
+                        datasets: [{
+                            label: 'Quantidade de objetos',
+                            data: [dados.number_obj_per, dados.number_obj_enc, dados.number_obj_rel, dados.number_obj_rel_entregues, dados.number_leilao, dados.number_leilao_acabado],
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
                     }
-                }
+                });
             }
-        });
+        }
+        pedidoAtributo.open("GET", "/api/avaliador/1/stats1", true);
+        pedidoAtributo.send();
     </script>
 
     <script>
-            document.addEventListener('DOMContentLoaded', (event) => {
+        let pedido2 = new XMLHttpRequest();
+        pedido2.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                dados2 = JSON.parse(pedido2.responseText);
+                console.log(dados2);
                 const ctx = document.getElementById('doughnutChartUsers').getContext('2d');
                 const doughnutChart = new Chart(ctx, {
                     type: 'doughnut',
@@ -91,7 +104,7 @@
                         labels: ['Dono e Licitante', 'Policia'],
                         datasets: [{
                             label: 'Dataset',
-                            data: [300, 50],
+                            data: [dados2.number_regular, dados2.number_policia],
                             backgroundColor: ['#099a76', '#104c91'],
                             hoverBackgroundColor: ['#0bae8e', '#1c5aaf']
                         }]
@@ -108,18 +121,26 @@
                         }
                     }
                 });
-            });
+            }
+        }
+        pedido2.open("GET", "/api/avaliador/1/stats2", true);
+        pedido2.send();
+        
+            
         </script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const ctx = document.getElementById('pieChartCorres').getContext('2d');
-            const myPieChart = new Chart(ctx, {
+        let pedido3 = new XMLHttpRequest();
+        pedido3.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                dados3 = JSON.parse(pedido3.responseText);
+                const ctx2 = document.getElementById('pieChartCorres').getContext('2d');
+                const myPieChart = new Chart(ctx2, {
                 type: 'pie',
                 data: {
                     labels: ['Correspondidos', 'Remanescentes'],
                     datasets: [{
-                        data: [12, 19],
+                        data: [dados3.number_objeto_c, dados3.number_objeto-dados3.number_objeto_c],
                         backgroundColor: [
                             'rgba(54, 162, 235, 0.2)',
                             'rgba(255, 99, 132, 0.2)',
@@ -153,42 +174,55 @@
                         }
                     }
                 }
-            });
-        });
+                });
+            }
+        }
+        pedido3.open("GET", "/api/avaliador/1/stats3", true);
+        pedido3.send();
+            
     </script>
 
     <script>
-        var ctx = document.getElementById('barChartLeiloes').getContext('2d');
-        var myBarChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Total', 'Ativos', 'Passados', 'Futuros'],
-                datasets: [{
-                    label: 'Quantidade de Leilões',
-                    data: [300, 247, 20, 17, 59, 56],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
+        let pedido4 = new XMLHttpRequest();
+        pedido4.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                dados4 = JSON.parse(pedido4.responseText);
+                var ctx = document.getElementById('barChartLeiloes').getContext('2d');
+                var myBarChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Total', 'Ativos', 'Passados', 'Futuros'],
+                        datasets: [{
+                            label: 'Quantidade de Leilões',
+                            data: [dados4.number_leiloes, dados4.number_leiloes_ativos, dados4.number_leiloes_passados, dados4.number_leiloes_futuros],
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
                     }
-                }
+                });
             }
-        });
+        }
+        pedido4.open("GET", "/api/avaliador/1/stats4", true);
+        pedido4.send();
+        
     </script>
 
 

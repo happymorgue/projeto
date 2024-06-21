@@ -20,8 +20,8 @@
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Categoria
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li>
+                    <ul id="catList" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <!--<li>
                             <a class="dropdown-item" href="#">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="Checkme1" />
@@ -36,7 +36,7 @@
                                     <label class="form-check-label" for="Checkme2">Check me</label>
                                 </div>
                             </a>
-                        </li>
+                        </li>-->
                     </ul>
                 </div>
             </div>

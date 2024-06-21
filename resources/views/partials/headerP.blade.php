@@ -52,7 +52,7 @@
               Objetos
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item link" href="/verPoliciaObjAchados">Objetos achados</a></li>
+              <li><a class="dropdown-item link" href="/verPoliciaObjAchados">Objetos Achados</a></li>
               <div class="horizontal-line2"></div>
               <li><a class="dropdown-item link" href="/registarObjAchado">Novo Objeto Achado</a></li>
               <div class="horizontal-line2"></div>

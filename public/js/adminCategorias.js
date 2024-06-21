@@ -29,7 +29,7 @@ function carregarCategorias() {
                 buttonEditarCat.className = "btn btn-dark";
                 buttonEditarCat.innerText = "Editar";
                 buttonEditarCat.setAttribute('data-bs-toggle', 'modal');
-                buttonEditarCat.setAttribute('data-bs-target', '#ModalCat');
+                buttonEditarCat.setAttribute('data-bs-target', '#ModalCatEditar');
                 buttonEditarCat.addEventListener('click', function () {
                     idCat = categorias[i].id;
                     console.log("Button clicked, category ID:", categorias[i].id);
@@ -79,6 +79,10 @@ function carregarAtributos() {
                 tdNome.innerText = atributos[i].nome.substring(0, 40);
                 tr.appendChild(tdNome);
 
+                let tdTipo = document.createElement("td");
+                tdTipo.innerText = atributos[i].tipo_dados;
+                tr.appendChild(tdTipo);
+
                 let tdCategoria = document.createElement("td");
                 tdCategoria.innerText = atributos[i].categoria;
                 tr.appendChild(tdCategoria);
@@ -90,7 +94,7 @@ function carregarAtributos() {
                 buttonEditarAtr.className = "btn btn-dark";
                 buttonEditarAtr.innerText = "Editar";
                 buttonEditarAtr.setAttribute('data-bs-toggle', 'modal');
-                buttonEditarAtr.setAttribute('data-bs-target', '#ModalAt');
+                buttonEditarAtr.setAttribute('data-bs-target', '#ModalAtEditar');
                 buttonEditarAtr.addEventListener('click', function () {
                     idAtr = atributos[i].id;
                     console.log("Button clicked, atribute ID:", atributos[i].id);
@@ -160,12 +164,12 @@ function editarCat() {
     pedidoCategoria.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             console.log(pedidoCategoria.responseText);
+            window.location.reload();
         }
     }
     pedidoCategoria.open("POST", "/api/avaliador/1/categoria/" + idCat, true);
     pedidoCategoria.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     pedidoCategoria.send(JSON.stringify(categoria));
-    window.location.reload();
 
 }
 
@@ -181,12 +185,12 @@ function editarAtributo() {
     pedidoAtributo.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             console.log(pedidoAtributo.responseText);
+            window.location.reload();
         }
     }
     pedidoAtributo.open("POST", "/api/avaliador/1/atributo/" + idAtr, true);
     pedidoAtributo.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     pedidoAtributo.send(JSON.stringify(atributo));
-    window.location.reload();
 }
 
 function removerCat(id) {

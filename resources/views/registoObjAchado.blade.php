@@ -12,7 +12,7 @@
       <div class="card border-light-subtle shadow-sm">
         <div class="row g-0">
           <div class="col-12 col-md-6">
-            <img class="img-fluid rounded-start w-100 h-100 object-fit-cover"  src="{{ asset('img3.jpg') }}">
+            <img class="img-fluid rounded-start w-100 h-100 object-fit-cover"   alt="Imagem de ondas no mar: uma série de ondas suaves e uniformes no meio do oceano" src="{{ asset('img3.jpg') }}">
           </div>
           <div class="col-12 col-md-6">
             <div class="card-body p-3 p-md-4 p-xl-5">

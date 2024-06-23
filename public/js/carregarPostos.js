@@ -43,6 +43,7 @@ function carregarPostos() {
                         img.src = 'posto.png';
                         img.class = 'rounded-circle';
                         img.width = '120';
+                        img.alt = "Ícone de um posto de polícia"
 
                         divCardInformacao.appendChild(img);
 

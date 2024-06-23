@@ -14,7 +14,7 @@
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
-                    <img src="{{ asset('profile.png') }}" alt="profile picture" class="rounded-circle" width="150">
+                    <img src="{{ asset('profile.png') }}" alt="Ícone de perfil de usuário, representando uma figura humana com cabeça e ombros, em um estilo minimalista." class="rounded-circle" width="150">
                     <div class="mt-3">
                     <h4  name="nome3" id="nome3"> </h4>
                       <p class="text-muted font-size-sm">Dono e Licitante</p>

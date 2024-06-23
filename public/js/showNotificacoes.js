@@ -64,6 +64,7 @@ function carregarNotifs() {
                     let divNotificacaoLeilaoCardBodyRowCol2DivImg = document.createElement("img");
                     divNotificacaoLeilaoCardBodyRowCol2DivImg.className = "img-fluid";
                     divNotificacaoLeilaoCardBodyRowCol2DivImg.style = "max-width: 10em;";
+                    divNotificacaoLeilaoCardBodyRowCol2DivImg.alt = "Imagem do objeto em leilão";
                     divNotificacaoLeilaoCardBodyRowCol2DivImg.src = '/storage/imagens_objetos/' + notif['leilao_id']['objeto']['imagem'];
                     divNotificacaoLeilaoCardBodyRowCol2DivImg.onerror = function () {
                         divNotificacaoLeilaoCardBodyRowCol2DivImg.src = '/storage/imagens_objetos/default_objeto.jpg';
@@ -113,6 +114,7 @@ function carregarNotifs() {
                         divNotificacaoObjetoCardBodyRow2DivCol1Img = document.createElement("img");
                         divNotificacaoObjetoCardBodyRow2DivCol1Img.className = "figure-img img-fluid rounded";
                         divNotificacaoObjetoCardBodyRow2DivCol1Img.style = "max-width: 12em;";
+                        divNotificacaoObjetoCardBodyRow2DivCol1Img.alt = "Imagem do seu objeto perdido";
                         divNotificacaoObjetoCardBodyRow2DivCol1Img.src = '/storage/imagens_objetos/' + notif['objeto_perdido']['imagem'];
                         divNotificacaoObjetoCardBodyRow2DivCol1Img.onerror = function () {
                             divNotificacaoObjetoCardBodyRow2DivCol1Img.src = '/storage/imagens_objetos/default_objeto.jpg';
@@ -125,6 +127,7 @@ function carregarNotifs() {
                         divNotificacaoObjetoCardBodyRow2DivCol1Img.className = "figure-img img-fluid rounded";
                         divNotificacaoObjetoCardBodyRow2DivCol1Img.style = "max-width: 12em;";
                         divNotificacaoObjetoCardBodyRow2DivCol1Img.src = '/storage/imagens_objetos/' + notif['objeto_achado']['imagem'];
+                        divNotificacaoObjetoCardBodyRow2DivCol1Img.alt = "Imagem do seu objeto achado";
                         divNotificacaoObjetoCardBodyRow2DivCol1Img.onerror = function () {
                             divNotificacaoObjetoCardBodyRow2DivCol1Img.src = '/storage/imagens_objetos/default_objeto.jpg';
                         }
@@ -147,6 +150,7 @@ function carregarNotifs() {
                     divNotificacaoObjetoCardBodyRow2DivCol2Img.className = "img-fluid";
                     divNotificacaoObjetoCardBodyRow2DivCol2Img.style = "max-width: 5em;";
                     divNotificacaoObjetoCardBodyRow2DivCol2Img.src = '/arrows.png';
+                    divNotificacaoObjetoCardBodyRow2DivCol2Img.alt = "Duas setas a apontarem para lados opostos, indicando comparação";
                     divNotificacaoObjetoCardBodyRow2DivCol2.appendChild(divNotificacaoObjetoCardBodyRow2DivCol2Img);
                     divNotificacaoObjetoCardBodyRow2Div.appendChild(divNotificacaoObjetoCardBodyRow2DivCol2);
 
@@ -164,6 +168,7 @@ function carregarNotifs() {
                         divNotificacaoObjetoCardBodyRow2DivCol3Img = document.createElement("img");
                         divNotificacaoObjetoCardBodyRow2DivCol3Img.className = "figure-img img-fluid rounded";
                         divNotificacaoObjetoCardBodyRow2DivCol3Img.style = "max-width: 12em;";
+                        divNotificacaoObjetoCardBodyRow2DivCol3Img.alt = "Imagem do objeto achado correspondente ao seu objeto perdido";
                         divNotificacaoObjetoCardBodyRow2DivCol3Img.src = '/storage/imagens_objetos/' + notif['objeto_achado']['imagem'];
                         divNotificacaoObjetoCardBodyRow2DivCol3Img.onerror = function () {
                             divNotificacaoObjetoCardBodyRow2DivCol3Img.src = '/storage/imagens_objetos/default_objeto.jpg';
@@ -176,6 +181,7 @@ function carregarNotifs() {
                         divNotificacaoObjetoCardBodyRow2DivCol3Img.className = "figure-img img-fluid rounded";
                         divNotificacaoObjetoCardBodyRow2DivCol3Img.style = "max-width: 12em;";
                         divNotificacaoObjetoCardBodyRow2DivCol3Img.src = '/storage/imagens_objetos/' + notif['objeto_perdido']['imagem'];
+                        divNotificacaoObjetoCardBodyRow2DivCol3Img.alt = "Imagem do seu objeto perdido";
                         divNotificacaoObjetoCardBodyRow2DivCol3Img.onerror = function () {
                             divNotificacaoObjetoCardBodyRow2DivCol3Img.src = '/storage/imagens_objetos/default_objeto.jpg';
                         }

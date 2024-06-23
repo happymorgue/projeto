@@ -269,6 +269,100 @@ class Auth0Controller extends Controller
         DB::table('utilizador')->where('email', $email )->update(['ativo' => 'S']);
     }
 
+    public function deactivateUserFromAuth0Admin($avaliador,$email){
+                $client = new Client([
+            'base_uri' => 'https://dev-c5xznpgxsg1a5slt.eu.auth0.com',
+        ]);
+
+        $response = $client->post('oauth/token', [
+            'json' => [
+                'client_id' => '92F8bftfLRDygWdNmRqvmzQClaZY8ySA',
+                'client_secret' => '4_hP2pLCw1dmbiS346hvRRF9AZDC9Ee9RQP2KsSMxzcgqStzcM0T9ggr2E2lxVub',
+                'audience' => 'https://dev-c5xznpgxsg1a5slt.eu.auth0.com/api/v2/',
+                'grant_type' => 'client_credentials',
+            ],
+        ]);
+
+        $body = $response->getBody();
+        $data = json_decode($body, true);
+
+        $token = $data['access_token'];
+
+
+
+        $client = new Client([
+            'base_uri' => 'https://dev-c5xznpgxsg1a5slt.eu.auth0.com/api/v2/',
+            'headers' => ['authorization' => 'Bearer ' . $token]
+        ]);
+
+        // Get the user's ID
+        $response = $client->get('users-by-email', [
+            'query' => ['email' => $email]
+        ]);
+
+        $body = $response->getBody();
+        $data = json_decode($body, true);
+
+        if (count($data) > 0) {
+            $userId = $data[0]['user_id'];
+
+            // deactivate the user
+            $client->patch("users/$userId",[
+                'json' => [
+                    'blocked' => true
+                ]
+            ]);
+        }
+        DB::table('utilizador')->where('email', $email )->update(['ativo' => 'N']);
+    }
+
+    public function activateUserFromAuth0Admin($avaliador, $email){
+                $client = new Client([
+            'base_uri' => 'https://dev-c5xznpgxsg1a5slt.eu.auth0.com',
+        ]);
+
+        $response = $client->post('oauth/token', [
+            'json' => [
+                'client_id' => '92F8bftfLRDygWdNmRqvmzQClaZY8ySA',
+                'client_secret' => '4_hP2pLCw1dmbiS346hvRRF9AZDC9Ee9RQP2KsSMxzcgqStzcM0T9ggr2E2lxVub',
+                'audience' => 'https://dev-c5xznpgxsg1a5slt.eu.auth0.com/api/v2/',
+                'grant_type' => 'client_credentials',
+            ],
+        ]);
+
+        $body = $response->getBody();
+        $data = json_decode($body, true);
+
+        $token = $data['access_token'];
+
+
+
+        $client = new Client([
+            'base_uri' => 'https://dev-c5xznpgxsg1a5slt.eu.auth0.com/api/v2/',
+            'headers' => ['authorization' => 'Bearer ' . $token]
+        ]);
+
+        // Get the user's ID
+        $response = $client->get('users-by-email', [
+            'query' => ['email' => $email]
+        ]);
+
+        $body = $response->getBody();
+        $data = json_decode($body, true);
+
+        if (count($data) > 0) {
+            $userId = $data[0]['user_id'];
+
+            // Delete the user
+            $client->patch("users/$userId",[
+                'json' => [
+                    'blocked' => false
+                ]
+            ]);
+        }
+        DB::table('utilizador')->where('email', $email )->update(['ativo' => 'S']);
+    }
+
     #Metodo para registar um utilizador, consoante o tipo que escolheu
     public function register($tipo)
     {

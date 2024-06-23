@@ -25,7 +25,7 @@
                             <th scope="col">Desativar Conta</th>
                         </tr>
                     </thead>
-                    <tbody id="Cat">
+                    <tbody id="Users">
                         <!--<tr>
                                 <th scope="row">1</th>
                                 <td></td>

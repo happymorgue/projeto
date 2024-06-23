@@ -435,4 +435,9 @@ class AvaliadorController extends Controller
         return response()->json(['number_leiloes' => $number_leiloes, 'number_leiloes_ativos' => $number_leiloes_ativos, 'number_leiloes_passados' => $number_leiloes_passados, 'number_leiloes_futuros' => $number_leiloes_futuros]);
     }
 
+    public function getUtilizadores(){
+        $utilizadores=DB::table('utilizador')->orderBy('id','asc')->get();
+        return response()->json($utilizadores);
+    }
+
 }

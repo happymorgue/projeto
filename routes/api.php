@@ -139,11 +139,15 @@ Route::get('avaliador/{avaliadorId}/verLeiloesA', [AvaliadorController::class, '
 
 Route::get('avaliador/{avaliadorId}/getCategorias', [AvaliadorController::class, 'getCategorias']);
 Route::get('avaliador/{avaliadorId}/getAtributos', [AvaliadorController::class, 'getAtributos']);
+Route::get('avaliador/{avaliadorId}/getUtilizadores', [AvaliadorController::class, 'getUtilizadores']);
 
 Route::get('avaliador/{avaliadorId}/stats1', [AvaliadorController::class, 'stats1']);
 Route::get('avaliador/{avaliadorId}/stats2', [AvaliadorController::class, 'stats2']);
 Route::get('avaliador/{avaliadorId}/stats3', [AvaliadorController::class, 'stats3']);
 Route::get('avaliador/{avaliadorId}/stats4', [AvaliadorController::class, 'stats4']);
+
+Route::get('avaliador/{avaliadorId}/ativar/{email}', [Auth0Controller::class, 'activateUserFromAuth0Admin']);
+Route::get('avaliador/{avaliadorId}/desativar/{email}', [Auth0Controller::class, 'deactivateUserFromAuth0Admin']);
 
 
 #NAO UTILIZADORES

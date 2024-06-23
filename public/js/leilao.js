@@ -39,6 +39,7 @@ function carregarLeilao() {
             divImage.className = 'bg-image';
             img = document.createElement('img');
             img.src = '/storage/imagens_objetos/' + leilao['objeto']['imagem'];
+            img.alt = 'Imagem do objeto';
             img.onerror = function () {
                 img.src = '/storage/imagens_objetos/default_objeto.jpg';
             };

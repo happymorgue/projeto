@@ -12,6 +12,7 @@ function carregarObjeto() {
             //CARREGAR LEILAO
             console.log(objeto);
             document.getElementById("img").src = '/storage/imagens_objetos/' + objeto.imagem;
+            img.alt = 'Imagem do objeto';
             img.onerror = function () {
                 img.src = '/storage/imagens_objetos/default_objeto.jpg';
             };

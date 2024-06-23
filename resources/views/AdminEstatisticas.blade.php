@@ -31,7 +31,7 @@
       <div class="row my-5 justify-content-center">
 
         <div class="chart-container cc col-md-5 col-lg-5 col-xl-5">
-          <h4 class="text-center">Correspondências entre Objetos</h4>
+          <h4 class="text-center">Objetos Perdidos Reclamados e Remanescentes</h4>
           <canvas id="pieChartCorres"></canvas>
         </div>
 
@@ -54,7 +54,7 @@
                 var myBarChart = new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels: ['Perdidos', 'Encontrados', 'Correspondidos', 'Entregues', 'Leiloados', 'Vendidos'],
+                        labels: ['Perdidos', 'Encontrados', 'Reclamados', 'Entregues', 'Leiloados', 'Vendidos'],
                         datasets: [{
                             label: 'Quantidade de objetos',
                             data: [dados.number_obj_per, dados.number_obj_enc, dados.number_obj_rel, dados.number_obj_rel_entregues, dados.number_leilao, dados.number_leilao_acabado],
@@ -138,7 +138,7 @@
                 const myPieChart = new Chart(ctx2, {
                 type: 'pie',
                 data: {
-                    labels: ['Correspondidos', 'Remanescentes'],
+                    labels: ['Reclamados', 'Remanescentes'],
                     datasets: [{
                         data: [dados3.number_objeto_c, dados3.number_objeto-dados3.number_objeto_c],
                         backgroundColor: [

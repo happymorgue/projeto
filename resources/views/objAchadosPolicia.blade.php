@@ -14,7 +14,7 @@
 
     <div class="p-5 d-flex w-100 bgColor">
       <div id="objetosCorrespondentesPolicia" class="w-100">
-          <h3>Achados e Perdidos Correspondentes</h3>
+          <h3>Objetos Perdidos Reclamados</h3>
           <hr>
 
 

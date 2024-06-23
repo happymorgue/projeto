@@ -39,6 +39,9 @@ Route::get('/adminCategoriasAtributos', function () {
 Route::get('/adminStats', function () {
     return view('AdminEstatisticas');
 });
+Route::get('/adminUsers', function () {
+    return view('/adminUsers');
+});
 Route::get('/ajuda', function () {
     return view('help');
 });
@@ -136,6 +139,7 @@ Route::get('/leiloesLoggedOut', function () {
 Route::get('/correspondencia', function () {
     return view('correspondencia');
 });
+
 
 
 

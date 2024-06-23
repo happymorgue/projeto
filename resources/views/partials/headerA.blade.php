@@ -51,6 +51,11 @@
               Estatísticas
             </a>
           </li>
+          <li class="nav-item dropdown me-2">
+            <a class="nav-link" id="navbarDropdownMenuLink" href="/adminUsers">
+              Utilizadores
+            </a>
+          </li>
         </ul>
       </div>
     </div>

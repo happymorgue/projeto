@@ -32,7 +32,7 @@ function carregarObjetos() {
 
                 let imagem = document.createElement('img');
                 imagem.className = 'img-thumbnail border-0 py-2';
-
+                imagem.alt = 'Imagem do objeto perdido';
                 imagem.src = '/storage/imagens_objetos/' + objeto['imagem'];
                 imagem.onerror = function () {
                     imagem.src = '/storage/imagens_objetos/default_objeto.jpg';
@@ -115,6 +115,7 @@ function carregarObjetos() {
 
                 let divCardPerdidosImagem = document.createElement('img');
                 divCardPerdidosImagem.className = 'img-thumbnail border-0';
+                divCardPerdidosImagem.alt = 'Imagem do objeto achado';
                 divCardPerdidosImagem.src = '/storage/imagens_objetos/' + objeto['imagem'];
                 divCardPerdidosImagem.onerror = function () {
                     divCardPerdidosImagem.src = '/storage/imagens_objetos/default_objeto.jpg';
@@ -231,7 +232,7 @@ function carregarObjetosComCategoria(categoriaSearch) {
 
                 let imagem = document.createElement('img');
                 imagem.className = 'img-thumbnail border-0 py-2';
-
+                imagem.alt = 'Imagem do objeto perdido';
                 imagem.src = '/storage/imagens_objetos/' + objeto['imagem'];
                 imagem.onerror = function () {
                     imagem.src = '/storage/imagens_objetos/default_objeto.jpg';
@@ -314,6 +315,7 @@ function carregarObjetosComCategoria(categoriaSearch) {
 
                 let divCardPerdidosImagem = document.createElement('img');
                 divCardPerdidosImagem.className = 'img-thumbnail border-0';
+                divCardPerdidosImagem.alt = 'Imagem do objeto achado';
                 divCardPerdidosImagem.src = '/storage/imagens_objetos/' + objeto['imagem'];
                 divCardPerdidosImagem.onerror = function () {
                     divCardPerdidosImagem.src = '/storage/imagens_objetos/default_objeto.jpg';
@@ -431,7 +433,7 @@ function carregarObjetosComPesquisa(searchTerm) {
 
                 let imagem = document.createElement('img');
                 imagem.className = 'img-thumbnail border-0 py-2';
-
+                imagem.alt = 'Imagem do objeto perdido';
                 imagem.src = '/storage/imagens_objetos/' + objeto['imagem'];
                 imagem.onerror = function () {
                     imagem.src = '/storage/imagens_objetos/default_objeto.jpg';
@@ -514,6 +516,7 @@ function carregarObjetosComPesquisa(searchTerm) {
 
                 let divCardPerdidosImagem = document.createElement('img');
                 divCardPerdidosImagem.className = 'img-thumbnail border-0';
+                divCardPerdidosImagem.alt = 'Imagem do objeto achado';
                 divCardPerdidosImagem.src = '/storage/imagens_objetos/' + objeto['imagem'];
                 divCardPerdidosImagem.onerror = function () {
                     divCardPerdidosImagem.src = '/storage/imagens_objetos/default_objeto.jpg';

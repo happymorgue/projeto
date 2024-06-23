@@ -39,6 +39,7 @@ function carregarObjetos() {
 
                 let divCardPerdidosImagem = document.createElement('img');
                 divCardPerdidosImagem.className = 'img-thumbnail border-0';
+                divCardPerdidosImagem.alt = 'Imagem do objeto achado';
                 divCardPerdidosImagem.src = '/storage/imagens_objetos/' + objeto['imagem'];
                 divCardPerdidosImagem.onerror = function () {
                     divCardPerdidosImagem.src = '/storage/imagens_objetos/default_objeto.jpg';
@@ -162,6 +163,7 @@ function carregarPerdidos() {
 
                 let divCardPerdidosImagem = document.createElement('img');
                 divCardPerdidosImagem.className = 'img-thumbnail border-0';
+                divCardPerdidosImagem.alt = 'Imagem do objeto reclamado';
                 divCardPerdidosImagem.src = '/storage/imagens_objetos/' + objeto['imagem'];
                 divCardPerdidosImagem.onerror = function () {
                     divCardPerdidosImagem.src = '/storage/imagens_objetos/default_objeto.jpg';

@@ -182,8 +182,15 @@ function inscreverLeilao(idLeilao, event) {
             let pedido = new XMLHttpRequest();
             pedido.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
-                    console.log("Subbed com sucesso");
-                    event.target.innerHTML = 'Cancelar Subscrição';
+                    Swal.fire({
+                        title: "Sucesso!",
+                        text: "Subscreveu-se a notificações com sucesso!",
+                        icon: "success",
+                        confirmButtonColor: "#007bff", // Bootstrap's btn-primary color
+                        confirmButtonText: "OK",
+                    }).then(() => {
+                        event.target.innerHTML = 'Cancelar Subscrição';
+                    });
                 }
             }
             pedido.open("GET", "/api/regular/licitante/" + idRegular + "/subscreverLeilao/" + idLeilao, true)
@@ -203,8 +210,15 @@ function cancelarSubLeilao(idLeilao, event) {
             let pedido = new XMLHttpRequest();
             pedido.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
-                    console.log("Cancelado com sucesso");
-                    event.target.innerHTML = 'Inscrever-se';
+                    Swal.fire({
+                        title: "Sucesso!",
+                        text: "Cancelou a sua subscrição com sucesso!",
+                        icon: "success",
+                        confirmButtonColor: "#007bff", // Bootstrap's btn-primary color
+                        confirmButtonText: "OK",
+                    }).then(() => {
+                        event.target.innerHTML = 'Inscrever-se';
+                    });
                 }
             }
             pedido.open("GET", "/api/regular/licitante/" + idRegular + "/anularSubscreverLeilao/" + idLeilao, true)

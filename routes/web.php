@@ -42,6 +42,9 @@ Route::get('/adminStats', function () {
 Route::get('/adminUsers', function () {
     return view('/adminUsers');
 });
+Route::get('/desativarUser', function () {
+    return view('/desativarUser');
+});
 Route::get('/ajuda', function () {
     return view('help');
 });

@@ -165,7 +165,8 @@ function apagarPosto(id) {
         text: "Ao apagar, não será possível recuperar este posto!",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#dc3545",
+        confirmButtonColor: "#d33",
+        cancelButtonText: "#3085d6",
         confirmButtonText: "Sim, apagar!",
         cancelButtonText: "Não, cancelar!",
     }).then((result) => {

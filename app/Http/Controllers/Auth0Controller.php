@@ -60,8 +60,7 @@ class Auth0Controller extends Controller
             $_SESSION['user_email'] = $user['name'];
         } catch (\Exception $e) {
             echo '<script type="text/javascript">';
-            echo 'alert("Conta desativada");';
-            echo 'window.location.href="/homeGeral";'; // Redirect after alert
+            echo 'window.location.href="/desativarUser";'; // Redirect after alert
             echo '</script>';
             exit;
         }

@@ -201,8 +201,8 @@ function removerCat(id) {
         text: "Esta ação não pode ser desfeita!",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
         confirmButtonText: 'Sim, apagar!',
         cancelButtonText: 'Cancelar'
     }).then((result) => {

@@ -124,7 +124,17 @@ function carregarLeiloes_licitacoes() {
                         });
                         divCardLeilaoInfoLicitarBotao.type = 'button';
 
+                        botaoInscrever = document.createElement('a');
+                        botaoInscrever.className = 'btn btn-outline-primary btn-sm w-100 mt-1';
+                        botaoInscrever.innerHTML = 'Cancelar Subscrição';
+                        botaoInscrever.type = 'button';
+                        botaoInscrever.addEventListener('click', function (){
+                            cancelarSubLeilao(leilao['id']);
+                        });
+
+
                         divCardLeilaoInfoLicitar.appendChild(divCardLeilaoInfoLicitarBotao);
+                        divCardLeilaoInfoLicitar.appendChild(botaoInscrever);
                         divCardContainerObjectInfo2.appendChild(divCardLeilaoInfoLicitar);
 
                         divCardRow.appendChild(divCardContainerObjectInfo2);
@@ -147,6 +157,33 @@ function carregarLeiloes_licitacoes() {
     }
     pedido.open("GET", "/api/convertUserEmailRegularId", true)
     pedido.send();
+}
+
+function cancelarSubLeilao(idLeilao) {
+    let pedido2 = new XMLHttpRequest();
+    pedido2.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var idRegular = JSON.parse(pedido2.responseText);
+            let pedido = new XMLHttpRequest();
+            pedido.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    Swal.fire({
+                        title: "Sucesso!",
+                        text: "Cancelou a sua subscrição com sucesso!",
+                        icon: "success",
+                        confirmButtonColor: "#007bff", // Bootstrap's btn-primary color
+                        confirmButtonText: "OK",
+                    }).then(() => {
+                        location.reload();
+                    });
+                }
+            }
+            pedido.open("GET", "/api/regular/licitante/" + idRegular + "/anularSubscreverLeilao/" + idLeilao, true)
+            pedido.send();
+        }
+    }
+    pedido2.open("GET", "/api/convertUserEmailRegularId", true)
+    pedido2.send();
 }
 
 
@@ -362,8 +399,8 @@ function realizarPagamento(idLeilao) {
         text: "Após confirmar já não pode voltar atrás!",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
         confirmButtonText: 'Sim, pagar!',
         cancelButtonText: 'Cancelar'
     }).then((result) => {

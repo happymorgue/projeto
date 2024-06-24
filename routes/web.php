@@ -45,8 +45,11 @@ Route::get('/adminUsers', function () {
 Route::get('/desativarUser', function () {
     return view('/desativarUser');
 });
-Route::get('/ajuda', function () {
-    return view('help');
+Route::get('/ajudaP', function () {
+    return view('helpP');
+});
+Route::get('/ajudaDL', function () {
+    return view('helpDL');
 });
 Route::get('/editObjAchado/{objId}', function () {
     return view('editAchados');

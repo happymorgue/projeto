@@ -25,13 +25,13 @@
 </head>
 <body>
 
-    @include('partials.headerDL')
+    @include('partials.headerP')
 
     @yield('content')
 
     @include('partials.faq')
 
-    @include('partials.footer')
+    @include('partials.footerP')
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

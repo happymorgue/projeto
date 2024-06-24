@@ -57,6 +57,8 @@ body{
 
 .bgPerfil{
     background-color: #cde3fc;
+    min-height: calc(100vh - 250px); 
+    padding-bottom: 50px; 
 }
 
 .bg-gray-300 {

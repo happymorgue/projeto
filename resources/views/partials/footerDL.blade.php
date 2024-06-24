@@ -6,7 +6,7 @@
                 <ul class="list-unstyled d-flex justify-content-center">
                     <li class="me-3"><a href="#" class="link_footer text-decoration-none">Sobre Nós</a></li>
                     <li class="me-3"><a href="#" class="link_footer text-decoration-none">Serviços</a></li>
-                    <li class="me-3"><a href="/ajuda" class="link_footer text-decoration-none">Ajuda</a></li>
+                    <li class="me-3"><a href="/ajudaDL" class="link_footer text-decoration-none">Ajuda</a></li>
                 </ul>
             </div>
         </div>

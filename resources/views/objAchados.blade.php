@@ -12,7 +12,7 @@
       <div class="container mt-4 mb-2 ps-4">
         <div class="row align-items-center">
             <div class="col-auto">
-                <p class="mb-0">Filtros:</p>
+                <h5 class="mb-0">Filtros:</h5>
             </div>
             <div class="col-auto">
                 <div class="dropdown">

@@ -1,5 +1,5 @@
 <!-- <!DOCTYPE html> -->
-@extends('layouts.layoutH')
+@extends('layouts.layoutHP')
 
 @section('title', 'Cogitavi - Help')
 
